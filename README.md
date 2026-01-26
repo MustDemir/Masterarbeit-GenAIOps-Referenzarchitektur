@@ -174,7 +174,7 @@ Falls dieses Projekt für akademische Zwecke genutzt wird, bitte wie folgt zitie
 ## 🤝 Kontakt
 
 **Mustafa Demir**  
-📧 Email: mustafa.demir@example.com  
+📧 Email: mu.demir@icloud.com  
 🐙 GitHub: [MustDemir](https://github.com/MustDemir)
 
 ---
