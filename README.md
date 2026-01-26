@@ -17,7 +17,7 @@
 - [🏗️ Architektur](#️-architektur)
 - [🛠️ Technologie-Stack](#-technologie-stack)
 - [📁 Projektstruktur](#-projektstruktur)
-- [🚀 Quick Start](#-quick-start)
+- [🚀 Schnellstart](#-quick-start)
 - [📊 Datensatz](#-datensatz)
 - [🧪 Machine Learning Pipeline](#-machine-learning-pipeline)
 - [☁️ Cloud-Deployment](#-cloud-deployment)
