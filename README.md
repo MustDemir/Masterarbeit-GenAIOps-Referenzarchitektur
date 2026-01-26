@@ -1,7 +1,5 @@
 # Masterarbeit-Cloud-MLOps
 Sepsis Early Warning System - MLOps Platform auf Azure Cloud
-
-# Create comprehensive README.md
 readme_content = """# 🏥 Sepsis Early Warning System - MLOps Platform
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
