@@ -535,10 +535,10 @@ Falls dieses Projekt für akademische Zwecke genutzt wird, bitte wie folgt zitie
 ### 💬 Feedback & Fragen?
 
 Ich freue mich über:
-- 🐛 **Bug Reports** via [GitHub Issues](https://github.com/MustDemir/Masterarbeit-Cloud-MLOps/issues)
-- 💡 **Feature Requests** & Verbesserungsvorschläge
-- ⭐ **Stars**, wenn dir das Projekt gefällt!
-- 🤝 **Contributions** sind herzlich willkommen
+🐛 **Bug Reports** via [GitHub Issues](https://github.com/MustDemir/Masterarbeit-Cloud-MLOps/issues)
+💡 **Feature Requests** & Verbesserungsvorschläge
+⭐ **Stars**, wenn dir das Projekt gefällt!
+🤝 **Contributions** sind herzlich willkommen
 
 ---
 
