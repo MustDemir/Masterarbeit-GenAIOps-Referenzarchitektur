@@ -7,71 +7,37 @@ __pycache__/
 env/
 venv/
 ENV/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+.venv
 
-# Data
-data/
-*.csv
-*.xlsx
-*.parquet
+# Jupyter Notebooks
+.ipynb_checkpoints
 
-# Models
-models/
-*.pkl
+# Data (große Dateien nicht committen!)
+data/raw/*.csv
+data/raw/*.parquet
+data/processed/*.csv
 *.h5
+*.pkl
+
+# Models (große Modelle nicht committen)
+models/*.pkl
+models/*.h5
 *.joblib
-*.pth
-*.onnx
 
-# Logs
-logs/
-*.log
-
-# Environment
-.env
-.env.local
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.hypothesis/
-
-# IDEs
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+
+# Azure
+.azure/
+
+# OS
 .DS_Store
+Thumbs.db
 
-# Jupyter Notebooks
-.ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# MLflow
-mlruns/
-
-# Docker
-*.dockerignore
-
-# Temporary files
-*.tmp
-*.bak
-*.swp
-*.swo
+# Secrets
+.env
+*.key
+*.pem
