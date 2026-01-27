@@ -11,7 +11,7 @@
 
 **Masterarbeit** · Mustafa Demir · Januar - Mai 2026
 
-[📖 Dokumentation](#-über-das-projekt) · [🚀 Quick Start](#-schnellstart) · [🔬 Forschung](#-forschungsfragen) · [💬 Kontakt](#-kontakt)
+[📖 Dokumentation](#-über-das-projekt) · [🚀 Quick Start](#-schnellstart) · [🔬 Forschung](#-forschungsfragen) · [� Learning Path](#-learning-path) · [�💬 Kontakt](#-kontakt)
 
 </div>
 
@@ -554,6 +554,47 @@ Ich freue mich über:
 | ☁️ Cloud-Deployment | ⏳ Geplant | Mär - Apr 2026 |
 | 📊 Evaluation | ⏳ Geplant | Apr - Mai 2026 |
 | 📝 Thesis-Schreiben | 🔄 Laufend | Jan - Mai 2026 |
+
+---
+
+## 📚 Learning Path
+
+Dieses Projekt integriert **IBM Python for Data Science, AI & Development** Kurs-Skills mit produktiver Cloud-Entwicklung:
+
+### 🎓 Kurs-Modul Mapping
+
+| Woche | Kurs-Modul | Thema | Anwendung im Projekt |
+|-------|-----------|-------|----------------------|
+| **1-2** | Modul 1-2 | Python Basics & Data Structures | Patient Records, Datentyp-Handling |
+| **3** | Modul 3 | Programming & OOP | ML Pipeline Classes, Exception Handling |
+| **4** | Modul 4 | Data Processing | Pandas/NumPy Feature Engineering |
+| **5** | Modul 5 | APIs & Integration | REST API für Model Serving |
+| **6** | - | Cloud Deployment | Azure MLOps Integration |
+
+### 📖 Learning Documentation
+
+Mein persönlicher **Learning Log** dokumentiert Erkenntnisse, Challenges und Code-Beispiele während des gesamten Projekts:
+
+👉 **[📓 Vollständiger Learning Log →](docs/learning_log.md)**
+
+### 🌳 Branch-Strategie für kontinuierliches Lernen
+
+```
+main (Stable Release)
+  ↑
+develop (Integration Branch)
+  ↑
+├── feature/python-basics (Woche 1-2) ← AKTUELL
+├── feature/ml-pipeline (Woche 3)
+├── feature/data-processing (Woche 4)
+└── feature/api-integration (Woche 5)
+```
+
+**Workflow:**
+- 🏷️ Jede Woche ein neuer Feature-Branch
+- 📝 Lernfortschritt in `docs/learning_log.md`
+- 🔀 Wöchentliches Merging in `develop`
+- ✅ Finale Integration in `main` (Ende Mai 2026)
 
 ---
 
