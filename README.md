@@ -23,6 +23,8 @@ Sepsis ist eine lebensbedrohliche Erkrankung, die jährlich Millionen von Mensch
 
 Ich entwickle eine **Cloud-basierte MLOps-Plattform**, die mithilfe von Machine Learning das Sepsis-Risiko **6-12 Stunden im Voraus** vorhersagen kann. Das Ziel: medizinisches Personal frühzeitig warnen und Leben retten.
 
+> 📓 **Learning-by-Doing Ansatz**: Dieses Projekt kombiniert systematisches Lernen mit praktischer Umsetzung. Alle Lern-Notebooks sind in [`notebooks/learning/`](notebooks/learning/) dokumentiert und fließen direkt in die Implementierung ein.
+
 ### 🎯 Was macht dieses Projekt besonders?
 
 <table>
@@ -166,15 +168,18 @@ graph TB
 Die Codebasis folgt Best Practices für Production-ML-Systeme:
 
 ```
-ma-cloud/
+Masterarbeit-Cloud-MLOps/
 │
 ├── 📊 data/                    # Datenverwaltung
 │   ├── raw/                    # Originaldaten (MIMIC-III)
 │   ├── processed/              # Bereinigte & transformierte Daten
 │   └── synthetic/              # Synthetische Test-Daten
 │
-├── 📓 notebooks/               # Jupyter Notebooks
-│   └── eda/                    # Explorative Datenanalyse
+├── 📓 notebooks/               # Jupyter Notebooks (siehe notebooks/README.md)
+│   ├── learning/               # 🎓 Lern-Notebooks (Python, ML, Cloud)
+│   ├── experiments/            # 🔬 Model-Experimente & Feature Engineering
+│   ├── analysis/               # 📊 Datenanalyse & EDA
+│   └── Masterarbeit_Jupyter.ipynb  # 📝 Hauptnotebook
 │
 ├── 🐍 src/                     # Produktionscode
 │   ├── data/                   # ETL & Data Processing
@@ -596,17 +601,7 @@ develop (Integration Branch)
 - 🔀 Wöchentliches Merging in `develop`
 - ✅ Finale Integration in `main` (Ende Mai 2026)
 
----
 
-### 🌟 Support this Project
-
-Wenn dieses Projekt für deine Forschung oder Arbeit nützlich ist:
-
-- ⭐ **Gib dem Repo einen Stern**
-- 📢 **Teile es** mit anderen
-- 📖 **Zitiere es** in deinen Publikationen
-
----
 
 <sub>**Letzte Aktualisierung**: 26. Januar 2026 · **Version**: 0.1.0-alpha</sub>
 
