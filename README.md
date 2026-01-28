@@ -166,15 +166,12 @@ graph TB
 Die Codebasis folgt Best Practices für Production-ML-Systeme:
 
 ```
-ma-cloud/
+Masterarbeit-Cloud-MLOps/
 │
 ├── 📊 data/                    # Datenverwaltung
 │   ├── raw/                    # Originaldaten (MIMIC-III)
 │   ├── processed/              # Bereinigte & transformierte Daten
 │   └── synthetic/              # Synthetische Test-Daten
-│
-├── 📓 notebooks/               # Jupyter Notebooks
-│   └── eda/                    # Explorative Datenanalyse
 │
 ├── 🐍 src/                     # Produktionscode
 │   ├── data/                   # ETL & Data Processing
@@ -257,6 +254,12 @@ cp .env.example .env
 **5. API lokal starten**
 ```bash
 uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**6. Jupyter Notebooks verwenden**
+```bash
+# Alle Notebooks sind zentral unter ../Jupyter_Notebooks/ strukturiert
+jupyter notebook ../Jupyter_Notebooks/
 ```
 
 Die API ist nun verfügbar unter:
