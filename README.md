@@ -157,6 +157,6 @@ Dieses Repository enthaelt Materialien einer akademischen Masterarbeit. Alle Rec
 
 ## Kontakt
 
-**Mustafa Demir** -- SRH Fernhochschule, M.Sc. Wirtschaftsinformatik
+**Mustafa Demir** -- SRH Fernhochschule, M.Sc. Digital Management und Transformation
 
 [![GitHub](https://img.shields.io/badge/GitHub-MustDemir-181717?style=flat&logo=github)](https://github.com/MustDemir)
