@@ -12,26 +12,11 @@ ENV/
 # Jupyter Notebooks
 .ipynb_checkpoints
 
-# Data (große Dateien nicht committen!)
-data/raw/*.csv
-data/raw/*.parquet
-data/processed/*.csv
-*.h5
-*.pkl
-
-# Models (große Modelle nicht committen)
-models/*.pkl
-models/*.h5
-*.joblib
-
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# Azure
-.azure/
 
 # OS
 .DS_Store
@@ -41,3 +26,19 @@ Thumbs.db
 .env
 *.key
 *.pem
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+
+# Docker
+*.log
+
+# Models & large files
+*.pkl
+*.h5
+*.joblib
+*.bin
+*.onnx
