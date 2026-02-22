@@ -145,8 +145,8 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 | Phase | Status |
 |---|---|
 | Expose / Forschungsdesign | Abgeschlossen |
-| Literaturrecherche & Grundlagen | In Arbeit |
-| Anforderungsanalyse (RQ1) | Geplant |
+| Literaturrecherche & Grundlagen | Abgeschlossen |
+| Anforderungsanalyse (RQ1) | in Arbeit |
 | Architekturentwicklung (RQ2) | Geplant |
 | PoC-Implementierung | Geplant |
 | Evaluation & Experteninterviews (RQ3) | Geplant |
