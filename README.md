@@ -28,39 +28,7 @@ Diese Arbeit schliesst die Luecke durch eine **Enterprise-Referenzarchitektur**,
 
 ## Architektur-Ueberblick
 
-```
-+------------------------------------------------------------------+
-|                    Enterprise GenAIOps Platform                    |
-+------------------------------------------------------------------+
-|                                                                    |
-|  +------------------+  +------------------+  +------------------+  |
-|  |  Data Layer      |  |  Model Layer     |  |  Serving Layer   |  |
-|  |  - Ingestion     |  |  - Fine-Tuning   |  |  - API Gateway   |  |
-|  |  - Vectorization |  |  - RAG Pipeline  |  |  - Load Balancer |  |
-|  |  - Validation    |  |  - Prompt Mgmt   |  |  - Caching       |  |
-|  +--------+---------+  +--------+---------+  +--------+---------+  |
-|           |                     |                     |            |
-|  +--------v---------------------v---------------------v---------+  |
-|  |              Quality Gate Framework                          |  |
-|  |  [Strategisch] --- [Technisch] --- [Compliance]              |  |
-|  |  Lifecycle Gov.    Evals/Safety    EU AI Act as Code          |  |
-|  +-------------------------------------------------------------+  |
-|                                                                    |
-|  +------------------+  +------------------+  +------------------+  |
-|  |  Monitoring &    |  |  Security &      |  |  Governance &    |  |
-|  |  Observability   |  |  Identity        |  |  Audit Trail     |  |
-|  |  - Metrics       |  |  - RBAC/ABAC     |  |  - Evidence Store|  |
-|  |  - Tracing       |  |  - Secrets Mgmt  |  |  - Policy Engine |  |
-|  |  - Drift Detect  |  |  - Network Pol.  |  |  - Compliance DB |  |
-|  +------------------+  +------------------+  +------------------+  |
-|                                                                    |
-|  +-------------------------------------------------------------+  |
-|  |              Cloud-native Platform Layer                     |  |
-|  |  Kubernetes | Service Mesh | GitOps | IaC                    |  |
-|  |  (Public Cloud / Sovereign Cloud / On-Premises)              |  |
-|  +-------------------------------------------------------------+  |
-+------------------------------------------------------------------+
-```
+![GenAIOps Enterprise-Referenzarchitektur v1](docs/images/genaiops_reference_architecture_v1.svg)
 
 ## Quality Gate Framework
 
