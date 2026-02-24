@@ -103,6 +103,7 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 .
 |-- 00_admin/
 |   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
+|   |-- asset_naming.md       # PNG-Naming/Versionierungsstandard (v01, v02, ...)
 |-- 01_einleitung/
 |-- 02_rigor_theorie_stand_forschung/
 |-- 03_forschungsdesign_methodik/

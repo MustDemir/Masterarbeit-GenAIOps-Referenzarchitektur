@@ -52,3 +52,9 @@ Thumbs.db
 
 # Word temp lock files
 ~$*.docx
+
+# Image export temp files
+*.tmp.png
+*.temp.png
+*.bak.png
+*.backup.png
