@@ -6,6 +6,14 @@ Masterarbeit | Mustafa Demir | SRH Fernhochschule | 2026
 
 ---
 
+## What I Built (Portfolio Snapshot)
+
+- Designed a cloud-native GenAIOps reference architecture aligned with EU AI Act requirements.
+- Structured the thesis workspace into an end-to-end chapter system (01-08) with traceable artifacts.
+- Implemented quality-gate artifacts (strategic, technical, compliance) and requirement traceability.
+- Built a reproducible session workflow (`save.py`, `reindex.py`, `resume.py`) for compact AI context continuity.
+- Separated cloud artifact storage by container to keep thesis and toolkit contexts clean and auditable.
+
 ## Problemstellung
 
 Generative KI-Systeme (LLMs, RAG-Architekturen) stellen Unternehmen vor drei ungeloeste Herausforderungen:
