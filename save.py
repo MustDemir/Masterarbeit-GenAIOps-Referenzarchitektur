@@ -32,7 +32,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", type=str, help="Pfad zu Session-Notizen/Text")
     parser.add_argument("--text", type=str, help="Direkter Session-Text")
-    parser.add_argument("--topic", type=str, default="auto", help="z. B. architektur, anforderungen, evaluation, auto")
+    parser.add_argument(
+        "--topic",
+        type=str,
+        default="auto",
+        help="z. B. architektur, anforderungen, theorie, evaluation, methodik, auto",
+    )
     parser.add_argument("--title", type=str, default="", help="Kurzer Titel der Session")
     parser.add_argument("--source", type=str, default="chat", help="Quelle, z. B. chatgpt/claude/manual")
     parser.add_argument("--tags", type=str, default="", help="Kommagetrennte Tags")

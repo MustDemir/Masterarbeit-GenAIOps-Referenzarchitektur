@@ -24,6 +24,7 @@ Thumbs.db
 
 # Secrets
 .env
+.env.backup*
 *.key
 *.pem
 
@@ -48,3 +49,6 @@ Thumbs.db
 
 # Session raw notes helper
 99_inbox_unsorted/session_notes.txt
+
+# Word temp lock files
+~$*.docx

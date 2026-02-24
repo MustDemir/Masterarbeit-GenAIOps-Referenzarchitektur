@@ -93,19 +93,24 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 
 ```
 .
-|-- docs/                     # Expose, Architektur-Diagramme, Gate-Katalog
-|-- architecture/             # Architektur-Modelle und Design-Prinzipien
-|-- quality-gates/            # Gate-Definitionen und Templates
-|   |-- strategic/
-|   |-- technical/
-|   |-- compliance/
-|-- poc/                      # Proof-of-Concept Implementierung
-|   |-- technical-gate/       # Technisches Quality Gate (Eval-Pipeline)
-|   |-- compliance-gate/      # Compliance Gate (Policy-as-Code)
-|   |-- infrastructure/       # IaC und Kubernetes Manifeste
-|-- policies/                 # OPA/Rego Policies fuer EU AI Act
-|-- evaluation/               # Evaluationsergebnisse und Analyse
-|-- references/               # Literaturverzeichnis und Quellen
+|-- 00_admin/
+|   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
+|-- 01_einleitung/
+|-- 02_rigor_theorie_stand_forschung/
+|-- 03_forschungsdesign_methodik/
+|-- 04_anforderungsanalyse_RQ1/
+|-- 05_referenzarchitektur_RQ2/
+|   |-- 05_03_quality_gates/
+|   |-- 05_04_pipelines_integration/
+|-- 06_evaluation_RQ3/
+|-- 07_diskussion/
+|-- 08_fazit_ausblick/
+|-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
+|-- 90_sources_zotero/
+|-- 91_progress_log/
+|-- 98_onedrive_migration/
+|   |-- legacy_scaffold/      # Alte Root-Scaffold-Struktur (archiviert)
+|-- 99_inbox_unsorted/
 ```
 
 ## Status
