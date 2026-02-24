@@ -42,3 +42,9 @@ Thumbs.db
 *.joblib
 *.bin
 *.onnx
+
+# Local workflow cache
+.memory/
+
+# Session raw notes helper
+99_inbox_unsorted/session_notes.txt

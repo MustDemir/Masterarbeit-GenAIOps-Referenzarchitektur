@@ -1,0 +1,18 @@
+id: SUM-20260224065348
+created_at: '2026-02-24T05:53:48.616518+00:00'
+topic: general
+target_folder: 99_inbox_unsorted/session_summaries
+title: Save Durchlauf
+summary_bullets:
+- Heute haben wir den Save-Workflow fuer die Masterarbeit festgezogen.
+- 'Wichtig: keine Vollchat-Speicherung, sondern kompakte YAML-Summaries.'
+- Wir arbeiten mit srch-genaiops-247271157 fuer RAG-Suche und aoai-genaiops-1971013694
+  fuer Modelle.
+- 'Entscheidung: Session-Ende immer mit save.py + git commit + reindex.py.'
+- 'Naechster Schritt: optional Blob-Sync fuer Summary-Dateien anbinden.'
+decisions:
+- 'Entscheidung: Session-Ende immer mit save.py + git commit + reindex.py.'
+next_steps:
+- 'Naechster Schritt: optional Blob-Sync fuer Summary-Dateien anbinden.'
+tags: []
+source: chatgpt
