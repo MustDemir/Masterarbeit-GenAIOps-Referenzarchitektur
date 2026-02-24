@@ -113,6 +113,20 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 |-- 99_inbox_unsorted/
 ```
 
+## Integration mit AI Context Vault
+
+Diese Thesis ist bewusst vom Toolkit-Repo getrennt:
+
+- `genaiops-thesis` = fachlicher Masterarbeitsinhalt (Kapitel, Anforderungen, Evaluation)
+- `ai-context-vault` = wiederverwendbare Workflow-Engine (save/reindex/resume/search)
+
+Cloud-Trennung (gleicher Storage-Account, getrennte Container):
+
+- `thesis-session-summaries` -> nur Thesis-Summaries aus diesem Repo
+- `context-vault-summaries` -> nur Toolkit-/Vault-Summaries
+
+Damit bleibt der Kontext sauber getrennt (kein Cross-Project-Mixing) und auditierbar.
+
 ## Status
 
 | Phase | Status |
