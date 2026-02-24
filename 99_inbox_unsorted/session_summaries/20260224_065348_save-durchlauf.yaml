@@ -16,3 +16,4 @@ next_steps:
 - 'Naechster Schritt: optional Blob-Sync fuer Summary-Dateien anbinden.'
 tags: []
 source: chatgpt
+summary_engine: local_rules
