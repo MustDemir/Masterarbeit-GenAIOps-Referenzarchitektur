@@ -34,9 +34,16 @@ Diese Arbeit schliesst die Luecke durch eine **Enterprise-Referenzarchitektur**,
 - **RQ2:** Welche Design-Prinzipien und Architekturbausteine sind erforderlich, um ein integriertes Quality-Gate-Framework entlang des GenAI-Lebenszyklus einzubetten?
 - **RQ3:** Inwieweit erfuellt die entwickelte Referenzarchitektur die abgeleiteten Anforderungen (Prototyp + Expertenbewertung)?
 
-## Architektur-Ueberblick
+## Architektur-Dokumente (Source of Truth)
 
-![GenAIOps Enterprise-Referenzarchitektur v1](docs/images/genaiops_reference_architecture_v1.svg)
+Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlinkt:
+
+- [Aktuelle Gliederung v3](00_admin/gliederung_v3.md)
+- [Architektur-Kapitel (RQ2)](05_referenzarchitektur_RQ2/)
+- [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
+- [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
+- [Evaluation (RQ3)](06_evaluation_RQ3/)
+- [Exposé (PDF)](docs/Expose_Demir_GenAIOps_Referenzarchitektur.pdf)
 
 ## Quality Gate Framework
 
