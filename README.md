@@ -43,7 +43,9 @@ Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlink
 - [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
 - [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
 - [Evaluation (RQ3)](06_evaluation_RQ3/)
-- [Exposé (PDF)](docs/Expose_Demir_GenAIOps_Referenzarchitektur.pdf)
+- [Exposé v2 FINAL (DOCX)](docs/expose/Expose_v2_final_2026-02-24.docx)
+- [Exposé v2 FINAL (TXT-Export)](docs/expose/Expose_v2_final_2026-02-24.txt)
+- [Exposé v1 LEGACY (PDF)](docs/expose/Expose_v1_legacy.pdf)
 
 ## Quality Gate Framework
 
