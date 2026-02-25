@@ -136,7 +136,7 @@ Diskussion (Kap. 7), Fazit (Kap. 8), Revision, Abgabe
 4.5 Konsolidierter Anforderungskatalog
 
 5 Entwicklung der Referenzarchitektur → Design Cycle / beantwortet RQ2
-5.1 Design-Prinzipien (DP-1..DP-n, begründet aus R1–Rn) 5.2 Architekturübersicht: Schichtenmodell, Module, Schnittstellen, Verantwortlichkeiten 5.3 Quality-Gate-Framework 5.4 Gate-Template (Trigger, Evidence, Policy, Decision, Owner, Audit Trail, Waiver)  - 5.4.1 Strategische Gates (Lifecycle Governance) - 5.4.2 Technische Gates (Qualität/Performance/Safety-Evals, Monitoring) - 5.4.3 Compliance Gates (EU AI Act → Policy-as-Code + Evidence) - 5.4.4 Gate-Katalog (Übersichtstabelle über alle Gates) 
+5.1 Design-Prinzipien (DP-1..DP-n, begründet aus R1–Rn)5.2 Architekturübersicht: Schichtenmodell, Module, Schnittstellen, Verantwortlichkeiten5.3 Quality-Gate-Framework5.4 Gate-Template (Trigger, Evidence, Policy, Decision, Owner, Audit Trail, Waiver) - 5.4.1 Strategische Gates (Lifecycle Governance)- 5.4.2 Technische Gates (Qualität/Performance/Safety-Evals, Monitoring)- 5.4.3 Compliance Gates (EU AI Act → Policy-as-Code + Evidence)- 5.4.4 Gate-Katalog (Übersichtstabelle über alle Gates) 
 5.5 Integration in CI/CD/CT-Pipelines (Policy Engine, Evidence Store, Automation Points)
 
 6 Evaluation → beantwortet RQ3
