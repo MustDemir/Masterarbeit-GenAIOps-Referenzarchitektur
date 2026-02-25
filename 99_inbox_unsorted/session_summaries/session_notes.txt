@@ -1,0 +1,3 @@
+Architekturupdate: Wir haben den Blob-Sync in den Workflow integriert.
+Entscheidung: Session-Summaries bleiben klein und werden in Blob plus Search indexiert.
+Naechste Schritte: topic-Routing weiter verbessern.
