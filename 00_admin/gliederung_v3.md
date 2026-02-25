@@ -1,7 +1,8 @@
 # Gliederung v3 (aus Expose)
 
-Quelle: `/Users/mustafademir/Projects/genaiops-thesis/98_onedrive_migration/1_masterarbeit/1. Expose v3.docx`
-Stand: 2026-02-24
+Single Source of Truth: `/Users/mustafademir/Projects/genaiops-thesis/98_onedrive_migration/1_masterarbeit/1. Expose v3.docx`
+Synchronisierte Repo-Kopie: `docs/expose/Expose_v3_single_source_2026-02-25.docx`
+Stand: 2026-02-25
 
 ## 1 Einleitung
 1.1 Problemstellung und Relevanz  

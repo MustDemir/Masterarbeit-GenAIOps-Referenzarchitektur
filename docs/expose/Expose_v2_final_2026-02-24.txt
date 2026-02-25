@@ -1,9 +1,22 @@
+​​
+MASTERARBEIT 
+
+Entwicklung einer Enterprise-Referenzarchitektur für Generative KI: Automatisierte Quality Gates und EU-AI-Act-Compliance in cloud-nativen Betriebsumgebungen
 
 
 
-
+Name: Mustafa Demir
+Matrikelnummer: 2009670
+Studiengang: Digital Management & Transformation (M.Sc.)
+Hochschule: SRH Fernhochschule – The Mobile University
+Betreuer: Prof. Dr. Christian Prinz
+Ort: Stuttgart
+
+
+
 
 Inhaltsverzeichnis
+
 Arbeitstitel	3
 1.1 Einleitung	3
 1.2 Problemdimensionen	3
@@ -67,11 +80,6 @@ Die Themenwahl ist sowohl durch die berufliche Spezialisierung als auch durch ei
 Über das unmittelbare Berufsziel als AI & Cloud Solution Architect hinaus verfolge ich das Ziel einer Promotion im Bereich KI- und Innovationsmanagement. Die vorliegende Arbeit soll dafür eine methodisch und inhaltlich tragfähige Grundlage schaffen. Darüber hinaus ist die Überzeugung leitend, dass die technologische und regulatorische Souveränität Europas — insbesondere im Bereich Cloud-Infrastruktur und KI-Governance — eine eigenständige architektonische Antwort erfordert, zu der diese Arbeit einen konzeptionellen Beitrag leisten möchte.
 2.2 Unternehmensakzeptanz
 Vorerst wird die Arbeit als rein akademisches Forschungsprojekt ohne festen Praxispartner durchgeführt. Dies ist im Rahmen einer Design-Science-Research-Arbeit methodisch unproblematisch, da das zentrale Artefakt — eine generalisierbare Referenzarchitektur — nicht an einen spezifischen Unternehmenskontext gebunden ist, sondern als übertragbares Designwissen konzipiert wird (Hevner et al., 2004, S. 80). Die Evaluation stützt sich auf leitfadengestützte Experteninterviews mit Domänenexperten aus Wissenschaft und Praxis, deren Zugang über das akademische und berufliche Netzwerk von mir gesichert ist. Für die prototypische Implementierung (PoC) stehen studentische Cloud-Ressourcen (Microsoft Azure) sowie Open-Source-Tooling zur Verfügung. Eine optionale Kooperation mit einem Startup zur Validierung des Ambient-AI-Scribe-Szenarios (oder eines ähnlichen Use Case) wird derzeit geprüft, ist für die Durchführbarkeit der Arbeit jedoch nicht erforderlich.
-
-
-
-
-
 2.3 Zeitplan
 Phase
 Zeitraum
@@ -88,7 +96,6 @@ Coverage-Check, Walkthrough, PoC-Implementierung, Experteninterviews (Kap. 6)
 Phase 4: Dokumentation & Abschluss
 Monat 5
 Diskussion (Kap. 7), Fazit (Kap. 8), Revision, Abgabe
-
 2.4 Grobgliederung 
 1 Einleitung
 1.1 Problemstellung und Relevanz
@@ -100,14 +107,13 @@ Diskussion (Kap. 7), Fazit (Kap. 8), Revision, Abgabe
 2 Theoretische Grundlagen und Stand der Forschung → Rigor Cycle
 2.1 Begriffsabgrenzung und Systemkontext (LLM, GenAI-System, RAG, LLMOps, Quality Gate, Policy-as-Code).
 2.2 Generative KI und LLMs
-2.3 Cloud-native: Fokus auf Plattformfähigkeiten (Identity, Network, Observability, Policy)
+2.3 Cloud-native: Fokus auf Plattformfähigkeiten (Identity,Network, Observability, Policy)
 2.4 Operationalisierung 
 2.4.1 Von MLOps zu LLMOps: Operationalisierung von KI-Systemen
 2.4.2 Der EU AI Act: Regulatorischer Rahmen und technisch-organisatorische Anforderungen
 2.5 Quality Gates: Definition, Konzepte und Einordnung
 2.6 Compliance-as-Code und Policy-as-Code
 2.7 Synthese: Forschungslücke und Handlungsbedarf
-
 3 Forschungsdesign und Methodik
   3.1 Design Science Research als Forschungsrahmen
   3.2 Vorgehensmodell (DSRM nach Peffers)
