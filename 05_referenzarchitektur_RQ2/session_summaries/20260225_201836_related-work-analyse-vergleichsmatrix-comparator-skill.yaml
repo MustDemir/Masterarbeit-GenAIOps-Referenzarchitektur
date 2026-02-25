@@ -1,0 +1,41 @@
+id: SUM-20260225201836
+created_at: '2026-02-25T19:18:36.818393+00:00'
+topic: architektur
+target_folder: 05_referenzarchitektur_RQ2/session_summaries
+title: Related-Work-Analyse + Vergleichsmatrix + Comparator-Skill
+summary_bullets:
+- '# Session Notes — 2026-02-25'
+- '## Source: claude-ai (Masterarbeit GenAIOps)'
+- Related-Work-Analyse (4 Papers) + Vergleichsmatrix + Related-Work-Comparator-Skill
+  erstellt
+- '### Artefakte (final)'
+- 'Related_Work_Vergleichsmatrix.xlsx** — 3-Sheet Excel: Feature-Matrix (7 Kategorien
+  × 35 Dimensionen, farbkodiert ✓/◐/✗), Abgrenzungssätze (APA7), Lücken-Analyse (PD1/PD2/PD3)'
+- related-work-comparator-skill/** — Custom Claude-Skill (SKILL.md + references/methodology.md
+  + references/matrix_template.py) für systematischen Paper-Vergleich gegen eigene
+  Arbeit
+- '### Related-Work-Paper-Analyse (4 Papers bewertet)'
+- 'Paper #1: Nellutla (2025) "MLOps 2.0" — Preprints.org**'
+decisions:
+- '- Konzeptionell: CDV-Framework (Contract → Validation → Severity → Pipeline-Decision)
+  + Severity Block/Warn/Audit'
+- '- Elevator Pitch: "Mahr endet bei ''Passed Evaluation'' als binärer Entscheidung;
+  mein Gate-Framework definiert die Entscheidungsstruktur selbst"'
+next_steps:
+- '### Offene Punkte'
+tags:
+- masterarbeit
+- related-work
+- paper-analyse
+- vergleichsmatrix
+- quality-gates
+- compliance
+- genaiops
+- pourmajidi
+- buscemi
+- mahr
+- nellutla
+- skill-creation
+- eu-ai-act
+source: claude
+summary_engine: local_rules
