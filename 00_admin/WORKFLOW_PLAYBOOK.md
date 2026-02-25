@@ -39,16 +39,25 @@ Azure Push passiert, wenn Konfiguration vorhanden ist oder mit `--azure`:
 - `AZURE_SEARCH_INDEX_NAME` (oder `AZURE_SEARCH_INDEX`)
 - optional: `AZURE_SEARCH_KEY_FIELD` (default `id`)
 - optional: `AZURE_SEARCH_CONTENT_FIELD` (default `content`)
-- optional: `AZURE_SEARCH_INSECURE_TLS=1` nur falls lokales Python SSL-Truststore kaputt ist
+- optional: `AZURE_CA_BUNDLE=/pfad/zu/cacert.pem` (oder `SSL_CERT_FILE`) fuer lokales CA-Bundle
+- optional: `AZURE_SEARCH_INSECURE_TLS=1` nur als Notfall, falls lokales Python SSL-Truststore kaputt ist
 
 Blob Sync passiert, wenn Konfiguration vorhanden ist oder mit `--blob`:
 - `AZURE_STORAGE_ACCOUNT`
 - `AZURE_STORAGE_KEY`
 - optional: `AZURE_BLOB_CONTAINER` (default `session-summaries`)
 
+Input-Dateien (z. B. PDF/XLSX/ZIP) separat nach Blob syncen:
+- `python3 reindex.py --input-blob`
+- optional dauerhaft aktiv: `AZURE_INPUT_BLOB_SYNC=1`
+- optional: `AZURE_INPUT_BLOB_CONTAINER` (default `thesis-input-files`)
+- Quelle: `98_onedrive_migration/1_masterarbeit/00_input_files/`
+
 Budget-Schutz:
 - Blob-Sync laedt nur neue/geaenderte Summary-Dateien hoch (Hash-Vergleich).
 - Sync-Status liegt lokal in `.memory/blob_sync_state.json`.
+- Input-Blob-Sync laedt nur neue/geaenderte Dateien hoch.
+- Input-Sync-Status liegt lokal in `.memory/blob_input_sync_state.json`.
 
 ## Hinweis
 Wenn dein Azure-Index andere Feldnamen hat, setze `AZURE_SEARCH_KEY_FIELD` und

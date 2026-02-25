@@ -30,6 +30,8 @@ TRACKED_EXTENSIONS = {".md", ".yaml", ".yml", ".csv", ".txt"}
 EXCLUDE_DIRS = {".git", ".memory", "backups", "__pycache__"}
 SUMMARY_DIRNAME = "session_summaries"
 BLOB_SYNC_STATE_PATH = MEMORY_DIR / "blob_sync_state.json"
+INPUT_BLOB_SYNC_STATE_PATH = MEMORY_DIR / "blob_input_sync_state.json"
+INPUT_FILES_DIR = REPO_ROOT / "98_onedrive_migration" / "1_masterarbeit" / "00_input_files"
 
 TOPIC_TO_DIR = {
     "architektur": "05_referenzarchitektur_RQ2/session_summaries",
@@ -76,6 +78,39 @@ def load_dotenv(path: Path | None = None) -> None:
         value = value.strip().strip('"').strip("'")
         if key and key not in os.environ:
             os.environ[key] = value
+
+
+def _is_truthy_env(name: str) -> bool:
+    return os.getenv(name, "").strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _build_tls_context(*insecure_env_names: str) -> ssl.SSLContext:
+    if any(_is_truthy_env(name) for name in insecure_env_names):
+        return ssl._create_unverified_context()
+
+    ca_bundle = os.getenv("AZURE_CA_BUNDLE", "").strip() or os.getenv("SSL_CERT_FILE", "").strip()
+    if ca_bundle:
+        return ssl.create_default_context(cafile=ca_bundle)
+
+    try:
+        import certifi
+
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        return ssl.create_default_context()
+
+
+def _ssl_hint(error: Exception) -> str:
+    reason = getattr(error, "reason", error)
+    text = str(reason)
+    if isinstance(reason, ssl.SSLCertVerificationError) or "CERTIFICATE_VERIFY_FAILED" in text:
+        return (
+            "TLS-Zertifikatspruefung fehlgeschlagen (CERTIFICATE_VERIFY_FAILED). "
+            "macOS-Fix: '/Applications/Python 3.x/Install Certificates.command' ausfuehren "
+            "oder AZURE_CA_BUNDLE/SSL_CERT_FILE auf ein gueltiges CA-Bundle setzen. "
+            "Nur als Notfall: AZURE_SEARCH_INSECURE_TLS=1."
+        )
+    return ""
 
 
 def _load_yaml(path: Path) -> dict:
@@ -205,8 +240,7 @@ def _azure_openai_chat_complete(messages: list[dict]) -> dict:
         method="POST",
         headers={"Content-Type": "application/json", "api-key": key},
     )
-    insecure = os.getenv("AZURE_SEARCH_INSECURE_TLS", "").lower() in {"1", "true", "yes"}
-    context = ssl._create_unverified_context() if insecure else None
+    context = _build_tls_context("AZURE_OPENAI_INSECURE_TLS", "AZURE_INSECURE_TLS", "AZURE_SEARCH_INSECURE_TLS")
     with request.urlopen(req, timeout=45, context=context) as resp:
         body = resp.read().decode("utf-8", errors="replace")
         return json.loads(body)
@@ -509,11 +543,15 @@ def blob_configured() -> bool:
     return bool(account and key)
 
 
+def input_blob_sync_enabled() -> bool:
+    load_dotenv()
+    return _is_truthy_env("AZURE_INPUT_BLOB_SYNC")
+
+
 def _fetch_azure_index_schema(endpoint: str, key: str, index_name: str, api_version: str) -> tuple[dict, str]:
     url = f"{endpoint}/indexes/{index_name}?api-version={api_version}"
     req = request.Request(url, method="GET", headers={"api-key": key})
-    insecure = os.getenv("AZURE_SEARCH_INSECURE_TLS", "").lower() in {"1", "true", "yes"}
-    context = ssl._create_unverified_context() if insecure else None
+    context = _build_tls_context("AZURE_SEARCH_INSECURE_TLS", "AZURE_INSECURE_TLS")
     with request.urlopen(req, timeout=30, context=context) as resp:
         body = resp.read().decode("utf-8", errors="replace")
         schema = json.loads(body)
@@ -591,7 +629,9 @@ def push_index_to_azure(index: dict) -> tuple[bool, str]:
         body = e.read().decode("utf-8", errors="replace")
         return False, f"Azure HTTP-Fehler beim Schema-Read {e.code}: {body[:400]}"
     except URLError as e:
-        return False, f"Azure Netzwerkfehler beim Schema-Read: {e}"
+        hint = _ssl_hint(e)
+        suffix = f" Hinweis: {hint}" if hint else ""
+        return False, f"Azure Netzwerkfehler beim Schema-Read: {e}.{suffix}"
 
     docs, schema_msg = _summary_docs_for_azure(index, schema)
     if not docs:
@@ -607,8 +647,7 @@ def push_index_to_azure(index: dict) -> tuple[bool, str]:
     )
 
     try:
-        insecure = os.getenv("AZURE_SEARCH_INSECURE_TLS", "").lower() in {"1", "true", "yes"}
-        context = ssl._create_unverified_context() if insecure else None
+        context = _build_tls_context("AZURE_SEARCH_INSECURE_TLS", "AZURE_INSECURE_TLS")
         with request.urlopen(req, timeout=30, context=context) as resp:
             body = resp.read().decode("utf-8", errors="replace")
             return True, f"{schema_msg}. Azure-Index aktualisiert ({len(docs)} Dokumente). Response: {body[:200]}"
@@ -616,15 +655,27 @@ def push_index_to_azure(index: dict) -> tuple[bool, str]:
         body = e.read().decode("utf-8", errors="replace")
         return False, f"Azure HTTP-Fehler {e.code}: {body[:400]}"
     except URLError as e:
-        return False, f"Azure Netzwerkfehler: {e}"
+        hint = _ssl_hint(e)
+        suffix = f" Hinweis: {hint}" if hint else ""
+        return False, f"Azure Netzwerkfehler: {e}.{suffix}"
 
 
 def _blob_container_name() -> str:
     return os.getenv("AZURE_BLOB_CONTAINER", "session-summaries")
 
 
+def _input_blob_container_name() -> str:
+    return os.getenv("AZURE_INPUT_BLOB_CONTAINER", "thesis-input-files")
+
+
 def _list_summary_files() -> list[Path]:
     return sorted(REPO_ROOT.rglob(f"{SUMMARY_DIRNAME}/*.yaml"))
+
+
+def _list_input_files() -> list[Path]:
+    if not INPUT_FILES_DIR.exists():
+        return []
+    return sorted([p for p in INPUT_FILES_DIR.rglob("*") if p.is_file()])
 
 
 def _sha256_file(path: Path) -> str:
@@ -647,6 +698,20 @@ def _load_blob_sync_state() -> dict:
 def _write_blob_sync_state(state: dict) -> None:
     MEMORY_DIR.mkdir(parents=True, exist_ok=True)
     BLOB_SYNC_STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _load_input_blob_sync_state() -> dict:
+    if not INPUT_BLOB_SYNC_STATE_PATH.exists():
+        return {}
+    try:
+        return json.loads(INPUT_BLOB_SYNC_STATE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _write_input_blob_sync_state(state: dict) -> None:
+    MEMORY_DIR.mkdir(parents=True, exist_ok=True)
+    INPUT_BLOB_SYNC_STATE_PATH.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def push_summaries_to_blob() -> tuple[bool, str]:
@@ -743,5 +808,102 @@ def push_summaries_to_blob() -> tuple[bool, str]:
     )
     return True, (
         f"Blob-Sync erfolgreich: {uploaded} hochgeladen, {skipped} unveraendert "
+        f"(Container '{container}')."
+    )
+
+
+def push_input_files_to_blob() -> tuple[bool, str]:
+    load_dotenv()
+    account = os.getenv("AZURE_STORAGE_ACCOUNT", "")
+    key = os.getenv("AZURE_STORAGE_KEY", "")
+    container = _input_blob_container_name()
+
+    if not account or not key:
+        return False, "Blob-Konfiguration fehlt (AZURE_STORAGE_ACCOUNT, AZURE_STORAGE_KEY)."
+
+    files = _list_input_files()
+    if not files:
+        return True, f"Keine Input-Dateien vorhanden in '{INPUT_FILES_DIR.relative_to(REPO_ROOT)}'."
+
+    state = _load_input_blob_sync_state()
+    previous_container = state.get("container") if isinstance(state, dict) else None
+    synced = state.get("synced_hashes", {}) if isinstance(state, dict) else {}
+    if not isinstance(synced, dict):
+        synced = {}
+    if previous_container and previous_container != container:
+        synced = {}
+
+    try:
+        create_cmd = [
+            "az",
+            "storage",
+            "container",
+            "create",
+            "--name",
+            container,
+            "--account-name",
+            account,
+            "--account-key",
+            key,
+            "--auth-mode",
+            "key",
+            "--output",
+            "none",
+        ]
+        subprocess.run(create_cmd, check=True, capture_output=True, text=True)
+    except FileNotFoundError:
+        return False, "Azure CLI (az) nicht gefunden."
+    except subprocess.CalledProcessError as e:
+        return False, f"Container-Erstellung fehlgeschlagen: {(e.stderr or e.stdout).strip()[:300]}"
+
+    uploaded = 0
+    skipped = 0
+    new_synced: dict[str, str] = {}
+    prefix = INPUT_FILES_DIR.relative_to(REPO_ROOT).as_posix()
+    for file_path in files:
+        rel = file_path.relative_to(REPO_ROOT).as_posix()
+        file_hash = _sha256_file(file_path)
+        new_synced[rel] = file_hash
+        if synced.get(rel) == file_hash:
+            skipped += 1
+            continue
+        blob_name = f"{prefix}/{file_path.relative_to(INPUT_FILES_DIR).as_posix()}"
+        cmd = [
+            "az",
+            "storage",
+            "blob",
+            "upload",
+            "--container-name",
+            container,
+            "--account-name",
+            account,
+            "--account-key",
+            key,
+            "--auth-mode",
+            "key",
+            "--file",
+            str(file_path),
+            "--name",
+            blob_name,
+            "--overwrite",
+            "true",
+            "--output",
+            "none",
+        ]
+        try:
+            subprocess.run(cmd, check=True, capture_output=True, text=True)
+            uploaded += 1
+        except subprocess.CalledProcessError as e:
+            return False, f"Blob-Upload fehlgeschlagen ({rel}): {(e.stderr or e.stdout).strip()[:300]}"
+
+    _write_input_blob_sync_state(
+        {
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "container": container,
+            "synced_hashes": new_synced,
+        }
+    )
+    return True, (
+        f"Input-Blob-Sync erfolgreich: {uploaded} hochgeladen, {skipped} unveraendert "
         f"(Container '{container}')."
     )

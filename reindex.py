@@ -8,7 +8,9 @@ from workflow_lib import (
     blob_configured,
     build_index,
     build_resume_text,
+    input_blob_sync_enabled,
     push_index_to_azure,
+    push_input_files_to_blob,
     push_summaries_to_blob,
     write_index,
     write_resume_text,
@@ -21,6 +23,8 @@ def main() -> int:
     parser.add_argument("--no-azure", action="store_true", help="Kein Azure Push")
     parser.add_argument("--blob", action="store_true", help="Blob Sync erzwingen")
     parser.add_argument("--no-blob", action="store_true", help="Kein Blob Sync")
+    parser.add_argument("--input-blob", action="store_true", help="Input-Dateien nach Blob syncen")
+    parser.add_argument("--no-input-blob", action="store_true", help="Input-Dateien nicht nach Blob syncen")
     args = parser.parse_args()
 
     index = build_index()
@@ -56,6 +60,18 @@ def main() -> int:
             return 3
     else:
         print("Blob Sync uebersprungen (kein --blob oder Konfiguration fehlt).")
+
+    do_input_blob = False
+    if not args.no_input_blob:
+        do_input_blob = args.input_blob or input_blob_sync_enabled()
+
+    if do_input_blob:
+        ok, msg = push_input_files_to_blob()
+        print(("Input-Blob OK: " if ok else "Input-Blob FEHLER: ") + msg)
+        if not ok:
+            return 4
+    else:
+        print("Input-Blob Sync uebersprungen (kein --input-blob oder AZURE_INPUT_BLOB_SYNC=1).")
 
     return 0
 
