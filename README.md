@@ -135,7 +135,6 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 |-- 08_fazit_ausblick/
 |-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
 |-- 90_sources_zotero/
-|-- 91_progress_log/
 |-- 98_onedrive_migration/
 |   |-- legacy_scaffold/      # Alte Root-Scaffold-Struktur (archiviert)
 |-- 99_inbox_unsorted/

@@ -447,14 +447,6 @@ def write_index(index: dict) -> Path:
     return INDEX_PATH
 
 
-def _latest_session_file() -> Path | None:
-    session_dir = REPO_ROOT / "91_progress_log"
-    if not session_dir.exists():
-        return None
-    sessions = sorted([p for p in session_dir.glob("*_session.md") if p.name != "_session_template.md"])
-    return sessions[-1] if sessions else None
-
-
 def build_resume_text(index: dict) -> str:
     lines = []
     lines.append("Hier ist mein aktueller Thesis-Stand - bitte nutze das als Kontext:")
@@ -511,13 +503,6 @@ def build_resume_text(index: dict) -> str:
             bullets = s.get("summary_bullets", [])
             first = bullets[0] if bullets else "(ohne Stichpunkte)"
             lines.append(f"- [{topic}] {title}: {first}")
-
-    session_file = _latest_session_file()
-    lines.append("")
-    if session_file:
-        lines.append(f"Letztes Session-Log: {session_file.relative_to(REPO_ROOT)}")
-    else:
-        lines.append("Letztes Session-Log: keines gefunden")
 
     return "\n".join(lines).strip() + "\n"
 
