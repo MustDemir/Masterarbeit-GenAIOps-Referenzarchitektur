@@ -47,6 +47,16 @@ Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlink
 - [Exposé v2 FINAL (TXT-Export)](docs/expose/Expose_v2_final_2026-02-24.txt)
 - [Exposé v1 LEGACY (PDF)](docs/expose/Expose_v1_legacy.pdf)
 
+## Architektur-Preview (PNG)
+
+- [Methoden-Framework v01](03_forschungsdesign_methodik/images/final/03_04_methoden_framework_overview_v01.png)
+- [KI-Fabrik-Analogie v01](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_ki-fabrik-analogie_v01.png)
+- [Artifact-Construction v01](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_artifact-construction_bw_v01.png)
+
+![Methoden-Framework v01](03_forschungsdesign_methodik/images/final/03_04_methoden_framework_overview_v01.png)
+![KI-Fabrik-Analogie v01](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_ki-fabrik-analogie_v01.png)
+![Artifact-Construction v01](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_artifact-construction_bw_v01.png)
+
 ## Quality Gate Framework
 
 Drei Dimensionen automatisierter Kontrollpunkte entlang des GenAI-Lebenszyklus:
