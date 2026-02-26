@@ -1,13 +1,6 @@
 ---
 name: Thesis Workflow Guard
 description: Safely executes only explicitly allowed thesis tasks with strict branch, PR, and repository guardrails.
-target: github-copilot
-tools:
-  - read
-  - search
-  - edit
-  - bash
-infer: false
 ---
 
 # Thesis Workflow Guard
