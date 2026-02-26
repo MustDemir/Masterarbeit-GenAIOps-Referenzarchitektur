@@ -1,0 +1,52 @@
+name: Weekly Structure Check
+
+on:
+  schedule:
+    # Every Monday at 07:00 UTC
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run structure validation
+        id: validate
+        run: |
+          set +e
+          output=$(python3 validate_structure.py 2>&1)
+          exit_code=$?
+          echo "$output"
+          # Save output for issue body (handle multiline)
+          {
+            echo "report<<EOF"
+            echo "$output"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit $exit_code
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const report = `${{ steps.validate.outputs.report }}`;
+            const today = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Strukturcheck ${today}: Auffaelligkeiten gefunden`,
+              body: `## Woechentlicher Strukturcheck\n\nDer automatische Strukturcheck hat Auffaelligkeiten gefunden.\n\n\`\`\`\n${report}\n\`\`\`\n\nBitte beheben und erneut \`python3 validate_structure.py\` ausfuehren.\n\nRef: #18`,
+              labels: ["review"]
+            });

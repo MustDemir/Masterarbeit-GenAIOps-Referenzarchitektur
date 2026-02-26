@@ -26,6 +26,13 @@ Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Pr
 - Alte Expose-Versionen duerfen nur in Legacy liegen:
   - `/Users/mustafademir/Projects/genaiops-thesis/docs/expose/legacy/`
 
+## Woechentlicher Strukturcheck
+
+- `validate_structure.py` wird woechentlich per GitHub Actions ausgefuehrt (Montag 07:00 UTC).
+- Workflow: `.github/workflows/weekly-structure-check.yml`
+- Bei Auffaelligkeiten wird automatisch ein Issue mit Label `review` erstellt.
+- Manuell ausloesbar via `workflow_dispatch` in der GitHub Actions UI.
+
 ## Cloud/RAG Betriebsmodell
 
 - Arbeitsrepo: `genaiops-thesis`
