@@ -1,7 +1,21 @@
 chapter: "05_referenzarchitektur_RQ2"
-status: "not_started"
-current_focus: ""
-done: []
-next_steps: []
-open_questions: []
-key_sources: []
+status: "in_progress"
+current_focus: "Quality-Gate-Design gegen RQ1-Anforderungen gemappt (Issue #13)"
+done:
+  - "GSTR-001: Risk Classification and Lifecycle Governance Gate (strategisch)"
+  - "GTECH-001: Model Performance and Safety Evaluation Gate (technisch)"
+  - "GCOMP-001: EU AI Act Compliance Gate (compliance)"
+  - "Design-Prinzipien DP-1 bis DP-7 dokumentiert (ambient_ai_scribe_sql_design_principles.md)"
+next_steps:
+  - "Gate-Katalog (5.4.4) als Uebersichtstabelle ueber alle Gates erstellen"
+  - "Architekturdiagramme mit vNN-Namenskonvention finalisieren (Issue #14)"
+  - "Schichtenmodell und Schnittstellenbeschreibung in 05_02 vervollstaendigen"
+  - "Automationspunkte in 05_05 mit CI/CD-Referenzen ausbauen"
+open_questions:
+  - "Weitere Gates (GTECH-002, GSTR-002) fuer Monitoring-Phase benoetigt?"
+  - "Gate-Entscheidungslogik fuer Waiver-Prozess formal definieren"
+key_sources:
+  - "05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md"
+  - "05_03_quality_gates/gate_template.yaml"
+  - "gliederung_v3.md (Kap. 5)"
+  - "EU AI Act Art. 6, 9, 11, 12, 14, 17, 51"

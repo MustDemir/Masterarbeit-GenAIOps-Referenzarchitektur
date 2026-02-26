@@ -1,12 +1,29 @@
 id: R005
-title: ""
-type: "technical|organizational|regulatory"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring|end_to_end"
-must_should: "MUST|SHOULD"
-description: ""
-eu_ai_act_refs: []
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Reproduzierbarkeit und Traceability – Vollstaendige Execution-Metadaten fuer alle Gate-Entscheidungen"
+type: "technical"
+lifecycle_phase: "evaluation"
+must_should: "MUST"
+description: >
+  Jede Quality-Gate-Entscheidung MUSS mit vollstaendigen Execution-Metadaten verknuepft sein:
+  model_name, model_version, pipeline_id, run_id. Diese Metadaten ermoeglichen die
+  eindeutige Reproduzierbarkeit und verteidigungsfaehige Traceability jeder Gate-Entscheidung
+  in Audit- und Review-Kontexten.
+eu_ai_act_refs:
+  - "Art. 12 – Record-keeping"
+  - "Art. 13 – Transparency and Provision of Information"
+evidence_expected:
+  - "Jeder Evidence-Store-Eintrag enthaelt model_name, model_version, pipeline_id, run_id"
+  - "run_id ist UUID und damit global eindeutig"
+  - "Alle Pflichtfelder sind NOT NULL im Schema definiert"
+acceptance_criteria:
+  - "compliance.quality_gate_results: model_name, model_version, pipeline_id NOT NULL"
+  - "run_id UUID NOT NULL im Schema nachweisbar"
+  - "gate_name und policy_version als Pflichtfelder im Enterprise-Schema vorhanden"
+linked_gates:
+  - "GCOMP-001"
+  - "GTECH-001"
+sources:
+  - "DP-5 Reproducibility and Traceability (05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md)"
+  - "EU AI Act Art. 12 und Art. 13"
+  - "evidence_store_schema_v02_enterprise.sql (Spalten model_version, run_id, policy_version)"
+notes: "Abgeleitet aus DP-5. Direkte Anforderung aus EU AI Act Art. 12 fuer High-Risk-Systeme."

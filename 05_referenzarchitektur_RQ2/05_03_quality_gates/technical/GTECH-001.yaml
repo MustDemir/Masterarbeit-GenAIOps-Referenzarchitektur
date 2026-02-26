@@ -1,20 +1,34 @@
 id: GTECH-001
-name: ""
-dimension: "strategic|technical|compliance"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring"
-trigger: ""
-policy_checks: []
-evidence_required: []
-decision: "approve|block|manual_review"
-owner: ""
+name: "Model Performance and Safety Evaluation Gate"
+dimension: "technical"
+lifecycle_phase: "evaluation"
+trigger: "Neues Modell-Release oder signifikante Parameteraenderung vor Deployment-Freigabe"
+policy_checks:
+  - "Benchmark-Score >= definierten Schwellenwert (z. B. F1 >= 0.85 fuer Ambient AI Scribe)"
+  - "Halluzinationsrate unterhalb akzeptabler Grenze (z. B. < 5 %)"
+  - "Latenz P95 <= SLA-Grenzwert"
+  - "Bias-Evaluierung fuer demographische Subgruppen bestanden"
+evidence_required:
+  - "Evaluations-Report als JSON/YAML in Evidence Store (compliance.quality_gate_results)"
+  - "Pipeline-Run-ID und model_version fuer Reproduzierbarkeit"
+  - "Benchmark-Ergebnisse gegen definiertes Testset"
+decision: "approve"
+owner: "ML-Engineering / QA-Team"
 audit_trail:
   enabled: true
-  evidence_store_ref: ""
+  evidence_store_ref: "compliance.quality_gate_results (gate_type = 'Technisch')"
 waiver:
-  allowed: false
-  requires: ""
+  allowed: true
+  requires: "Schriftliche Begruendung + temporaere Mitigation + Re-Evaluation innerhalb 30 Tage"
 links:
-  requirements: []
-  eu_ai_act_refs: []
-sources: []
-notes: ""
+  requirements:
+    - "R003"
+    - "R004"
+    - "R005"
+  eu_ai_act_refs:
+    - "Art. 9 – Risk Management System"
+    - "Art. 15 – Accuracy, Robustness and Cybersecurity"
+sources:
+  - "DP-4 Performance and Observability (05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md)"
+  - "05_referenzarchitektur_RQ2/05_03_quality_gates/gate_template.yaml"
+notes: "Erstes technisches Gate in der EVAL-Phase des PoC-Scope (EVAL -> DEPLOY -> PROD)."

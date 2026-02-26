@@ -1,12 +1,29 @@
 id: R003
-title: ""
-type: "technical|organizational|regulatory"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring|end_to_end"
-must_should: "MUST|SHOULD"
-description: ""
-eu_ai_act_refs: []
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Least Privilege – Pipeline-Identitaeten erhalten nur INSERT-Rechte auf Evidence-Tabellen"
+type: "technical"
+lifecycle_phase: "deployment"
+must_should: "MUST"
+description: >
+  CI/CD-Pipeline-Identitaeten (z. B. app_ingest_role) MUSSEN auf minimale Datenbankrechte
+  beschraenkt sein. Es duerfen nur INSERT-Rechte auf die Evidence-Tabelle vergeben werden.
+  UPDATE- und DELETE-Rechte sind explizit zu entziehen. Dies reduziert den Blast Radius
+  bei kompromittierten Pipeline-Credentials.
+eu_ai_act_refs:
+  - "Art. 9 – Risk Management System"
+  - "Art. 17 – Quality Management System"
+evidence_expected:
+  - "GRANT INSERT nur fuer app_ingest_role auf compliance.quality_gate_results"
+  - "REVOKE ALL fuer PUBLIC auf compliance-Schema nachweisbar"
+  - "Rollenpruefung (pg_roles / INFORMATION_SCHEMA.ROLE_TABLE_GRANTS) dokumentiert"
+acceptance_criteria:
+  - "app_ingest_role hat kein SELECT, UPDATE oder DELETE Recht"
+  - "auditor_role hat SELECT, aber kein INSERT/UPDATE/DELETE"
+  - "admin_compliance_role ist auf minimalen Admin-Scope begrenzt"
+linked_gates:
+  - "GTECH-001"
+  - "GCOMP-001"
+sources:
+  - "DP-3 Least Privilege for Automation (05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md)"
+  - "NIST SP 800-53 AC-6 Least Privilege"
+  - "evidence_store_schema_v02_enterprise.sql (Abschnitt 8)"
+notes: "Abgeleitet aus DP-3. Essenziell fuer sichere CI/CD-Integration."

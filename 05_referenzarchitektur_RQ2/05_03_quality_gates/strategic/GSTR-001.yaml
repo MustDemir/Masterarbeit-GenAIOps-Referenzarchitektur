@@ -1,20 +1,35 @@
 id: GSTR-001
-name: ""
-dimension: "strategic|technical|compliance"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring"
-trigger: ""
-policy_checks: []
-evidence_required: []
-decision: "approve|block|manual_review"
-owner: ""
+name: "Risk Classification and Lifecycle Governance Gate"
+dimension: "strategic"
+lifecycle_phase: "ideation"
+trigger: "Beginn eines neuen KI-Projekts oder wesentliche Aenderung an einem bestehenden System"
+policy_checks:
+  - "Risikoklassifizierung nach EU AI Act (High-Risk, Limited Risk, Minimal Risk) dokumentiert"
+  - "Scope und Abgrenzung des KI-Systems schriftlich fixiert"
+  - "Verantwortliche Rollen (Owner, CISO, DPO) benannt"
+  - "Lifecycle-Phasen (EVAL -> DEPLOY -> PROD) definiert und genehmigt"
+evidence_required:
+  - "Risikoklassifizierungs-Dokument (PDF oder YAML) im Evidence Store referenziert"
+  - "Stakeholder-Sign-Off (Datum, Rolle, Begruendung)"
+  - "Scope-Dokument mit expliziter Abgrenzung zum Out-of-Scope"
+decision: "approve"
+owner: "Product Owner / Risk Officer"
 audit_trail:
   enabled: true
-  evidence_store_ref: ""
+  evidence_store_ref: "compliance.quality_gate_results (gate_type = 'Strategisch')"
 waiver:
   allowed: false
   requires: ""
 links:
-  requirements: []
-  eu_ai_act_refs: []
-sources: []
-notes: ""
+  requirements:
+    - "R001"
+    - "R005"
+  eu_ai_act_refs:
+    - "Art. 6 – Classification Rules for High-Risk AI Systems"
+    - "Art. 9 – Risk Management System"
+    - "Annex III – High-Risk AI Systems"
+sources:
+  - "gliederung_v3.md (5.4.1 Strategische Gates – Lifecycle Governance)"
+  - "05_referenzarchitektur_RQ2/05_03_quality_gates/gate_template.yaml"
+  - "EU AI Act Art. 6 und Annex III"
+notes: "Pflicht-Gate vor jeder EVAL-Phase; nicht waiveable fuer High-Risk-Systeme (Ambient AI Scribe)."

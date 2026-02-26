@@ -1,20 +1,47 @@
 id: GCOMP-001
-name: ""
-dimension: "strategic|technical|compliance"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring"
-trigger: ""
-policy_checks: []
-evidence_required: []
-decision: "approve|block|manual_review"
-owner: ""
+name: "EU AI Act Compliance Gate – Policy-as-Code Evidence Check"
+dimension: "compliance"
+lifecycle_phase: "deployment"
+trigger: "Vor jedem Production-Deployment eines High-Risk-KI-Systems"
+policy_checks:
+  - "Alle MUST-Anforderungen (R001–R005) mit Evidence abgedeckt"
+  - "Datenschutz-Folgenabschaetzung (DSFA) vorhanden (DSGVO Art. 35)"
+  - "Registrierungspflicht nach EU AI Act Art. 51 geprueft"
+  - "Technische Dokumentation nach Art. 11 aktuell und vollstaendig"
+  - "Immutable Evidence Store aktiviert und verifiziert (R002)"
+  - "Privacy-Trennung (medical vs. compliance Schema) verifiziert (R001)"
+  - "Human Oversight Mechanismus dokumentiert (Art. 14)"
+evidence_required:
+  - "Requirements-Coverage-Report (06_evaluation_RQ3/06_01_requirements_coverage/)"
+  - "DSFA-Nachweis fuer Hochrisikosystem"
+  - "Technische Dokumentation nach EU AI Act Annex IV"
+  - "Eintrag in compliance.quality_gate_results mit gate_type='Compliance'"
+decision: "block"
+owner: "DPO / Compliance Officer"
 audit_trail:
   enabled: true
-  evidence_store_ref: ""
+  evidence_store_ref: "compliance.quality_gate_results (gate_type = 'Compliance')"
 waiver:
   allowed: false
   requires: ""
 links:
-  requirements: []
-  eu_ai_act_refs: []
-sources: []
-notes: ""
+  requirements:
+    - "R001"
+    - "R002"
+    - "R003"
+    - "R005"
+  eu_ai_act_refs:
+    - "Art. 9 – Risk Management System"
+    - "Art. 11 – Technical Documentation"
+    - "Art. 12 – Record-keeping"
+    - "Art. 13 – Transparency"
+    - "Art. 14 – Human Oversight"
+    - "Art. 17 – Quality Management System"
+    - "Art. 51 – Registration of High-Risk AI Systems"
+sources:
+  - "gliederung_v3.md (5.4.3 Compliance Gates – EU AI Act -> Policy-as-Code + Evidence)"
+  - "evidence_store_schema_v02_enterprise.sql"
+  - "05_referenzarchitektur_RQ2/05_03_quality_gates/gate_template.yaml"
+notes: >
+  Blocking Gate – kein Deployment ohne positiven Compliance-Check.
+  Abgeleitet aus R001 (Privacy), R002 (Immutability), R003 (Least Privilege), R005 (Traceability).

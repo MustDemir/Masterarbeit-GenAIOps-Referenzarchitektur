@@ -1,12 +1,27 @@
 id: R004
-title: ""
-type: "technical|organizational|regulatory"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring|end_to_end"
-must_should: "MUST|SHOULD"
-description: ""
-eu_ai_act_refs: []
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Performance-Optimiertes Compliance-Reporting – Index-Strategie fuer Auditor-Queries"
+type: "technical"
+lifecycle_phase: "monitoring"
+must_should: "SHOULD"
+description: >
+  Das Evidence-Store-Schema SOLLTE Composite- und Partial-Indexe bereitstellen, die
+  Auditor-Reporting-Queries (nach model_name, gate_type, checked_at und decision='FAIL')
+  mit vorhersehbarer Laufzeit bedienen. Eine materialisierte View fuer taegliche
+  Aggregationen kann als optionale Erweiterung bereitgestellt werden.
+eu_ai_act_refs:
+  - "Art. 17 – Quality Management System"
+evidence_expected:
+  - "idx_qgr_reporting (model_name, gate_type) vorhanden"
+  - "idx_qgr_checked_at (checked_at) vorhanden"
+  - "idx_qgr_failures_partial (checked_at WHERE decision='FAIL') vorhanden"
+  - "Optionale MV mv_auditor_daily fuer aggregierte Dashboard-Abfragen"
+acceptance_criteria:
+  - "Reporting-Query EXPLAIN ANALYZE zeigt Index-Scan fuer typische Auditor-Abfragen"
+  - "Partial-Index reduziert Scan-Groesse fuer FAIL-Filterung nachweisbar"
+  - "Index-Erstellung laeuft ohne Fehler auf Testdaten"
+linked_gates:
+  - "GTECH-001"
+sources:
+  - "DP-4 Performance and Observability (05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md)"
+  - "evidence_store_schema_v02_enterprise.sql (Abschnitt 9 und 11)"
+notes: "Abgeleitet aus DP-4. SHOULD, da Performance-Anforderungen kontextabhaengig sind."

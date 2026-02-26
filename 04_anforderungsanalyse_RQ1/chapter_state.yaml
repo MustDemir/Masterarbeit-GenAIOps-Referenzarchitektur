@@ -1,7 +1,20 @@
 chapter: "04_anforderungsanalyse_RQ1"
-status: "not_started"
-current_focus: ""
-done: []
-next_steps: []
-open_questions: []
-key_sources: []
+status: "in_progress"
+current_focus: "R001-R005 inhaltlich geschaerft und begruendet (Issue #12)"
+done:
+  - "R001: Privacy by Design – Strikte Trennung Payload/Compliance"
+  - "R002: Immutable Evidence – Append-Only Audit-Log"
+  - "R003: Least Privilege – Pipeline-Identitaeten nur INSERT"
+  - "R004: Performance – Index-Strategie fuer Auditor-Queries"
+  - "R005: Reproduzierbarkeit – vollstaendige Execution-Metadaten"
+next_steps:
+  - "Konsolidierter Anforderungskatalog (04_05) mit allen Requirements zusammenfuehren"
+  - "Mapping Requirements -> Quality Gates dokumentieren (Issue #13)"
+  - "Priorisierung und Begruendungstext fuer Thesis-Kapitel 4 verfassen"
+open_questions:
+  - "Weitere Anforderungen (R006+) fuer organizatorische und regulatorische Dimensionen erarbeiten"
+  - "Abgrenzung MUST vs. SHOULD fuer R004 mit Betreuer abstimmen"
+key_sources:
+  - "05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md"
+  - "06_evaluation_RQ3/06_04_poc_scope_eval_deploy_prod/sql/evidence_store_schema_v02_enterprise.sql"
+  - "EU AI Act Art. 9, 10, 12, 13, 15, 17"

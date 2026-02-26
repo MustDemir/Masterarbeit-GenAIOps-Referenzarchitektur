@@ -1,12 +1,30 @@
 id: R001
-title: ""
-type: "technical|organizational|regulatory"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring|end_to_end"
-must_should: "MUST|SHOULD"
-description: ""
-eu_ai_act_refs: []
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Privacy by Design – Strikte Trennung zwischen sensibler Payload und Compliance-Telemetrie"
+type: "technical"
+lifecycle_phase: "end_to_end"
+must_should: "MUST"
+description: >
+  GenAI-Systeme im Hochrisikobereich (z. B. Ambient AI Scribe) MUSSEN medizinische oder
+  personenbezogene Payload strikt von regulatorisch relevanter Compliance-Telemetrie trennen.
+  Der Zugriff auf Payload-Daten darf nicht aus Compliance-Konsumenten erfolgen.
+  SQL-Views und Schemata-Trennung (medical vs. compliance) muessen technisch erzwungen werden.
+eu_ai_act_refs:
+  - "Art. 9 – Risk Management System"
+  - "Art. 10 – Data and Data Governance"
+  - "DSGVO Art. 9 – Verarbeitung besonderer Kategorien personenbezogener Daten"
+evidence_expected:
+  - "Schema-Trennung (medical/compliance) nachweislich konfiguriert"
+  - "SQL-Views beschraenken exportierte Felder auf nicht-sensitive Metadaten"
+  - "Row-Level Security (RLS) aktiviert und getestet"
+acceptance_criteria:
+  - "Kein direkter Zugriff auf medizinische Transkripte aus Compliance-Schema"
+  - "Privacy-View vw_quality_gate_reporting gibt keine PII-Felder zurueck"
+  - "Schema medical ist nur fuer admin_compliance_role zugaenglich"
+linked_gates:
+  - "GCOMP-001"
+  - "GTECH-001"
+sources:
+  - "DP-1 Privacy by Design (05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md)"
+  - "EU AI Act Art. 10"
+  - "DSGVO Art. 9"
+notes: "Abgeleitet aus DP-1. Primaer fuer High-Risk-KI-Systeme (Ambient AI Scribe Use Case)."
