@@ -1,8 +1,11 @@
-id: SUM-20260226102422
-created_at: '2026-02-26T09:24:22.788306+00:00'
+id: SUM-20260226111254
+created_at: '2026-02-26T10:12:54.917780+00:00'
 topic: architektur
 target_folder: 05_referenzarchitektur_RQ2/session_summaries
-title: Ambient AI Scribe SQL Enterprise B
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: Session Summary
 summary_bullets:
 - 'Masterarbeit Fokus: Integration von SQL-Datenbank-Konzepten in cloud-native GenAIOps.'
 - 'Use Case: Ambient AI Scribe (medizinischer High-Risk Kontext, EU AI Act, DSGVO
@@ -19,8 +22,5 @@ decisions:
   Transkripte im Blob) und regulatorischer Telemetrie (SQL).'
 next_steps: []
 tags: []
-source: manual
+source: chatgpt
 summary_engine: local_rules
-repo_scope: thesis
-summary_type: fachlich
-source_repo: genaiops-thesis

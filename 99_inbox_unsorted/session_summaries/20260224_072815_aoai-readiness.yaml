@@ -10,3 +10,6 @@ next_steps: []
 tags: []
 source: manual
 summary_engine: local_rules
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis

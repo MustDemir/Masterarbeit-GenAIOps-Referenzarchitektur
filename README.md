@@ -43,9 +43,10 @@ Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlink
 - [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
 - [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
 - [Evaluation (RQ3)](06_evaluation_RQ3/)
-- [Exposé v3 SINGLE SOURCE (DOCX)](docs/expose/Expose_v3_single_source_2026-02-25.docx)
+- [Exposé v3 SINGLE SOURCE (DOCX)](98_onedrive_migration/1_masterarbeit/1.%20Expose%20v3.docx)
 - [Exposé v3 SINGLE SOURCE (TXT-Export)](docs/expose/Expose_v3_single_source_2026-02-25.txt)
-- [Legacy-Archiv (v1/v2)](docs/expose/)
+- [Legacy-Archiv (v1/v2)](docs/expose/legacy/)
+- [Source-of-Truth Regeln](00_admin/SOURCE_OF_TRUTH.md)
 
 ## Architektur-Preview (PNG)
 
@@ -120,6 +121,7 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 
 ```
 .
+|-- 00_workspace/              # Operativer Einstiegspunkt (Pointer auf Single-Truth-Quellen)
 |-- 00_admin/
 |   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
 |   |-- asset_naming.md       # PNG-Naming/Versionierungsstandard (v01, v02, ...)
@@ -152,7 +154,20 @@ Cloud-Trennung (gleicher Storage-Account, getrennte Container):
 - `thesis-session-summaries` -> nur Thesis-Summaries aus diesem Repo
 - `context-vault-summaries` -> nur Toolkit-/Vault-Summaries
 
-Damit bleibt der Kontext sauber getrennt (kein Cross-Project-Mixing) und auditierbar.
+Azure Search wird bewusst gemeinsam genutzt, damit modelluebergreifend ein gemeinsamer Kontext abrufbar ist.
+Jede Session-Summary traegt dafuer Metadaten:
+
+- `repo_scope` (`thesis` oder `vault`)
+- `summary_type` (`fachlich` oder `technisch`)
+- `source_repo` (`genaiops-thesis` oder `ai-context-vault`)
+
+Damit bleibt der gemeinsame Suchraum filterbar und auditierbar.
+
+Struktur-Check:
+
+```bash
+python3 validate_structure.py
+```
 
 ## Status
 
