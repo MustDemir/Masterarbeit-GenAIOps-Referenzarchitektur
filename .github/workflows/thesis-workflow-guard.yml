@@ -1,0 +1,72 @@
+name: Thesis Workflow Guard
+
+on:
+  schedule:
+    # Weekly on Monday at 07:00 UTC
+    - cron: "0 7 * * 1"
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  structure-check:
+    name: Structure & Consistency Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run structure validation
+        id: validate
+        run: |
+          set +e
+          OUTPUT=$(python3 validate_structure.py 2>&1)
+          EXIT_CODE=$?
+          echo "output<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$OUTPUT" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
+          echo "$OUTPUT"
+          exit $EXIT_CODE
+
+      - name: Open issue on validation failure
+        if: failure() && steps.validate.outputs.exit_code != '0' && github.event_name == 'schedule'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const output = `${{ steps.validate.outputs.output }}`;
+            const title = `[Workflow Guard] Struktur-Validierung fehlgeschlagen – ${new Date().toISOString().slice(0,10)}`;
+            const body = [
+              "## Automatischer Struktur- und Konsistenzcheck",
+              "",
+              "Der wöchentliche Lauf von `validate_structure.py` hat Probleme gefunden:",
+              "",
+              "```",
+              output,
+              "```",
+              "",
+              "**Aktion erforderlich:** Bitte behebe die oben genannten Auffälligkeiten und",
+              "stelle sicher, dass `validate_structure.py` lokal fehlerfrei läuft.",
+              "",
+              `*Ausgelöst durch Workflow-Run: ${context.runId}*`
+            ].join("\n");
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+              labels: ["review", "orga"]
+            });
