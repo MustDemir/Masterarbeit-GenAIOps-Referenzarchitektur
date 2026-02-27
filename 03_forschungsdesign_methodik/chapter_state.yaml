@@ -1,7 +1,23 @@
 chapter: "03_forschungsdesign_methodik"
-status: "not_started"
-current_focus: ""
-done: []
-next_steps: []
-open_questions: []
-key_sources: []
+status: "in_progress"
+progress_pct: 90
+current_focus: "Offene Punkte OP-1 bis OP-4 schliessen"
+done:
+  - "DSR-Rahmen (Hevner + Peffers + vom Brocke) fixiert"
+  - "DSRM als Einbettung, nicht als Kapitelstruktur"
+  - "Artefaktfokus: Kontrollsystem (nicht Schichten)"
+  - "Schreibstil: knapp & methodisch-strikt"
+  - "10 Seiten DOCX Fliesstext (8 Abschnitte, 6 Tabellen)"
+  - "22/22 Konsistenzpruefungen bestanden"
+  - "Titel FINAL C4 fixiert"
+next_steps:
+  - "OP-1: Kernel Theories (PaC, CaC) in 3.3 formal positionieren"
+  - "OP-2: Mayring (2015) im Literaturverzeichnis manuell belegen"
+  - "OP-4: Interviewdesign (3.8) inhaltlich detaillieren"
+open_questions:
+  - "OP-3: R-Katalog noch nicht erstellt (Block A1/A2 = Kap. 4)"
+key_sources:
+  - "Hevner et al. (2004)"
+  - "Peffers et al. (2007)"
+  - "vom Brocke & Maedche (2019)"
+  - "Mayring (2015)"

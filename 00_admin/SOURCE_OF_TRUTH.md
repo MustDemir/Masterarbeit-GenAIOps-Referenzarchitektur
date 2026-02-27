@@ -7,11 +7,15 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Operativer Einstiegspunkt (Workspace):
   - `/Users/mustafademir/Projects/genaiops-thesis/00_workspace/`
 - Expose (primaer):
-  - `/Users/mustafademir/Projects/genaiops-thesis/98_onedrive_migration/1_masterarbeit/1. Expose v3.docx`
+  - `docs/expose/Expose_v3_single_source_2026-02-27.pdf`
+  - `docs/expose/Expose_v3_single_source_2026-02-27.txt` (Textextrakt)
 - Gliederung (primaer):
-  - `/Users/mustafademir/Projects/genaiops-thesis/00_admin/gliederung_v3.md`
+  - `00_admin/gliederung_v3.md`
 - Aktive Thesis-Inhalte (primaer):
   - Kapitelordner `01_*` bis `08_*` in diesem Repo.
+- Kapitel 3 Methodik (verschluesselt):
+  - `03_forschungsdesign_methodik/Kapitel_3_Forschungsdesign_und_Methodik.docx.enc`
+  - Entschluesselung: `openssl enc -d -aes-256-cbc -pbkdf2 -in <datei>.enc -out <datei>.docx -pass pass:<pw>`
 
 Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Primaerdokumenten.
 
@@ -24,7 +28,7 @@ Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Pr
 ## Expose Legacy
 
 - Alte Expose-Versionen duerfen nur in Legacy liegen:
-  - `/Users/mustafademir/Projects/genaiops-thesis/docs/expose/legacy/`
+  - `docs/expose/legacy/`
 
 ## Cloud/RAG Betriebsmodell
 

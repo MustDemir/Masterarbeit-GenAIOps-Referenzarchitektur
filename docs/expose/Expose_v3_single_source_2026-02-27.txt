@@ -1,0 +1,644 @@
+Exposé – Masterarbeit Mustafa Demir 
+Seite 1 
+ 
+Exposé zur Masterarbeit 
+ 
+ 
+ 
+ 
+ 
+ 
+Cloud-native Referenzarchitektur für GenAIOps mit Quality-Gate-
+Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer 
+Anforderungen – auf Basis des EU AI Act 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+2026 
+      
+MUSTAFA DEMIR 
+Matrikelnummer: 2009670 
+Studiengang: Digital Management & Transformation (M.Sc.) 
+Betreuer: Prof. Dr. Christian Prinz 
+ 
+ 
+ 
+ 
+SRH FERNHOCHSCHULE - The Mobile University | Stuttgart  
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 2 
+Inhaltsverzeichnis 
+1.1 Einleitung ................................ ................................ ................................ ...................  3 
+1.2 Problemdimensionen ................................ ................................ ................................ .. 3 
+1.3 Zielsetzung ................................ ................................ ................................ .................  5 
+1.4 Forschungsfragen................................ ................................ ................................ ........  6 
+1.5 Forschungsmethodik ................................ ................................ ................................ ... 6 
+1.6 Scope und Abgrenzung................................ ................................ ................................ . 7 
+2.1 Motivation ................................ ................................ ................................ ..................  8 
+2.2 Unternehmensakzeptanz ................................ ................................ .............................  9 
+2.3 Vorläufiger Zeitplan ................................ ................................ ................................ ...... 9 
+Gliederung ........................................................................................................................ 10 
+1 Kapitelübersicht ................................ ................................ ................................ ...........  10 
+2 Theoretische Grundlagen ................................ ................................ ..............................  10 
+3 Forschungsdesign und Methodik ................................ ................................ ....................  11 
+4 Anforderungsanalyse ................................ ................................ ................................ .... 11 
+5 Entwicklung der Referenzarchitektur ................................ ................................ ..............  12 
+6 Evaluation ................................ ................................ ................................ ...................  12 
+7-8 Diskussion und Fazit ................................ ................................ ................................ .. 13 
+Literaturverzeichnis .......................................................................................................... 14 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 3 
+1.1 Einleitung 
+Die rasante Adaption generativer KI (GenAI ) und Large Language Models (LLMs) stellt 
+Unternehmen vor operative Herausforderungen, die über den Wirkungsbereich 
+etablierter MLOps -Verfahren hinausgehen. Bestehende CI/CD -Pipelines decken die 
+spezifischen Risiken stochastischer Modelle — etwa Halluzinat ionen, 
+Promptabhängigkeit oder kontextabhängige Qualitätsschwankungen — nicht 
+systematisch ab (Sinha et al., 2024). Zugleich fordert der EU AI Act (VO 2024/1689) für 
+Hochrisiko-KI-Systeme eine lückenlose Nachweisführung entlang des gesamten 
+Lebenszyklus, f ür die weder operativ integrierte Frameworks noch automatisierte 
+Kontrollmechanismen existieren. Dieser Befund lässt sich entlang dreier 
+interdependenter Problemdimensionen konkretisieren. 
+1.2 Problemdimensionen 
+PD1: Fragmentierung bestehender Operationalisierungsframeworks : Traditionelle 
+MLOps-Ansätze wurden für diskriminative  Modelle mit stabilen Datenpipelines 
+konzipiert. Generative KI -Systeme unterscheiden sich fundamental durch 
+probabilistisches Ausgabeverhalten, Promptabhängigkeit und erhöhte Anforderungen 
+an Observability und Sicherheitsbewertung (Sinha et al., 2024, S. 1 –2). Bestehende 
+Frameworks adressieren typischerweise isolierte Lebenszyklusphasen  - Training, 
+Deployment oder Monitoring, ohne eine integrierte End -to-End-Governance zu 
+ermöglichen (Wang et al., 2025, S. 1; Díaz -De-Arcaya et al., 2024, S. 3). Obwohl sich 
+die Operationsparadigmen von MLOps über LLMOps zu GenAIOps evolutionär 
+weiterentwickeln (Kreuzberger et al., 2023; Pahune & Akhtar, 2025; Tantithamthavorn et 
+al., 2025), ist GenAIOps als operativer Rahmen bislang weder konzeptuell konsolidiert 
+noch in eine  standardisierte Enterprise -Referenzarchitektur überführt worden (Joshi, 
+2025, S. 8; Pahune & Akhtar, 2025, S. 23).  
+Lücke 1: Es fehlt eine integrierte Referenzarchitektur, die den GenAI -Lifecycle end-to-
+end abdeckt und phasenübergreifende Kontrollmechanismen ermöglicht. 
+PD2: Methodische Inadäquanz bestehender Qualitätssicherungsmechanismen : 
+Etablierte Qualitätskontrollverfahren basieren auf deterministischen Metriken (Accuracy, 
+F1-Score, AUC -ROC), die für stochastische, kontextabhängige GenAI -Outputs 
+methodisch ungeeignet sind (Polyakovska, 2025, S. 2, 5). Diese Inadäquanz manifestiert 
+sich i n drei Defiziten: (1) fehlende standardisierte Evaluationsmetriken für GenAI -
+spezifische Risikodimensionen wie Halluzinationsraten oder Prompt -Injection-
+Vulnerabilities (Xu et al., 2025, S. 14), (2) unzureichende Observability-Infrastruktur zur 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 4 
+Erzeugung und Persistierung prüfbarer Evidenz 1 (Xu et al., 2025, S. 15; Polyakovska, 
+2025, S. 6 –7), und (3) fehlende phasenübergreifende Orchestrierung von 
+Qualitätskontrollpunkten mit definierten Übergabekriterien (Wang et al., 2025, S. 1 –2). 
+Lücke 2: Für generative KI-Systeme existieren keine formalisierten, automatisierbaren 
+Kontrollpunkte (Quality Gates), die Phasenübergänge an prüfbare Qualitätskriterien und 
+nachweisbare Evidenz binden. 
+PD3: Compliance-Operationalisierungslücke (EU AI Act): Der EU AI Act definiert für 
+Hochrisiko-KI-Systeme verbindliche Anforderungen an Risikomanagement (Art. 9), 
+Daten-Governance (Art. 10), Dokumentation (Art. 11), Protokollierung (Art. 12), 
+Transparenz (Art. 13), menschliche Aufsicht (Art. 14) sowie Genauigkeit, Robustheit und 
+Cybersicherheit (Art. 15) (Europäische Union, 2024, S. 56 –61). Diese Normen sind 
+jedoch als juristisch -normative Pflichten formuliert — sie liefern keine technische 
+Übersetzung in ma schinenprüfbare Controls und keine durchgängige Evidenzkette für 
+Audits. In der Literatur wird hervorgehoben, dass eine konsistente Abbildung 
+regulatorischer Anforderungen in operative, automatisiert verifizierbare Protokolle nicht 
+existiert (Díaz -Rodríguez et al., 2023, S. 14) und die KI -Governance-Forschung als 
+deutlich unterentwickelt beschrieben wird (Taeihagh, 2025, S. 2, 7). Zwar existieren erste 
+Governance-Frameworks wie AIGA (Burns et al., 2025) und CERTAIN (Kovac et al., 
+2025), doch bleibt deren te chnische Operationalisierung als automatisierte Pipeline -
+Kontrolle offen — beide verbleiben auf konzeptioneller Ebene und adressieren primär 
+klassische ML-Systeme.  
+Lücke 3:  Ein systematischer Ansatz, der AI -Act-spezifische Pflichten konsistent in 
+Policy-/Compliance-as-Code überführt und über den GenAI-Lifecycle als automatisierte 
+Quality Gates orchestriert, ist in der bestehenden Literatur nicht dokumentiert. 
+Synthese und resultierende Forschungslück e: Die drei Problemdimensionen 
+beschreiben eine kumulative Lücke: Bestehende Frameworks sind fragmentiert und 
+decken den GenAI -Lifecycle nicht integriert ab (PD1). Formalisierte, automatisierbare 
+Quality Gates, die der stochastischen Natur generativer Systeme  methodisch gerecht 
+werden, fehlen (PD2). Und eine systematische Übersetzung der EU -AI-Act-
+Anforderungen in maschinenprüfbare Policies mit skalierbarer Evidenzerzeugung ist 
+nicht dokumentiert (PD3). Diese dreifac he Lücke — strukturell, methodisch, 
+regulatorisch — begründet den Bedarf an einer integrierten Enterprise -
+Referenzarchitektur, die cloud -native GenAIOps -Praktiken mit automatisierten Quality 
+ 
+1 Selbst wenn teilweise Daten entstehen, werden sie nicht sicher und dauerhaft gespeichert, sodass eine 
+spätere Überprüfung erschwert oder unmöglich ist. 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 5 
+Gates verbindet und die Anforderungen des EU AI Act als prüfbare 
+Kontrollmechanismen in CI/CD/CT-Pipelines operationalisiert. 
+1.3 Zielsetzung 
+Ziel der Arbeit ist die Entwicklung einer cloud-nativen Referenzarchitektur für GenAIOps, 
+die normative Anforderungen — primär abgeleitet aus dem EU AI Act (VO 2024/1689) 
+durch ein lifecycle -integriertes Quality -Gate-Kontrollsystem systematisch 
+operationalisiert. Die Architektur verfolgt den Ansatz Accountability-by-Design: 
+Verantwortungsnachweisbarkeit wird nicht als nachgelagerter Dokumentationsprozess 
+verstanden, sondern als technisch erzwungene Eigenschaft des Systems. 
+Das Artefakt umfasst vier Kernkomponenten: (S1) eine architekturelle Grundstruktur mit 
+Schichten- und Komponentenmodell, (S2) ein Quality-Gate-Kontrollsystem als zentrales 
+Designprinzip mit präventiven, detektiven und evidenzbasierten Gate -Typen, (S3) eine 
+Pipeline-Integration in bestehende CI/CD/CT -Toolchains und (S4) eine Evidence - und 
+Audit-Logik zur lückenlosen Nachweisführung. 
+Die Architekturentwicklung wird durch fünf Design-Prinzipien geleitet: 
+• DP1 – Compliance als kontrollierbarer Lifecycle -Prozess: Normative 
+Anforderungen werden nicht punktuell geprüft, sondern als durchgängiger, Gate-
+basierter Kontrollprozess über den gesamten GenAI-Lifecycle operationalisiert. 
+• DP2 – Lückenlose Traceability-Kette: Jede High-Risk-Anforderung wird in eine 
+Policy (Policy -as-Code oder kontrollierbare Regel) übersetzt, die automatisch 
+oder manuell Evidenz erzeugt, die auditierbar verknüpft ist (R → DP → Gate → 
+Evidence). 
+• DP3 – Gate-Template als Standardisierungseinheit: Jedes Quality Gate wird 
+durch ein einheitliches Template formalisiert (Trigger, Kriterien, Evidenzartefakte, 
+Entscheidung, Verantwortlichkeit, Audit Trail, Waiver-Regelung). 
+• DP4 – Trennung von Governance -Ebenen, integrierte Entscheidung:  
+Strategische, technische und Compliance -Gates werden getrennt modelliert, 
+aber über gemeinsame Artefakte und Entscheidungslogik gekoppelt. 
+• DP5 – Cloud-native Integrierbarkeit: Das Kontrollsystem muss in bestehende 
+cloud-native CI/CD/CT -Toolchains integrierbar sein, ohne proprietäre 
+Abhängigkeiten zu erzeugen. 
+Der wissenschaftliche  Neuheitswert dieses Beitrages liegt in der formalisierten 
+Integration bestehender Mechanismen (Rekonfiguration, Formalisierung und 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 6 
+Kontextualisierung) für den spezifischen Kontext von High -Risk GenAI-Systemen. Der 
+Erreichungsgrad wird anhand einer dreistufigen Evaluation überprüft: (a) Requirements-
+Coverage-Matrix, (b) PoC-Walkthrough und (c) Expert-Reviews (n≥3). 
+1.4 Forschungsfragen 
+Aus der Problemstellung und Zielsetzung werden drei Forschungsfragen abgeleitet, die 
+den drei DSR-Zyklen (Relevance, Design, Rigor) nach Hevner et al. (2004) zugeordnet 
+sind: 
+RQ1 (Relevance):  Welche normativen Anforderungen sind für eine 
+verantwortungsnachweisbare Gestaltung von GenAI -Systemen im Enterprise -Kontext 
+relevant und technisch operationalisierbar? 
+RQ2 (Design): Wie kann eine Referenzarchitektur für GenAIOps gestaltet werden, die 
+diese normativen Anforderungen durch ein lifecycle -integriertes Quality -Gate-
+Kontrollsystem systematisch operationalisiert? 
+RQ3 (Rigor):  Inwiefern ermöglicht die entwickelte Referenzarchitektur die technische 
+Durchsetzung und Nachweisbarkeit dieser Anforderungen in einem cloud -nativen 
+GenAIOps-Kontext? 
+1.5 Forschungsmethodik 
+Die Arbeit folgt dem Paradigma der Design Science Research (DSR)  und kombiniert 
+drei methodische Rahmenwerke: 
+(1) Das Information Systems Research Framework  nach Hevner et al. (2004) bildet 
+die Meta -Ebene. Es strukturiert die Arbeit über die drei Zyklen Relevance 
+(Problemkontext), Design (Artefaktkonstruktion) und Rigor (Wissensbasis) und definiert 
+sieben Leitlinien (Guidelines G1 –G7), deren Einhaltung die wi ssenschaftliche Qualität 
+des Artefakts sichert. 
+(2) Die Design Science Research Methodology (DSRM)  nach Peffers et al. (2007) 
+liefert die Prozessebene. Der sechsstufige Prozess (Problem Identification, Objectives, 
+Design & Development, Demonstration, Evaluation, Communication) wird problem -
+centered durchlaufen und auf die Kapitelstruktur der Arbeit abgebildet. 
+(3) Das DSR Grid  nach vom Brocke und Maedche (2019) dient als 
+Strukturierungswerkzeug. Es operationalisiert die Forschungsplanung entlang von sechs 
+Dimensionen (Problem/Solution/Evaluation × Relevance/Rigor) und sichert die 
+systematische Abdeckung aller DSR-relevanten Aspekte. 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 7 
+Der Artefakttyp umfasst nach Hevner et al. (2004): Model (Architektur), Method (Gate-
+Systematik und Traceability) und Instantiation (Proof -of-Concept). Die Arbeit durchläuft 
+zwei Iterationen: Iteration 1 entwickelt das konzeptuelle Architekturmodell und die Gate-
+Systematik; Iteration 2 instanziiert die Architektur als Azure -basierten Proof-of-Concept 
+und verfeinert das Design auf Basis der Demonstrationsergebnisse. 
+Die Evaluation folgt einem dreistufigen Design: 
+(a) Requirements-Coverage-Matrix: Systematischer Abgleich der 
+Architekturkomponenten mit den erhobenen Anforderungen (R1 –Rn) zur Prüfung der 
+Vollständigkeit. 
+(b) PoC-Walkthrough: Technische Demonstration der Machbarkeit anhand 
+ausgewählter Szenarien im Azure -Stack, die die Durchsetzbarkeit und 
+Evidenzgenerierung der Quality Gates nachweist. 
+(c) Expert-Reviews (n≥4): Leitfadengestützte Interviews mit Domänenexperten aus den 
+Bereichen MLOps/ LLMOps/GenAIOps, Cloud -Architektur und KI -Governance zur 
+Bewertung der Praxistauglichkeit und Audit-Readiness. 
+1.6 Scope und Abgrenzung 
+Die Referenzarchitektur wird als generisches Modell  entwickelt, das 
+branchenunabhängig anwendbar ist. Die prototypische Instanziierung (Proof -of-
+Concept) erfolgt in der Healthcare-Domäne am Beispiel eines Ambient AI Scribe – eines 
+generativen KI -Systems zur automatisierten Transkription und Zusammenfassung 
+medizinischer Gespräche. 
+Dieses Szenario eignet sich aus mehreren Gründen: (1) Es handelt sich um ein 
+Hochrisiko-KI-System gemäß EU AI Act Annex III (medizinische Diagnostik und 
+Entscheidungsunterstützung), (2) es erfordert die Verarbeitung sensibler 
+Gesundheitsdaten unter DSGVO - und KI -Regulierungsvorgaben, (3) die 
+Qualitätsanforderungen an generative Outputs (Halluzinationsfreiheit, klinische 
+Präzision) sind besonders hoch und (4) die Nachweispflichten gegenüber 
+Aufsichtsbehörden sind umfassend. 
+Der PoC wird auf dem Microsoft Azure Stack implementiert und nutzt Azure Kubernetes 
+Service (AKS), Azure OpenAI Service, GitHub Actions, Open Policy Agent (OPA/Rego) 
+sowie Azure Monitor und Blob Storage (immutable) für die Evidence -Persistierung. Der 
+Evidence Store folgt einem hybriden Ansatz: Unstrukturierte Artefakte (Model Cards, 
+Evaluierungsreports) werden im Blob Storage abgelegt, während die strukturierten 
+Metadaten der Quality -Gate-Durchläufe in einer relationalen Datenbank persistiert 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 8 
+werden. Diese Trennung ermöglicht einerseits performantes Compliance-Reporting über 
+indizierte Abfragen und stellt andererseits durch datenbankgestützte 
+Schutzmechanismen (Immutability -Constraints, View -basierte Zugriffskontrolle) die 
+Manipulationssicherheit der Audit-Nachweise sicher — eine zentrale Voraussetzung im 
+Healthcare-Kontext, in dem medizinische Payload und regulatorische Telemetrie strikt 
+getrennt werden müssen (DSGVO Art. 9). Die Architektur selbst bleibt cloud -provider-
+agnostisch (DP5: Cloud-native Integrierbarkeit). 
+Abgrenzung: Die Arbeit entwickelt keine eigenständigen KI-Modelle, sondern fokussiert 
+auf die architekturelle Steuerung und Qualitätssicherung bestehender GenAI -Dienste. 
+Ethische Fragestellungen werden nur insoweit adressiert, als sie sich in technisch 
+operationalisierbare Anforderungen übersetzen lassen. Die rechtliche Analyse 
+beschränkt sich auf die für High-Risk-Systeme relevanten Artikel des EU AI Act (Art. 9–
+15) und erhebt keinen Anspruch auf juristische Vollständigkeit. 
+2.1 Motivation 
+ 
+Die Themenwahl ist sowohl durch die berufliche Spezialisierung als auch durch ein 
+weiterführendes Forschungsinteresse motiviert. Zurzeit absolviere ich parallel zur 
+Masterarbeit eine zertifizierte Vollzeit -Weiterbildung zum Cloud Architect (810 UE, 
+AZAV-zertifiziert) mit Schwerpunkt auf Kubernetes, Infrastructure -as-Code und CI/CD -
+Pipelines, die die technische Basis der Arbeit unmittelbar ergänzt. Im Masterstudium 
+bildete Künstliche Intelligenz das Vertiefungsfach (Note: 1,0), ergänzt durch 
+Praxisprojekte i m Bereich KI -gestütztes Requirements Engineering und cloud -native 
+Architekturentwicklung (jeweils Note: 1,0). Darüber hinaus umfasst die Weiterbildung ein 
+verpflichtendes Praxisprojekt, in dem ich eine Cloudarchitektur entwickeln werde. Die 
+dabei verfügbare fachliche Begleitung durch erfahrene Cloud-Architekten ermöglicht ein 
+Practitioner Review, das die leitfadengestützten Experteninterviews als zusätzliche 
+Evaluationsperspektive ergänzt. Die berufliche Erfahrung im Automotive-Sektor — unter 
+anderem als Projektleiter bei Mercedes-AMG und als strategischer Produktmanager bei 
+der Mercedes -Benz AG mit Verantwortung für Schnittstellenmanagement, 
+Datenintegration und Governance -Strukturen — hat den Bedarf an integrierten, 
+regulatorisch konformen Betriebsarchitek turen für KI -Systeme aus der Praxis heraus 
+sichtbar gemacht. 
+Über das unmittelbare Berufsziel als AI & Cloud Solution Architect hinaus verfolge ich 
+das Ziel einer Promotion im Bereich KI - und Innovationsmanagement. Die vorliegende 
+Arbeit soll dafür eine methodisch und inhaltlich tragfähige Grundlage schaffen. Darübe r 
+hinaus ist die Überzeugung leitend, dass die technologische und regulatorische 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 9 
+Souveränität Europas — insbesondere im Bereich Cloud -Infrastruktur und KI -
+Governance — eine eigenständige architektonische Antwort erfordert, zu der diese 
+Arbeit einen konzeptionellen Beitrag leisten möchte. 
+2.2 Unternehmensakzeptanz 
+Vorerst wird die Arbeit als rein akademisches Forschungsprojekt ohne festen 
+Praxispartner durchgeführt. Dies ist im Rahmen einer Design -Science-Research-Arbeit 
+methodisch unproblematisch, da das zentrale Artefakt — eine generalisierbare 
+Referenzarchitektur — nicht an einen spezifischen Unternehmenskontext gebunden ist, 
+sondern als übertragbares Designwissen konzipiert wird (Hevner et al., 2004, S. 80). Die 
+Evaluation stützt sich auf leitfadengestützte Experteninterviews mit Domänenexperten 
+aus Wissenschaft und Praxis, deren Zugang sowohl über das akademische und 
+berufliche Netzwerk als auch über die Fortbildung gesichert ist. Für die prototypische 
+Implementierung (PoC) stehen studentische Cloud-Ressourcen (Microsoft Azure) sowie 
+Open-Source-Tooling zur Verfügung. Eine optionale Kooperation mit einem Startup zur 
+Validierung des Ambient -AI-Scribe-Szenarios (oder ei nes ähnlichen Use Case) wird 
+derzeit geprüft, ist für die Durchführbarkeit der Arbeit jedoch nicht erforderlich. 
+2.3 Vorläufiger Zeitplan 
+Die Bearbeitungsdauer beträgt 16 Wochen. Der Zeitplan orientiert sich an den DSRM -
+Schritten und der Kapitelstruktur: 
+Woche Phase Aktivitäten Ergebnis 
+1–2 Grundlagen & Methodik 
+(bereits erledigt) 
+DSR-Rahmen erarbeiten, Kapitel 2–3 
+schreiben 
+Kap. 2–3 (Entwurf) 
+2–4 Anforderungsanalyse EU AI Act Art. 9–15, Literaturanalyse, R-
+Katalog erstellen 
+Kap. 4, R1–Rn 
+4–6 Architekturentwurf (Iter. 
+1) 
+DP1–DP5 anwenden, S1–S4 spezifizieren, 
+Gate-Katalog 
+Kap. 5.1–5.5 (Konzept) 
+6–9 PoC-Entwicklung (Iter. 
+2) 
+Azure-Instanziierung, Pipeline-Setup, Gate-
+Implementierung 
+Kap. 5.6 (PoC) 
+9–11 Evaluation Coverage-Matrix, PoC-Walkthrough, 
+Expert-Interviews (n≥3) 
+Kap. 6 
+11–13 Diskussion & Synthese Ergebnisinterpretation, Beiträge, 
+Limitationen 
+Kap. 7 
+13–15 Fertigstellung Kap. 1+8 schreiben, Gesamtrevision, 
+Formatierung 
+Gesamtdokument 
+15–16 Puffer & Abgabe Korrekturlesen, Druck, Abgabe Finale Abgabe 
+Tabelle 7: Vorläufiger Zeitplan (16 Wochen) 
+ 
+ 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 10 
+Gliederung 
+1 Kapitelübersicht 
+Die Arbeit gliedert sich in acht Kapitel, die dem DSRM-Prozess nach Peffers et al. (2007) 
+folgen und den drei DSR-Zyklen nach Hevner et al. (2004) zugeordnet sind. 
+Kap. Inhalt DSRM-Schritt DSR-Cycle 
+1 Einleitung (PD1–PD3, Zielsetzung, 
+Forschungsfragen) 
+1 Problem ID — 
+2 Theoretische Grundlagen (GenAIOps, 
+EU AI Act, Ref.Arch., DSR) 
+2 Objectives — 
+3 Forschungsdesign und Methodik (DSR-
+Rahmen, Operationalisierung) 
+2 Objectives Meta 
+4 Anforderungsanalyse (R1–Rn, 
+MUSS/SOLL) 
+2→3 Design Relevance 
+5 Entwicklung der Referenzarchitektur 
+(DP1–DP5, S1–S4, PoC) 
+3 Design + 4 Demo Design 
+6 Evaluation (Coverage, PoC-
+Walkthrough, Expert-Reviews) 
+5 Evaluation Rigor 
+7 Diskussion (Beitrag, Limitationen, 
+Implikationen) 
+6 Communication — 
+8 Fazit und Ausblick 6 Communication — 
+Tabelle 1: Kapitelstruktur mit DSRM- und DSR-Cycle-Zuordnung 
+2 Theoretische Grundlagen  
+Kapitel 2 legt die theoretische Basis in vier Bereichen: 
+GenAIOps, LLMOps und  MLOps: Definition, Abgrenzung und Lifecycle -Modelle 
+generativer KI-Systeme. Einordnung bestehender MLOps -Frameworks und deren 
+Limitationen für GenAI-spezifische Anforderungen (Halluzinationskontrolle, Prompt-
+Management, Retrieval-Augmented Generation). 
+EU AI Act und regulatorischer Rahmen:  Systematische Aufarbeitung der für 
+Hochrisiko-KI-Systeme relevanten Anforderungen (Art. 9 –15), ergänzt durch ISO 
+42001:2023 als komplementäres Managementsystem-Framework. 
+Referenzarchitekturen: Theoretische Fundierung des Artefakttyps nach Angelov et al. 
+und Winter und Fischer, einschließlich Abstraktionsebenen und 
+Gestaltungskriterien. 
+Design Science Research:  Darstellung der drei verwendeten Rahmenwerke (Hevner 
+et al., Peffers et al., vom Brocke und Maedche) als Grundlage für Kapitel 3. 
+ 
+ 
+ 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 11 
+3 Forschungsdesign und Methodik  
+Kapitel 3 operationalisiert den DSR-Ansatz in acht Abschnitten (zu 90% abgeschlossen) 
+Abschnitt Inhalt 
+3.1 DSR als Forschungsrahmen Behavioral vs. Design Science, Begründung der Paradigmenwahl, 
+Hevner 7 Guidelines 
+3.2 Methodischer Rahmen und 
+Vorgehensmodell 
+Hevner (3 Zyklen), Peffers (DSRM, 6 Schritte), vom Brocke (DSR Grid) 
+3.3 Operationalisierung des DSR-
+Prozesses 
+Peffers-Mapping auf Kapitelstruktur, Iterationslogik (2 Iterationen) 
+3.4 Artefaktdefinition, Scope und 
+Abgrenzung 
+Primärartefakt, Designprinzip, S1–S4, Instanziierungsstrategie 
+3.5 Anforderungserhebung und -
+analyse 
+Methodik der R-Katalog-Erstellung (Literatur + Regulatorik + Experten) 
+3.6 Traceability-Ansatz RQ → R → DP → Gate → Evidence, methodische Begründung 
+3.7 Evaluationsdesign 3-stufig, Kriterien pro Gate-Dimension 
+3.8 Interviewdesign und 
+Auswertung 
+Expertenauswahl, Leitfaden, Gütekriterien 
+Tabelle 2: Gliederung Kapitel 3 – Forschungsdesign und Methodik 
+4 Anforderungsanalyse  
+Kapitel 4 beantwortet RQ1 und bildet den Relevance -Cycle ab. Die 
+Anforderungserhebung erfolgt durch systematische Analyse dreier Quellen: (1) EU AI 
+Act Art. 9–15 und Annex III/IV, (2) einschlägige Literatur zu MLOps, GenAIOps und KI -
+Governance, (3) ISO 420 01:2023 als komplementäres Rahmenwerk. Das Ergebnis ist 
+ein Anforderungskatalog (R1 –Rn) mit MUSS/SOLL -Priorisierung, der als Input für die 
+Architekturentwicklung dient. 
+Abschnitt Inhalt 
+4.1 Vorgehen der 
+Anforderungserhebung 
+Methodik und Quellenauswahl 
+4.2 Regulatorische Anforderungen 
+(EU AI Act) 
+Art. 9–15, Annex III/IV, Anforderungsableitung 
+4.3 Technische Anforderungen 
+(GenAIOps) 
+Pipeline-Anforderungen, GenAI-spezifische Metriken 
+4.4 Organisatorische 
+Anforderungen 
+Governance-Strukturen, Rollenmodell 
+4.5 Anforderungskatalog (R1–Rn) Konsolidierung, MUSS/SOLL-Priorisierung, Traceability 
+Tabelle 3: Gliederung Kapitel 4 – Anforderungsanalyse 
+ 
+ 
+ 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 12 
+5 Entwicklung der Referenzarchitektur  
+Kapitel 5 beantwortet RQ2 und bildet den Design -Cycle ab. Die Architekturentwicklung 
+folgt den fünf Design -Prinzipien (DP1–DP5) und strukturiert das Artefakt in vier Säulen 
+(S1–S4): 
+Abschnitt Inhalt Säule 
+5.1 Überblick und 
+Designprinzipien 
+DP1–DP5, Architekturübersicht, 
+Entwurfsentscheidungen 
+— 
+5.2 Architekturelle Struktur Schichten- und Komponentenmodell, IaC-Integration S1 
+5.3 Quality-Gate-Kontrollsystem Gate-Taxonomie, Gate-Template, Lifecycle-
+Integration 
+S2 (USP) 
+  5.3.1 Gate-Taxonomie und 
+Lifecycle-Zuordnung 
+Strategische, technische, Compliance-Gates pro Phase  
+  5.3.2 Gate-Spezifikation und 
+Template 
+Trigger, Kriterien, Evidence, Decision, Owner, Audit 
+Trail, Waiver 
+ 
+  5.3.3 Compliance-Mapping Art. 9–15 → Policies → Gates → Evidence  
+5.4 Pipeline-Integration CI/CD/CT-Einbettung, GitOps, Signierung S3 
+  5.4.1 CI/CD-Pipeline-Architektur GitHub Actions, Stage-Gates, automatisierte 
+Prüfungen 
+ 
+  5.4.2 Policy-as-Code Integration OPA/Rego, Policy-Bundles, 
+Entscheidungsprotokollierung 
+ 
+5.5 Evidence- und Audit-Logik Evidence Store, Immutability, Audit-Readiness S4 (USP) 
+  5.5.1 Evidence-Persistierung Immutable Storage, Versionierung, Retention  
+  5.5.2 Audit-Trail und 
+Nachweiskette 
+Traceability: R → DP → Gate → Evidence  
+5.6 Prototypische Instanziierung 
+(PoC) 
+Azure-Stack, Healthcare-Szenario, 2. Iteration Alle 
+Tabelle 4: Gliederung Kapitel 5 – Entwicklung der Referenzarchitektur 
+6 Evaluation  
+Kapitel 6 beantwortet RQ3 und bildet den Rigor -Cycle ab. Die Evaluation folgt einem 
+dreistufigen Design, das Vollständigkeit, Machbarkeit und Praxistauglichkeit des 
+Artefakts prüft: 
+Abschnitt Inhalt Evaluationsstufe 
+6.1 Evaluationsrahmen und 
+Kriterien 
+Übersicht Evaluationsdesign, Kriterien pro Gate-
+Dimension 
+— 
+6.2 Requirements-Coverage-
+Matrix 
+R1–Rn → Architekturkomponenten, 
+Vollständigkeitsprüfung 
+(a) Coverage 
+6.3 PoC-Walkthrough Szenarien-basierte Demonstration, 
+Evidenzgenerierung, Gate-Durchläufe 
+(b) Walkthrough 
+6.4 Expert-Reviews Leitfadeninterviews (n≥3), qualitative Auswertung (c) Expert 
+6.5 Synthese und Bewertung Triangulation der Ergebnisse, 
+Stärken/Schwächen/Anpassungsbedarfe 
+Gesamt 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 13 
+Tabelle 5: Gliederung Kapitel 6 – Evaluation 
+7-8 Diskussion und Fazit  
+Kapitel 7 diskutiert den wissenschaftlichen Beitrag (formalisierte Integration: 
+Rekonfiguration, Formalisierung, Kontextualisierung), ordnet die Ergebnisse in die 
+Knowledge Base ein (Hevner Guideline G7), identifiziert Limitationen und formuliert 
+Implikationen für Praxis und Forschung. Kapitel 8 fasst die Ergebnisse zusammen, 
+bewertet den Zielerreichungsgrad und gibt einen Ausblick auf weiterführende 
+Forschung. 
+ 
+ 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 14 
+Literaturverzeichnis 
+Alugunuri, N. (2022). Policy -Driven Infrastructure Automation for Microservices: A Unified 
+Framework Combining Infrastructure as Code and Policy as Code in Cloud-Native Environments. 
+International Journal on Science and Technology , 13(3), 5966. 
+https://doi.org/10.71097/IJSAT.v13.i3.5966 
+Blancato, F. G. (2024). The cloud sovereignty nexus: How the European Union seeks to reverse 
+strategic dependencies in its digital ecosystem. Policy & Internet , 16(1), 12 –30. 
+https://doi.org/10.1002/poi3.358 
+Burns, F., Edelberg, J., Kuivanen, P., Tuomi, E., Ylimaa, J., & Tikanmäki, I. (2025). AI Governance: 
+Achieving EU AI Act Compliance in the Dynamo Project. In The Proceedings of the 24th 
+European Conference on Cyber Warfare and Security, ECCWS 2025  (S. 875 –878). 
+https://doi.org/10.34190/eccws.24.1.3378 
+Díaz-De-Arcaya, J., Torre-Bastida, A. I., Zárate, G., Miñón, R., & Almeida, A. (2024). LLMOps: A 
+State of the Art and Comprehensive Overview. arXiv preprint, arXiv:2407.11657. 
+Díaz-De-Arcaya, J., López -De-Armentia, J., Miñón, R., Ojanguren, I. L., & Torre -Bastida, A. I. 
+(2024). Large Language Model Operations (LLMOps): Definition, Challenges, and Lifecycle 
+Management. In 2024 9th International Conference on Smart and Sustainable Technologies 
+(SpliTech) (S. 1–6). IEEE. https://doi.org/10.23919/SpliTech61897.2024.10612341 
+Di Martino, B., & Esposito, A. (2022). An Overview of Reference Architectures for Cloud Continuum 
+Interoperability. 2022 Cloud Continuum , 1 –5. 
+https://doi.org/10.1109/CloudContinuum57429.2022.00009 
+Europäische Union. (2024). Verordnung (EU) 2024/1689 des Europäischen Parlaments und des Rates 
+vom 13. Juni 2024 zur Festlegung harmonisierter Vorschriften für künstliche Intelligenz 
+(Verordnung über künstliche Intelligenz). Amtsblatt der Europäischen Union, L 2024/1689. 
+Hevner, A. R., March, S. T., Park, J., & Ram, S. (2004). Design science in information systems 
+research. MIS Quarterly, 28(1), 75–105. https://doi.org/10.2307/25148625 
+Joshi, S. (2025). LLMOps, AgentOps, and MLOps for Generative AI: A Comprehensive Review. 
+International Journal of Computer Applications Technology and Research . 
+https://doi.org/10.7753/IJCATR1407.1001 
+Kreuzberger, D., Kühl, N., & Hirschl, S. (2023). Machine Learning Operations (MLOps): Overview, 
+Definition, and Architecture. IEEE Access, 11, 31866 –31879. 
+https://doi.org/10.1109/ACCESS.2023.3262138 
+Krishnamurthy, D., & Neelanath, V. (2025). Establishing a Robust LLMOps Framework for Intelligent 
+Automation: Strategies and Best Practices. 2025 Emerging Technologies for Intelligent Systems 
+(ETIS), 1–5. https://doi.org/10.1109/ETIS64005.2025.10961869 
+Kovac, F., Neumaier, S., Pahi, T., Priebe, T., Rodrigues, R., Christodoulou, D., Cordy, M., Kubler, S., 
+Kordia, A., Pitsiladis, G., Soldatos, J., & Zervoudakis, P. (2025). Towards a Framework for 
+Supporting the Ethical and Regulatory Certification of AI Sy stems. arXiv preprint. 
+https://doi.org/10.48550/ARXIV.2510.00084 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 15 
+Kumara, I., Pecorelli, F., Catolino, G., Kazman, R., Tamburri, D. A., & Van Den Heuvel, W.-J. (2023). 
+Architecting MLOps in the Cloud: From Theory to Practice. 2023 IEEE 20th International 
+Conference on Software Architecture Companion (ICSA -C), 333 –335. 
+https://doi.org/10.1109/ICSA-C57050.2023.00076 
+Mahr, F., Angeli, G., Sindel, T., Schmidt, K., & Franke, J. (2024). A Reference Architecture for 
+Deploying Large Language Models in Industrial Environments. 2024 IEEE 30th International 
+Symposium for Design and Technology in Electronic Packaging (SIITME) , 19 –23. 
+https://doi.org/10.1109/SIITME63973.2024.10814877 
+March, S. T., & Smith, G. F. (1995). Design and natural science research on information technology. 
+Decision Support Systems, 15(4), 251–266. https://doi.org/10.1016/0167-9236(94)00041-2 
+Mazon-Olivo, B., & Pan, A. (2022). Internet of Things: State -of-the-art, Computing Paradigms and 
+Reference Architectures. IEEE Latin America Transactions , 20(1), 49 –63. 
+https://doi.org/10.1109/TLA.2022.9662173 
+Novelli, C., Casolari, F., Hacker, P., Spedicato, G., & Floridi, L. (2024). Generative AI in EU law: 
+Liability, privacy, intellectual property, and cybersecurity. Computer Law & Security Review, 55, 
+106066. https://doi.org/10.1016/j.clsr.2024.106066 
+Pahune, S., & Akhtar, Z. (2025). Transitioning from MLOps to LLMOps: Navigating the Unique 
+Challenges of Large Language Models. Information, 16(2), 87. 
+https://doi.org/10.3390/info16020087 
+Peffers, K., Tuunanen, T., Rothenberger, M. A., & Chatterjee, S. (2007). A design science research 
+methodology for information systems research. Journal of Management Information Systems , 
+24(3), 45–77. https://doi.org/10.2753/MIS0742-1222240302 
+Polyakovska, N. O. (2025). Towards a Practical Framework for LLMOps: Understanding and Building 
+Operational Excellence for Large Language Models. Computer-Integrated Technologies: 
+Education, Science, Production , 58, 100 –107. https://doi.org/10.36910/6775 -2524-0560-2025-
+58-14 
+Pourmajidi, W., Zhang, L., Steinbacher, J., Erwin, T., & Miranskyy, A. (2025). A Reference 
+Architecture for Governance of Cloud Native Applications. IEEE Transactions on Cloud 
+Computing, 13(3), 935–952. https://doi.org/10.1109/TCC.2025.3578557 
+Sinan, M., Shahin, M., & Gondal, I. (2025). Integrating Security Controls in DevSecOps: Challenges, 
+Solutions, and Future Research Directions. Journal of Software: Evolution and Process , 37, 
+e70029. https://doi.org/10.1002/smr.70029 
+Sinha, M., Menon, S., & Sagar, R. (2024). LLMOps: Definitions, Framework and Best Practices. In 
+2024 International Conference on Electrical, Computer and Energy Technologies (ICECET) (S. 
+1–6). IEEE. https://doi.org/10.1109/ICECET61485.2024.10698359 
+Sovrano, F., Hine, E., Anzolut, S., & Bacchelli, A. (2025). Simplifying software compliance: AI 
+technologies in drafting technical documentation for the AI Act. Empirical Software Engineering, 
+30, 91. https://doi.org/10.1007/s10664-025-10620-y 
+
+Exposé – Masterarbeit Mustafa Demir 
+Seite 16 
+Stone, J., Patel, R., Ghiasi, F., Mittal, S., & Rahimi, S. (2025). Navigating MLOps: Insights into 
+Maturity, Lifecycle, Tools, and Careers. 2025 IEEE Conference on Artificial Intelligence (CAI), 
+643–650. https://doi.org/10.1109/CAI64502.2025.00118 
+Taeihagh, A. (2025). Governance of Generative AI. Policy and Society , 44(1), 1 –22. 
+https://doi.org/10.1093/polsoc/puaf001 
+Tantithamthavorn, C. K., Palomba, F., Khomh, F., & Chua, J. J. (2025). MLOps, LLMOps, FMOps, 
+and Beyond. IEEE Software, 42(1), 26–32. https://doi.org/10.1109/MS.2024.3477014 
+vom Brocke, J., & Maedche, A. (2019). The DSR grid: Six core dimensions for effectively planning 
+and communicating design science research projects. Electronic Markets , 29(3), 379 –385. 
+https://doi.org/10.1007/s12525-019-00358-7 
+Wang, K., Zhang, G., Zhou, Z., Wu, J., Yu, M., Zhao, S., Yin, C., Fu, J., Yan, Y., Luo, H., Lin, L., 
+Xu, Z., Lu, H., Cao, X., Zhou, X., Jin, W., Meng, F., Xu, S., Mao, J., … Liu, Y. (2025). A 
+Comprehensive Survey in LLM( -Agent) Full Stack Safety: Data, Tra ining and Deployment 
+(Version 4). arXiv. https://doi.org/10.48550/ARXIV.2504.15585 
+Xu, X., Weytjens, H., Zhang, D., Lu, Q., Weber, I., & Zhu, L. (2025). RAGOps: Operating and 
+Managing Retrieval -Augmented Generation Pipelines (Version 1). arXiv. 
+https://doi.org/10.48550/ARXIV.2506.03401 
+Angelov, S., Grefen, P., & Greefhorst, D. (2012). A framework for analysis and design of software 
+reference architectures. Information and Software Technology , 54(4), 417 –431. 
+https://doi.org/10.1016/j.infsof.2011.11.009 
+International Organization for Standardization. (2023). ISO/IEC 42001:2023 – Information technology 
+– Artificial intelligence – Management system. ISO. 
+Mayring, P. (2015). Qualitative Inhaltsanalyse: Grundlagen und Techniken (12. Aufl.). Beltz. 
+Winter, R., & Fischer, R. (2006). Essential Layers, Artifacts, and Dependencies of Enterprise 
+Architecture. 2006 10th IEEE International Enterprise Distributed Object Computing Conference 
+Workshops (EDOCW’06), 30–30. https://doi.org/10.1109/EDOCW.2006.33 
+ 
+

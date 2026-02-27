@@ -28,11 +28,9 @@ Diese Arbeit schliesst die Luecke durch eine **Enterprise-Referenzarchitektur**,
 
 ## Forschungsfragen
 
-**Hauptfrage:** Wie muss eine cloud-native Enterprise-Referenzarchitektur gestaltet sein, damit automatisierte Quality Gates den End-to-End-Lebenszyklus generativer KI-Systeme steuern und die kontinuierliche Einhaltung des EU AI Act systematisch unterstuetzen?
-
-- **RQ1:** Welche technischen, organisatorischen und regulatorischen Anforderungen ergeben sich fuer den produktiven Betrieb generativer KI-Systeme in cloud-nativen Enterprise-Umgebungen?
-- **RQ2:** Welche Design-Prinzipien und Architekturbausteine sind erforderlich, um ein integriertes Quality-Gate-Framework entlang des GenAI-Lebenszyklus einzubetten?
-- **RQ3:** Inwieweit erfuellt die entwickelte Referenzarchitektur die abgeleiteten Anforderungen (Prototyp + Expertenbewertung)?
+- **RQ1 (Relevance):** Welche normativen Anforderungen sind fuer eine verantwortungsnachweisbare Gestaltung von GenAI-Systemen im Enterprise-Kontext relevant und technisch operationalisierbar?
+- **RQ2 (Design):** Wie kann eine Referenzarchitektur fuer GenAIOps gestaltet werden, die diese normativen Anforderungen durch ein lifecycle-integriertes Quality-Gate-Kontrollsystem systematisch operationalisiert?
+- **RQ3 (Rigor):** Inwiefern ermoeglicht die entwickelte Referenzarchitektur die technische Durchsetzung und Nachweisbarkeit dieser Anforderungen in einem cloud-nativen GenAIOps-Kontext?
 
 ## Architektur-Dokumente (Source of Truth)
 
@@ -43,8 +41,8 @@ Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlink
 - [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
 - [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
 - [Evaluation (RQ3)](06_evaluation_RQ3/)
-- [Exposé v3 SINGLE SOURCE (DOCX)](98_onedrive_migration/1_masterarbeit/1.%20Expose%20v3.docx)
-- [Exposé v3 SINGLE SOURCE (TXT-Export)](docs/expose/Expose_v3_single_source_2026-02-25.txt)
+- [Expose v3 SINGLE SOURCE (PDF)](docs/expose/Expose_v3_single_source_2026-02-27.pdf)
+- [Expose v3 SINGLE SOURCE (TXT-Export)](docs/expose/Expose_v3_single_source_2026-02-27.txt)
 - [Legacy-Archiv (v1/v2)](docs/expose/legacy/)
 - [Source-of-Truth Regeln](00_admin/SOURCE_OF_TRUTH.md)
 
@@ -111,11 +109,10 @@ Audit:     [Evidence-Log + Timestamp + Owner]
                                                                    Expert Interviews)     Repository)
 ```
 
-**Evaluation (4-stufig):**
-1. Requirements-Coverage-Check (R1-Rn gegen Architekturkomponenten)
-2. Szenario-basierter Walkthrough (Ambient AI Scribe Use Case)
-3. Proof-of-Concept: Technisches Quality Gate + Compliance Gate (Policy-as-Code)
-4. Experteninterviews mit Domaenenexperten aus Wissenschaft und Praxis
+**Evaluation (dreistufig):**
+1. **Requirements-Coverage-Matrix:** Systematischer Abgleich R1-Rn gegen Architekturkomponenten
+2. **PoC-Walkthrough:** Technische Demonstration im Azure-Stack (Ambient AI Scribe)
+3. **Expert-Reviews (n>=4):** Leitfadengestuetzte Interviews mit Domaenenexperten aus MLOps/GenAIOps, Cloud-Architektur und KI-Governance
 
 ## Repo-Struktur
 
@@ -137,9 +134,8 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 |-- 08_fazit_ausblick/
 |-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
 |-- 90_sources_zotero/
-|-- 98_onedrive_migration/
-|   |-- legacy_scaffold/      # Alte Root-Scaffold-Struktur (archiviert)
 |-- 99_inbox_unsorted/
+|-- docs/expose/              # Expose v3 (PDF + TXT, Single Source of Truth)
 ```
 
 ## Integration mit AI Context Vault
@@ -174,11 +170,13 @@ python3 validate_structure.py
 | Phase | Status |
 |---|---|
 | Expose / Forschungsdesign | Abgeschlossen |
-| Literaturrecherche & Grundlagen | Abgeschlossen |
-| Anforderungsanalyse (RQ1) | in Arbeit |
+| Kap. 3 Methodik (DSR) | ~90% (10 Seiten DOCX, offene Punkte OP-1 bis OP-4) |
+| Kap. 5 Architektur (Vorarbeit) | ~20% (SQL Evidence Store, Related-Work-Analyse) |
+| Literaturrecherche & Grundlagen | In Arbeit |
+| Anforderungsanalyse (RQ1) | Geplant (naechster Block: EU AI Act Art. 9-15) |
 | Architekturentwicklung (RQ2) | Geplant |
 | PoC-Implementierung | Geplant |
-| Evaluation & Experteninterviews (RQ3) | Geplant |
+| Evaluation & Expert-Reviews (RQ3) | Geplant |
 
 ## Lizenz
 
