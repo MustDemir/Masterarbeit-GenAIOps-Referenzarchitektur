@@ -1,8 +1,11 @@
 # Gliederung v3 (aus Expose)
 
+**Titel (FINAL C4, Stand 2026-02-27):**
+Cloud-native Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act
+
 Single Source of Truth: `/Users/mustafademir/Projects/genaiops-thesis/98_onedrive_migration/1_masterarbeit/1. Expose v3.docx`
-Synchronisierte Repo-Kopie: `docs/expose/Expose_v3_single_source_2026-02-25.docx`
-Stand: 2026-02-25
+Synchronisierte Repo-Kopie: `docs/expose/Expose_v3_single_source_2026-02-25.txt`
+Stand: 2026-02-27
 
 ## 1 Einleitung
 1.1 Problemstellung und Relevanz  

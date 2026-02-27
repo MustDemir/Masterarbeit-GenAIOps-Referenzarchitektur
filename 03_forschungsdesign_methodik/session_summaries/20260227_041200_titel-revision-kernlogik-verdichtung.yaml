@@ -1,0 +1,57 @@
+session:
+  id: "S3-20260227"
+  datum: "2026-02-27T04:12:00Z"
+  quelle: cowork
+  kapitel: 0
+  thema: "Titel-Revision auf Basis verdichteter Kernlogik"
+  status: abgeschlossen
+
+entscheidungen:
+  - id: TIT-1
+    typ: titel
+    entscheidung: "Neuer Titel fixiert (Variante C4 – FINAL)"
+    alter_titel: "Referenzarchitektur für GenAIOps mit integriertem lifecycle-basiertem Quality-Gate-Kontrollsystem zur Operationalisierung normativer Anforderungen im Enterprise-Kontext"
+    zwischentitel_c2: "Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act"
+    neuer_titel: "Cloud-native Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act"
+    aenderungen:
+      - "'integriertem lifecycle-basiertem' → 'lifecycle-integrierten' (flüssiger, als Adjektiv zur Operationalisierung)"
+      - "'im Enterprise-Kontext' entfernt (redundant bei Referenzarchitektur)"
+      - "'– auf Basis des EU AI Act' ergänzt (regulatorischer Scope sichtbar)"
+      - "'Cloud-native' als Adjektiv vor 'Referenzarchitektur' ergänzt (Cloud-Aspekt fehlte in C2)"
+    begruendung: "USP (Quality-Gate-Kontrollsystem) bleibt sichtbar, EU AI Act als normative Grundlage explizit, Cloud-native-Aspekt abgebildet, kürzer und eleganter"
+
+  - id: TIT-2
+    typ: semantik
+    entscheidung: "'auf Basis' statt 'am Beispiel' oder 'im Kontext'"
+    begruendung: "EU AI Act ist normative Quelle (Anforderungen werden daraus abgeleitet), nicht Anwendungsbeispiel (das wäre Healthcare/Azure). 'Im Kontext' zu vage."
+
+  - id: TIT-3
+    typ: titel-ergaenzung
+    entscheidung: "'Cloud-native' vor 'Referenzarchitektur' ergänzt (C2 → C4)"
+    begruendung: "Cloud-native-Aspekt (DP5, S3) fehlte im Titel. Als Adjektiv vor Referenzarchitektur natürlich integriert ohne Länge wesentlich zu erhöhen."
+
+kernlogik_mapping:
+  problem: "Operationalisierungslücke normativer Anforderungen in GenAIOps → im Titel: 'Operationalisierung normativer Anforderungen'"
+  artefakt: "Cloud-native Referenzarchitektur → im Titel: 'Cloud-native Referenzarchitektur für GenAIOps'"
+  designprinzip: "Lifecycle-basiertes Quality-Gate-Kontrollsystem → im Titel: 'mit Quality-Gate-Kontrollsystem' + 'lifecycle-integrierten'"
+  wirkung: "Technische Operationalisierung & Nachweisbarkeit → im Titel: 'Operationalisierung' (Nachweisbarkeit implizit)"
+  demonstration: "Azure-PoC → nicht im Titel (gehört in Abstract/Kap. 5)"
+  methodik: "DSR → nicht im Titel (implizit, wie gewünscht)"
+  regulatorik: "EU AI Act → im Titel: '– auf Basis des EU AI Act'"
+
+verworfene_varianten:
+  - id: A
+    text: "Referenzarchitektur für GenAIOps mit integriertem lifecycle-basiertem Quality-Gate-Kontrollsystem zur Operationalisierung normativer Anforderungen im Enterprise-Kontext"
+    problem: "Kein EU AI Act, sperrig"
+  - id: B
+    text: "Referenzarchitektur für GenAIOps zur lifecycle-integrierten Operationalisierung normativer Anforderungen im Enterprise-Kontext – am Beispiel des EU AI Act"
+    problem: "USP (Gate-System) fehlt, 'am Beispiel' semantisch falsch"
+  - id: C1
+    text: "...– am Beispiel des EU AI Act"
+    problem: "'am Beispiel' suggeriert AI Act sei Fallbeispiel"
+  - id: C2
+    text: "Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act"
+    problem: "Cloud-native-Aspekt fehlt (DP5, S3 nicht abgebildet)"
+  - id: C3
+    text: "...– im Kontext des EU AI Act"
+    problem: "Zu vage, weniger präzise als 'auf Basis'"

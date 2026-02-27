@@ -1,7 +1,7 @@
 ​​
 MASTERARBEIT 
 
-Entwicklung einer Enterprise-Referenzarchitektur für Generative KI: Automatisierte Quality Gates und EU-AI-Act-Compliance in cloud-nativen Betriebsumgebungen
+Cloud-native Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act
 
 
 
@@ -37,7 +37,7 @@ Literaturverzeichnis (Exposé)	13
 
 
 Arbeitstitel
-„Entwicklung einer Enterprise-Referenzarchitektur für Generative KI: Automatisierte Quality Gates und EU-AI-Act-Compliance in cloud-nativen Betriebsumgebungen"
+„Cloud-native Referenzarchitektur für GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen – auf Basis des EU AI Act"
 1.1 Einleitung
 Die rasante Adaption generativer KI (GenAI) und Large Language Models (LLMs) stellt Unternehmen vor operative Herausforderungen, die über den Wirkungsbereich etablierter MLOps-Verfahren hinausgehen. Bestehende CI/CD-Pipelines decken die spezifischen Risiken stochastischer Modelle — etwa Halluzinationen, Promptabhängigkeit oder kontextabhängige Qualitätsschwankungen — nicht systematisch ab. Der produktive Betrieb generativer KI-Systeme, insbesondere großer Sprachmodelle und darauf aufbauender Retrieval-Augmented-Generation-(RAG) Architekturen, stellt Unternehmen damit vor qualitativ neue Herausforderungen, die mit etablierten MLOps-Frameworks nur unzureichend adressiert werden können (Sinha et al., 2024). Dieser Befund lässt sich entlang dreier interdependenter Problemdimensionen konkretisieren.
 1.2 Problemdimensionen
