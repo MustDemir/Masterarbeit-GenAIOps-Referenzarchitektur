@@ -1,0 +1,22 @@
+id: SUM-20260226233654
+created_at: '2026-02-26T23:36:54+00:00'
+topic: methodology
+target_folder: docs/session_summaries
+title: "DSR Kapitel 3 – Forschungsdesign & Methodik"
+summary_bullets:
+  - Der Benutzer hat nach dem Thema DSR für Kapitel 3 seiner Masterarbeit gefragt und damit die methodische Fokussierung der Arbeit markiert.
+  - Ich habe strukturiert erläutert, wie ein Forschungsdesign in Design Science Research aufgebaut wird: Forschungsparadigma, theoretische Fundierung, Mapping der DSR‑Zyklen nach Hevner, DSRM‑Schritte nach Peffers, Artefakttypen und Evaluationsdesign.
+  - Wichtig ist, dass das Artefakt als Referenzarchitektur und Gate‑Framework (Model + Method) definiert wird, die jeweiligen Zyklen (Relevance, Rigor, Design) klar abgeleitet werden und ein Methodenmix zur Evaluation (Requirements‑Coverage, Walkthrough, PoC, Expertenreview) gewählt wird.
+  - Ich habe typische Fehler in DSR (fehlender Artefakttyp, keine Iterationen, reine Beschreibung statt Evaluation) hervorgehoben und den strategischen Fit der Arbeit zu DSR betont.
+  - Der Benutzer hat erklärt, dass er am Ende jeder Session eine YAML‑Zusammenfassung mit der Namenskonvention `YYYYMMDD_ID_sessiontitel` erstellen möchte und dazu die bereitgestellten Skripte `save.py` und `workflow_lib.py` verwendet werden sollen. ID wird aus der Uhrzeit (HHMMSS) abgeleitet.
+decisions:
+  - Wir werden am Ende jeder Arbeitssitzung eine standardisierte YAML‑Datei erzeugen, die den Sitzungsverlauf und die wichtigsten Erkenntnisse zusammenfasst.
+  - Die Dateinamen folgen dem Schema `YYYYMMDD_HHMMSS_sessiontitel`, wobei `HHMMSS` als ID verwendet wird und der sessiontitel den thematischen Schwerpunkt widerspiegelt.
+next_steps:
+  - Bei zukünftigen Sessions wird der Benutzer den gewünschten Sessiontitel benennen, damit das Skript `save.py` die YAML‑Datei korrekt erzeugt.
+  - Wir nutzen die hochgeladenen Dateien `save.py` und `workflow_lib.py`, um die Zusammenfassungen zu generieren und bei Bedarf nach Azure oder in einen Blob zu synchronisieren.
+tags:
+  - methodology
+  - DSR
+source: chat
+summary_engine: manual

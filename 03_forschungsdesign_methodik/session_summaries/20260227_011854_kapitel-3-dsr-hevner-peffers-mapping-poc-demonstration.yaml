@@ -1,0 +1,50 @@
+id: SUM-20260227011854
+created_at: '2026-02-27T01:18:54.132550+00:00'
+topic: methodology
+target_folder: docs/session_summaries
+repo_scope: vault
+summary_type: technisch
+source_repo: ai-context-vault
+title: Kapitel 3 DSR – Hevner/Peffers Mapping & PoC-Demonstration
+summary_bullets:
+- 'Session-Ziel: Methodik für Kapitel 3 (Forschungsdesign & Methodik) stabilisieren,
+  ohne Kapiteltext zu schreiben.'
+- 'Wesentliche Entscheidungen / Ergebnisse:'
+- 'Forschungsparadigma: Design Science Research (DSR). Hevner (Meta-Rahmen) + Peffers
+  DSRM (operatives Prozessmodell) werden kombiniert.'
+- 'Artefaktdefinition präzisiert: compliance-orientierte GenAIOps-Referenzarchitektur
+  (Model) mit integrierter Quality-Gate-Systematik + Traceability-Mechanik (Method),
+  instanziiert durch einen Azure Proof-of-Concept (In...'
+- 'Problemtyp: Gestaltungsproblem (präskriptiv), abgeleitet aus PD1 Fragmentierung
+  vorhandener Operationalisierungs-Frameworks, PD2 methodische Inadäquanz bestehender
+  QA-Mechanismen für GenAI, PD3 Compliance-Operationali...'
+- 'Scope/Abgrenzung: High-Risk GenAI allgemein (EU AI Act) als Problemraum; Demonstrationskontext
+  ist Healthcare (Patientendaten) als exemplarische Instanz. Keine breite empirische
+  Generalisierung über Branchen; ''Enterpr...'
+- 'Contribution-Typ: keine radikale Neuerfindung, sondern formalisierte Integration
+  bisher isolierter Mechanismen (Quality Gates + EU AI Act Operationalisierung + Traceability)
+  zu einem End-to-End Framework.'
+- 'Design Knowledge (Kernsatz): regulatorische Operationalisierung von High-Risk-GenAI
+  in cloud-nativen Enterprise-Umgebungen erfordert eine Gate-basierte Architektur,
+  die Anforderungen in kontrollierbare Policies, Evide...'
+decisions:
+- 'Wesentliche Entscheidungen / Ergebnisse:'
+- '- Design Knowledge (Kernsatz): regulatorische Operationalisierung von High-Risk-GenAI
+  in cloud-nativen Enterprise-Umgebungen erfordert eine Gate-basierte Architektur,
+  die Anforderungen in kontrollierbare Policies, Evidenzartefakte und auditierbare
+  Entscheidungsmechanismen überführt.'
+- '- Evaluation-Entscheidung: Schwerpunkt auf Demonstration (realer praktischer Durchlauf),
+  nicht auf umfassender analytischer Artefaktprüfung. Dennoch müssen Requirements/Mapping/Traceability
+  als Fundament existieren.'
+next_steps:
+- 'Nächste Schritte:'
+tags:
+- DSR
+- Hevner
+- Peffers
+- Methodik
+- Kapitel3
+- PoC
+- Evaluation
+source: chat
+summary_engine: local_rules

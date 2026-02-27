@@ -1,0 +1,46 @@
+id: SUM-20260227020305
+created_at: '2026-02-27T02:03:05.524105+00:00'
+topic: methodology
+target_folder: docs/session_summaries
+repo_scope: vault
+summary_type: technisch
+source_repo: ai-context-vault
+title: Kapitel 3 DSR – Peffers Positionierung, Accountability-by-Design, RQ-Schärfung
+summary_bullets:
+- 'Session-Kontext: Fortsetzung nach YAML 20260227_011854_kapitel-3-dsr-hevner-peffers-mapping-poc-demonstration.yaml.'
+- 'Ziel: DSR-Prozess-Ebene (Peffers DSRM) einordnen, wissenschaftliche Positionierung
+  (Contribution-Story) schärfen, RQs auf Accountability-by-Design ausrichten.'
+- 'Struktur-Entscheidung: DSRM als methodische Einbettung (Variante 2), nicht als
+  starre Kapitel-3-Struktur'
+- Kapitel 3 bleibt klassisch (Paradigma/Hevner → DSRM/Peffers → Mapping → Evaluation-Strategie),
+  statt die 6 Peffers-Schritte als Unterkapitel 3.1–3.6 zu verwenden.
+- 'Begründung: vermeidet Wiederholungen mit Kap. 4–6; wirkt reifer als „DSR-Schablone“,
+  Peffers dient als Prozessrahmen.'
+- Problem-centered Approach präzisiert
+- 'DSRM-Einstieg wird als problem-centered (nicht design-centered) positioniert: Ausgangspunkt
+  sind normative/regulatorische Anforderungen und die fehlende technische Operationalisierung
+  (Governance-Lücke).'
+- 'Zielbild: nicht nur „Architektur bauen“, sondern Verantwortungsnachweisbarkeit
+  technisch ermöglichen.'
+decisions:
+- '1) Struktur-Entscheidung: DSRM als methodische Einbettung (Variante 2), nicht als
+  starre Kapitel-3-Struktur'
+- '- Entscheidung: User will als jemand wahrgenommen werden, der Systeme verantwortungsvoll
+  designt (Ownership-Mindset), nicht nur Infrastruktur baut.'
+next_steps:
+- '- Offener formaler Schritt: RQ–Artefakt–Evaluation-Logik final gegen bestehende
+  Kapitelstruktur (4–6) abgleichen und Peffers-Mapping kapitelreif dokumentieren.'
+- Nächste Schritte (konkret, kapitel-3-relevant)
+tags:
+- DSR
+- Peffers
+- Hevner
+- Kapitel3
+- Accountability
+- Governance
+- GenAI
+- RQs
+- PoC
+- Azure
+source: chat
+summary_engine: local_rules
