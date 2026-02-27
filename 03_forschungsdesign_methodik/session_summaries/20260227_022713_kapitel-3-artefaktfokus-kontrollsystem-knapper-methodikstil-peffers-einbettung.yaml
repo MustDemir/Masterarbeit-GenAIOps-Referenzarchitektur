@@ -1,10 +1,10 @@
 id: SUM-20260227022713
 created_at: '2026-02-27T02:27:13.408833+00:00'
 topic: methodology
-target_folder: docs/session_summaries
-repo_scope: vault
+target_folder: 03_forschungsdesign_methodik/session_summaries
+repo_scope: thesis
 summary_type: technisch
-source_repo: ai-context-vault
+source_repo: genaiops-thesis
 title: Kapitel 3 – Artefaktfokus Kontrollsystem, knapper Methodikstil, Peffers Einbettung
 summary_bullets:
 - 'Session-Kontext: Fortsetzung nach YAML 20260227_020305_kapitel-3-dsr-peffers-positionierung-accountability-by-design-rq-sch-rfung.yaml.'

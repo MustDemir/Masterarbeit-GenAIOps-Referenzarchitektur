@@ -1,10 +1,10 @@
 id: SUM-20260227020305
 created_at: '2026-02-27T02:03:05.524105+00:00'
 topic: methodology
-target_folder: docs/session_summaries
-repo_scope: vault
+target_folder: 03_forschungsdesign_methodik/session_summaries
+repo_scope: thesis
 summary_type: technisch
-source_repo: ai-context-vault
+source_repo: genaiops-thesis
 title: Kapitel 3 DSR – Peffers Positionierung, Accountability-by-Design, RQ-Schärfung
 summary_bullets:
 - 'Session-Kontext: Fortsetzung nach YAML 20260227_011854_kapitel-3-dsr-hevner-peffers-mapping-poc-demonstration.yaml.'
