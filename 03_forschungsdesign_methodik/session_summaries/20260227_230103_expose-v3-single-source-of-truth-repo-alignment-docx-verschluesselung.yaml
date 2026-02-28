@@ -1,0 +1,38 @@
+id: SUM-20260227230103
+created_at: '2026-02-27T22:01:03.510490+00:00'
+topic: methodik
+target_folder: 03_forschungsdesign_methodik/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: Expose v3 Single Source of Truth, Repo-Alignment, DOCX-Verschluesselung
+summary_bullets:
+- Expose v3 (2026-02-27) als PDF + TXT in docs/expose/ aufgenommen, alte Version nach
+  legacy verschoben.
+- 'Methodik DOCX (Kapitel 3, 10 Seiten, 90%) mit OpenSSL AES-256-CBC PBKDF2 verschluesselt
+  (Passwort: demir). Unverschluesselte Version aus Git entfernt.'
+- 'Vergleichsanalyse Expose vs. Repo-Stand durchgefuehrt. Diskrepanzen identifiziert:
+  RQs, Gliederungsstruktur (Kap. 4/5/6), Evaluation (4-stufig vs. dreistufig), chapter_state
+  (not_started vs. 90%).'
+- gliederung_v3.md vollstaendig an Expose-Struktur angepasst (Kap. 4 Reihenfolge,
+  Kap. 5 Sub-Sections 5.3.1-5.3.3/5.4.1-5.4.2/5.5.1-5.5.2/5.6 PoC, Kap. 6 Evaluationsrahmen).
+- 'README.md aktualisiert: Forschungsfragen (DSR-Cycle-Labels), Expose-Links, Evaluation
+  dreistufig, Status-Tabelle.'
+- 'SOURCE_OF_TRUTH.md: Expose-Pfad aktualisiert, Entschluesselungsbefehl ergaenzt.'
+- 'chapter_state.yaml: Status in_progress, 90%, offene Punkte OP-1 bis OP-4, key_sources.'
+- Commit + Push auf GitHub erfolgreich (0b4f116).
+decisions: []
+next_steps:
+- '7) chapter_state.yaml: Status in_progress, 90%, offene Punkte OP-1 bis OP-4, key_sources.'
+- 'Offene Punkte:'
+- 'Naechste Schritte: Kap. 2 Theoretische Grundlagen, Kap. 4 Anforderungsanalyse (EU
+  AI Act Art. 9-15)'
+tags:
+- expose
+- source-of-truth
+- verschluesselung
+- gliederung
+- readme
+- chapter-state
+source: claude
+summary_engine: local_rules

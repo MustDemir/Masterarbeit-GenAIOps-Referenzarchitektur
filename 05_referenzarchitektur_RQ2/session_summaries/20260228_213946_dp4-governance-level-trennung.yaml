@@ -1,0 +1,40 @@
+id: SUM-20260228213946
+created_at: '2026-02-28T20:39:46.889491+00:00'
+topic: architektur
+target_folder: 05_referenzarchitektur_RQ2/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: DP4 Governance-Level-Trennung
+summary_bullets:
+- '# Session Delta — DP4 Governance-Level-Trennung'
+- Datum:** 2026-02-28
+- Thema:** Konzeptuelle Klärung DP4 + Exposé-Änderung
+- Status:** Exposé noch nicht eingereicht → Änderung umsetzbar
+- '## 1. Ausgangsproblem'
+- 'Gutachter-Feedback zu DP4:'
+- '> „Es fehlt in Kapitel 2 noch die Nennung des theoretischen Frameworks, das diese
+  Dreiteilung rechtfertigt."'
+- 'Bisheriger Stand: Die drei Gate-Dimensionen (strategisch / technisch / Compliance)
+  waren im Exposé ohne theoretischen Anker — MLOps/GenAIOps und EU AI Act erklären
+  die Compliance-Dimension, aber nicht die Dreiteilung...'
+decisions:
+- 'DP4 heißt „Trennung von Governance-Ebenen" — aber die drei Kategorien sind **keine
+  Governance-Ebenen** (hierarchisch: wer entscheidet?), sondern **thematische Prüfdimensionen**
+  (was wird geprüft?). Das Gate-Template (Trigger / Kriterien / Evidence / Decision
+  / **Owner** / Audit Trail / Waiver) zeigt jedoch: durch das Owner-Feld ist beides
+  implizit enthalten.'
+- '- **Entscheidungsverantwortung** (wer/Owner?) → implizite Governance-Ebene'
+- '- Make-or-Buy = **vorgelagerte Governance-Entscheidung**, kein Lifecycle-Gate'
+- '| **Abgrenzung** | Make-or-Buy = vorgelagerte Governance-Entscheidung, kein Gate
+  |'
+next_steps:
+- '## 6. Offene To-Dos'
+- '| To-Do | Wo | Priorität |'
+tags:
+- DP4
+- gate-taxonomie
+- NIST-AI-RMF
+- expose
+source: cowork-claude
+summary_engine: local_rules

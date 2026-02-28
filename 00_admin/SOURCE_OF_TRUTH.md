@@ -7,8 +7,10 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Operativer Einstiegspunkt (Workspace):
   - `/Users/mustafademir/Projects/genaiops-thesis/00_workspace/`
 - Expose (primaer):
-  - `docs/expose/Expose_v3_single_source_2026-02-27.pdf`
-  - `docs/expose/Expose_v3_single_source_2026-02-27.txt` (Textextrakt)
+  - `docs/expose/Expose_v3_2026-02-28.docx` (aktuelle Arbeitsversion, inkl. DP4 NIST-Korrektur)
+  - `docs/expose/Expose_v3_delta_2026-02-28.docx` (Delta-Dokument mit Aenderungen)
+  - `docs/expose/Expose_v3_single_source_2026-02-27.pdf` (letzte eingefrorene PDF-Version)
+  - `docs/expose/Expose_v3_single_source_2026-02-27.txt` (Textextrakt der PDF)
 - Gliederung (primaer):
   - `00_admin/gliederung_v3.md`
 - Aktive Thesis-Inhalte (primaer):
