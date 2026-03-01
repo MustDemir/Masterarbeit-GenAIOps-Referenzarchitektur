@@ -185,7 +185,10 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 
 ## Fortschritt
 
-> Gesamtfortschritt: `█████░░░░░░░░░░░░░░░` **25%**
+> Fortschritt wird automatisch jeden Montag aktualisiert. Aendere `_status.yml` im jeweiligen Kapitelordner, um den Fortschritt zu pflegen.
+
+<!-- PROGRESS-START -->
+> Gesamtfortschritt: `█████░░░░░░░░░░░░░░░` **24%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
@@ -199,6 +202,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 8 — Fazit & Ausblick | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | PoC-Implementierung | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
+<!-- PROGRESS-END -->
 
 ## Zitierung
 
