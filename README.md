@@ -86,7 +86,9 @@ Die Referenzarchitektur wird als **generisches Modell** entwickelt, das branchen
 
 **Warum dieses Szenario:** (1) Hochrisiko-KI-System gemaess EU AI Act Annex III, (2) sensible Gesundheitsdaten unter DSGVO und KI-Regulierung, (3) hoechste Qualitaetsanforderungen an generative Outputs, (4) umfassende Nachweispflichten.
 
-**PoC-Stack:** Microsoft Azure (AKS, Azure OpenAI Service, ArgoCD, OPA/Rego, Azure Monitor, Blob Storage immutable)
+**PoC-Stack:** Microsoft Azure (AKS, Azure OpenAI Service, ArgoCD, OPA/Rego, Azure Monitor, Azure PostgreSQL, Blob Storage immutable)
+
+**Hybrider Evidence Store:** Der Evidence Store trennt unstrukturierte Artefakte (Model Cards, Evaluierungsreports → Azure Blob Storage immutable) von strukturierten Quality-Gate-Metadaten (→ relationale SQL-Datenbank). Diese Trennung ermoeglicht performantes Compliance-Reporting ueber indizierte Abfragen und stellt durch datenbankgestuetzte Schutzmechanismen (Immutability-Trigger, View-basierte Zugriffskontrolle, Least-Privilege-Rollen) die Manipulationssicherheit der Audit-Nachweise sicher. Im Healthcare-Kontext wird dadurch die strikte Trennung zwischen medizinischer Payload (verschluesselte Transkripte) und regulatorischer Telemetrie (Compliance-Metadaten) gewaehrleistet — eine zentrale Voraussetzung nach DSGVO Art. 9.
 
 **Explizit ausserhalb des Scope:** LLM-Training/Fine-Tuning, eigenstaendige Modellentwicklung, Optimierung von Data-Engineering-Pipelines, juristische Vollstaendigkeitsanalyse.
 
@@ -136,8 +138,8 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | **Observability** | OpenTelemetry, Prometheus, Grafana, Langfuse |
 | **CI/CD/CT** | GitHub Actions, Tekton, Policy-Engine-Integration |
 | **Security** | Vault (Secrets), Falco (Runtime), RBAC/ABAC |
-| **Governance** | Evidence Store, Audit Trail DB, Compliance Dashboard |
-| **Programmierung** | Python, YAML, Rego, HCL |
+| **Governance** | Evidence Store (Azure PostgreSQL + Blob Storage immutable), Audit Trail DB, Compliance Dashboard |
+| **Programmierung** | Python, SQL, YAML, Rego, HCL |
 
 ## Architektur-Preview
 
