@@ -159,7 +159,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |-- 01_einleitung/
 |-- 02_rigor_theorie_stand_forschung/
 |-- 03_forschungsdesign_methodik/
-|-- 04_anforderungsanalyse_RQ1/
+|-- 04_anforderungsanalyse_RQ1/  # Design-getriebene Operationalisierung (Design Cycle Phase 1)
 |-- 05_referenzarchitektur_RQ2/
 |   |-- 05_03_quality_gates/
 |   |-- 05_04_pipelines_integration/
@@ -191,7 +191,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | Kap. 3 Methodik (DSR) | ~90% (offene Punkte OP-1 bis OP-4) |
 | Kap. 5 Architektur (Vorarbeit) | ~20% (SQL Evidence Store, Related-Work-Analyse) |
 | Literaturrecherche & Grundlagen | In Arbeit |
-| Anforderungsanalyse (RQ1) | Geplant |
+| Kap. 4 Design-getriebene Operationalisierung (RQ1) | Strukturentscheidungen getroffen (MD1-MD14), Schreibstart |
 | Architekturentwicklung (RQ2) | Geplant |
 | PoC-Implementierung | Geplant |
 | Evaluation & Expert-Reviews (RQ3) | Geplant |

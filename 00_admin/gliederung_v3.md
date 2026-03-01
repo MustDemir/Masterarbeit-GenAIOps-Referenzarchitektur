@@ -35,12 +35,13 @@ Stand: 2026-02-28
 3.7 Evaluationsdesign (3-stufig, Kriterien pro Gate-Dimension)
 3.8 Interviewdesign und Auswertung
 
-## 4 Anforderungsanalyse (Relevance Cycle, beantwortet RQ1)
-4.1 Vorgehen der Anforderungserhebung (Methodik und Quellenauswahl)
-4.2 Regulatorische Anforderungen (EU AI Act Art. 9-15, Annex III/IV)
-4.3 Technische Anforderungen (GenAIOps Pipeline-Anforderungen, GenAI-spezifische Metriken)
-4.4 Organisatorische Anforderungen (Governance-Strukturen, Rollenmodell)
-4.5 Anforderungskatalog (R1-Rn, MUSS/SOLL-Priorisierung, Traceability)
+## 4 Design-getriebene Operationalisierung regulatorischer Anforderungen (Design Cycle Phase 1, beantwortet RQ1)
+4.1 Zielbild des Kontrollsystems (Enforcement vs. Dokumentation, Accountability-by-Design)
+4.2 Lifecycle-Modell (3 Phasen: Pre-Deployment, Deployment, Operation)
+4.3 Transformationsmethodik (Norm → funktionaler Kontrollmechanismus, kein juristischer Kommentar)
+4.4 Kontrollmechanismen (EU AI Act Art. 9-15 → technisch pruefbare Controls, Lifecycle-verortet)
+4.5 Konsolidierung (Governance-Dimensionen, NIST AI RMF Harmonisierung, Clustering)
+4.6 Requirements-Katalog (R1-Rn, Lifecycle-Phase, Governance-Dimension, AI-Act-Ref, MUSS/SOLL)
 
 ## 5 Entwicklung der Referenzarchitektur (Design Cycle, beantwortet RQ2)
 5.1 Ueberblick und Designprinzipien (DP1-DP5, Architekturuebersicht)

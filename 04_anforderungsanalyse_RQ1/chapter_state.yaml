@@ -1,7 +1,20 @@
 chapter: "04_anforderungsanalyse_RQ1"
-status: "not_started"
-current_focus: ""
-done: []
-next_steps: []
-open_questions: []
-key_sources: []
+title: "Design-getriebene Operationalisierung regulatorischer Anforderungen"
+dsr_cycle: "Design Cycle Phase 1"
+status: "structuring_complete"
+current_focus: "Schreibstart 4.1 Zielbild des Kontrollsystems"
+method_decisions: "method_decisions_kapitel4.md (MD1-MD14)"
+done:
+  - "MD1-MD14 Strukturentscheidungen getroffen"
+  - "Hybridmodell definiert (Lifecycle-first + Governance-Sekundaer)"
+  - "3-Phasen-Lifecycle-Modell festgelegt (Pre-Deployment, Deployment, Operation)"
+  - "Verzeichnisstruktur an MD-Entscheidungen angepasst"
+next_steps:
+  - "4.1 Zielbild schreiben (Enforcement vs. Dokumentation)"
+  - "4.2 Lifecycle-Modell ausfuehren (3 Phasen, PoC-Mapping)"
+  - "4.3 Transformationsmethodik (AI Act Art. 9-15 → Kontrollmechanismen)"
+open_questions:
+  - "Kap. 3 Deltas (MD 12.2): Artefaktbeginn, 3-Phasen, Terminologie 'normativ'"
+key_sources:
+  - "EU AI Act (VO 2024/1689) Art. 9-15"
+  - "NIST AI RMF 1.0 (2023)"

@@ -9,13 +9,19 @@ assignees: ''
 ## Anforderung
 
 **ID:** R-XX
-**Quelle:** [EU AI Act Art. X / Literatur / Experten-Interview]
+**Kontrollmechanismus:** [Technisch pruefbarer Kontrollmechanismus]
+**Quelle:** [EU AI Act Art. X / NIST AI RMF / Literatur]
 **Prioritaet:** [MUSS / SOLL]
-**Dimension:** [Regulatorisch / Technisch / Organisatorisch]
+
+## Zuordnung
+
+**Lifecycle-Phase:** [Pre-Deployment / Deployment / Operation]
+**Governance-Dimension:** [Regulatorisch / Technisch / Strategisch]
+**EU AI Act Referenz:** [Art. X Abs. Y, wenn zutreffend]
 
 ## Beschreibung
 
-[Klare, pruefbare Formulierung der Anforderung]
+[Klare, pruefbare Formulierung der Anforderung als funktionaler Kontrollmechanismus — kein juristischer Kommentar]
 
 ## Traceability
 
@@ -25,7 +31,8 @@ assignees: ''
 
 ## Akzeptanzkriterien
 
-- [ ] Anforderung ist pruefbar formuliert
-- [ ] Quelle ist dokumentiert
+- [ ] Als technisch pruefbarer Kontrollmechanismus formuliert (nicht als Norm-Paraphrase)
+- [ ] Lifecycle-Phase zugeordnet (Pre-Deployment / Deployment / Operation)
+- [ ] Governance-Dimension zugeordnet
 - [ ] MUSS/SOLL-Priorisierung ist begruendet
 - [ ] Traceability-Zuordnung ist vollstaendig (R → DP → Gate → Evidence)

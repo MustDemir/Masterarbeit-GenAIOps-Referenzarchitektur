@@ -1,10 +1,11 @@
 id: R001
 title: ""
-type: "technical|organizational|regulatory"
-lifecycle_phase: "ideation|development|evaluation|deployment|monitoring|end_to_end"
+kontrollmechanismus: ""
+lifecycle_phase: "pre-deployment|deployment|operation"
+governance_dimension: "regulatorisch|technisch|strategisch"
+eu_ai_act_refs: []
 must_should: "MUST|SHOULD"
 description: ""
-eu_ai_act_refs: []
 evidence_expected: []
 acceptance_criteria: []
 linked_gates: []

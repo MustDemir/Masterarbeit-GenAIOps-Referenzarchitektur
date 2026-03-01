@@ -14,6 +14,9 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
   - Arbeitsversion (OneDrive): `OneDrive-SRHFernhochschule/1. Onedrive_Masterarbeit/3. Methodik/Kapitel_3_Forschungsdesign_und_Methodik.docx`
 - Gliederung (primaer):
   - `00_admin/gliederung_v3.md`
+- Kapitel 4 Method Decisions (primaer):
+  - `04_anforderungsanalyse_RQ1/method_decisions_kapitel4.md` (MD1-MD14, Strukturentscheidungen)
+  - Arbeitsversion (OneDrive): `OneDrive-SRHFernhochschule/1. Onedrive_Masterarbeit/4. Anforderungen/MD_Masterarbeit_v2_Sessionbericht.md`
 - Aktive Thesis-Inhalte (primaer):
   - Kapitelordner `01_*` bis `08_*` in diesem Repo.
 
