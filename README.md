@@ -188,14 +188,14 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 > Fortschritt wird automatisch jeden Montag aktualisiert. Aendere `_status.yml` im jeweiligen Kapitelordner, um den Fortschritt zu pflegen.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `█████░░░░░░░░░░░░░░░` **24%**
+> Gesamtfortschritt: `█████░░░░░░░░░░░░░░░` **25%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
 | Expose v4 / Forschungsdesign | `████████████████████` | 100% | Abgeschlossen |
 | Kap. 1 — Einleitung | `██░░░░░░░░░░░░░░░░░░` | 10% | Entwurf |
 | Kap. 2 — Theorie & Grundlagen | `███░░░░░░░░░░░░░░░░░` | 15% | In Arbeit |
-| Kap. 3 — Methodik (DSR) | `██████████████████░░` | 90% | Fast fertig (OP-1 bis OP-4 offen) |
+| Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | Fast fertig (OP-1 bis OP-4 offen) |
 | Kap. 4 — Anforderungsanalyse (RQ1) | `██░░░░░░░░░░░░░░░░░░` | 10% | Schreibstart (MD1–MD14 definiert) |
 | Kap. 5 — Referenzarchitektur (RQ2) | `████░░░░░░░░░░░░░░░░` | 20% | In Arbeit (Evidence Store, Related Work) |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
