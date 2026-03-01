@@ -30,9 +30,15 @@ Thumbs.db
 
 # Terraform
 .terraform/
+.terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
 *.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 
 # Docker
 *.log
@@ -58,3 +64,24 @@ Thumbs.db
 *.temp.png
 *.bak.png
 *.backup.png
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Helm
+charts/*.tgz
+
+# OPA/Rego
+.opa/
+
+# Azure CLI
+.azure/
+
+# Evidence artifacts (generiert, nicht Source)
+poc/evidence-store/*.db
+poc/evidence-store/generated/
+
+# Interview-Daten (Datenschutz)
+**/interviews/raw/
+**/interviews/audio/

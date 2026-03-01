@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this reference architecture, please cite as below."
+type: software
+title: "GenAIOps Reference Architecture with Quality-Gate Control System"
+authors:
+  - family-names: "Demir"
+    given-names: "Mustafa"
+    affiliation: "SRH Fernhochschule - The Mobile University"
+version: "0.1.0"
+date-released: "2026-03-01"
+license: "CC-BY-NC-4.0"
+repository-code: "https://github.com/MustDemir/Masterarbeit-GenAIOps-Referenzarchitektur"
+abstract: >
+  Cloud-native reference architecture for GenAIOps with lifecycle-integrated
+  Quality-Gate control system for operationalizing regulatory, technical, and
+  strategic requirements based on the EU AI Act.
+keywords:
+  - GenAIOps
+  - EU AI Act
+  - Quality Gates
+  - Reference Architecture
+  - Design Science Research
+  - Policy-as-Code
+  - Cloud-native
+references:
+  - type: thesis
+    title: >
+      Cloud-native Referenzarchitektur fuer GenAIOps mit Quality-Gate-Kontrollsystem
+      zur lifecycle-integrierten Operationalisierung normativer Anforderungen
+    authors:
+      - family-names: "Demir"
+        given-names: "Mustafa"
+    institution:
+      name: "SRH Fernhochschule - The Mobile University"
+    thesis-type: "Master's Thesis"
+    year: 2026
