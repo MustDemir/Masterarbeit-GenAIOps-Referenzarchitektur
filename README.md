@@ -145,7 +145,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 
 ![Methoden-Framework v02](03_forschungsdesign_methodik/images/final/03_04_methoden_framework_overview_v02.png)
 ![KI-Fabrik-Analogie v02](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_ki-fabrik-analogie_v02.png)
-![Artifact-Construction v01](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/final/05_02_architektur_artifact-construction_bw_v01.png)
+
 
 ## Repo-Struktur
 
