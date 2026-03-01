@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PRIMARY_EXPOSE = ROOT / "98_onedrive_migration" / "1_masterarbeit" / "1. Expose v3.docx"
+PRIMARY_EXPOSE = ROOT / "docs" / "expose" / "Expose_v4_final_2026-02-28.pdf"
 LEGACY_EXPOSE_DIR = ROOT / "docs" / "expose" / "legacy"
 
 

@@ -41,9 +41,8 @@ Statt einer statischen README-Grafik sind hier die verbindlichen Quellen verlink
 - [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
 - [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
 - [Evaluation (RQ3)](06_evaluation_RQ3/)
-- [Expose v3 SINGLE SOURCE (PDF)](docs/expose/Expose_v3_single_source_2026-02-27.pdf)
-- [Expose v3 SINGLE SOURCE (TXT-Export)](docs/expose/Expose_v3_single_source_2026-02-27.txt)
-- [Legacy-Archiv (v1/v2)](docs/expose/legacy/)
+- [Expose v4 FINAL (PDF)](docs/expose/Expose_v4_final_2026-02-28.pdf)
+- [Legacy-Archiv (v1/v2/v3)](docs/expose/legacy/)
 - [Source-of-Truth Regeln](00_admin/SOURCE_OF_TRUTH.md)
 
 ## Architektur-Preview (PNG)
@@ -135,7 +134,7 @@ Audit:     [Evidence-Log + Timestamp + Owner]
 |-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
 |-- 90_sources_zotero/
 |-- 99_inbox_unsorted/
-|-- docs/expose/              # Expose v3 (PDF + TXT, Single Source of Truth)
+|-- docs/expose/              # Expose v4 (PDF, Single Source of Truth)
 ```
 
 ## Integration mit AI Context Vault
@@ -169,7 +168,7 @@ python3 validate_structure.py
 
 | Phase | Status |
 |---|---|
-| Expose / Forschungsdesign | Abgeschlossen |
+| Expose v4 / Forschungsdesign | Abgeschlossen |
 | Kap. 3 Methodik (DSR) | ~90% (10 Seiten DOCX, offene Punkte OP-1 bis OP-4) |
 | Kap. 5 Architektur (Vorarbeit) | ~20% (SQL Evidence Store, Related-Work-Analyse) |
 | Literaturrecherche & Grundlagen | In Arbeit |
