@@ -183,18 +183,22 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 - [Legacy-Archiv (v1/v2/v3)](docs/expose/legacy/)
 - [Source-of-Truth Regeln](00_admin/SOURCE_OF_TRUTH.md)
 
-## Status
+## Fortschritt
 
-| Phase | Status |
-|---|---|
-| Expose v4 / Forschungsdesign | Abgeschlossen |
-| Kap. 3 Methodik (DSR) | ~90% (offene Punkte OP-1 bis OP-4) |
-| Kap. 5 Architektur (Vorarbeit) | ~20% (SQL Evidence Store, Related-Work-Analyse) |
-| Literaturrecherche & Grundlagen | In Arbeit |
-| Kap. 4 Design-getriebene Operationalisierung (RQ1) | Strukturentscheidungen getroffen (MD1-MD14), Schreibstart |
-| Architekturentwicklung (RQ2) | Geplant |
-| PoC-Implementierung | Geplant |
-| Evaluation & Expert-Reviews (RQ3) | Geplant |
+> Gesamtfortschritt: `█████░░░░░░░░░░░░░░░` **25%**
+
+| Kapitel | Fortschritt | % | Status |
+|---------|------------|---|--------|
+| Expose v4 / Forschungsdesign | `████████████████████` | 100% | Abgeschlossen |
+| Kap. 1 — Einleitung | `██░░░░░░░░░░░░░░░░░░` | 10% | Entwurf |
+| Kap. 2 — Theorie & Grundlagen | `███░░░░░░░░░░░░░░░░░` | 15% | In Arbeit |
+| Kap. 3 — Methodik (DSR) | `██████████████████░░` | 90% | Fast fertig (OP-1 bis OP-4 offen) |
+| Kap. 4 — Anforderungsanalyse (RQ1) | `██░░░░░░░░░░░░░░░░░░` | 10% | Schreibstart (MD1–MD14 definiert) |
+| Kap. 5 — Referenzarchitektur (RQ2) | `████░░░░░░░░░░░░░░░░` | 20% | In Arbeit (Evidence Store, Related Work) |
+| Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
+| Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
+| Kap. 8 — Fazit & Ausblick | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
+| PoC-Implementierung | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 
 ## Zitierung
 
