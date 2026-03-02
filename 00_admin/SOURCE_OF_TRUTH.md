@@ -22,6 +22,16 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 
 Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Primaerdokumenten.
 
+## Kommunikationsartefakte
+
+- USP-Analyse & Positionierung (primaer):
+  - `docs/positioning/USP_ANALYSE_EXPERTENBEWERTUNG.md` (Living Document, SOT im Repo)
+  - Verwendung: Kap. 2.7 (Forschungsluecke), Kap. 5.1 (Designprinzipien), Kap. 7.2 (Wiss. Beitrag), Kap. 6.4 (Expert-Review-Leitfaden), Betreuungsgespraeche
+  - Erstellt: 2026-03-02 via Copilot Repo-Tiefenanalyse + Design-Thinking-Session
+- Design-Thinking Rohdaten (Archiv):
+  - `99_inbox_unsorted/raw/Design_Thinking_Chatverlauf_GenAIOps.md`
+  - Nicht primaer — Rohmaterial fuer USP-Analyse
+
 ## Legacy / Historische Backups
 
 - `docs/expose/legacy/` — Alle Expose v1-v3 Versionen (eingefroren)
