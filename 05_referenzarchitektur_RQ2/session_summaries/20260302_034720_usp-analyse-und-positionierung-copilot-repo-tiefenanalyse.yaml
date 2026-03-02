@@ -1,0 +1,46 @@
+id: SUM-20260302034720
+created_at: '2026-03-02T02:47:20.175806+00:00'
+topic: architektur
+target_folder: 05_referenzarchitektur_RQ2/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: USP-Analyse und Positionierung – Copilot Repo-Tiefenanalyse
+summary_bullets:
+- '# USP-Analyse & Positionierung — GenAIOps-Referenzarchitektur'
+- '> **Zweck:** Kommunikationsartefakt fuer Betreuungsgespraeche, Expert-Reviews (RQ3),'
+- '> Thesis-Kapitel 7 (Diskussion/Wissenschaftlicher Beitrag) und DSRM Step 6 (Communication).'
+- '> **Erstellt:** 2026-03-02 | **Quellen:** KI-gestuetzte Repo-Tiefenanalyse, Design-Thinking-Session
+  (2026-02-28)'
+- '> **Status:** Living Document — wird mit Fortschritt aktualisiert'
+- '## 1. Problemvalidierung durch Marktdaten'
+- 'Die drei Problemdimensionen (PD1–PD3) der Masterarbeit werden durch aktuelle Industrie-Evidenz
+  gestuetzt:'
+- '### PD1 — Fragmentierung bestehender Operationalisierungsframeworks'
+decisions:
+- Die dreidimensionale Taxonomie mit einheitlichem Template (Trigger, Kriterien, Evidence,
+  Decision, Owner, Audit Trail, Waiver-Regelung) ist in der Literatur **nicht formalisiert**.
+- '| Art. 12 | Aufzeichnungspflichten | Automatisches Logging, Audit Trail pro Gate-Entscheidung
+  |'
+- 'Die Referenzarchitektur verwendet im PoC Microsoft Azure (AKS, Azure OpenAI Service),
+  ist aber durch folgende Entwurfsentscheidungen **cloud-agnostisch portabel**:'
+- '## 6. Offene Design-Entscheidungen (fuer weitere Iterationen)'
+- 'Aus der Design-Thinking-Session (2026-02-28) sind folgende Entscheidungen offen:'
+- '| # | Entscheidung | Optionen | Status |'
+next_steps:
+- '## 6. Offene Design-Entscheidungen (fuer weitere Iterationen)'
+- 'Aus der Design-Thinking-Session (2026-02-28) sind folgende Entscheidungen offen:'
+- '| DE-1 | Meta-Orchestrator vs. eigenes Control Plane | Adapter-Pattern vs. Custom
+  Control Plane | Offen |'
+- '| DE-3 | Compliance-Encoding: Artikel-Ebene vs. Risk-Level-Ebene | Granular (Art.
+  9–15 einzeln) vs. aggregiert (Risk Level) | Offen |'
+- '| DE-6 | Data Lineage fuer RAG | Prompt-to-Source-Traceability — wie implementieren?
+  | Offen |'
+tags:
+- usp
+- neuheitswert
+- positionierung
+- kommunikation
+- souveraenitaet
+source: copilot
+summary_engine: local_rules
