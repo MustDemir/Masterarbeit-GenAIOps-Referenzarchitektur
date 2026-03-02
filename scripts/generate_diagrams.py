@@ -69,7 +69,6 @@ def wrap_center_text(d, text, x, y, w, font, fill=BLACK, line_spacing=4):
             current = test
     if current:
         lines.append(current)
-    total_h = sum(d.textbbox((0,0), l, font=font)[3] - d.textbbox((0,0), l, font=font)[1] for l in lines) + line_spacing * (len(lines)-1)
     cy = y
     for line in lines:
         bbox = d.textbbox((0, 0), line, font=font)
@@ -81,68 +80,69 @@ def wrap_center_text(d, text, x, y, w, font, fill=BLACK, line_spacing=4):
 
 def draw_arrow_down(d, cx, y1, y2, lw=2):
     d.line([(cx, y1), (cx, y2)], fill=BLACK, width=lw)
-    d.polygon([(cx-6, y2-10), (cx+6, y2-10), (cx, y2)], fill=BLACK)
+    d.polygon([(cx-8, y2-12), (cx+8, y2-12), (cx, y2)], fill=BLACK)
 
 def draw_arrow_right(d, x1, cy, x2, lw=2):
     d.line([(x1, cy), (x2, cy)], fill=BLACK, width=lw)
-    d.polygon([(x2-10, cy-6), (x2-10, cy+6), (x2, cy)], fill=BLACK)
+    d.polygon([(x2-12, cy-8), (x2-12, cy+8), (x2, cy)], fill=BLACK)
 
 # ============================================================================
 # DIAGRAM 1: Methoden-Framework v02
 # ============================================================================
 def generate_methoden_framework(out_path):
-    W, H = 1800, 1300
+    W, H = 2600, 1950
     img = Image.new("RGB", (W, H), WHITE)
     d = ImageDraw.Draw(img)
 
-    ft_title = get_bold_font(26)
-    ft_sub = get_bold_font(18)
-    ft_body = get_font(15)
-    ft_small = get_font(13)
-    ft_label = get_bold_font(15)
+    ft_title = get_bold_font(36)
+    ft_sub = get_bold_font(26)
+    ft_body = get_font(21)
+    ft_small = get_font(18)
+    ft_label = get_bold_font(21)
 
     # --- Title ---
-    center_text(d, "Methoden-Framework: Forschungsmethode + Technische Konstruktionsmethoden", 0, 20, W, ft_title)
-    center_text(d, "(aktualisiert — v02, schwarz-weiss)", 0, 52, W, ft_body, fill=GRAY_DARK)
+    center_text(d, "Methoden-Framework: Forschungsmethode + Technische Konstruktionsmethoden", 0, 25, W, ft_title)
+    center_text(d, "(aktualisiert — v02, schwarz-weiss)", 0, 70, W, ft_body, fill=GRAY_DARK)
 
     # ===== EBENE 1: Forschungsmethode =====
-    e1_y = 90
-    draw_rect(d, 40, e1_y, W-80, 200, fill=GRAY_LIGHT, outline=BLACK, lw=3)
-    d.text((60, e1_y+8), "EBENE 1: FORSCHUNGSMETHODE — Wie wird die Masterarbeit durchgefuehrt?", font=ft_sub, fill=BLACK)
+    e1_y = 110
+    e1_h = 270
+    draw_rect(d, 50, e1_y, W-100, e1_h, fill=GRAY_LIGHT, outline=BLACK, lw=3)
+    d.text((80, e1_y+12), "EBENE 1: FORSCHUNGSMETHODE — Wie wird die Masterarbeit durchgefuehrt?", font=ft_sub, fill=BLACK)
 
     # Three DSR frameworks
-    fw_w = 500
-    fw_h = 130
-    fw_y = e1_y + 50
+    fw_w = 720
+    fw_h = 160
+    fw_y = e1_y + 60
+    fw_gap = 50
+    fw_x_start = (W - (3 * fw_w + 2 * fw_gap)) // 2
     frameworks = [
         ("DSR nach Hevner (2004)", "IS Research Framework\n3 Zyklen: Relevance, Design, Rigor"),
         ("DSRM nach Peffers (2007)", "6-Schritte-Prozessmodell\nproblem-centered initiation"),
         ("DSR Grid nach vom Brocke\n& Maedche (2019)", "Systematische Abdeckung\naller DSR-Dimensionen"),
     ]
     for i, (title, desc) in enumerate(frameworks):
-        fx = 80 + i * (fw_w + 40)
+        fx = fw_x_start + i * (fw_w + fw_gap)
         draw_rounded_rect(d, fx, fw_y, fw_w, fw_h, fill=WHITE)
-        d.text((fx+15, fw_y+10), title, font=ft_label, fill=BLACK)
-        d.text((fx+15, fw_y+50), desc, font=ft_body, fill=GRAY_DARK)
+        d.text((fx+20, fw_y+15), title, font=ft_label, fill=BLACK)
+        d.text((fx+20, fw_y+65), desc, font=ft_body, fill=GRAY_DARK)
 
     # Scope note
-    d.text((80, fw_y + fw_h + 15), "Scope: Deployment- und Inference-Zyklus  |  n >= 4 Expert Reviews  |  2 Iterationen  |  NIST AI RMF (Rigor)", font=ft_body, fill=BLACK)
+    d.text((fw_x_start, fw_y + fw_h + 20), "Scope: Deployment- und Inference-Zyklus  |  n >= 4 Expert Reviews  |  2 Iterationen  |  NIST AI RMF (Rigor)", font=ft_body, fill=BLACK)
 
     # Arrow down
-    draw_arrow_down(d, W//2, e1_y+200, e1_y+230)
+    draw_arrow_down(d, W//2, e1_y + e1_h, e1_y + e1_h + 40)
 
     # ===== EBENE 2: Technische Konstruktionsmethoden =====
-    e2_y = e1_y + 240
-    e2_h = 720
-    draw_rect(d, 40, e2_y, W-80, e2_h, fill=GRAY_LIGHT, outline=BLACK, lw=3)
-    d.text((60, e2_y+8), "EBENE 2: TECHNISCHE KONSTRUKTIONSMETHODEN — Womit wird das Artefakt gebaut?", font=ft_sub, fill=BLACK)
-
-    # 4 columns (Saeulen S1-S4)
-    col_w = 390
-    col_h = 520
-    col_y = e2_y + 50
-    col_gap = 20
-    col_x_start = 60
+    e2_y = e1_y + e1_h + 50
+    col_w = 570
+    col_gap = 35
+    col_x_start = (W - (4 * col_w + 3 * col_gap)) // 2
+    col_h = 720
+    col_y = e2_y + 55
+    e2_h = col_h + 80
+    draw_rect(d, 50, e2_y, W-100, e2_h, fill=GRAY_LIGHT, outline=BLACK, lw=3)
+    d.text((80, e2_y+12), "EBENE 2: TECHNISCHE KONSTRUKTIONSMETHODEN — Womit wird das Artefakt gebaut?", font=ft_sub, fill=BLACK)
 
     saeulen = [
         {
@@ -154,7 +154,7 @@ def generate_methoden_framework(out_path):
                 "Modularitaet & Loose Coupling",
                 "Infrastructure-as-Code (IaC)",
             ],
-            "output": "Komponenten, alle Phasen (DATA ... MODEL ... DEPLOY ... PROD)",
+            "output": "Komponenten, alle Phasen\n(DATA ... MODEL ... DEPLOY ... PROD)",
             "policy": "Pol: Strukturierung | Ansatz",
         },
         {
@@ -171,27 +171,27 @@ def generate_methoden_framework(out_path):
         },
         {
             "title": "S3: PIPELINE-INTEGRATION",
-            "subtitle": "Einbettung: Automatisierte Pipeline mit Gates",
+            "subtitle": "Einbettung: Automatisierte Pipeline\nmit Gates",
             "methoden": [
                 "CI/CD/CT-Plattform (GitHub Actions)",
                 "GitOps/ArgoCD Continuous Deployment",
                 "Policy-as-Code (OPA/Rego)",
                 "Automatisierter Gate Check",
             ],
-            "output": "Ergebnis: Automatisierter Pipeline-Fluss\nmit Gate-Checkpoints pro Phase",
+            "output": "Ergebnis: Automatisierter\nPipeline-Fluss mit\nGate-Checkpoints pro Phase",
             "policy": "Pol: Stage | EVAL | DEPLOY | PROD",
         },
         {
-            "title": "S4: COMPLIANCE-OPERATIONALISIERUNG",
-            "subtitle": "Governance: EU AI Act als Audit Trail (USP)",
+            "title": "S4: COMPLIANCE-OP.",
+            "subtitle": "Governance: EU AI Act als\nAudit Trail (USP)",
             "methoden": [
                 "Regulatory-to-Technical Mapping",
                 "Policy-as-Code (Art. 9-15)",
                 "Continuous Compliance Monitoring",
                 "Accountability-by-Design",
             ],
-            "output": "Policy Engine (Compliance) → Evidence Store\nAI Act: Art. 9-15 | Immutable Log\nEvidence Store (USP)",
-            "policy": "Pol: Regulatorisch | Technisch | Strategisch",
+            "output": "Policy Engine (Compliance)\n→ Evidence Store\nAI Act: Art. 9-15 | Immutable Log\nEvidence Store (USP)",
+            "policy": "Pol: Regulatorisch | Technisch\n| Strategisch",
         },
     ]
 
@@ -200,56 +200,64 @@ def generate_methoden_framework(out_path):
         draw_rect(d, cx, col_y, col_w, col_h, fill=WHITE, outline=BLACK, lw=2)
 
         # Title bar
-        draw_rect(d, cx, col_y, col_w, 35, fill=GRAY_MID, outline=BLACK, lw=2)
-        center_text(d, s["title"], cx, col_y+8, col_w, ft_label)
+        draw_rect(d, cx, col_y, col_w, 48, fill=GRAY_MID, outline=BLACK, lw=2)
+        center_text(d, s["title"], cx, col_y+12, col_w, ft_label)
 
         # Subtitle
-        d.text((cx+10, col_y+45), s["subtitle"], font=ft_body, fill=GRAY_DARK)
+        sy = col_y + 60
+        for line in s["subtitle"].split("\n"):
+            d.text((cx+15, sy), line, font=ft_body, fill=GRAY_DARK)
+            sy += 28
 
         # Methoden
-        d.text((cx+10, col_y+75), "Methoden:", font=ft_label, fill=BLACK)
-        my = col_y + 95
+        d.text((cx+15, sy + 10), "Methoden:", font=ft_label, fill=BLACK)
+        my = sy + 40
         for m in s["methoden"]:
-            d.text((cx+20, my), f"- {m}", font=ft_small, fill=BLACK)
-            my += 22
+            d.text((cx+25, my), f"- {m}", font=ft_small, fill=BLACK)
+            my += 30
 
         # Separator
-        d.line([(cx+10, my+10), (cx+col_w-10, my+10)], fill=GRAY_MID, width=1)
+        d.line([(cx+15, my+15), (cx+col_w-15, my+15)], fill=GRAY_MID, width=1)
 
         # Output
-        d.text((cx+10, my+20), "Output:", font=ft_label, fill=BLACK)
-        oy = my + 40
+        d.text((cx+15, my+28), "Output:", font=ft_label, fill=BLACK)
+        oy = my + 55
         for line in s["output"].split("\n"):
-            d.text((cx+15, oy), line, font=ft_small, fill=BLACK)
-            oy += 20
+            d.text((cx+20, oy), line, font=ft_small, fill=BLACK)
+            oy += 28
 
         # Policy
-        d.line([(cx+10, oy+10), (cx+col_w-10, oy+10)], fill=GRAY_MID, width=1)
-        d.text((cx+10, oy+18), s["policy"], font=ft_small, fill=GRAY_DARK)
+        d.line([(cx+15, oy+15), (cx+col_w-15, oy+15)], fill=GRAY_MID, width=1)
+        py = oy + 25
+        for line in s["policy"].split("\n"):
+            d.text((cx+15, py), line, font=ft_small, fill=GRAY_DARK)
+            py += 25
 
     # --- Bottom: Blueprint-Kette ---
-    bp_y = col_y + col_h + 30
-    draw_rect(d, 60, bp_y, W-120, 100, fill=WHITE, outline=BLACK, lw=2)
-    d.text((80, bp_y+8), "ZUSAMMENFUEHRUNG — Blueprint-Ableitungskette (Kap. 4 + Kap. 5):", font=ft_label, fill=BLACK)
+    bp_y = col_y + col_h + 40
+    draw_rect(d, 80, bp_y, W-160, 140, fill=WHITE, outline=BLACK, lw=2)
+    d.text((110, bp_y+12), "ZUSAMMENFUEHRUNG — Blueprint-Ableitungskette (Kap. 4 + Kap. 5):", font=ft_label, fill=BLACK)
     chain = "EU AI Act (Art. 9-15) --> Funktionale Transformation --> Kontrollmechanismen --> Lifecycle (3 Phasen)"
-    d.text((80, bp_y+35), chain, font=ft_body, fill=BLACK)
-    chain2 = "--> Governance-Konsolidierung (NIST) --> Requirements-Katalog --> Design-Prinzipien --> Quality Gates --> Referenzarchitektur --> PoC"
-    d.text((80, bp_y+58), chain2, font=ft_body, fill=BLACK)
+    d.text((110, bp_y+48), chain, font=ft_body, fill=BLACK)
+    chain2 = "--> Governance-Konsolidierung (NIST) --> Requirements-Katalog --> Design-Prinzipien"
+    d.text((110, bp_y+78), chain2, font=ft_body, fill=BLACK)
+    chain3 = "--> Quality Gates --> Referenzarchitektur --> PoC"
+    d.text((110, bp_y+108), chain3, font=ft_body, fill=BLACK)
 
     # --- Legend ---
-    leg_y = bp_y + 115
+    leg_y = bp_y + 160
     items = ["S1 (Architektur)", "S2 (Gate-Framework, USP)", "S3 (Pipeline)", "S4 (Compliance, USP)"]
-    d.text((60, leg_y), "Saeulen:", font=ft_label, fill=BLACK)
-    lx = 160
+    d.text((80, leg_y), "Saeulen:", font=ft_label, fill=BLACK)
+    lx = 220
     for item in items:
-        draw_rounded_rect(d, lx, leg_y-2, 180, 22, r=6, fill=GRAY_LIGHT, outline=BLACK, lw=1)
-        d.text((lx+8, leg_y), item, font=ft_small, fill=BLACK)
-        lx += 200
+        draw_rounded_rect(d, lx, leg_y-4, 260, 32, r=8, fill=GRAY_LIGHT, outline=BLACK, lw=1)
+        d.text((lx+12, leg_y+1), item, font=ft_small, fill=BLACK)
+        lx += 285
 
-    d.text((lx + 40, leg_y), "Artefakttyp: Model + Method + Instantiation", font=ft_small, fill=GRAY_DARK)
+    d.text((lx + 40, leg_y+1), "Artefakttyp: Model + Method + Instantiation", font=ft_small, fill=GRAY_DARK)
 
     # Footer
-    d.text((60, H-30), "Basis: Hevner et al. (2004), Peffers et al. (2007), vom Brocke & Maedche (2019)  |  NIST AI RMF (2023)  |  EU AI Act (VO 2024/1689)", font=ft_small, fill=GRAY_DARK)
+    d.text((80, H-40), "Basis: Hevner et al. (2004), Peffers et al. (2007), vom Brocke & Maedche (2019)  |  NIST AI RMF (2023)  |  EU AI Act (VO 2024/1689)", font=ft_small, fill=GRAY_DARK)
 
     img.save(out_path, "PNG", dpi=(300, 300))
     print(f"  -> {out_path}  ({W}x{H})")
@@ -259,39 +267,38 @@ def generate_methoden_framework(out_path):
 # DIAGRAM 2: KI-Fabrik-Analogie v02 (3-Phasen-Lifecycle)
 # ============================================================================
 def generate_ki_fabrik(out_path):
-    W, H = 1800, 1400
+    W, H = 2600, 2050
     img = Image.new("RGB", (W, H), WHITE)
     d = ImageDraw.Draw(img)
 
-    ft_title = get_bold_font(26)
-    ft_sub = get_bold_font(18)
-    ft_body = get_font(15)
-    ft_small = get_font(13)
-    ft_label = get_bold_font(15)
-    ft_large = get_bold_font(20)
+    ft_title = get_bold_font(36)
+    ft_sub = get_bold_font(26)
+    ft_body = get_font(21)
+    ft_small = get_font(18)
+    ft_label = get_bold_font(21)
+    ft_large = get_bold_font(28)
 
     # --- Title ---
-    center_text(d, "Die KI-Fabrik — Referenzarchitektur als Analogie (v02)", 0, 20, W, ft_title)
-    center_text(d, "Enterprise-Referenzarchitektur fuer GenAI | Quality Gates | EU AI Act | CI/CD/CT-Pipeline", 0, 52, W, ft_body, fill=GRAY_DARK)
-    center_text(d, "Scope: Deployment- und Inference-Zyklus (3-Phasen-Lifecycle)", 0, 72, W, ft_body, fill=BLACK)
+    center_text(d, "Die KI-Fabrik — Referenzarchitektur als Analogie (v02)", 0, 25, W, ft_title)
+    center_text(d, "Enterprise-Referenzarchitektur fuer GenAI | Quality Gates | EU AI Act | CI/CD/CT-Pipeline", 0, 72, W, ft_body, fill=GRAY_DARK)
+    center_text(d, "Scope: Deployment- und Inference-Zyklus (3-Phasen-Lifecycle)", 0, 100, W, ft_body, fill=BLACK)
 
     # ===== AUTOMATISCHES FLIESSBAND (Pipeline) =====
-    band_y = 110
-    draw_rect(d, 40, band_y, W-80, 50, fill=GRAY_LIGHT, outline=BLACK, lw=2)
-    center_text(d, "AUTOMATISCHES FLIESSBAND (CI/CD/CT-Pipeline)", 40, band_y+14, W-80, ft_sub)
+    band_y = 145
+    draw_rect(d, 50, band_y, W-100, 65, fill=GRAY_LIGHT, outline=BLACK, lw=2)
+    center_text(d, "AUTOMATISCHES FLIESSBAND (CI/CD/CT-Pipeline)", 50, band_y+18, W-100, ft_sub)
 
-    # ===== 3 HALLEN (Phasen) statt 6 =====
-    hall_y = 190
-    hall_h = 280
-    hall_gap = 30
+    # ===== 3 HALLEN (Phasen) =====
+    hall_y = 245
+    hall_h = 380
+    hall_gap = 50
 
-    # Phase widths — Deployment is largest (main scope)
     phases = [
         {
             "name": "PHASE 1",
             "label": "PRE-DEPLOYMENT",
             "icon": "[ Vorbereitung ]",
-            "w": 480,
+            "w": 700,
             "items": [
                 "Model Registry & Versionierung",
                 "Pre-Deployment Validation",
@@ -307,7 +314,7 @@ def generate_ki_fabrik(out_path):
             "name": "PHASE 2",
             "label": "DEPLOYMENT",
             "icon": "[ Bereitstellung ]",
-            "w": 560,
+            "w": 780,
             "items": [
                 "Staging Environment Validation",
                 "Canary / Blue-Green Deployment",
@@ -324,7 +331,7 @@ def generate_ki_fabrik(out_path):
             "name": "PHASE 3",
             "label": "OPERATION",
             "icon": "[ Betrieb & Inference ]",
-            "w": 580,
+            "w": 820,
             "items": [
                 "Inference Serving (vLLM, API)",
                 "Latency SLO Monitoring",
@@ -339,21 +346,24 @@ def generate_ki_fabrik(out_path):
         },
     ]
 
-    px = 60
+    # Center all 3 phases
+    total_pw = sum(p["w"] for p in phases) + hall_gap * 2
+    px = (W - total_pw) // 2
+
     for phase in phases:
         pw = phase["w"]
         # Phase box
         draw_rect(d, px, hall_y, pw, hall_h, fill=WHITE, outline=BLACK, lw=2)
         # Header
-        draw_rect(d, px, hall_y, pw, 40, fill=GRAY_MID, outline=BLACK, lw=2)
-        center_text(d, f'{phase["name"]}: {phase["label"]}', px, hall_y+3, pw, ft_label)
-        d.text((px + pw//2 - 50, hall_y+22), phase["icon"], font=ft_small, fill=GRAY_DARK)
+        draw_rect(d, px, hall_y, pw, 55, fill=GRAY_MID, outline=BLACK, lw=2)
+        center_text(d, f'{phase["name"]}: {phase["label"]}', px, hall_y+5, pw, ft_label)
+        center_text(d, phase["icon"], px, hall_y+30, pw, ft_small, fill=GRAY_DARK)
 
         # Items
-        iy = hall_y + 50
+        iy = hall_y + 70
         for item in phase["items"]:
-            d.text((px+15, iy), f"- {item}", font=ft_small, fill=BLACK)
-            iy += 22
+            d.text((px+20, iy), f"- {item}", font=ft_small, fill=BLACK)
+            iy += 32
 
         # Arrow between phases
         if phase != phases[-1]:
@@ -363,13 +373,14 @@ def generate_ki_fabrik(out_path):
         px += pw + hall_gap
 
     # ===== QUALITY GATES (3 Checklisten) =====
-    qg_y = hall_y + hall_h + 40
+    qg_y = hall_y + hall_h + 55
     center_text(d, "Jeder Phasenuebergang hat 3 Checklisten (Quality Gates):", 0, qg_y, W, ft_sub)
 
-    qg_y += 35
-    qg_w = 500
-    qg_h = 200
-    qg_gap = 30
+    qg_y += 45
+    qg_w = 720
+    qg_h = 280
+    qg_gap = 50
+    cx_start = (W - (3*qg_w + 2*qg_gap)) // 2
 
     checklists = [
         {
@@ -404,34 +415,35 @@ def generate_ki_fabrik(out_path):
         },
     ]
 
-    cx_start = (W - (3*qg_w + 2*qg_gap)) // 2
     for i, cl in enumerate(checklists):
         cx = cx_start + i * (qg_w + qg_gap)
-        draw_rounded_rect(d, cx, qg_y, qg_w, qg_h, r=10, fill=WHITE, outline=BLACK, lw=2)
+        draw_rounded_rect(d, cx, qg_y, qg_w, qg_h, r=12, fill=WHITE, outline=BLACK, lw=2)
 
         # Role header
-        draw_rounded_rect(d, cx, qg_y, qg_w, 30, r=10, fill=GRAY_MID, outline=BLACK, lw=2)
-        center_text(d, cl["role"], cx, qg_y+6, qg_w, ft_label)
+        draw_rounded_rect(d, cx, qg_y, qg_w, 42, r=12, fill=GRAY_MID, outline=BLACK, lw=2)
+        center_text(d, cl["role"], cx, qg_y+9, qg_w, ft_label)
 
         # Gate type
-        d.text((cx+15, qg_y+38), cl["gate"], font=ft_body, fill=GRAY_DARK)
+        d.text((cx+20, qg_y+55), cl["gate"], font=ft_body, fill=GRAY_DARK)
 
         # Items
-        iy = qg_y + 62
+        iy = qg_y + 90
         for item in cl["items"]:
-            d.text((cx+20, iy), f"[ ] {item}", font=ft_small, fill=BLACK)
-            iy += 22
+            d.text((cx+25, iy), f"[ ] {item}", font=ft_small, fill=BLACK)
+            iy += 35
 
     # ===== GATE DECISION =====
-    gd_y = qg_y + qg_h + 30
-    draw_rect(d, 120, gd_y, W-240, 55, fill=GRAY_LIGHT, outline=BLACK, lw=2)
-    center_text(d, "ALLE 3 Checklisten PASS --> Weiter zur naechsten Phase  |  EINE Checkliste FAIL --> Zurueck zur Nachbesserung", 120, gd_y+5, W-240, ft_body)
-    d.text((140, gd_y+28), "Checklisten sind als Policy-as-Code (OPA/Rego) programmiert --> Pruefung laeuft automatisch auf dem Fliessband", font=ft_small, fill=GRAY_DARK)
+    gd_y = qg_y + qg_h + 40
+    draw_rect(d, 150, gd_y, W-300, 80, fill=GRAY_LIGHT, outline=BLACK, lw=2)
+    center_text(d, "ALLE 3 Checklisten PASS --> Weiter zur naechsten Phase  |  EINE Checkliste FAIL --> Zurueck zur Nachbesserung",
+                150, gd_y+10, W-300, ft_body)
+    center_text(d, "Checklisten sind als Policy-as-Code (OPA/Rego) programmiert --> Pruefung laeuft automatisch auf dem Fliessband",
+                150, gd_y+45, W-300, ft_small, fill=GRAY_DARK)
 
     # ===== EVIDENCE STORE =====
-    ev_y = gd_y + 75
-    draw_rect(d, 120, ev_y, W-240, 90, fill=WHITE, outline=BLACK, lw=3)
-    center_text(d, "DAS FABRIK-ARCHIV (Evidence Store + Audit Trail)", 120, ev_y+5, W-240, ft_sub)
+    ev_y = gd_y + 100
+    draw_rect(d, 150, ev_y, W-300, 130, fill=WHITE, outline=BLACK, lw=3)
+    center_text(d, "DAS FABRIK-ARCHIV (Evidence Store + Audit Trail)", 150, ev_y+8, W-300, ft_sub)
 
     # Evidence items in a row
     ev_items = [
@@ -442,22 +454,29 @@ def generate_ki_fabrik(out_path):
         "Wer hat geprueft?",
         "Beweis wo?",
     ]
-    eix = 160
+    ev_box_w = 310
+    ev_gap = 20
+    total_ev = len(ev_items) * ev_box_w + (len(ev_items)-1) * ev_gap
+    eix = 150 + ((W-300) - total_ev) // 2
     for item in ev_items:
-        draw_rounded_rect(d, eix, ev_y+35, 220, 35, r=6, fill=GRAY_LIGHT, outline=BLACK, lw=1)
-        center_text(d, item, eix, ev_y+42, 220, ft_small)
-        eix += 240
+        draw_rounded_rect(d, eix, ev_y+48, ev_box_w, 42, r=8, fill=GRAY_LIGHT, outline=BLACK, lw=1)
+        center_text(d, item, eix, ev_y+57, ev_box_w, ft_small)
+        eix += ev_box_w + ev_gap
 
-    d.text((140, ev_y+78), "Jede Gate-Entscheidung wird automatisch protokolliert — lueckenlos, unveraenderlich, nachvollziehbar.", font=ft_small, fill=GRAY_DARK)
+    center_text(d, "Jede Gate-Entscheidung wird automatisch protokolliert — lueckenlos, unveraenderlich, nachvollziehbar.",
+                150, ev_y+100, W-300, ft_small, fill=GRAY_DARK)
 
     # ===== AUDITOR =====
-    au_y = ev_y + 105
-    draw_rounded_rect(d, 300, au_y, W-600, 40, r=8, fill=GRAY_LIGHT, outline=BLACK, lw=2)
-    center_text(d, "Wenn der Auditor (EU-Behoerde) kommt: Archiv oeffnen --> Lueckenloser Nachweis was wann geprueft wurde", 300, au_y+10, W-600, ft_body)
+    au_y = ev_y + 150
+    au_w = W - 500
+    au_x = (W - au_w) // 2
+    draw_rounded_rect(d, au_x, au_y, au_w, 55, r=10, fill=GRAY_LIGHT, outline=BLACK, lw=2)
+    center_text(d, "Wenn der Auditor (EU-Behoerde) kommt: Archiv oeffnen --> Lueckenloser Nachweis was wann geprueft wurde",
+                au_x, au_y+15, au_w, ft_body)
 
     # ===== Lifecycle note =====
-    d.text((60, H-55), "3-Phasen-Lifecycle: Pre-Deployment | Deployment | Operation  (Training/Data-Engineering explizit ausgeschlossen — MD9/MD13)", font=ft_small, fill=GRAY_DARK)
-    d.text((60, H-30), "Basis: EU AI Act (VO 2024/1689) Art. 9-15  |  NIST AI RMF (2023)  |  Hevner et al. (2004)  |  Accountability-by-Design", font=ft_small, fill=GRAY_DARK)
+    d.text((80, H-70), "3-Phasen-Lifecycle: Pre-Deployment | Deployment | Operation  (Training/Data-Engineering explizit ausgeschlossen — MD9/MD13)", font=ft_small, fill=GRAY_DARK)
+    d.text((80, H-40), "Basis: EU AI Act (VO 2024/1689) Art. 9-15  |  NIST AI RMF (2023)  |  Hevner et al. (2004)  |  Accountability-by-Design", font=ft_small, fill=GRAY_DARK)
 
     img.save(out_path, "PNG", dpi=(300, 300))
     print(f"  -> {out_path}  ({W}x{H})")
