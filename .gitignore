@@ -89,3 +89,4 @@ poc/evidence-store/generated/
 # Sensible Dokumente (unverschluesselte Originale)
 docs/expose/*.pdf
 !docs/expose/*_encrypted.pdf
+docs/expose/legacy/
