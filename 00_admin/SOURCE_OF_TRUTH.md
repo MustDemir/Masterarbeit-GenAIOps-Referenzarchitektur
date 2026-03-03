@@ -7,7 +7,7 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Operativer Einstiegspunkt (Workspace):
   - `/Users/mustafademir/Projects/genaiops-thesis/00_workspace/`
 - Expose v4 (primaer):
-  - `docs/expose/Expose_v4_final_2026-02-28.pdf` (abgegebene Version, SOT im Repo)
+  - `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` (abgegebene Version, AES-256 verschluesselt, SOT im Repo)
   - Arbeitsversion (OneDrive): `OneDrive-SRHFernhochschule/1. Onedrive_Masterarbeit/Expose_v4_final_2026-02-28.docx`
 - Kapitel 3 Methodik (primaer):
   - `03_forschungsdesign_methodik/Kapitel_3_Forschungsdesign_und_Methodik.pdf` (SOT im Repo)
@@ -34,7 +34,7 @@ Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Pr
 
 ## Legacy / Historische Backups
 
-- `docs/expose/legacy/` — Alle Expose v1-v3 Versionen (eingefroren)
+- `docs/expose/legacy/` — Alle Expose v1-v3 Versionen (lokal, aus Git entfernt per .gitignore)
 - `03_forschungsdesign_methodik/Kapitel_3_*.docx.enc` — Historisches Backup (verschluesselt, Stand 2026-02-27)
 
 ## Session Summary Regeln
