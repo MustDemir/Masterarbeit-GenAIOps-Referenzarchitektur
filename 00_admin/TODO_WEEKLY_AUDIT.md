@@ -58,3 +58,31 @@ gh label create "audit:errors" --repo MustDemir/Masterarbeit-GenAIOps-Referenzar
 
 Vollstaendiger Implementierungsplan liegt unter:
 `~/.claude/plans/swift-gathering-cake.md`
+
+---
+
+## Zukunft: Inhaltspruefer-Agent (v2)
+
+> Status: Idee / Spaeter umsetzen
+
+### Was er kann (Konzept)
+
+Ein LLM-gestuetzter Agent der prueft, ob die **Implementierung** (PoC-Code, Policy-as-Code)
+tatsaechlich die **Anforderungen** der Thesis erfuellt:
+
+- Liest fixe Referenzdokumente als Kontext:
+  - `docs/positioning/USP_ANALYSE_EXPERTENBEWERTUNG.md` (USP & Positionierung)
+  - `00_admin/gliederung_v3.md` (Methodik & Kapitelstruktur)
+  - `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` (Expose — nach Entschluesselung)
+  - `04_anforderungsanalyse_RQ1/requirements/R*.yaml` (Anforderungskatalog)
+  - `05_referenzarchitektur_RQ2/05_03_quality_gates/G*.yaml` (Gate-Definitionen)
+- Prueft PoC-Code (`poc/`) gegen diese Anforderungen
+- Beispiel-Check: "Implementiert `poc/opa-policies/` tatsaechlich Art. 9 Risikomanagement wie in R003 definiert?"
+- Ergebnis: Requirements-Coverage-Report als GitHub Issue
+
+### Voraussetzungen
+
+- Methodik, Positioning, Expose und Anforderungen muessen inhaltlich fix sein
+- PoC-Implementierung muss begonnen haben
+- Benoetigt LLM-API (Claude) als Backend → Kosten pro Ausfuehrung
+- Komplexer als v1 — eigenes Projekt

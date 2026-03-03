@@ -1,0 +1,39 @@
+name: Weekly Audit
+
+on:
+  schedule:
+    # Every Sunday at 07:00 UTC
+    - cron: "0 7 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run weekly audit
+        run: python scripts/weekly_audit.py --json-out /tmp/audit_result.json
+        continue-on-error: true
+
+      - name: Post audit findings as GitHub Issue
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/weekly_audit.py \
+            --post-issue \
+            --json-in /tmp/audit_result.json \
+            --repo "${{ github.repository }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
