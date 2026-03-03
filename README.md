@@ -217,3 +217,5 @@ Dieses Repository steht unter der [CC-BY-NC-4.0](LICENSE) Lizenz. Siehe [`LICENS
 **Mustafa Demir** — SRH Fernhochschule, M.Sc. Digital Management und Transformation
 
 [![GitHub](https://img.shields.io/badge/GitHub-MustDemir-181717?style=flat&logo=github)](https://github.com/MustDemir)
+Webseite: https://mustafa-demir.com/
+Linkedin: https://www.linkedin.com/in/mustafa-demir-331900202/
