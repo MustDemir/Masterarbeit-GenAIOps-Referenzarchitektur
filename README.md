@@ -179,8 +179,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 - [Quality-Gate-Artefakte](05_referenzarchitektur_RQ2/05_03_quality_gates/)
 - [Pipeline-Integration](05_referenzarchitektur_RQ2/05_04_pipelines_integration/)
 - [Evaluation (RQ3)](06_evaluation_RQ3/)
-- [Expose v4 FINAL (PDF)](docs/expose/Expose_v4_final_2026-02-28.pdf)
-- [Legacy-Archiv (v1/v2/v3)](docs/expose/legacy/)
+- [Expose v4 FINAL (PDF, verschluesselt)](docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf)
 - [Source-of-Truth Regeln](00_admin/SOURCE_OF_TRUTH.md)
 
 ## Fortschritt
@@ -217,5 +216,6 @@ Dieses Repository steht unter der [CC-BY-NC-4.0](LICENSE) Lizenz. Siehe [`LICENS
 **Mustafa Demir** — SRH Fernhochschule, M.Sc. Digital Management und Transformation
 
 [![GitHub](https://img.shields.io/badge/GitHub-MustDemir-181717?style=flat&logo=github)](https://github.com/MustDemir)
-Webseite: https://mustafa-demir.com/
-Linkedin: https://www.linkedin.com/in/mustafa-demir-331900202/
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Mustafa%20Demir-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/mustafa-demir-331900202/)
+[![Website](https://img.shields.io/badge/Website-mustafa--demir.com-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://mustafa-demir.com)
+[![E-Mail](https://img.shields.io/badge/E--Mail-kontakt%40mustafa--demir.com-EA4335?style=flat&logo=gmail&logoColor=white)](mailto:kontakt@mustafa-demir.com)
