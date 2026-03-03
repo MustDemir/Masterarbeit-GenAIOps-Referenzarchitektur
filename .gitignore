@@ -85,3 +85,7 @@ poc/evidence-store/generated/
 # Interview-Daten (Datenschutz)
 **/interviews/raw/
 **/interviews/audio/
+
+# Sensible Dokumente (unverschluesselte Originale)
+docs/expose/*.pdf
+!docs/expose/*_encrypted.pdf
