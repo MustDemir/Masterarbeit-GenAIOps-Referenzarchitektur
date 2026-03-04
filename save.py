@@ -6,7 +6,13 @@ from __future__ import annotations
 import argparse
 import sys
 
+from pathlib import Path
+
+import yaml
+
 from workflow_lib import (
+    REPO_ROOT,
+    TOPIC_TO_DIR,
     build_index,
     build_resume_text,
     blob_configured,
@@ -16,6 +22,82 @@ from workflow_lib import (
     write_index,
     write_resume_text,
 )
+
+
+def _topic_to_status_path(topic: str) -> Path | None:
+    """Resolve topic to its _status.yml path, or None if not mappable."""
+    session_dir = TOPIC_TO_DIR.get(topic)
+    if not session_dir:
+        return None
+    chapter_dir = REPO_ROOT / Path(session_dir).parent
+    status_path = chapter_dir / "_status.yml"
+    return status_path
+
+
+def _offer_progress_update(topic: str) -> None:
+    """Ask the user if chapter progress should be updated."""
+    status_path = _topic_to_status_path(topic)
+    if not status_path:
+        return
+
+    if status_path.exists():
+        data = yaml.safe_load(status_path.read_text(encoding="utf-8"))
+        current = data.get("progress", 0)
+        kapitel = data.get("kapitel", topic)
+        status = data.get("status", "")
+        print(f"\n--- Fortschritt: {kapitel} ---")
+        print(f"Aktuell: {current}% — {status}")
+    else:
+        current = 0
+        kapitel = topic
+        print(f"\n--- Noch keine _status.yml fuer '{topic}' ---")
+        print(f"Aktuell: {current}%")
+
+    if not sys.stdin.isatty():
+        return
+
+    answer = input("Neuer Fortschritt (% eingeben, Enter = keine Aenderung): ").strip()
+    if not answer:
+        print("Fortschritt nicht geaendert.")
+        return
+
+    try:
+        new_progress = int(answer)
+    except ValueError:
+        print("Ungueltige Eingabe, Fortschritt nicht geaendert.")
+        return
+
+    if new_progress == current:
+        print("Fortschritt unveraendert.")
+        return
+
+    new_status = input(f"Status-Text (Enter = bisherig): ").strip()
+    if not new_status and status_path.exists():
+        data = yaml.safe_load(status_path.read_text(encoding="utf-8"))
+        new_status = data.get("status", "In Arbeit")
+    elif not new_status:
+        new_status = "In Arbeit"
+
+    status_data = {
+        "kapitel": kapitel if status_path.exists() else topic,
+        "progress": new_progress,
+        "status": new_status,
+    }
+    status_path.parent.mkdir(parents=True, exist_ok=True)
+    content = f"# Fortschritt: {status_data['kapitel']}\n"
+    content += yaml.dump(status_data, allow_unicode=True, default_flow_style=False)
+    status_path.write_text(content, encoding="utf-8")
+    print(f"Fortschritt aktualisiert: {new_progress}% — {new_status}")
+
+    # README gleich mit aktualisieren
+    try:
+        subprocess.run(
+            [sys.executable, "scripts/update_progress.py"],
+            cwd=str(REPO_ROOT),
+            check=True,
+        )
+    except Exception as exc:
+        print(f"README-Update fehlgeschlagen: {exc}")
 
 
 def _read_input(args: argparse.Namespace) -> str:
@@ -45,8 +127,6 @@ def main() -> int:
     parser.add_argument("--blob", action="store_true", help="Direkt nach Blob syncen")
     parser.add_argument("--no-llm", action="store_true", help="Keine Azure-OpenAI-Summary, nur lokale Regeln")
     args = parser.parse_args()
-
-    from pathlib import Path
 
     if args.input:
         args.input = Path(args.input)
@@ -87,6 +167,10 @@ def main() -> int:
         print(f"{prefix}: {msg}")
         if not ok:
             return 3
+
+    # --- Fortschritt-Update anbieten ---
+    topic = payload.get("topic", "general")
+    _offer_progress_update(topic)
 
     return 0
 
