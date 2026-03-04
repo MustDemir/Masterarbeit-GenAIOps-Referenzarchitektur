@@ -1,13 +1,9 @@
 name: Update Progress Bars
 
 on:
-  # Jeden Montag um 06:00 UTC
+  # Jeden Montag um 06:00 UTC (Safety-Net)
   schedule:
     - cron: "0 6 * * 1"
-  # Bei Aenderungen an _status.yml Dateien
-  push:
-    paths:
-      - "**/_status.yml"
   # Manuell ausloesbar
   workflow_dispatch:
 
