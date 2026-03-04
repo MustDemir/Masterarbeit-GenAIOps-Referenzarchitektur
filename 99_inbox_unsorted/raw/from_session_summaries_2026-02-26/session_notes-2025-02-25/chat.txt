@@ -1,2 +1,0 @@
-Paste long chat content here before running extract_yamls.py.
-Include YAML code blocks that contain a mapping/object.
