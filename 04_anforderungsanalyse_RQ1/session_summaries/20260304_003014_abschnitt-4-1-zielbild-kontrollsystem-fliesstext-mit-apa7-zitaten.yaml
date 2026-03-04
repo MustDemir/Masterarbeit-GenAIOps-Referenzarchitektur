@@ -1,0 +1,39 @@
+id: SUM-20260304003014
+created_at: '2026-03-04T00:30:14.568013+00:00'
+topic: anforderungen
+target_folder: 04_anforderungsanalyse_RQ1/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: Abschnitt 4.1 Zielbild Kontrollsystem - Fliesstext mit APA7-Zitaten
+summary_bullets:
+- 'Session: Abschnitt 4.1 Zielbild des Kontrollsystems geschrieben.'
+- 'Ergebnis: ~1200 Woerter Fliesstext mit 26 validierten APA7-Zitaten.'
+- 'Entscheidung: Huwyler als (2025) zitiert statt (2024) basierend auf Selbstzitation
+  S.4 und DOI-Datum.'
+- 'Entscheidung: Art. 10 Abs. 6 Direktzitat wortgenau an PDF angepasst (die KI-Modelle).'
+- 'Entscheidung: Novelli S.9 fuer Data-Governance GPAI statt S.3-4.'
+- Kernaussagen K1-K8 aus Zitationstabelle vollstaendig abgedeckt.
+- 'Mini-Checkliste 4.1 erfuellt: Enforcement vs Dokumentation, Accountability-by-Design,
+  Lifecycle-Bezug.'
+- 'Absaetze: DSR-Verankerung, Deployer-Scope, Art10-Abgrenzung, RAG-Klassifizierung,
+  Enforcement, Accountability, Lifecycle.'
+decisions:
+- 'Entscheidung: Huwyler als (2025) zitiert statt (2024) basierend auf Selbstzitation
+  S.4 und DOI-Datum.'
+- 'Entscheidung: Art. 10 Abs. 6 Direktzitat wortgenau an PDF angepasst (die KI-Modelle).'
+- 'Entscheidung: Novelli S.9 fuer Data-Governance GPAI statt S.3-4.'
+next_steps:
+- 'Naechste Schritte: Abschnitt 4.2 Lifecycle-Modell, Zitationstabelle Korrekturen
+  eintragen, Kap3 Vorverweis ergaenzen.'
+- 'Offen: Grey Literature URLs/Abrufdaten sammeln.'
+- 'Offen: Huwyler in Zotero nachimportieren.'
+tags:
+- kap4
+- '4.1'
+- zielbild
+- fliesstext
+- zitate
+- validiert
+source: claude
+summary_engine: local_rules
