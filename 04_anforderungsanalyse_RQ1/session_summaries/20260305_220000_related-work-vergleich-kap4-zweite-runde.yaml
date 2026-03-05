@@ -1,0 +1,73 @@
+session:
+  datum: "2026-03-05"
+  uhrzeit: "~18:00-22:00 UTC"
+  fokus: "Related-Work-Vergleich Kap. 4 — Zweite Verifizierungsrunde"
+  status: "abgeschlossen"
+
+zusammenfassung: |
+  Systematischer Related-Work-Vergleich von 10 ungenutzten ROT+ORANGE Paper
+  aus dem THEMENCLUSTER gegen 8 Argumentationsbausteine (B1-B8) aus Kap. 4.1-4.5.
+  Methode: Related-Work-Comparator Skill + Consensus/Scite Suche.
+  Ergebnis: 0 Widersprueche, 4x konvergente QG-Evidenz, 5 Erweiterungen.
+
+ergebnisse:
+  paper_analysiert: 10
+  widersprueche: 0
+  unterstuetzung: 10
+  erweiterungen: 5
+  muss_fuer_46:
+    - "Elia et al. (2025) MQG4AI — Hauptabgrenzungsquelle"
+    - "Lucaj et al. (2025) TechOps — Evidenzartefakt-Definitionen"
+    - "Nellutla (2026) MLOps 2.0 — Gate-Architektur-Vergleich (Vorsicht: SvedbergOpen)"
+  soll_fuer_41_44:
+    - "Goncalves & Correia (2025) XAI-CbD — 4.3 Stuetzquelle + 4.6 Vergleich"
+    - "Finch & Butt (2025) Gaps — Compliance Asymmetry fuer PD3"
+    - "Billeter et al. (2024) TAI-MLOps — konvergente Stuetzquelle"
+  kann:
+    - "Slupczynski et al. (2026) CAPTURE — Gate-Score Theta"
+    - "Adeyinka (2023) PaC Hybrid Cloud"
+    - "Rebbana (2025) PaC Cloud Data"
+    - "Elia & Bauer (2023) QG Medicine — historisch"
+
+erweiterungen_unseres_denkens:
+  - "Nellutla CDV: 4 Datenqualitaets-Dimensionen (Schema, Semantic, Temporal, Distributional)"
+  - "Slupczynski Gate-Score Theta: quantitative Gewichtung statt binaer Pass/Fail"
+  - "Goncalves Correspondence Matrix: Regulierung→Artefakt als JSON"
+  - "Lucaj TechOps Templates: konkrete Dokumentationsvorlagen fuer AI Act"
+  - "Finch & Butt Compliance Asymmetry: strukturelle Friktionen in Compliance-Oekosystemen"
+
+neue_paper_fuer_zotero:
+  - autor: "Kholkar, G.; Ahuja, R."
+    titel: "Policy-as-Prompt: Turning AI Governance Rules into Guardrails for AI Agents"
+    quelle: "arXiv:2509.23994 (NeurIPS 2025 Spotlight)"
+    relevant_fuer: "Kap. 5/6"
+  - autor: "Baqar, M.; Naqvi, S.; Khanda, R."
+    titel: "AI-Augmented CI/CD Pipelines: From Code Commit to Production with Autonomous Decisions"
+    quelle: "arXiv:2508.11867"
+    relevant_fuer: "Kap. 5"
+  - autor: "Goncalves, A.; Correia, A."
+    titel: "XAI-Compliance-by-Design: A Modular Framework for GDPR- and AI Act-Aligned Decision Transparency"
+    quelle: "DOI: 10.3390/jcp6020043"
+    relevant_fuer: "Kap. 4.3 + 4.6"
+
+nellutla_peer_review:
+  journal: "International Journal of AI and Machine Learning, Vol. 6(1), Jan 2026"
+  publisher: "SvedbergOpen"
+  issn: "2789-2557"
+  doi: "10.51483/IJAIML.6.1.2026.118-131"
+  red_flags: "Single Author, Independent Researcher, Gmail, kein Scopus/WoS"
+  empfehlung: "Nur als ergaenzende Referenz, nicht Kernquelle"
+
+textbausteine_erstellt:
+  - ziel: "4.3 Transformationsmethodik — 1 Satz Goncalves Stuetzquelle"
+  - ziel: "4.6 Requirements-Katalog — 1 Absatz Goncalves Abgrenzung"
+
+artefakte:
+  - "04_anforderungsanalyse_RQ1/recherche_bericht_kap4_themencluster.md"
+  - "04_anforderungsanalyse_RQ1/related_work_vergleich_kap4.md"
+
+naechste_schritte:
+  - "4.6 Requirements-Katalog schreiben (3 Seiten)"
+  - "Goncalves-Textbausteine in 4.3 + 4.6 einfuegen (Copy-Paste)"
+  - "Nellutla Peer-Review via SRH-Zugang pruefen — ERLEDIGT (User hat Volltext)"
+  - "3 neue Paper in Zotero importieren (Kholkar, Baqar, Goncalves)"

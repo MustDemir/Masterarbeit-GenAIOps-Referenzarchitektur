@@ -5,35 +5,44 @@ target_folder: 04_anforderungsanalyse_RQ1/session_summaries
 repo_scope: thesis
 summary_type: fachlich
 source_repo: genaiops-thesis
-title: Kap4 Strukturentscheidungen + Recherche-Auswertung
-summary_bullets:
-- '# Session: Kap. 4 Strukturentscheidungen + Recherche-Auswertung (2026-03-05)'
-- 'Fortfuehrung der Arbeit an Kap. 4 Anforderungsanalyse (RQ1). Zwei Recherche-Berichte
-  lagen vor: Elicit-Recherche (120 Papers, 12 Top-Funde) und Consensus/SemanticScholar-Recherche
-  (200 Papers, 19 relevante). Zotero-Bi...'
-- '## Quellenauswertung Kap. 4.2-4.6'
-- 'L1-Uebersicht der Quellenabdeckung pro Abschnitt erstellt:'
-- 'Lifecycle: Butt et al. (2026), Leon (2026), Ray (2026) — alle 2026 mit 0 Zit.,
-  nur konvergent nutzbar'
-- 'Transformation: Kelly et al. (2024, 17 Zit.) + Feng et al. (2024, 18 Zit.) + Buscemi
-  (2025) = starkes Trio'
-- 'Kontrollmechanismen: Sardana et al. (2024) CaC 2.0 + Romeo et al. (2025) ARPaCCino
-  + Kovac/CERTAIN'
-- 'Human Oversight: Laux (2023, 63 Zit.) + Sterz (2024, 51 Zit.) + Enqvist (2023,
-  48 Zit.) = staerkste Evidenzbasis'
+title: "Kap4 Strukturentscheidungen + Recherche-Auswertung"
+inhalt: |
+  Session fokussierte auf Strukturentscheidungen fuer Kap. 4 und Auswertung zweier Recherche-Berichte.
+
+  STRUKTURENTSCHEIDUNGEN (5 FINAL):
+  1. D_4.5_STRUCTURE: Human Oversight (Art. 14) bekommt eigenen Abschnitt 4.5 statt Integration in 4.6. Begruendung: 162 kumulative Zitationen (Laux 63 + Sterz 51 + Enqvist 48), eigenstaendiger theoretischer Rahmen (Institutionalised Distrust), Querschnittsanforderung.
+  2. D_KAP4_PAGES: Kap. 4 = ~13 Seiten Zielbudget (bei 70 Seiten Gesamtthesis). Kap. 5 Architektur bekommt groessten Anteil (15-18 S.).
+  3. D_2026_SOURCES: 2026-Quellen (Butt, Leon, Ray) nur als konvergente Evidenz verwenden — 0 Zitationen, nie alleinig.
+  4. D_MQG4AI_PLACEMENT: Elia et al. (2025) MQG4AI → Kap. 2 Related Work (2-3 Saetze Abgrenzung) + Kurzreferenz Kap. 4.6. Abgrenzung: MQG4AI = konzeptionelle Provider-Methodik (XAI-Fokus, kein CI/CD), Demir = operationalisierte Deployer-Architektur (PaC, Art. 9-15 vollstaendig).
+  5. D_ART25_DEPTH: Art. 25 Provider-Aufstieg = 1-2 Absaetze innerhalb 4.2, kein eigener Sub-Abschnitt. Tiefenanalyse → Kap. 7 Limitation.
+
+  QUELLENABDECKUNG PRO ABSCHNITT:
+  - 4.2 Lifecycle: Butt (GEAP/Promotion Gates), Leon (7-Stufen + Guardrails), Ray (TRiSM 4 Phasen), Huwyler (6-Phasen Compliance) — alle 2026 mit 0 Zit., nur konvergent
+  - 4.3 Transformation: Kelly (ISO 25059 Qualitaetsmodell, 17 Zit.), Feng (RAINCOAT DSL, 18 Zit.), Buscemi (Verification Space), Gallina (Ontologie) — starkes Trio
+  - 4.4 Kontrollmechanismen: Sardana (CaC 2.0, JAIGS), Romeo (ARPaCCino LLM→Rego→OPA, arXiv), Kovac (CERTAIN/RegOps)
+  - 4.5 Human Oversight: Laux (Institutionalised Distrust, 63 Zit.), Sterz (4 Effektivitaetsbedingungen, 51 Zit.), Enqvist (Art. 14 normativ, 48 Zit.) — staerkste Evidenzbasis
+  - 4.6 Requirements-Katalog: Elia/MQG4AI (Abgrenzung), Eisenberg/UCF, Lucaj/TechOps, Goncalves/XAI-CbD
+
+  ERKENNTNISSE:
+  - Rollenverteilung Provider/Deployer/Importeur (Art. 16/23/24/26) als Kern-Thema identifiziert
+  - Beweislast-Asymmetrie (Deployer = Black Box, muss trotzdem Art. 9-15 nachweisen) = zentrales DSR-Relevanzargument
+  - Art. 25 Provider-Aufstieg bei Modifikation (Fine-Tuning/RAG) muss adressiert werden
+  - MQG4AI GitHub-Repo analysiert: Leaf-QG Template, Deployment+Maintenance = Platzhalter, Compliance-Block = Skeleton
 decisions:
-- '# Session: Kap. 4 Strukturentscheidungen + Recherche-Auswertung (2026-03-05)'
-- '## Entscheidung 1: 4.5 Human Oversight als eigener Abschnitt'
-- '## Entscheidung 2: Seitenbudget Kap. 4'
-- '## Entscheidung 3: 2026-Quellen'
+  - "D_4.5_STRUCTURE: Human Oversight eigener Abschnitt (162 kumul. Zit.)"
+  - "D_KAP4_PAGES: 13 Seiten Zielbudget"
+  - "D_2026_SOURCES: Butt/Leon/Ray nur konvergent"
+  - "D_MQG4AI_PLACEMENT: Kap. 2 + 4.6"
+  - "D_ART25_DEPTH: 1-2 Absaetze in 4.2, Tiefenanalyse Kap. 7"
 next_steps:
-- '## Offene Punkte (naechste Session)'
-- '- Abschnitt 4.2 Lifecycle-Modell als naechstes schreiben'
+  - "Abschnitte 4.2-4.5 schreiben"
+  - "MQG4AI Abgrenzungssatz fuer Kap. 2 formulieren"
 tags:
-- kap4
-- struktur
-- human-oversight
-- recherche
-- entscheidungen
+  - kap4
+  - struktur
+  - entscheidungen
+  - recherche
+  - mqg4ai
+  - beweislast-asymmetrie
 source: claude
-summary_engine: local_rules
+summary_engine: manual_inhaltlich_ueberarbeitet

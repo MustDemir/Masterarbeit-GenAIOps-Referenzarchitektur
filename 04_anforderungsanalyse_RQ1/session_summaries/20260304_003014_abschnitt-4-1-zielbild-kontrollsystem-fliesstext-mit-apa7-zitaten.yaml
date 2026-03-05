@@ -5,35 +5,38 @@ target_folder: 04_anforderungsanalyse_RQ1/session_summaries
 repo_scope: thesis
 summary_type: fachlich
 source_repo: genaiops-thesis
-title: Abschnitt 4.1 Zielbild Kontrollsystem - Fliesstext mit APA7-Zitaten
-summary_bullets:
-- 'Session: Abschnitt 4.1 Zielbild des Kontrollsystems geschrieben.'
-- 'Ergebnis: ~1200 Woerter Fliesstext mit 26 validierten APA7-Zitaten.'
-- 'Entscheidung: Huwyler als (2025) zitiert statt (2024) basierend auf Selbstzitation
-  S.4 und DOI-Datum.'
-- 'Entscheidung: Art. 10 Abs. 6 Direktzitat wortgenau an PDF angepasst (die KI-Modelle).'
-- 'Entscheidung: Novelli S.9 fuer Data-Governance GPAI statt S.3-4.'
-- Kernaussagen K1-K8 aus Zitationstabelle vollstaendig abgedeckt.
-- 'Mini-Checkliste 4.1 erfuellt: Enforcement vs Dokumentation, Accountability-by-Design,
-  Lifecycle-Bezug.'
-- 'Absaetze: DSR-Verankerung, Deployer-Scope, Art10-Abgrenzung, RAG-Klassifizierung,
-  Enforcement, Accountability, Lifecycle.'
+title: "4.1 Zielbild des Kontrollsystems — Fliesstext mit APA7-Zitaten"
+umfang: "~1200 Woerter, 7 Absaetze, 26 APA7-Zitate, validiert"
+inhalt: |
+  Abschnitt 4.1 definiert das Zielbild der Referenzarchitektur und begruendet sechs architektonische Leitlinien:
+
+  1. DEPLOYER-PERSPEKTIVE ALS SCOPE: Ausgangspunkt ist Art. 3 Nr. 4 (Deployer-Definition) und Art. 26 (Deployer-Pflichten). Unternehmen, die proprietaere Foundation Models via API nutzen, agieren als Deployer, nicht als Provider. Huwyler (2025, S. 3) bestaetigt Rollenunterscheidung. NIST AI RMF (2023, S. 5) identifiziert Risiko-Asymmetrie als strukturelles Merkmal: Deployer muss Risiken managen, die er nicht vollstaendig kontrolliert.
+
+  2. ART. 10 DATEN-GOVERNANCE ABGRENZUNG: Art. 10 Abs. 1-5 setzt Trainingsdatenzugang voraus — fuer API-Deployer faktisch nicht anwendbar. Art. 10 Abs. 6 reduziert den Scope auf Testdatensaetze bei nicht-trainierten Systemen. Novelli et al. (2024, S. 9) bestaetigt: Data-Governance primaer Provider-orientiert. Ergo: Arbeit beschraenkt Art. 10 auf Testdatensatz-Scope.
+
+  3. RAG-KLASSIFIZIERUNG: RAG-Kontextdaten = Inferenz-Eingabedaten (Art. 3 Nr. 33), NICHT Trainingsdaten (Art. 10). Regulatorische Anforderungen ergeben sich aus Art. 13 (Transparenz), Art. 15 (Robustheit), Art. 26 Abs. 4 (Eingabedatenrelevanz). Buscemi et al. (2025, S. 7-8) ordnen RAG-Pruefpflichten dem Transparenz-Requirement R4 zu. Implikation: RAG-spezifische Quality Gates muessen Qualitaet, Relevanz und Nachvollziehbarkeit zur Inferenzzeit sicherstellen.
+
+  4. ENFORCEMENT STATT DOKUMENTATION: Zentrales Designziel = automatisierte Durchsetzung, nicht statische Dokumentation. Art. 9 fordert lifecycle-uebergreifendes Risikomanagement, Art. 15 Abs. 4 fordert Widerstandsfaehigkeit. NIST AI RMF operationalisiert dies als GOVERN/MAP/MEASURE/MANAGE. Huwyler (2025, S. 5-8) uebersetzt in 6-Phasen-Compliance. Unsere Uebersetzung: Policy-as-Code — Anforderungen als maschinenlesbare Policies in CI/CD/CT, Deployment nur bei bestandenen Quality Gates.
+
+  5. ACCOUNTABILITY-BY-DESIGN: Nachvollziehbarkeit als inherente Systemeigenschaft, nicht nachtraegliche Massnahme. Art. 11 (technische Dokumentation) + Art. 12 (automatische Aufzeichnung). Buscemi et al. (2025, S. 5): Controls = Accountability + Traceability, Testing = empirische Evidenz. NIST GOVERN als uebergreifende Steuerungsinstanz. Implikation: Jeder Kontrollmechanismus muss auditierbaren Evidenz-Trail erzeugen (vgl. DP2).
+
+  6. LIFECYCLE-VERANKERUNG: Dreigliedriges Modell (Pre-Deployment, Deployment, Operation) konsolidiert Huwyler (6 Phasen), NIST (Lifecycle-Dimensionen). Art. 9 = lifecycle-uebergreifend, Art. 26 Abs. 5 = Betriebsueberwachung. Art. 13 Abs. 3 = Betriebsanleitung als Informationsgrundlage. Art. 25 Caveat: Substanzielle Modifikation → Provider-Reklassifizierung.
+
+  KERNTHESE: Wirksames Kontrollsystem dokumentiert nicht nur, sondern setzt Einhaltung automatisiert durch (DP1). Jeder Mechanismus erzeugt auditierbaren Evidenz-Trail mit Verantwortungszuordnung (DP2).
 decisions:
-- 'Entscheidung: Huwyler als (2025) zitiert statt (2024) basierend auf Selbstzitation
-  S.4 und DOI-Datum.'
-- 'Entscheidung: Art. 10 Abs. 6 Direktzitat wortgenau an PDF angepasst (die KI-Modelle).'
-- 'Entscheidung: Novelli S.9 fuer Data-Governance GPAI statt S.3-4.'
+  - "Huwyler als (2025) zitiert statt (2024) — Selbstzitation S.4 + DOI-Datum"
+  - "Art. 10 Abs. 6 Direktzitat wortgenau an PDF angepasst (die KI-Modelle)"
+  - "Novelli S.9 fuer Data-Governance GPAI statt S.3-4"
 next_steps:
-- 'Naechste Schritte: Abschnitt 4.2 Lifecycle-Modell, Zitationstabelle Korrekturen
-  eintragen, Kap3 Vorverweis ergaenzen.'
-- 'Offen: Grey Literature URLs/Abrufdaten sammeln.'
-- 'Offen: Huwyler in Zotero nachimportieren.'
+  - "Abschnitt 4.2 Lifecycle-Modell schreiben"
+  - "Grey-Lit-Ergaenzungen einfuegen (EDPS, NIST 600-1, Microsoft GenAIOps)"
 tags:
-- kap4
-- '4.1'
-- zielbild
-- fliesstext
-- zitate
-- validiert
+  - kap4
+  - "4.1"
+  - zielbild
+  - deployer-scope
+  - enforcement
+  - accountability-by-design
+  - rag-klassifizierung
 source: claude
-summary_engine: local_rules
+summary_engine: manual_inhaltlich_ueberarbeitet

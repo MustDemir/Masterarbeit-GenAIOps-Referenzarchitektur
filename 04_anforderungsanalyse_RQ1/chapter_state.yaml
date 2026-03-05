@@ -36,6 +36,11 @@ done:
   - "ERKENNTNISS: Rollenverteilung Provider/Deployer/Importeur (Art. 16/23/24/26) als Kern-Thema identifiziert"
   - "ERKENNTNISS: Beweislast-Asymmetrie (Deployer = Black Box, muss trotzdem nachweisen) = zentrales DSR-Relevanzargument"
   - "ERKENNTNISS: Art. 25 Provider-Aufstieg bei Modifikation (Fine-Tuning/RAG) muss in Kap. 4 adressiert werden"
+  - "Related-Work-Vergleich Kap. 4 abgeschlossen: 10 Paper vs. 8 Bausteine, 0 Widersprueche, 5 Erweiterungen"
+  - "THEMENCLUSTER-Analyse: 124 PDFs gescannt, 49 ROT+ORANGE, 10 relevanteste fuer Kap. 4 identifiziert"
+  - "Nellutla (2026) Peer-Review geprueft: SvedbergOpen, kein Scopus/WoS → nur ergaenzende Referenz"
+  - "Goncalves & Correia (2025) XAI-CbD: DOI 10.3390/jcp6020043, Textbausteine fuer 4.3+4.6 formuliert"
+  - "3 neue Paper identifiziert: Kholkar/Policy-as-Prompt (NeurIPS 2025), Baqar/AI-CI/CD, Goncalves/XAI-CbD"
 decisions:
   - id: "D_4.5_STRUCTURE"
     decision: "4.5 Human Oversight bleibt eigener Abschnitt"
@@ -96,8 +101,9 @@ chapter_structure:
     title: "Requirements-Katalog (R1-Rn, Traceability)"
     status: "pending"
     pages: 3
-    kern_papers: ["Elia et al. (2025)/MQG4AI", "Elia & Bauer (2023)", "Eisenberg et al. (2025)/UCF"]
-    note: "Art. 14 verweist auf 4.5, keine Dopplung"
+    kern_papers: ["Elia et al. (2025)/MQG4AI", "Elia & Bauer (2023)", "Eisenberg et al. (2025)/UCF", "Lucaj et al. (2025)/TechOps", "Goncalves & Correia (2025)/XAI-CbD"]
+    ergaenzend: ["Nellutla (2026)/MLOps 2.0 (SvedbergOpen, nur ergaenzend)", "Finch & Butt (2025)/Compliance Asymmetry"]
+    note: "Art. 14 verweist auf 4.5, keine Dopplung. Goncalves auch in 4.3 als Stuetzquelle."
     neue_elemente: ["R-PMS-01: Post-Market Surveillance Art. 72 — Deployer-Meldepflicht, Evidence Store liefert Incident-Logs"]
 page_budget:
   kap1_einleitung: 5-6  # PFLICHT: Beweislast-Asymmetrie als Problem Statement (Deployer=Black Box, muss Art.9-15 nachweisen)

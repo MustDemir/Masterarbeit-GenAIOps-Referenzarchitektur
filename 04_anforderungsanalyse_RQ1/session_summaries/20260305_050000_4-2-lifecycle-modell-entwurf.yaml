@@ -5,30 +5,50 @@ target_folder: 04_anforderungsanalyse_RQ1/session_summaries
 repo_scope: thesis
 summary_type: fachlich
 source_repo: genaiops-thesis
-title: 4.2 Lifecycle-Modell — Entwurf abgeschlossen
-summary_bullets:
-- 'Abschnitt 4.2 Lifecycle-Modell (Pre-Deployment, Deployment, Operation) geschrieben — ~650 Woerter, 5 Absaetze, APA7.'
-- 'Dreistufiges Deployer-Lifecycle-Modell abgeleitet aus Konvergenz von Leon (2026, 7 Stufen), Huwyler (2025, 6 Phasen), Ray (2026, TRiSM 4 Phasen) und Butt et al. (2026, GEAP 5 Promotion Gates).'
-- 'Pre-Deployment = Deployer-seitige Due Diligence (Konformitaetserklaerung, FRIA, EU-DB-Registrierung); Deployment = kontrollierter Uebergang (Human Oversight Art. 14, Monitoring-Aktivierung); Operation = Continuous Monitoring, Meldepflicht Art. 26 Abs. 5, PMS Art. 72.'
-- 'Quality Gates an Phasenuebergaengen positioniert — Konvergenz: Leon (Guardrails+QG jede Phase), Butt (Promotion Gates pass/waive/block + Evidence Backbone), Ray (PaC-Enforcement nur bei Threshold-Erfuellung).'
-- 'Scope-Abgrenzung 1: Art. 25 Provider-Aufstieg bei wesentlicher Aenderung — Huwyler (S. 4) Fine-Tuning/RAG als Trigger. Tiefenanalyse → Kap. 7 Limitation.'
-- 'Scope-Abgrenzung 2: Retirement-Phase explizit ausgeschlossen — Provider-Verantwortung Art. 16 Abs. 1 lit. j.'
-- 'Kern-Quellen: Huwyler (2025), Leon (2026), Ray (2026), Butt et al. (2026). D_2026 beachtet: Butt+Leon nur konvergent.'
-- 'Decisions beachtet: A9 (Art.25 inline), A10 (Retirement out), A11 (Gate-IDs erst 4.6), D_2026.'
+title: "4.2 Lifecycle-Modell — Entwurf abgeschlossen"
+umfang: "~650 Woerter, 5 Absaetze, APA7"
+inhalt: |
+  Abschnitt 4.2 leitet ein dreistufiges Deployer-Lifecycle-Modell ab und begruendet Quality Gates an den Phasenuebergaengen.
+
+  ARGUMENTATION:
+  1. REGULATORISCHE MOTIVATION: Art. 26 verteilt Deployer-Pflichten zeitlich ueber den gesamten Einsatzzyklus — Sorgfaltspruefung vor Inbetriebnahme (Abs. 1), Eingabedatenkontrolle im Betrieb (Abs. 4), fortlaufende Ueberwachung + Meldepflicht (Abs. 5). Huwyler (2025, S. 10): Compliance = "integrated, end-to-end lifecycle process".
+
+  2. LITERATUR-KONVERGENZ: Vier Modelle unterschiedlicher Granularitaet konvergieren in einem Punkt — Phasenuebergaenge sind kritische Kontrollpunkte:
+     - Leon (2026): 7 Stufen mit Guardrails + Quality Gates pro Phase
+     - Huwyler (2025): 6 Phasen (Planning → Maintenance)
+     - Ray (2026): TRiSM 4 Phasen (Dev/Deploy/Maintain/Retire)
+     - Butt et al. (2026): GEAP 5 Promotion Gates (Data/Training/Validation/Release/Operations) mit pass/waive/block-Semantik
+
+  3. DREISTUFIGES DEPLOYER-MODELL:
+     (1) PRE-DEPLOYMENT: Deployer-seitige Due Diligence — Konformitaetserklaerung pruefen, Grundrechte-Folgenabschaetzung (FRIA), EU-Datenbankregistrierung. NICHT Training/Modellentwicklung (= Provider).
+     (2) DEPLOYMENT: Kontrollierter Uebergang — Human-Oversight-Mechanismen (Art. 14) implementieren, Eingabedatenprotokollierung konfigurieren, Monitoring-Infrastruktur aktivieren.
+     (3) OPERATION: Fortlaufender Betrieb — Continuous Monitoring auf Drift/Bias, Meldepflicht schwerwiegender Vorfaelle (Art. 26 Abs. 5), Post-Market-Surveillance (Art. 72).
+
+  4. QUALITY GATES AN PHASENUEBERGAENGEN: Konvergenz dreier Ansaetze bestaetigt Gate-Architektur:
+     - Leon: "guardrails and quality gates at each phase"
+     - Butt: Promotion Gates mit dreistufiger Entscheidungssemantik (pass/waive/block), signierte Evidenzartefakte in manipulationssicherer Evidence Backbone
+     - Ray: Policy-as-Code-Enforcement, "only models meeting security, fairness, and performance thresholds progress"
+     → Gates operationalisieren Art. 9 (Risikomanagementsystem) an Transformationsgrenzen
+
+  5. ZWEI SCOPE-ABGRENZUNGEN:
+     (a) Art. 25 Provider-Aufstieg: Wesentliche Aenderung (Fine-Tuning/RAG) → Deployer wird Provider. Huwyler (S. 4): "fine-tuning or retraining that materially changes model outputs or risk profile" als Trigger. Lifecycle-Modell setzt an Deployer-Status-Grenze an; Tiefenanalyse → Kap. 7 Limitation.
+     (b) Retirement-Phase explizit ausgeschlossen: Modelldekommissionierung = Provider-Verantwortung (Art. 16 Abs. 1 lit. j), ausserhalb Deployer-Scope.
+
+  KERNTHESE: Phasenuebergaenge sind die kritischen Kontrollpunkte, an denen Quality Gates regulatorische Anforderungen durchsetzen. Gate-IDs und Pruefkriterien → Abschnitt 4.6.
 decisions:
-- 'Dreistufiges Lifecycle-Modell (Pre-Deployment/Deployment/Operation) statt feinere Granularitaet'
-- 'Art. 25 inline (1-2 Absaetze), Retirement explizit out'
+  - "Dreistufiges Lifecycle (Pre-Deployment/Deployment/Operation) statt feinere Granularitaet"
+  - "Art. 25 inline (1-2 Absaetze), keine eigene Gliederungsebene"
+  - "Retirement explizit ausgeschlossen (Provider-Verantwortung)"
+  - "Gate-IDs erst in 4.6, hier nur konzeptionell"
 next_steps:
-- '4.3 Transformationsmethodik als naechster Abschnitt'
+  - "4.3 Transformationsmethodik als naechster Abschnitt"
 tags:
-- kap4
-- '4.2'
-- lifecycle
-- quality-gates
-- huwyler
-- leon
-- ray
-- butt
-- art26
+  - kap4
+  - "4.2"
+  - lifecycle
+  - quality-gates
+  - deployer-scope
+  - art25
+  - retirement
 source: claude
-summary_engine: manual_nacherfassung
+summary_engine: manual_inhaltlich_ueberarbeitet
