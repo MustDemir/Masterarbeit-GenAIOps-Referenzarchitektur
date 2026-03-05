@@ -1,8 +1,8 @@
 chapter: "04_anforderungsanalyse_RQ1"
 kapitel: "Kap. 4 — Anforderungsanalyse (RQ1)"
 status: "in_progress"
-progress: 35
-progress_pct: 35
+progress: 55
+progress_pct: 55
 current_focus: "Alle 4.2-Entscheidungen FINAL (Art.25=Inline, Retirement=Out, GateIDs=4.6). Naechster Schritt: 4.2 Lifecycle-Modell schreiben."
 done:
   - "Entscheidungspapier Kap4 finalisiert (5/5 Entscheidungen FINAL)"
