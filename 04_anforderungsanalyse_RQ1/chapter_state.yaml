@@ -1,9 +1,9 @@
 chapter: "04_anforderungsanalyse_RQ1"
 kapitel: "Kap. 4 — Anforderungsanalyse (RQ1)"
 status: "in_progress"
-progress: 55
-progress_pct: 55
-current_focus: "Alle 4.2-Entscheidungen FINAL (Art.25=Inline, Retirement=Out, GateIDs=4.6). Naechster Schritt: 4.2 Lifecycle-Modell schreiben."
+progress: 83
+progress_pct: 83
+current_focus: "4.1-4.5 fertig (Entwuerfe geschrieben). Naechster Schritt: 4.6 Requirements-Katalog planen — Quellen lesen (Lucaj, Eisenberg, Goncalves, Elia), dann schreiben."
 done:
   - "Entscheidungspapier Kap4 finalisiert (5/5 Entscheidungen FINAL)"
   - "Art. 10 Abs. 6 Scope: Out-of-Scope fuer Deployer, 3-stufige Evidenz"
@@ -70,6 +70,30 @@ decisions:
     decision: "Gate-IDs (G-PRE-01 etc.) erst in 4.6, in 4.2 nur konzeptionell"
     rationale: "Saubere Traceability-Kette: 4.2 Lifecycle → 4.3 Transformation → 4.4 Kontrolle → 4.6 formale IDs. Keine Forward-References, keine Inkonsistenz bei Aenderungen."
     date: "2026-03-05"
+  - id: "D_4.6_SCOPE"
+    decision: "4.6 Requirements-Katalog substanziell (~3-4 Seiten), zeigt systematische Anforderungsableitung"
+    rationale: "Kernbeitrag von Kap. 4: Nachweis, dass regulatorische Requirements systematisch ableitbar sind. Nicht schlank — demonstriert Methodik. Klare Trennung zu 5.3 (WAS vs. WIE)."
+    date: "2026-03-06"
+  - id: "D_4.6_VS_5.3_SEPARATION"
+    decision: "4.6 = WAS geprüft werden muss (Requirements-Tabelle R-xx), 5.3 = WIE Gates technisch spezifiziert werden (Template, Trigger, Decision-Logik G-xx)"
+    rationale: "DSR-logisch: 4.6 = Design Cycle Phase 1 (RQ1), 5.3 = Design Cycle Phase 2 (RQ2). Traceability Norm → Requirement → Gate bricht sonst an Kapitelgrenze."
+    date: "2026-03-06"
+  - id: "D_GOV_DIMENSIONS_HYBRID"
+    decision: "Governance-Dimensionen hybrid: 4.6 einfuehren als Ergebnis der Norm-Analyse, 5.1 Konvergenz-Nachweis mit NIST/ISO"
+    rationale: "4.6 sagt 'diese Cluster ergeben sich aus EU AI Act' (Art. 9→Risk Mgmt, Art. 13→Transparency etc.), 5.1 sagt 'NIST+ISO bestaetigen diese als international anerkannte Governance-Kategorien'. Abgrenzung zwischen Anforderungsanalyse und Architekturentscheidung."
+    date: "2026-03-06"
+  - id: "D_NIST_CONVERGENCE"
+    decision: "NIST-Harmonisierung als Konvergenz-Argumentation in 5.1 (~1 Seite + Tabelle), nicht nur Mapping"
+    rationale: "Konvergenz NIST AI RMF + ISO 42001 + EU AI Act = Rigor-Nachweis im DSR. Designprinzipien DP1-DP5 sind nicht willkuerlich, sondern in Knowledge Base verankert. Konsistent mit Methodik-Kapitel."
+    date: "2026-03-06"
+  - id: "D_KONSOLIDIERUNG_AUFGELOEST"
+    decision: "Alter Abschnitt 4.5 Konsolidierung wird aufgeloest: Governance-Dimensionen → 4.6, NIST-Harmonisierung → 5.1, Clustering → 5.3"
+    rationale: "Konsolidierung war kein eigenstaendiger DSR-Beitrag. Inhalte passen besser an ihre DSR-logischen Orte. 4.5 bleibt Human Oversight."
+    date: "2026-03-06"
+  - id: "D_KAP4_BUDGET_FLEX"
+    decision: "Kap. 4 Seitenbudget flexibel auf ~14-15 Seiten erhoehen wenn noetig"
+    rationale: "4.6 substanziell (3-4 S.) + 4.1-4.5 (~10.5 S.) = ~14.5 S. Kein kuenstliches Kuerzen — Kernbeitrag der Anforderungsableitung muss sauber dargestellt werden."
+    date: "2026-03-06"
 chapter_structure:
   - section: "4.1"
     title: "Zielbild und Anforderungsrahmen"
@@ -77,18 +101,18 @@ chapter_structure:
     pages: 3
   - section: "4.2"
     title: "Lifecycle-Modell (Pre-Deployment / Deployment / Operation)"
-    status: "pending"
+    status: "done"
     pages: 2
     kern_papers: ["Butt et al. (2026)", "Leon (2026)", "Ray (2026)", "Huwyler (2025)"]
     neue_elemente: ["Art. 25 Provider-Aufstieg bei Modifikation (Fine-Tuning/RAG) — 1-2 Absaetze"]
   - section: "4.3"
     title: "Transformationsmethodik (Norm → Requirement → Gate)"
-    status: "pending"
+    status: "done"
     pages: 2
     kern_papers: ["Kelly et al. (2024)", "Feng et al. (2024)", "Buscemi et al. (2025)", "Gallina et al. (2024)"]
   - section: "4.4"
     title: "Kontrollmechanismen (Policy-as-Code, Monitoring, Audit)"
-    status: "pending"
+    status: "done"
     pages: 2
     kern_papers: ["Sardana et al. (2024)", "Romeo et al. (2025)", "Kovac et al. (2025)"]
   - section: "4.5"
@@ -109,7 +133,7 @@ page_budget:
   kap1_einleitung: 5-6  # PFLICHT: Beweislast-Asymmetrie als Problem Statement (Deployer=Black Box, muss Art.9-15 nachweisen)
   kap2_grundlagen: 12-15
   kap3_methodik: 6-8
-  kap4_anforderungen: 13
+  kap4_anforderungen: 14-15
   kap5_architektur: 15-18
   kap6_evaluation: 8-10
   kap7_diskussion: 5-6
@@ -159,9 +183,7 @@ key_sources:
   - "Ray (2026) — TRiSM Review"
   - "Eisenberg et al. (2025) — Unified Control Framework"
 zotero:
-  api_key: "ElLUMF2Y00Yb1I93u2cNI803"
-  user_id: "19646628"
-  parent_collection: "BKMJIYPE"
+  
   collections:
     02_RQ1: "MHH8HHDN"
     03_RQ2: "N3R8S3I9"
