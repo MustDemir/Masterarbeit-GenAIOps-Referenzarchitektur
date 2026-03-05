@@ -540,6 +540,219 @@ def write_resume_text(text: str) -> Path:
     return RESUME_PATH
 
 
+# ---------------------------------------------------------------------------
+# Thesis State (git-tracked SSOT) — Schicht 1 fuer KI-Kontext
+# ---------------------------------------------------------------------------
+
+THESIS_STATE_PATH = REPO_ROOT / "docs" / "thesis_state.md"
+GLIEDERUNG_PATH = REPO_ROOT / "00_admin" / "gliederung_v3.md"
+
+
+def _load_full_chapter_states() -> list[dict]:
+    """Load all chapter_state.yaml files with FULL content (decisions, critical_definitions, etc.)."""
+    states = []
+    seen = set()
+    for pattern in ("chapter_state.yaml", "_status.yml"):
+        for p in sorted(REPO_ROOT.rglob(pattern)):
+            chapter_dir = str(p.parent.relative_to(REPO_ROOT))
+            if chapter_dir in seen or ".git" in chapter_dir:
+                continue
+            seen.add(chapter_dir)
+            meta = _load_yaml(p)
+            if meta:
+                meta["_path"] = str(p.relative_to(REPO_ROOT))
+                states.append(meta)
+    return states
+
+
+def build_thesis_state(index: dict | None = None) -> str:
+    """Build comprehensive thesis state markdown for docs/thesis_state.md (git-tracked SSOT).
+
+    3-Schichten-Kontextmodell — Schicht 1:
+    - Kapitelstatus mit Fortschritt
+    - Alle Decisions aggregiert (ID + Kapitel + 1-Zeiler + Rationale-Keyword)
+    - Critical Definitions (bindende Begriffe/Abgrenzungen)
+    - Cross-Chapter Impacts
+    - Expose-Gliederung Referenz
+    - Requirements + Gates
+    - Letzte Session-Summaries pro Kapitel
+    """
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    lines: list[str] = []
+
+    lines.append("# Thesis State — Single Source of Truth (Schicht 1)")
+    lines.append("")
+    lines.append(f"> **Automatisch generiert:** {now}  ")
+    lines.append(f"> **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  ")
+    lines.append("> **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.")
+    lines.append("")
+
+    # --- Expose-Gliederung Referenz ---
+    lines.append("## Expose-Gliederung")
+    lines.append("")
+    if GLIEDERUNG_PATH.exists():
+        lines.append(f"→ **SSOT:** [`00_admin/gliederung_v3.md`]({GLIEDERUNG_PATH.name})")
+        lines.append(f"→ **PDF:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf`")
+    else:
+        lines.append("⚠ `00_admin/gliederung_v3.md` nicht gefunden.")
+    lines.append("")
+
+    # --- Kapitelstatus ---
+    chapter_states = _load_full_chapter_states()
+    lines.append("## Kapitelstatus")
+    lines.append("")
+    if not chapter_states:
+        lines.append("Keine chapter_state.yaml gefunden.")
+    else:
+        for c in chapter_states:
+            chapter = c.get("kapitel") or c.get("chapter", "?")
+            status = c.get("status", "unknown")
+            progress = c.get("progress", c.get("progress_pct", "?"))
+            focus = c.get("current_focus", "")
+            focus_str = f" — {focus}" if focus else ""
+            lines.append(f"- **{chapter}**: {status} ({progress}%){focus_str}")
+    lines.append("")
+
+    # --- Decisions (aggregiert) ---
+    lines.append("## Decisions (alle Kapitel)")
+    lines.append("")
+    lines.append("| ID | Kapitel | Entscheidung | Rationale-Keyword |")
+    lines.append("|---|---|---|---|")
+    any_decisions = False
+    for c in chapter_states:
+        chapter_short = c.get("chapter", "?")
+        decisions = c.get("decisions", [])
+        if not decisions:
+            continue
+        for d in decisions:
+            if isinstance(d, dict):
+                did = d.get("id", "?")
+                dec = d.get("decision", "?")
+                rat = d.get("rationale", "")
+                # Extract first keyword/phrase from rationale (up to first comma or period)
+                rat_kw = rat.split(",")[0].split(".")[0].strip()[:60] if rat else ""
+                lines.append(f"| {did} | {chapter_short} | {dec} | {rat_kw} |")
+                any_decisions = True
+            elif isinstance(d, str):
+                lines.append(f"| — | {chapter_short} | {d} | — |")
+                any_decisions = True
+    if not any_decisions:
+        lines.append("| — | — | Keine Decisions in chapter_states gefunden | — |")
+    lines.append("")
+
+    # --- Critical Definitions (bindende Begriffe) ---
+    lines.append("## Critical Definitions (bindend fuer Cross-Chapter-Konsistenz)")
+    lines.append("")
+    any_defs = False
+    for c in chapter_states:
+        chapter_short = c.get("chapter", "?")
+        defs = c.get("critical_definitions", [])
+        if defs:
+            for defn in defs:
+                lines.append(f"- **[{chapter_short}]** {defn}")
+                any_defs = True
+    if not any_defs:
+        lines.append("Noch keine critical_definitions in chapter_states definiert.")
+        lines.append("→ Feld `critical_definitions:` in chapter_state.yaml pflegen.")
+    lines.append("")
+
+    # --- Cross-Chapter Impacts ---
+    lines.append("## Cross-Chapter Impacts")
+    lines.append("")
+    any_impacts = False
+    for c in chapter_states:
+        chapter_short = c.get("chapter", "?")
+        impacts = c.get("cross_chapter_impacts", [])
+        if impacts:
+            for imp in impacts:
+                lines.append(f"- **[{chapter_short}]** {imp}")
+                any_impacts = True
+    if not any_impacts:
+        lines.append("Noch keine cross_chapter_impacts in chapter_states definiert.")
+    lines.append("")
+
+    # --- Requirements ---
+    if index:
+        requirements = index.get("requirements", [])
+    else:
+        requirements = []
+    lines.append("## Requirements (RQ1)")
+    lines.append("")
+    if not requirements:
+        lines.append("Keine R*.yaml gefunden.")
+    else:
+        for r in requirements:
+            rid = r.get("id", "")
+            title = r.get("title", "") or "(noch ohne Titel)"
+            phase = r.get("phase", "")
+            phase_str = f" [{phase}]" if phase else ""
+            lines.append(f"- {rid}: {title}{phase_str}")
+    lines.append("")
+
+    # --- Quality Gates ---
+    if index:
+        gates = index.get("gates", [])
+    else:
+        gates = []
+    lines.append("## Quality Gates (RQ2)")
+    lines.append("")
+    if not gates:
+        lines.append("Keine G*.yaml gefunden.")
+    else:
+        for g in gates:
+            gid = g.get("id", "")
+            dim = g.get("dimension", "")
+            name = g.get("name", "") or "(noch ohne Name)"
+            lines.append(f"- {gid} [{dim}]: {name}")
+    lines.append("")
+
+    # --- Session-Summaries (letzte pro Kapitel) ---
+    if index:
+        summaries = index.get("session_summaries", [])
+    else:
+        summaries = []
+    lines.append("## Letzte Session-Summaries")
+    lines.append("")
+    if not summaries:
+        lines.append("Keine Session-Summaries vorhanden.")
+    else:
+        # Group by topic, show last 2 per topic
+        by_topic: dict[str, list] = {}
+        for s in summaries:
+            topic = s.get("topic", "general")
+            by_topic.setdefault(topic, []).append(s)
+        for topic, slist in sorted(by_topic.items()):
+            lines.append(f"### [{topic}]")
+            for s in slist[-3:]:  # last 3 per topic
+                title = s.get("title", "Session Summary")
+                bullets = s.get("summary_bullets", [])
+                first = bullets[0] if bullets else "(ohne Stichpunkte)"
+                lines.append(f"- {title}: {first}")
+            lines.append("")
+    lines.append("")
+
+    # --- Kontext-Hinweis ---
+    lines.append("---")
+    lines.append("")
+    lines.append("**3-Schichten-Kontextmodell:**")
+    lines.append("1. **Schicht 1** (dieses Dokument): Gesamtbild — Decisions, Definitionen, Status")
+    lines.append("2. **Schicht 2** (Session-Summary YAMLs): Inhaltliche Argumentation pro Session")
+    lines.append("3. **Schicht 3** (Kapitel-MDs/PDFs): Volltext — nur lesen wenn Schicht 1+2 nicht ausreichen")
+    lines.append("")
+    lines.append("→ Wenn eine Decision oder Definition fuer den aktuellen Text relevant ist,")
+    lines.append("  ZUERST die Session-Summary YAML lesen (Schicht 2).")
+    lines.append("  Nur bei Unsicherheit den Volltext anfordern (Schicht 3).")
+
+    return "\n".join(lines).strip() + "\n"
+
+
+def write_thesis_state(text: str) -> Path:
+    """Write thesis state to git-tracked docs/thesis_state.md."""
+    THESIS_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    THESIS_STATE_PATH.write_text(text, encoding="utf-8")
+    return THESIS_STATE_PATH
+
+
 def azure_configured() -> bool:
     load_dotenv()
     endpoint = os.getenv("AZURE_SEARCH_ENDPOINT")

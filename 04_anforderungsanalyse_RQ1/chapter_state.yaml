@@ -140,12 +140,17 @@ page_budget:
   kap8_fazit: 3-4
   total_target: 70
 review_comments: []
+critical_definitions:
+  - "Enforcement ≠ Dokumentation: Architektur erzwingt Compliance technisch, nicht nur als Papierspur (4.1)"
+  - "Pre-Deployment = Datenkuration → Modellvalidierung; Deployment = Integration+Staging+Release; Operation = Monitoring+Audit+PMS (4.2)"
+  - "Dreistufige Transformation: Norm (Art. 9-15) → Requirement (R-xx) → Gate (G-xx) — keine Zwischenstufe, kein juristischer Kommentar (4.3)"
+  - "3 Kontrollmechanismen: Policy-as-Code (praev.), Continuous Monitoring (reakt.), Audit Trails (retrospekt.) — exklusive Zuordnung pro Requirement (4.4)"
+  - "Human Oversight ≠ manuelle Pruefung: Institutionalised Distrust (Laux) + 4 Effektivitaetsbedingungen (Sterz) als Designprinzip (4.5)"
+  - "4.6 = WAS (Requirements R-xx), 5.3 = WIE (Gate-Specs G-xx) — DSR-logische Trennung Design Cycle Phase 1 vs. Phase 2"
+  - "Deployer-Scope: nur Art. 26 Pflichten, Provider-Pflichten (Art. 16) explizit ausgeschlossen, Art. 25 = Scope-Trigger (4.2)"
+  - "Retirement-Phase: explizit Out-of-Scope (Provider-Verantwortung Art. 16 Abs. 1 lit. j)"
 next_steps:
-  - "Abschnitt 4.2 Lifecycle-Modell schreiben"
-  - "Abschnitt 4.3 Transformationsmethodik schreiben"
-  - "Abschnitt 4.4 Kontrollmechanismen schreiben"
-  - "Abschnitt 4.5 Human Oversight schreiben — ERLEDIGT (triple-verified)"
-  - "Abschnitt 4.6 Requirements-Katalog erstellen"
+  - "Abschnitt 4.6 Requirements-Katalog erstellen (Quellen: Lucaj, Eisenberg, Goncalves, Elia)"
   - "MQG4AI Abgrenzungssatz fuer Kap. 2 schreiben (Vorlage formuliert)"
   - "Elia & Bauer (2023) als peer-reviewed Vorgaenger in Kap. 2 mitziehen (1 Satz)"
   - "Rueckverweis-Satz in Kap. 4 Einleitung einfuegen (DSR MD10/MD11)"
