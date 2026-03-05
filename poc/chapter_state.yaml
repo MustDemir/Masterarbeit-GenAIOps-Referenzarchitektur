@@ -1,0 +1,12 @@
+chapter: poc
+kapitel: PoC-Implementierung
+status: Geplant
+progress: 0
+progress_pct: 0
+current_focus: Noch nicht gestartet — beginnt in Iteration 2
+done: []
+next_steps:
+- Azure-Infrastruktur aufsetzen (AKS, Azure OpenAI)
+- Ambient AI Scribe Pipeline implementieren
+- Quality Gates als Policy-as-Code integrieren
+- Evidence Store anbinden

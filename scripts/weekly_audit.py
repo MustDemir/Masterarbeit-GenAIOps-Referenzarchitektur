@@ -355,6 +355,7 @@ def check_stale_status_files() -> list[Finding]:
         "03_forschungsdesign_methodik", "04_anforderungsanalyse_RQ1",
         "05_referenzarchitektur_RQ2", "06_evaluation_RQ3",
         "07_diskussion", "08_fazit_ausblick",
+        "docs/expose", "poc",
     ]
 
     for cdir in chapter_dirs:

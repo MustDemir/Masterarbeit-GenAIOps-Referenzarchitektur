@@ -156,20 +156,29 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
 |   |-- asset_naming.md       # PNG-Naming/Versionierungsstandard (v01, v02, ...)
 |   |-- SOURCE_OF_TRUTH.md    # SOT-Regeln
+|   |-- WORKFLOW_PLAYBOOK.md  # Workflow-Regeln & Automatisierung
+|   |-- MASTER_EXECUTION_PLAN_AMBIENT_AI_SCRIBE.md  # PoC-Masterplan
 |-- 01_einleitung/
 |-- 02_rigor_theorie_stand_forschung/
 |-- 03_forschungsdesign_methodik/
 |-- 04_anforderungsanalyse_RQ1/  # Design-getriebene Operationalisierung (Design Cycle Phase 1)
 |-- 05_referenzarchitektur_RQ2/
+|   |-- 05_01_design_prinzipien/
+|   |-- 05_02_architekturuebersicht/
 |   |-- 05_03_quality_gates/
 |   |-- 05_04_pipelines_integration/
+|   |-- 05_05_automationspunkte/
 |-- 06_evaluation_RQ3/
 |-- 07_diskussion/
 |-- 08_fazit_ausblick/
 |-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
 |-- poc/                           # Proof-of-Concept (S1-S4 Instanziierung, ab Iter. 2)
 |-- 90_sources_zotero/
-|-- docs/expose/                   # Expose v4 (PDF, Single Source of Truth)
+|-- 99_inbox_unsorted/             # Unsortiertes Material
+|-- docs/
+|   |-- expose/                    # Expose v4 (PDF, Single Source of Truth)
+|   |-- ENTSCHEIDUNGSPAPIER_KAP4.md  # Designentscheidungen Kapitel 4
+|-- scripts/                       # Automatisierung: Diagramme, Fortschritt, Audit
 ```
 
 ## Architektur-Dokumente (Source of Truth)
