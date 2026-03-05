@@ -1,44 +1,58 @@
-chapter: "03_forschungsdesign_methodik"
-status: "review"
+chapter: 03_forschungsdesign_methodik
+kapitel: Kap. 3 — Methodik (DSR)
+status: review
+progress: 95
 progress_pct: 95
-current_focus: "Finale Review — 7 [MD]-Kommentare im Dokument aufloesen"
+current_focus: Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
 done:
-  - "DSR-Rahmen (Hevner + Peffers + vom Brocke) fixiert"
-  - "DSRM als Einbettung, nicht als Kapitelstruktur"
-  - "Artefaktfokus: Kontrollsystem (nicht Schichten)"
-  - "Schreibstil: knapp & methodisch-strikt"
-  - "10 Seiten DOCX Fliesstext (8 Abschnitte, 6 Tabellen)"
-  - "22/22 Konsistenzpruefungen bestanden"
-  - "Titel FINAL C4 fixiert"
-  - "Expose-Deltas D1-D6 in Kap. 3 ueberfuehrt (13 Steps)"
-  - "normativ → regulatorisch/technisch/strategisch (5 Stellen)"
-  - "ISO 42001 raus als Anforderungsquelle, NIST AI RMF rein"
-  - "n>=3 → n>=4 Expert-Reviews (4 Stellen, aber Sektion 3.8 noch n>=3 — OFFEN)"
-  - "Scope-Ausschluss eingefuegt (Training/Data Science/Data-Eng)"
-  - "Healthcare als PoC-Anwendungsfall klargestellt"
-  - "DP1 Lifecycle → Deployment/Inference-Zyklus"
-  - "DSR Grid: ISO 42001 raus, NIST AI RMF als Kernel Theory"
-  - "PoC-Pfad explizit definiert"
-  - "SOT konsolidiert: Expose v4 + Kap3 PDF im Repo, v3 nach legacy"
+- DSR-Rahmen (Hevner + Peffers + vom Brocke) fixiert
+- DSRM als Einbettung, nicht als Kapitelstruktur
+- 'Artefaktfokus: Kontrollsystem (nicht Schichten)'
+- 'Schreibstil: knapp & methodisch-strikt'
+- 10 Seiten DOCX Fliesstext (8 Abschnitte, 6 Tabellen)
+- 22/22 Konsistenzpruefungen bestanden
+- Titel FINAL C4 fixiert
+- Expose-Deltas D1-D6 in Kap. 3 ueberfuehrt (13 Steps)
+- normativ → regulatorisch/technisch/strategisch (5 Stellen)
+- ISO 42001 raus als Anforderungsquelle, NIST AI RMF rein
+- n>=3 → n>=4 Expert-Reviews (4 Stellen, aber Sektion 3.8 noch n>=3 — OFFEN)
+- Scope-Ausschluss eingefuegt (Training/Data Science/Data-Eng)
+- Healthcare als PoC-Anwendungsfall klargestellt
+- DP1 Lifecycle → Deployment/Inference-Zyklus
+- 'DSR Grid: ISO 42001 raus, NIST AI RMF als Kernel Theory'
+- PoC-Pfad explizit definiert
+- 'SOT konsolidiert: Expose v4 + Kap3 PDF im Repo, v3 nach legacy'
 review_comments:
-  - "MD1: Sind 2 Iterationen ausreichend? → Beantwortet in Expose v4 (Iter. 2 ausfuehrlich begruendet)"
-  - "MD2: Zentrales Designprinzip → Beantwortet (QG-System als architekturkonstitutives Designprinzip)"
-  - "MD3: Das Primaeartefakt! → Beantwortet (Referenzarchitektur als Primaeartefakt definiert)"
-  - "MD4: Dominanz Architektur → Beantwortet (architekturdominantes Gesamtartefakt)"
-  - "MD5: Scope Lifecycle → Beantwortet (Deployment/Inference-Zyklus klargestellt)"
-  - "MD6: Domaenenuebergreifend → Beantwortet (generisch mit Healthcare-PoC)"
-  - "MD7: Hinweis Prinz → Angewendet (Scope gekuerzt)"
+- 'MD1: Sind 2 Iterationen ausreichend? → Beantwortet in Expose v4 (Iter. 2 ausfuehrlich
+  begruendet)'
+- 'MD2: Zentrales Designprinzip → Beantwortet (QG-System als architekturkonstitutives
+  Designprinzip)'
+- 'MD3: Das Primaeartefakt! → Beantwortet (Referenzarchitektur als Primaeartefakt
+  definiert)'
+- 'MD4: Dominanz Architektur → Beantwortet (architekturdominantes Gesamtartefakt)'
+- 'MD5: Scope Lifecycle → Beantwortet (Deployment/Inference-Zyklus klargestellt)'
+- 'MD6: Domaenenuebergreifend → Beantwortet (generisch mit Healthcare-PoC)'
+- 'MD7: Hinweis Prinz → Angewendet (Scope gekuerzt)'
 next_steps:
-  - "Sektion 3.8: n>=3 → n>=4 korrigieren (uebersehener Rest)"
-  - "7 [MD]-Kommentare aus DOCX-Text entfernen (alle beantwortet)"
-  - "OP-2: Mayring (2015) im Literaturverzeichnis manuell belegen"
-  - "Finale Konsistenzpruefung nach allen Aenderungen"
+- 'Sektion 3.8: n>=3 → n>=4 korrigieren (uebersehener Rest)'
+- 7 [MD]-Kommentare aus DOCX-Text entfernen (alle beantwortet)
+- 'OP-2: Mayring (2015) im Literaturverzeichnis manuell belegen'
+- Finale Konsistenzpruefung nach allen Aenderungen
+decisions:
+  - id: "D_SCOPE_ART25_RETIREMENT"
+    decision: "Art. 25 Provider-Aufstieg als Scope-Grenze dokumentiert, Retirement explizit ausgeschlossen (Provider-Verantwortung Art. 16)"
+    rationale: "Methodische Scope-Klarstellung: Deployer-Perspektive endet bei wesentlicher Modifikation (Art. 25) bzw. Model-Dekommissionierung (Art. 16 Abs. 1 lit. j)"
+    date: "2026-03-05"
+  - id: "D_KAP4_STRUKTUR_FUNKTIONAL"
+    decision: "Kap. 4 Anforderungsanalyse folgt funktional-logischer Struktur (Lifecycle → Transformation → Kontrolle → Oversight → Katalog)"
+    rationale: "DSR-Designentscheidung: Prozessorientierung bildet Deployer-seitigen Compliance-Pfad von Norm bis audtierbarem Nachweis durchgaengig ab"
+    date: "2026-03-05"
 open_questions:
-  - "OP-3: R-Katalog noch nicht erstellt (Block A1/A2 = Kap. 4)"
-  - "Diagnose #9 (Azure CLOUD Act / STACKIT) und #10 (DP3 Contribution) → Kap. 7 verschoben"
+- 'OP-3: R-Katalog noch nicht erstellt (Block A1/A2 = Kap. 4)'
+- 'Diagnose #9 (Azure CLOUD Act / STACKIT) und #10 (DP3 Contribution) → Kap. 7 verschoben'
 key_sources:
-  - "Hevner et al. (2004)"
-  - "Peffers et al. (2007)"
-  - "vom Brocke & Maedche (2019)"
-  - "Mayring (2015)"
-  - "NIST AI RMF (2023)"
+- Hevner et al. (2004)
+- Peffers et al. (2007)
+- vom Brocke & Maedche (2019)
+- Mayring (2015)
+- NIST AI RMF (2023)

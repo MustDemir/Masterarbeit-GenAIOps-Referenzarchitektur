@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Liest _status.yml aus jedem Kapitelordner und aktualisiert die
-Fortschrittsbalken in der README.md automatisch."""
+"""Liest chapter_state.yaml aus jedem Kapitelordner und aktualisiert die
+Fortschrittsbalken in der README.md automatisch.
+
+Fallback: Falls chapter_state.yaml fehlt, wird _status.yml gelesen."""
 
 import pathlib
 import re
@@ -33,12 +35,40 @@ def make_bar(percent: int) -> str:
 
 
 def load_status(chapter_dir: str) -> dict | None:
-    """Liest _status.yml aus einem Kapitelordner."""
-    path = REPO_ROOT / chapter_dir / "_status.yml"
-    if not path.exists():
+    """Liest chapter_state.yaml (bevorzugt) oder _status.yml als Fallback.
+
+    Mergt fehlende Pflichtfelder (kapitel, progress, status) aus _status.yml,
+    falls chapter_state.yaml sie nicht enthaelt.
+    """
+    primary = REPO_ROOT / chapter_dir / "chapter_state.yaml"
+    fallback = REPO_ROOT / chapter_dir / "_status.yml"
+
+    data: dict = {}
+    if primary.exists():
+        with open(primary, encoding="utf-8") as f:
+            raw = yaml.safe_load(f)
+        if isinstance(raw, dict):
+            data = raw
+    if fallback.exists():
+        with open(fallback, encoding="utf-8") as f:
+            raw_fb = yaml.safe_load(f)
+        if isinstance(raw_fb, dict):
+            # Nur fehlende Felder aus _status.yml ergaenzen
+            for key in ("kapitel", "progress", "status"):
+                if key not in data and key in raw_fb:
+                    data[key] = raw_fb[key]
+
+    if not data:
         return None
-    with open(path, encoding="utf-8") as f:
-        return yaml.safe_load(f)
+
+    # Feld-Normalisierung
+    if "kapitel" not in data and "chapter" in data:
+        data["kapitel"] = data["chapter"]
+    if "progress" not in data and "progress_pct" in data:
+        data["progress"] = data["progress_pct"]
+    if "progress" not in data:
+        data["progress"] = 0
+    return data
 
 
 def build_table(chapters: list[dict]) -> str:
@@ -91,12 +121,12 @@ def main() -> None:
     for d in CHAPTER_DIRS:
         status = load_status(d)
         if status is None:
-            print(f"WARNUNG: {d}/_status.yml nicht gefunden — uebersprungen.")
+            print(f"WARNUNG: {d}/chapter_state.yaml nicht gefunden — uebersprungen.")
             continue
         chapters.append(status)
 
     if not chapters:
-        print("Keine _status.yml Dateien gefunden.")
+        print("Keine chapter_state.yaml Dateien gefunden.")
         return
 
     table = build_table(chapters)

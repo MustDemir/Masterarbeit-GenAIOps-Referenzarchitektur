@@ -407,16 +407,22 @@ def build_index() -> dict:
             continue
 
     chapter_states = []
-    for p in sorted(REPO_ROOT.rglob("chapter_state.yaml")):
-        meta = _load_yaml(p)
-        chapter_states.append(
-            {
-                "path": str(p.relative_to(REPO_ROOT)),
-                "chapter": meta.get("chapter", ""),
-                "status": meta.get("status", ""),
-                "current_focus": meta.get("current_focus", ""),
-            }
-        )
+    _seen_chapters = set()
+    for pattern in ("chapter_state.yaml", "_status.yml"):
+        for p in sorted(REPO_ROOT.rglob(pattern)):
+            chapter_dir = str(p.parent.relative_to(REPO_ROOT))
+            if chapter_dir in _seen_chapters:
+                continue
+            _seen_chapters.add(chapter_dir)
+            meta = _load_yaml(p)
+            chapter_states.append(
+                {
+                    "path": str(p.relative_to(REPO_ROOT)),
+                    "chapter": meta.get("chapter", meta.get("kapitel", "")),
+                    "status": meta.get("status", ""),
+                    "current_focus": meta.get("current_focus", ""),
+                }
+            )
 
     requirements = []
     req_dir = REPO_ROOT / "04_anforderungsanalyse_RQ1" / "requirements"

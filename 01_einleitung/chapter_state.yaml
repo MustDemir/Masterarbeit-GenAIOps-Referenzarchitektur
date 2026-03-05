@@ -1,6 +1,8 @@
-chapter: "01_einleitung"
-status: "not_started"
-current_focus: ""
+chapter: 01_einleitung
+kapitel: Kap. 1 — Einleitung
+status: Entwurf
+progress: 10
+current_focus: ''
 done: []
 next_steps: []
 open_questions: []

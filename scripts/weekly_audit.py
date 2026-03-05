@@ -84,33 +84,46 @@ def check_final_images() -> list[Finding]:
     return findings
 
 
-def check_status_yml_format() -> list[Finding]:
+def check_chapter_state_format() -> list[Finding]:
+    """Prueft chapter_state.yaml (bevorzugt) oder _status.yml als Fallback."""
     findings: list[Finding] = []
-    for p in ROOT.rglob("_status.yml"):
-        if ".git" in p.parts or ".memory" in p.parts:
-            continue
-        try:
-            data = yaml.safe_load(p.read_text(encoding="utf-8"))
-        except Exception as exc:
-            findings.append(Finding(ERROR, "structure",
-                f"{p.relative_to(ROOT)}: YAML parse error: {exc}"))
-            continue
-        if not isinstance(data, dict):
-            findings.append(Finding(ERROR, "structure",
-                f"{p.relative_to(ROOT)}: not a YAML mapping"))
-            continue
-        for field in ("kapitel", "progress", "status"):
-            if field not in data:
+    seen_dirs: set[str] = set()
+    for pattern in ("chapter_state.yaml", "_status.yml"):
+        for p in ROOT.rglob(pattern):
+            if ".git" in p.parts or ".memory" in p.parts:
+                continue
+            chapter_dir = str(p.parent.relative_to(ROOT))
+            if chapter_dir in seen_dirs:
+                continue
+            seen_dirs.add(chapter_dir)
+            try:
+                data = yaml.safe_load(p.read_text(encoding="utf-8"))
+            except Exception as exc:
                 findings.append(Finding(ERROR, "structure",
-                    f"{p.relative_to(ROOT)}: missing required field '{field}'"))
-        if "progress" in data:
-            val = data["progress"]
-            if not isinstance(val, (int, float)):
+                    f"{p.relative_to(ROOT)}: YAML parse error: {exc}"))
+                continue
+            if not isinstance(data, dict):
                 findings.append(Finding(ERROR, "structure",
-                    f"{p.relative_to(ROOT)}: 'progress' must be int, got {type(val).__name__}"))
-            elif not (0 <= val <= 100):
+                    f"{p.relative_to(ROOT)}: not a YAML mapping"))
+                continue
+            # kapitel oder chapter muss vorhanden sein
+            if "kapitel" not in data and "chapter" not in data:
+                findings.append(Finding(ERROR, "structure",
+                    f"{p.relative_to(ROOT)}: missing required field 'kapitel' or 'chapter'"))
+            # progress oder progress_pct muss vorhanden sein
+            prog_val = data.get("progress", data.get("progress_pct"))
+            if prog_val is None:
+                findings.append(Finding(ERROR, "structure",
+                    f"{p.relative_to(ROOT)}: missing required field 'progress' or 'progress_pct'"))
+            elif not isinstance(prog_val, (int, float)):
+                findings.append(Finding(ERROR, "structure",
+                    f"{p.relative_to(ROOT)}: 'progress' must be int, got {type(prog_val).__name__}"))
+            elif not (0 <= prog_val <= 100):
                 findings.append(Finding(WARNING, "structure",
-                    f"{p.relative_to(ROOT)}: 'progress' out of range: {val}"))
+                    f"{p.relative_to(ROOT)}: 'progress' out of range: {prog_val}"))
+            if "status" not in data:
+                findings.append(Finding(ERROR, "structure",
+                    f"{p.relative_to(ROOT)}: missing required field 'status'"))
     return findings
 
 
@@ -346,7 +359,9 @@ def check_stale_status_files() -> list[Finding]:
 
     for cdir in chapter_dirs:
         cpath = ROOT / cdir
-        status_file = cpath / "_status.yml"
+        status_file = cpath / "chapter_state.yaml"
+        if not status_file.exists():
+            status_file = cpath / "_status.yml"
         summaries_dir = cpath / "session_summaries"
         if not status_file.exists() or not summaries_dir.exists():
             continue
@@ -379,7 +394,7 @@ def check_stale_status_files() -> list[Finding]:
         if last_status_change < cutoff:
             findings.append(Finding(WARNING, "freshness",
                 f"{cdir}: {recent_summaries} neue Session-Summaries "
-                f"in den letzten {STALE_DAYS} Tagen aber _status.yml "
+                f"in den letzten {STALE_DAYS} Tagen aber chapter_state "
                 f"seit {last_status_change.strftime('%Y-%m-%d')} unveraendert"))
 
     return findings
@@ -431,7 +446,7 @@ ALL_CHECKS = [
     check_session_summaries,
     check_expose_locations,
     check_final_images,
-    check_status_yml_format,
+    check_chapter_state_format,
     check_gitignore_rules,
     check_no_unencrypted_pdfs_in_expose,
     check_no_secrets_committed,

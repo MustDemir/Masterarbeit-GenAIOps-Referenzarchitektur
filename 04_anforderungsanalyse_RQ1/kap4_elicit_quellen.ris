@@ -1,0 +1,277 @@
+TY  - JOUR
+AU  - Laux, Johann
+TI  - Institutionalised distrust and human oversight of artificial intelligence: towards a democratic design of AI governance under the European Union AI Act
+PY  - 2023
+JO  - AI & Society
+DO  - 10.1007/s00146-023-01850-1
+N1  - 63 Zitationen. Kern-Paper 4.5 Human Oversight. Konzept "institutionalised distrust".
+KW  - Human Oversight
+KW  - EU AI Act
+KW  - Article 14
+ER  -
+
+TY  - JOUR
+AU  - Sterz, Sabrina
+AU  - Baum, Kevin
+AU  - Laux, Johann
+AU  - Hermanns, Holger
+TI  - On the Quest for Effectiveness in Human Oversight: Interdisciplinary Perspectives
+PY  - 2024
+JO  - First Monday
+DO  - 10.5210/fm.v29i4.13477
+N1  - 51 Zitationen. Kern-Paper 4.5. Effektivität von Human Oversight.
+KW  - Human Oversight
+KW  - Effectiveness
+KW  - EU AI Act
+ER  -
+
+TY  - JOUR
+AU  - Enqvist, Lena
+TI  - 'Human oversight' in the EU Artificial Intelligence Act: what, when, to whom, and to what end?
+PY  - 2023
+JO  - Law, Innovation and Technology
+DO  - 10.1080/17579961.2023.2284761
+N1  - 48 Zitationen. Kern-Paper 4.5. Normative Analyse Art. 14.
+KW  - Human Oversight
+KW  - EU AI Act
+KW  - Article 14
+ER  -
+
+TY  - JOUR
+AU  - Kelly, Myles
+AU  - Comeau-Lapointe, Rachel
+AU  - Chung, Joseph
+AU  - Hosseini, Amin
+TI  - Navigating the EU AI Act: A Methodology for Mapping AI System Compliance
+PY  - 2024
+JO  - Proceedings of the International Workshop on Trustworthy AI
+DO  - 10.1145/3686010.3686012
+N1  - 17 Zitationen. Kern-Paper 4.3. EU AI Act Compliance Mapping Methodik.
+KW  - EU AI Act
+KW  - Compliance Mapping
+KW  - Transformation
+ER  -
+
+TY  - JOUR
+AU  - Feng, Sallam
+AU  - et al.
+TI  - Normative Requirements Operationalization with Large Language Models
+PY  - 2024
+JO  - IEEE International Requirements Engineering Conference
+DO  - 10.1109/RE59067.2024.00023
+N1  - 18 Zitationen. Kern-Paper 4.3. LLM-gestützte Normoperationalisierung.
+KW  - Normative Requirements
+KW  - LLM
+KW  - Operationalization
+ER  -
+
+TY  - JOUR
+AU  - Elia, Miriam
+AU  - Lopez, Alba Maria
+AU  - Corredor, Katherin Alexandra
+AU  - Bauer, Bernhard
+AU  - Garcia-Cuesta, Esteban
+TI  - MQG4AI: Towards Responsible High-risk AI - Illustrated for Transparency Focusing on Explainability Techniques
+PY  - 2025
+JO  - arXiv preprint
+DO  - 10.48550/arXiv.2502.11889
+N1  - Kern-Paper 4.6. Quality-Gate-Methodik für AI Lifecycle. Hauptvergleichsquelle.
+KW  - Quality Gates
+KW  - AI Lifecycle
+KW  - Responsible AI
+KW  - MQG4AI
+ER  -
+
+TY  - CONF
+AU  - Elia, Miriam
+AU  - Bauer, Bernhard
+TI  - A Methodology Based on Quality Gates for Certifiable AI in Medicine: Towards a Reliable Application of Metrics in Machine Learning
+PY  - 2023
+JO  - International Conference on Software and Data Technologies (ICSOFT)
+DO  - 10.5220/0012121300003538
+N1  - 3 Zitationen. Kern-Paper 4.6. Vorgänger MQG4AI. Norm → Instruction via Quality Gates.
+KW  - Quality Gates
+KW  - Certifiable AI
+KW  - Medicine
+ER  -
+
+TY  - JOUR
+AU  - Sardana, Neha
+AU  - et al.
+TI  - Compliance-as-Code 2.0: Agentic AI for Automated Governance
+PY  - 2024
+JO  - arXiv preprint
+N1  - Kern-Paper 4.4. CaC 2.0 mit Agentic AI. Cutting-edge Policy-as-Code.
+KW  - Compliance-as-Code
+KW  - Agentic AI
+KW  - Governance
+ER  -
+
+TY  - JOUR
+AU  - Romeo, Luca
+AU  - et al.
+TI  - ARPaCCino: Agentic-RAG for Policy as Code Compliance
+PY  - 2025
+JO  - arXiv preprint
+N1  - 1 Zitation. Kern-Paper 4.4. RAG + Policy-as-Code.
+KW  - Policy-as-Code
+KW  - RAG
+KW  - Compliance
+KW  - ARPaCCino
+ER  -
+
+TY  - JOUR
+AU  - Butt, Saad Shafiq
+AU  - et al.
+TI  - From Policy to Pipeline: Governance Framework for AI Dev/Ops Pipelines
+PY  - 2026
+JO  - (tbd)
+N1  - Kern-Paper 4.2. Policy→Pipeline Governance. EU AI Act + NIST + ISO 42001 in CI/CD.
+KW  - AI Governance
+KW  - CI/CD Pipeline
+KW  - EU AI Act
+KW  - NIST
+KW  - ISO 42001
+ER  -
+
+TY  - JOUR
+AU  - Leon, Maikel
+TI  - Lifecycle-Based Governance to Build Reliable Ethical AI Systems
+PY  - 2026
+JO  - Systems Research and Behavioral Science
+DO  - 10.1002/sres.70014
+N1  - Kern-Paper 4.2. Lifecycle-Governance Framework. Case Vignettes.
+KW  - AI Lifecycle
+KW  - Governance
+KW  - Trustworthiness
+ER  -
+
+TY  - JOUR
+AU  - Pistilli, Giada
+AU  - et al.
+TI  - Stronger Together: on the Articulation of Ethical Charters, Legal Tools, and Technical Documentation in ML
+PY  - 2023
+JO  - FAccT Conference
+DO  - 10.1145/3593013.3594002
+N1  - 25 Zitationen. Stützquelle 4.3. Ethik-Recht-Technik Artikulation.
+KW  - Ethics
+KW  - Legal
+KW  - Technical Documentation
+KW  - ML
+ER  -
+
+TY  - JOUR
+AU  - Sarra, Claudio
+TI  - AI in Decision-making: EU AI Act vs GDPR
+PY  - 2025
+JO  - (tbd)
+N1  - 6 Zitationen. Stützquelle 4.5. Vergleich Art. 14 AI Act vs. Art. 22 DSGVO.
+KW  - AI Act
+KW  - GDPR
+KW  - Automated Decision Making
+ER  -
+
+TY  - JOUR
+AU  - Ho-Dac, Nathalie
+AU  - Martinez, Emmanuel
+TI  - Human Oversight and Technical Standardisation under the AI Act
+PY  - 2024
+JO  - (tbd)
+N1  - 2 Zitationen. Stützquelle 4.5. Oversight ↔ CEN/CENELEC Standardisierung.
+KW  - Human Oversight
+KW  - Standardisation
+KW  - CEN/CENELEC
+ER  -
+
+TY  - JOUR
+AU  - Hernandez, Luis
+AU  - et al.
+TI  - An Open Knowledge Graph-Based Approach for Mapping Concepts and Requirements between the EU AI Act and Standards
+PY  - 2024
+JO  - (tbd)
+N1  - 8 Zitationen. Stützquelle 4.3. Knowledge-Graph Mapping AI Act ↔ Standards.
+KW  - Knowledge Graph
+KW  - AI Act
+KW  - Standards Mapping
+ER  -
+
+TY  - JOUR
+AU  - Corrêa, Nicholas
+AU  - Mönig, Julia
+TI  - Catalog of General Ethical Requirements for AI Certification
+PY  - 2024
+JO  - (tbd)
+N1  - 2 Zitationen. Stützquelle 4.6. Systematischer Requirements-Katalog.
+KW  - AI Certification
+KW  - Ethical Requirements
+KW  - Catalog
+ER  -
+
+TY  - JOUR
+AU  - Gonçalves, João
+AU  - Correia, Mário
+TI  - XAI-Compliance-by-Design
+PY  - 2025
+JO  - (tbd)
+N1  - Stützquelle 4.4. XAI als Compliance-Mechanismus by Design.
+KW  - XAI
+KW  - Compliance-by-Design
+ER  -
+
+TY  - JOUR
+AU  - Golpayegani, Delaram
+AU  - et al.
+TI  - AICat: AI Cataloguing for the EU AI Act
+PY  - 2024
+JO  - (tbd)
+N1  - Stützquelle 4.3/4.6. Strukturierter Katalog-Ansatz für AI Act.
+KW  - AI Cataloguing
+KW  - EU AI Act
+ER  -
+
+TY  - JOUR
+AU  - Lucaj, Lena
+AU  - et al.
+TI  - TechOps: Technical Documentation Templates for the AI Act
+PY  - 2025
+JO  - (tbd)
+N1  - Stützquelle 4.3. Dokumentations-Templates nach AI Act.
+KW  - Technical Documentation
+KW  - AI Act
+KW  - Templates
+ER  -
+
+TY  - JOUR
+AU  - Finch, Kate
+AU  - Butt, Saad Shafiq
+TI  - Gaps in AI-Compliant Governance: A Systematic Review
+PY  - 2025
+JO  - (tbd)
+N1  - Stützquelle 4.4. Systematic Review zu Governance-Gaps.
+KW  - AI Governance
+KW  - Compliance Gaps
+KW  - Systematic Review
+ER  -
+
+TY  - JOUR
+AU  - Slupczynski, Arne
+AU  - et al.
+TI  - CAPTURE: Stakeholder-Centered Iterative MLOps Lifecycle
+PY  - 2026
+JO  - (tbd)
+N1  - Stützquelle 4.2. MLOps-Lifecycle mit Stakeholder-Zentrierung.
+KW  - MLOps
+KW  - Lifecycle
+KW  - Stakeholder
+ER  -
+
+TY  - JOUR
+AU  - Almagrabi, Haris
+AU  - Khan, Rashid Amin
+TI  - Optimizing Secure AI Lifecycle Model Management
+PY  - 2025
+JO  - (tbd)
+N1  - 11 Zitationen. Stützquelle 4.2. Security-Dimension Lifecycle.
+KW  - AI Lifecycle
+KW  - Security
+ER  -

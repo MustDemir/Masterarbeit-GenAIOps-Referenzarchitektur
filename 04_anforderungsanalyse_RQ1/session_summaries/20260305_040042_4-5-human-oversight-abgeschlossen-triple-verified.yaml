@@ -1,0 +1,32 @@
+id: SUM-20260305040042
+created_at: '2026-03-05T04:00:42.222211+00:00'
+topic: anforderungen
+target_folder: 04_anforderungsanalyse_RQ1/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: 4.5-Human-Oversight-abgeschlossen-triple-verified
+summary_bullets:
+- 'Session: Abschnitt 4.5 Human Oversight (Art. 14) vollstaendig abgeschlossen. Sterz-Fulltext
+  aus User-PDF extrahiert (pdfplumber). 4 Effektivitaetsbedingungen (Causal Power,
+  Epistemic Access, Self-Control, Fitting Inte...'
+- 'Session: Abschnitt 4.5 Human Oversight (Art.'
+- 14) vollstaendig abgeschlossen.
+- Sterz-Fulltext aus User-PDF extrahiert (pdfplumber).
+- 4 Effektivitaetsbedingungen (Causal Power, Epistemic Access, Self-Control, Fitting
+  Intentions) als Gate-Kriterien identifiziert.
+- 14(4)(a-e) auf Sterz-Bedingungen.
+- Institutionalised Distrust (Laux 2024) als Governance-Rahmen mit 6 Designprinzipien.
+- Deployer-Provider-Asymmetrie (Enqvist 2023).
+decisions: []
+next_steps: []
+tags:
+- kap4
+- '4.5'
+- human-oversight
+- sterz
+- laux
+- enqvist
+- art14
+source: claude
+summary_engine: local_rules

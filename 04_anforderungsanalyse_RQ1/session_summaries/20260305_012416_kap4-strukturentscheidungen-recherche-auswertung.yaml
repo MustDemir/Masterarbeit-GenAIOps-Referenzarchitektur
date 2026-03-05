@@ -1,0 +1,39 @@
+id: SUM-20260305012416
+created_at: '2026-03-05T01:24:16.136787+00:00'
+topic: anforderungen
+target_folder: 04_anforderungsanalyse_RQ1/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: Kap4 Strukturentscheidungen + Recherche-Auswertung
+summary_bullets:
+- '# Session: Kap. 4 Strukturentscheidungen + Recherche-Auswertung (2026-03-05)'
+- 'Fortfuehrung der Arbeit an Kap. 4 Anforderungsanalyse (RQ1). Zwei Recherche-Berichte
+  lagen vor: Elicit-Recherche (120 Papers, 12 Top-Funde) und Consensus/SemanticScholar-Recherche
+  (200 Papers, 19 relevante). Zotero-Bi...'
+- '## Quellenauswertung Kap. 4.2-4.6'
+- 'L1-Uebersicht der Quellenabdeckung pro Abschnitt erstellt:'
+- 'Lifecycle: Butt et al. (2026), Leon (2026), Ray (2026) — alle 2026 mit 0 Zit.,
+  nur konvergent nutzbar'
+- 'Transformation: Kelly et al. (2024, 17 Zit.) + Feng et al. (2024, 18 Zit.) + Buscemi
+  (2025) = starkes Trio'
+- 'Kontrollmechanismen: Sardana et al. (2024) CaC 2.0 + Romeo et al. (2025) ARPaCCino
+  + Kovac/CERTAIN'
+- 'Human Oversight: Laux (2023, 63 Zit.) + Sterz (2024, 51 Zit.) + Enqvist (2023,
+  48 Zit.) = staerkste Evidenzbasis'
+decisions:
+- '# Session: Kap. 4 Strukturentscheidungen + Recherche-Auswertung (2026-03-05)'
+- '## Entscheidung 1: 4.5 Human Oversight als eigener Abschnitt'
+- '## Entscheidung 2: Seitenbudget Kap. 4'
+- '## Entscheidung 3: 2026-Quellen'
+next_steps:
+- '## Offene Punkte (naechste Session)'
+- '- Abschnitt 4.2 Lifecycle-Modell als naechstes schreiben'
+tags:
+- kap4
+- struktur
+- human-oversight
+- recherche
+- entscheidungen
+source: claude
+summary_engine: local_rules

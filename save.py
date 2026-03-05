@@ -25,13 +25,14 @@ from workflow_lib import (
 
 
 def _topic_to_status_path(topic: str) -> Path | None:
-    """Resolve topic to its _status.yml path, or None if not mappable."""
+    """Resolve topic to its chapter_state.yaml path (fallback: _status.yml)."""
     session_dir = TOPIC_TO_DIR.get(topic)
     if not session_dir:
         return None
     chapter_dir = REPO_ROOT / Path(session_dir).parent
-    status_path = chapter_dir / "_status.yml"
-    return status_path
+    primary = chapter_dir / "chapter_state.yaml"
+    fallback = chapter_dir / "_status.yml"
+    return primary if primary.exists() else fallback
 
 
 def _offer_progress_update(topic: str) -> None:
@@ -42,15 +43,18 @@ def _offer_progress_update(topic: str) -> None:
 
     if status_path.exists():
         data = yaml.safe_load(status_path.read_text(encoding="utf-8"))
-        current = data.get("progress", 0)
-        kapitel = data.get("kapitel", topic)
+        if not isinstance(data, dict):
+            data = {}
+        current = data.get("progress", data.get("progress_pct", 0))
+        kapitel = data.get("kapitel", data.get("chapter", topic))
         status = data.get("status", "")
         print(f"\n--- Fortschritt: {kapitel} ---")
         print(f"Aktuell: {current}% — {status}")
     else:
+        data = {}
         current = 0
         kapitel = topic
-        print(f"\n--- Noch keine _status.yml fuer '{topic}' ---")
+        print(f"\n--- Noch keine chapter_state.yaml fuer '{topic}' ---")
         print(f"Aktuell: {current}%")
 
     if not sys.stdin.isatty():
@@ -71,22 +75,32 @@ def _offer_progress_update(topic: str) -> None:
         print("Fortschritt unveraendert.")
         return
 
-    new_status = input(f"Status-Text (Enter = bisherig): ").strip()
-    if not new_status and status_path.exists():
-        data = yaml.safe_load(status_path.read_text(encoding="utf-8"))
-        new_status = data.get("status", "In Arbeit")
-    elif not new_status:
-        new_status = "In Arbeit"
+    new_status = input("Status-Text (Enter = bisherig): ").strip()
+    if not new_status:
+        new_status = data.get("status", "In Arbeit") if data else "In Arbeit"
 
-    status_data = {
-        "kapitel": kapitel if status_path.exists() else topic,
-        "progress": new_progress,
-        "status": new_status,
-    }
-    status_path.parent.mkdir(parents=True, exist_ok=True)
-    content = f"# Fortschritt: {status_data['kapitel']}\n"
-    content += yaml.dump(status_data, allow_unicode=True, default_flow_style=False)
-    status_path.write_text(content, encoding="utf-8")
+    # Merge: bestehende chapter_state.yaml erhalten, nur progress/status updaten
+    if status_path.exists() and data:
+        data["progress"] = new_progress
+        if "progress_pct" in data:
+            data["progress_pct"] = new_progress
+        data["status"] = new_status
+        status_path.write_text(
+            yaml.dump(data, allow_unicode=True, default_flow_style=False, sort_keys=False),
+            encoding="utf-8",
+        )
+    else:
+        # Fallback: minimale Datei erstellen
+        status_data = {
+            "kapitel": kapitel if data else topic,
+            "progress": new_progress,
+            "status": new_status,
+        }
+        status_path.parent.mkdir(parents=True, exist_ok=True)
+        content = f"# Fortschritt: {status_data['kapitel']}\n"
+        content += yaml.dump(status_data, allow_unicode=True, default_flow_style=False)
+        status_path.write_text(content, encoding="utf-8")
+
     print(f"Fortschritt aktualisiert: {new_progress}% — {new_status}")
 
     # README gleich mit aktualisieren
