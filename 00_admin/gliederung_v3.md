@@ -1,5 +1,5 @@
-**Titel (FINAL C4, Stand 2026-02-27):** Cloud-native Referenzarchitektur fuer GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen — auf Basis des EU AI Act
-**Single Source of Truth:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` | **Stand:** 2026-02-28
+**Titel (FINAL C4, Stand 2026-03-05):** Cloud-native Referenzarchitektur fuer GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen — auf Basis des EU AI Act
+**Single Source of Truth:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` | **Stand:** 2026-03-05
 
 ### 1 Einleitung
 * 1.1 Einleitung (PD1-PD3)
@@ -20,7 +20,7 @@
 * 2.6 Compliance-as-Code und Policy-as-Code
 * 2.7 Synthese: Forschungsluecke und Handlungsbedarf
 
-### 3 Forschungsdesign und Methodik (~90% abgeschlossen)
+### 3 Forschungsdesign und Methodik (~95%, Review: 7 MD-Kommentare offen)
 * 3.1 DSR als Forschungsrahmen
 * 3.2 Methodischer Rahmen und Vorgehensmodell (Hevner 3 Zyklen, Peffers DSRM, vom Brocke DSR Grid)
 * 3.3 Operationalisierung des DSR-Prozesses (Peffers-Mapping, Iterationslogik)
@@ -30,16 +30,16 @@
 * 3.7 Evaluationsdesign (3-stufig, Kriterien pro Gate-Dimension)
 * 3.8 Interviewdesign und Auswertung
 
-### 4 Design-getriebene Operationalisierung regulatorischer Anforderungen (Design Cycle Phase 1, beantwortet RQ1)
+### 4 Design-getriebene Operationalisierung regulatorischer Anforderungen (Design Cycle Phase 1, beantwortet RQ1, ~83%, 4.1-4.5 done, 4.6 pending)
 * 4.1 Zielbild des Kontrollsystems (Enforcement vs. Dokumentation, Accountability-by-Design)
 * 4.2 Lifecycle-Modell (3 Phasen: Pre-Deployment, Deployment, Operation)
 * 4.3 Transformationsmethodik (Norm → funktionaler Kontrollmechanismus, kein juristischer Kommentar)
 * 4.4 Kontrollmechanismen (EU AI Act Art. 9-15 → technisch pruefbare Controls, Lifecycle-verortet)
-* 4.5 Konsolidierung (Governance-Dimensionen, NIST AI RMF Harmonisierung, Clustering)
-* 4.6 Requirements-Katalog (R1-Rn, Lifecycle-Phase, Governance-Dimension, AI-Act-Ref, MUSS/SOLL)
+* 4.5 Human Oversight (Art. 14, Institutionalised Distrust nach Laux, 4 Effektivitaetsbedingungen nach Sterz)
+* 4.6 Requirements-Katalog (R-xx Systematik, Governance-Dimensionen aus Norm-Analyse, Traceability Art. 9-15 → R-xx, WAS-Ebene — Gate-Spezifikation WIE → 5.3)
 
-### 5 Entwicklung der Referenzarchitektur (Design Cycle, beantwortet RQ2)
-* 5.1 Ueberblick und Designprinzipien (DP1-DP5, Architekturuebersicht)
+### 5 Entwicklung der Referenzarchitektur (Design Cycle, beantwortet RQ2, ~20%)
+* 5.1 Ueberblick und Designprinzipien (DP1-DP5, Architekturuebersicht, NIST/ISO-Konvergenznachweis der Governance-Dimensionen aus 4.6)
 * 5.2 Architekturelle Struktur (Schichten- und Komponentenmodell, IaC-Integration) [S1]
 * 5.3 Quality-Gate-Kontrollsystem [S2 USP]
   * 5.3.1 Gate-Taxonomie und Lifecycle-Zuordnung
