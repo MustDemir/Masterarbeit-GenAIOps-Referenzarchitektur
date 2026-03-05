@@ -184,7 +184,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 
 ## Fortschritt
 
-> Fortschritt wird automatisch jeden Montag aktualisiert. Aendere `_status.yml` (oder starte Workflof mit save.py) im jeweiligen Kapitelordner, um den Fortschritt zu pflegen.
+> Fortschritt wird automatisch jeden Montag aktualisiert. Aendere `_status.yml` (oder starte Workflow mit save.py) im jeweiligen Kapitelordner, um den Fortschritt zu pflegen.
 
 <!-- PROGRESS-START -->
 > Gesamtfortschritt: `██████░░░░░░░░░░░░░░` **28%**
