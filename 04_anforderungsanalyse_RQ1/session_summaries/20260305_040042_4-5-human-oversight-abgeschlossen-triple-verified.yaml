@@ -5,21 +5,23 @@ target_folder: 04_anforderungsanalyse_RQ1/session_summaries
 repo_scope: thesis
 summary_type: fachlich
 source_repo: genaiops-thesis
-title: 4.5-Human-Oversight-abgeschlossen-triple-verified
+title: 4.5 Human Oversight — Entwurf triple-verified
 summary_bullets:
-- 'Session: Abschnitt 4.5 Human Oversight (Art. 14) vollstaendig abgeschlossen. Sterz-Fulltext
-  aus User-PDF extrahiert (pdfplumber). 4 Effektivitaetsbedingungen (Causal Power,
-  Epistemic Access, Self-Control, Fitting Inte...'
-- 'Session: Abschnitt 4.5 Human Oversight (Art.'
-- 14) vollstaendig abgeschlossen.
-- Sterz-Fulltext aus User-PDF extrahiert (pdfplumber).
-- 4 Effektivitaetsbedingungen (Causal Power, Epistemic Access, Self-Control, Fitting
-  Intentions) als Gate-Kriterien identifiziert.
-- 14(4)(a-e) auf Sterz-Bedingungen.
-- Institutionalised Distrust (Laux 2024) als Governance-Rahmen mit 6 Designprinzipien.
-- Deployer-Provider-Asymmetrie (Enqvist 2023).
-decisions: []
-next_steps: []
+- 'Abschnitt 4.5 Human Oversight (Art. 14) geschrieben — ~530 Woerter, 5 Absaetze, APA7.'
+- 'Triple Verification bestanden: 12/12 KORREKT + 6/6 KONFORM + Kap.-4-Ziel BESTANDEN.'
+- 'Art. 14 als Querschnittsverpflichtung identifiziert — durchdringt alle Gate-Pruefungen. Enqvist (2023): Pflichten reichen nicht ueber Provider hinaus. Ooms et al. (2025): Vagueness-Problem bei "angemessen"/"verhaeltnismaessig".'
+- 'Vier Effektivitaetsbedingungen (Sterz et al. 2024, ACM FAccT): (1) Causal Power, (2) Epistemic Access, (3) Self-Control, (4) Fitting Intentions. Def. 3.5: Oversight-Person ist wirksam gdw. alle vier Bedingungen erfuellt.'
+- 'Mapping Art. 14(4) auf Sterz-Bedingungen: (d)+(e) → Causal Power + Self-Control; (a)+(c) → Epistemic Access; (b) → Epistemic Access + Self-Control. Fitting Intentions = regulatorische Luecke (kein Aequivalent im Normtext).'
+- 'Institutionalised Distrust (Laux 2024, AI & SOCIETY): 6 Designprinzipien (Justification, periodische Mandate, kollektive Entscheidungen, begrenzte institutionelle Kompetenz, Justizierbarkeit, Transparenz). First-Degree Oversight (konstitutiv) vs. Second-Degree Oversight (korrektiv).'
+- 'Deployer-Provider-Asymmetrie: Art. 14 = Provider-Gestaltungspflicht, Art. 26 = Deployer-Ausfuehrung. Deployer-Kompetenzen nicht spezifiziert (Enqvist 2023).'
+- 'Architektur-Implikation: 4 Effektivitaetsbedingungen als Gate-Kriterien. Epistemic Access → Erklaerbarkeitsartefakte + Dashboards. Causal Power → Eskalationspfade + Override. Periodische Mandate → Re-Evaluierungszyklen. Transparenz → Audit-Trail.'
+- 'Laux-Datum korrigiert: (2023) → (2024) in chapter_state und Text. Sztompka (2000) als Sekundaerzitat ueber Laux akzeptiert.'
+decisions:
+- 'D_4.5_STRUCTURE: 4.5 = eigener Abschnitt (162 kumulative Zitationen)'
+- 'Laux-Datum: 2024 (nicht 2023) — AI & SOCIETY Vol. 39(6)'
+- 'Sztompka (2000) als Sekundaerzitat ueber Laux akzeptabel'
+next_steps:
+- '4.6 Requirements-Katalog als naechster Abschnitt (spaeter)'
 tags:
 - kap4
 - '4.5'
@@ -27,6 +29,8 @@ tags:
 - sterz
 - laux
 - enqvist
+- ooms
 - art14
+- institutionalised-distrust
 source: claude
-summary_engine: local_rules
+summary_engine: manual_nacherfassung

@@ -1,0 +1,36 @@
+id: SUM-20260305050200
+created_at: '2026-03-05T05:02:00.000000+00:00'
+topic: anforderungen
+target_folder: 04_anforderungsanalyse_RQ1/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: 4.4 Kontrollmechanismen — Entwurf triple-verified
+summary_bullets:
+- 'Abschnitt 4.4 Kontrollmechanismen (PaC, Monitoring, Audit) geschrieben — ~650 Woerter, 5 Absaetze, APA7.'
+- 'Triple Verification bestanden: 12/12 KORREKT + 6/6 KONFORM + Kap.-4-Ziel BESTANDEN.'
+- 'Drei komplementaere Kontrollmechanismen: (1) Policy-as-Code — Ray (PaC in CI/CD), Romeo (ARPaCCino LLM→Rego→OPA); (2) Continuous Monitoring — Buscemi (post-deployment evaluation statt static assessment), Ray (Observability + Drift-Detektion), Kovac (Semantic-MLOps-Engine); (3) Audit Trails — Buscemi M1.7 (tamper-evident logs), Ray (centralisierte Registries), Kovac (Data-Lineage-Connector).'
+- 'RegOps-Integration: Kovac (2025) DevOps-Prinzipien auf Compliance-Workflows. PaC = statische Konformitaet an Gates, Monitoring = dynamische Abweichungserkennung, Audit Trails = revisionssichere Evidenz.'
+- 'Adressiert Beweislast-Asymmetrie aus 4.1: Deployer leitet Compliance-Nachweis aus automatisiert erzeugter Evidenzkette ab.'
+- 'Qualitaets-Constraint: Sardana (JAIGS) nie alleinig — immer mit Ray oder Buscemi kombiniert. Romeo (arXiv) nur konvergent.'
+- 'Aussagen-Quellen-Mapping: 5 Thesen mit Primaer/Konvergent-Hierarchie erstellt und verifiziert.'
+- 'Kern-Quellen: Ray (2026, Wiley/peer-reviewed), Buscemi et al. (2025), Kovac et al. (2025), Romeo et al. (2025, arXiv), Sardana et al. (2024, JAIGS).'
+decisions:
+- 'Sardana nie alleinige Quelle (JAIGS nicht Scopus/WoS)'
+- 'Romeo nur konvergent (arXiv)'
+- 'Gate-IDs und Zuordnung erst in 4.6'
+next_steps:
+- '4.5 Human Oversight als naechster Abschnitt'
+tags:
+- kap4
+- '4.4'
+- kontrollmechanismen
+- policy-as-code
+- monitoring
+- audit-trails
+- regops
+- ray
+- buscemi
+- kovac
+source: claude
+summary_engine: manual_nacherfassung

@@ -1,0 +1,33 @@
+id: SUM-20260305050100
+created_at: '2026-03-05T05:01:00.000000+00:00'
+topic: anforderungen
+target_folder: 04_anforderungsanalyse_RQ1/session_summaries
+repo_scope: thesis
+summary_type: fachlich
+source_repo: genaiops-thesis
+title: 4.3 Transformationsmethodik — Entwurf abgeschlossen
+summary_bullets:
+- 'Abschnitt 4.3 Transformationsmethodik (Norm → Requirement → Gate) geschrieben — ~650 Woerter, 5 Absaetze, APA7.'
+- 'Transformationsluecke identifiziert: Kelly (2024) "do not provide guidelines for achieving compliance" + Buscemi (2025) "persistent gap between high-level legal requirements and concrete verification activities".'
+- 'Vier Dekompositionsstrategien aus Literatur: Kelly (qualitaetsmodellbasiert, ISO 25059), Buscemi (verifikationsorientiert, 2D Verification Space), Gallina (ontologiebasiert, Traceability-Relationen), Feng (RAINCOAT, formale DSL + LLM-Extraktion).'
+- 'Konvergenzmuster: Alle vier Ansaetze nutzen mehrstufige Dekomposition mit bidirektionaler Traceability ueber mindestens eine Zwischenebene.'
+- 'Dreistufige Transformation fuer Deployer-Kontext: (1) Norm-Extraktion (Art. 9-15 → Deployer-relevante Pflichten), (2) Requirement-Spezifikation (R-xx mit Pruefzeitpunkt + Evidenzerwartung), (3) Gate-Operationalisierung (Pass/Fail-Semantik, PaC-integrierbar).'
+- 'Traceability-Kette konstitutiv: Normquelle (Artikel, Absatz) → Requirement (R-xx) → Gate-Kriterium → Evidenzartefakt. Strukturell analog zu Butt Evidence Backbone.'
+- 'Scope-Abgrenzung: Nur Deployer-relevante Pflichten; Gate-IDs und Prueflogik erst in 4.6; PaC-Realisierung in Kap. 5.'
+- 'Kern-Quellen: Kelly et al. (2024), Buscemi et al. (2025), Gallina et al. (2025), Feng et al. (2024). Butt nur konvergent (D_2026).'
+decisions:
+- 'Dreistufige Transformation (Norm → Requirement → Gate) als Methodik'
+- 'Gate-IDs erst in 4.6 (D_GATE_IDS_LOCATION)'
+next_steps:
+- '4.4 Kontrollmechanismen als naechster Abschnitt'
+tags:
+- kap4
+- '4.3'
+- transformationsmethodik
+- traceability
+- kelly
+- buscemi
+- gallina
+- feng
+source: claude
+summary_engine: manual_nacherfassung
