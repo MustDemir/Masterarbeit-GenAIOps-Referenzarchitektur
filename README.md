@@ -167,7 +167,8 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |   |-- 05_02_architekturuebersicht/
 |   |-- 05_03_quality_gates/
 |   |-- 05_04_pipelines_integration/
-|   |-- 05_05_automationspunkte/
+|   |-- 05_05_evidence_audit_logik/
+|   |-- 05_06_prototypische_instanziierung_poc/
 |-- 06_evaluation_RQ3/
 |-- 07_diskussion/
 |-- 08_fazit_ausblick/

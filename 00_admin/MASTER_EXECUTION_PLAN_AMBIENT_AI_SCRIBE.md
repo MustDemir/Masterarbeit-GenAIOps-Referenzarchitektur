@@ -32,7 +32,7 @@ Single Source of Truth for this work package:
 
 ## Immediate Deliverables (Now)
 - 05_01_design_prinzipien/ambient_ai_scribe_sql_design_principles.md
-- 06_04_poc_scope_eval_deploy_prod/sql/evidence_store_schema_v01.sql
+- 06_03_poc_walkthrough/sql/evidence_store_schema_v01.sql
 - 07_01_beantwortung_forschungsfragen/ambient_ai_scribe_defense_argumentation.md
 
 ## Done Criteria
