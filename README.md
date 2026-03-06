@@ -197,12 +197,12 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 > Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `██████░░░░░░░░░░░░░░` **32%**
+> Gesamtfortschritt: `████████░░░░░░░░░░░░` **41%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
 | Expose v4 / Forschungsdesign | `████████████████████` | 100% | Abgeschlossen |
-| Kap. 1 — Einleitung | `██░░░░░░░░░░░░░░░░░░` | 10% | Entwurf |
+| Kap. 1 — Einleitung | `████████████████████` | 100% | Fertig |
 | Kap. 2 — Theorie & Grundlagen | `███░░░░░░░░░░░░░░░░░` | 15% | In Arbeit |
 | Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | review |
 | Kap. 4 — Anforderungsanalyse (RQ1) | `█████████████████░░░` | 83% | in_progress |

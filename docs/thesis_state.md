@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-06 16:08  
+> **Automatisch generiert:** 2026-03-06 20:44  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -59,17 +59,17 @@ Noch keine cross_chapter_impacts in chapter_states definiert.
 
 ## Requirements (RQ1)
 
-- R001: (noch ohne Titel) [pre-deployment|deployment|operation]
-- R002: (noch ohne Titel) [pre-deployment|deployment|operation]
-- R003: (noch ohne Titel) [pre-deployment|deployment|operation]
-- R004: (noch ohne Titel) [pre-deployment|deployment|operation]
-- R005: (noch ohne Titel) [pre-deployment|deployment|operation]
+- R001: Risikomanagement fuer High-Risk GenAI muss nachweisbar operationalisiert sein [pre-deployment]
+- R002: Technische Dokumentation und Protokollierung muessen auditierbar verfuegbar sein [deployment]
+- R003: Robustheit, Genauigkeit und Sicherheitschecks muessen vor Promotion bestanden sein [deployment]
+- R004: Human Oversight muss vor produktiver Nutzung organisatorisch verankert sein [pre-deployment]
+- R005: Evidence-Persistierung muss manipulationssicher und rueckverfolgbar erfolgen [operation]
 
 ## Quality Gates (RQ2)
 
-- GCOMP-001 [strategic|technical|compliance]: (noch ohne Name)
-- GSTR-001 [strategic|technical|compliance]: (noch ohne Name)
-- GTECH-001 [strategic|technical|compliance]: (noch ohne Name)
+- GCOMP-001 [compliance]: Compliance Gate: EU AI Act Mindestnachweise vor Produktivsetzung
+- GSTR-001 [strategic]: Strategic Gate: Human Oversight und Verantwortungsmodell
+- GTECH-001 [technical]: Technical Gate: Qualitaets- und Robustheitskriterien
 
 ## Letzte Session-Summaries
 
