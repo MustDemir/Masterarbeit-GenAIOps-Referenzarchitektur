@@ -90,3 +90,7 @@ poc/evidence-store/generated/
 docs/expose/*.pdf
 !docs/expose/*_encrypted.pdf
 docs/expose/legacy/
+
+# Lokale Arbeitsdokumente (nicht versionieren)
+00_admin/Expose_v4_final_2026-02-28.docx
+03_forschungsdesign_methodik/Kapitel_3_Forschungsdesign_und_Methodik.docx
