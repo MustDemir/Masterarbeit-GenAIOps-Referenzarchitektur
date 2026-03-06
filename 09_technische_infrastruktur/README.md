@@ -10,16 +10,21 @@ den jeweiligen Kapitel-Ordnern.
 
 ## Skripte-Uebersicht
 
+Wichtig: Dieses Repo enthaelt **eigene Thesis-Skripte** und zusaetzlich einen
+integrierten Workflow-Stack im Root. Die taegliche Skill-Orchestrierung greift
+teilweise auf `ai-context-vault` zurueck, aber die folgenden Skripte liegen
+direkt im `genaiops-thesis` Repo.
+
 ### Root-Skripte
 
 | Skript | Zweck | Aufruf | Abhaengigkeiten |
 |---|---|---|---|
-| `save.py` | Session-Ende speichern (YAML + Index + optional Azure) | `python save.py --input <file> --source chatgpt` | `workflow_lib.py`, `pyyaml` |
-| `resume.py` | Neuen Chat starten (Index + Resume-Text) | `python resume.py` | `workflow_lib.py` |
-| `reindex.py` | Vollstaendiger Reindex mit Azure-Optionen | `python reindex.py [--azure] [--blob]` | `workflow_lib.py`, `pyyaml` |
-| `workflow_lib.py` | Zentrale Bibliothek (Topic-Routing, Azure, Blob, Index) | Import — kein Direktaufruf | `pyyaml`, `certifi` |
+| `save.py` | Thesis-Session speichern (YAML + Index + optional Azure/Blob) | `python save.py --input <file> --source chatgpt` | `workflow_lib.py`, `pyyaml` |
+| `resume.py` | Neuen Thesis-Chat mit kompaktem Kontext starten | `python resume.py` | `workflow_lib.py` |
+| `reindex.py` | Lokalen Index/Resume neu bauen, optional Search/Blob sync | `python reindex.py [--azure] [--blob]` | `workflow_lib.py`, `pyyaml` |
+| `workflow_lib.py` | Zentrale Bibliothek fuer Routing, Index, Azure, Blob | Import — kein Direktaufruf | `pyyaml`, `certifi` |
 | `extract_yamls.py` | YAML-Bloecke aus Chat-Exports extrahieren | `python extract_yamls.py <input>` | `pyyaml` |
-| `validate_structure.py` | Repo-Strukturvalidierung (CI) | `python validate_structure.py` | `pyyaml` |
+| `validate_structure.py` | Repo-Strukturvalidierung (CI + lokaler Check) | `python validate_structure.py` | Standardbibliothek |
 
 ### scripts/
 
@@ -28,6 +33,13 @@ den jeweiligen Kapitel-Ordnern.
 | `scripts/generate_diagrams.py` | Diagramme programmatisch generieren | `python scripts/generate_diagrams.py` | `pyyaml` |
 | `scripts/update_progress.py` | README-Fortschrittsbalken aktualisieren | `python scripts/update_progress.py` | `pyyaml` |
 | `scripts/weekly_audit.py` | Woechentlicher Repo-Audit (GitHub Issue) | `python scripts/weekly_audit.py` | `pyyaml` |
+
+### Abgrenzung zum `ai-context-vault`
+
+Die Skill-Doku verweist zusaetzlich auf `../ai-context-vault`, weil dort dieselben
+Workflow-Konzepte ebenfalls als generisches Toolkit gepflegt werden. Fuer dieses Repo gilt
+aber: die oben aufgefuehrten Root-Skripte und `scripts/` sind die technischen Thesis-Skripte,
+die direkt zu `genaiops-thesis` gehoeren.
 
 ---
 

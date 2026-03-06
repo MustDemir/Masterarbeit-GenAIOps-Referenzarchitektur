@@ -2,6 +2,9 @@
 
 **Ziel:** Mit dem Thesis-Workflow arbeiten, ohne jedes Mal den ganzen Werkzeugkasten im Kopf zu haben.
 
+Fuer die technische Skript-Uebersicht siehe auch:
+`09_technische_infrastruktur/README.md`
+
 ## 1. Session starten
 
 Wenn du eine neue Arbeitssession beginnst, starte mit einem der Trigger:
