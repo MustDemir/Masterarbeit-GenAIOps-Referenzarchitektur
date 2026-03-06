@@ -1,13 +1,23 @@
 id: R005
-title: ""
-kontrollmechanismus: ""
-lifecycle_phase: "pre-deployment|deployment|operation"
-governance_dimension: "regulatorisch|technisch|strategisch"
-eu_ai_act_refs: []
-must_should: "MUST|SHOULD"
-description: ""
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Evidence-Persistierung muss manipulationssicher und rueckverfolgbar erfolgen"
+kontrollmechanismus: "Nachweispruefung auf unveraenderliche Ablage und referenzierbare Audit-Trail-Eintraege"
+lifecycle_phase: "operation"
+governance_dimension: "regulatorisch"
+eu_ai_act_refs:
+  - "Art. 12"
+  - "Art. 15"
+must_should: "MUST"
+description: "Alle Gate-Entscheidungen muessen mit unveraenderlicher Evidence-Ablage und eindeutiger Referenz gespeichert werden."
+evidence_expected:
+  - "immutable_storage_reference"
+  - "audit_trail_entry"
+acceptance_criteria:
+  - "Evidence-Referenzen sind fuer jeden Gate-Lauf vorhanden."
+  - "Aenderungen an bestehenden Evidence-Eintraegen sind technisch eingeschraenkt."
+linked_gates:
+  - "GCOMP-001"
+  - "GTECH-001"
+sources:
+  - "05_referenzarchitektur_RQ2/05_05_evidence_audit_logik/"
+  - "00_admin/MASTER_EXECUTION_PLAN_AMBIENT_AI_SCRIBE.md"
+notes: "DRAFT v0.1 - finales Datenmodell in PoC-SQL-Design."

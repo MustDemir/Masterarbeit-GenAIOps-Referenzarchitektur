@@ -4,12 +4,22 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PRIMARY_EXPOSE = ROOT / "docs" / "expose" / "Expose_v4_final_2026-02-28_encrypted.pdf"
 LEGACY_EXPOSE_DIR = ROOT / "docs" / "expose" / "legacy"
+
+
+def _is_tracked_by_git(path: Path) -> bool:
+    result = subprocess.run(
+        ["git", "ls-files", "--error-unmatch", str(path)],
+        capture_output=True,
+        cwd=ROOT,
+    )
+    return result.returncode == 0
 
 
 def check_session_summaries() -> list[str]:
@@ -35,10 +45,10 @@ def check_expose_locations() -> tuple[list[str], list[str]]:
         issues.append(f"Primary expose missing: {PRIMARY_EXPOSE.relative_to(ROOT)}")
 
     for p in ROOT.rglob("*.docx"):
+        if not _is_tracked_by_git(p):
+            continue
         name = p.name.lower()
         if "expose" not in name and "expos" not in name:
-            continue
-        if p == PRIMARY_EXPOSE:
             continue
         if LEGACY_EXPOSE_DIR in p.parents:
             continue

@@ -1,13 +1,21 @@
 id: R003
-title: ""
-kontrollmechanismus: ""
-lifecycle_phase: "pre-deployment|deployment|operation"
-governance_dimension: "regulatorisch|technisch|strategisch"
-eu_ai_act_refs: []
-must_should: "MUST|SHOULD"
-description: ""
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Robustheit, Genauigkeit und Sicherheitschecks muessen vor Promotion bestanden sein"
+kontrollmechanismus: "Automatisierte Schwellenwertpruefung fuer Qualitaets- und Safety-Metriken in der Pipeline"
+lifecycle_phase: "deployment"
+governance_dimension: "technisch"
+eu_ai_act_refs:
+  - "Art. 15"
+must_should: "MUST"
+description: "Ein Deployment darf nur erfolgen, wenn definierte technische Mindestkriterien nachweisbar erfuellt sind."
+evidence_expected:
+  - "eval_metrics_report"
+  - "safety_test_report"
+acceptance_criteria:
+  - "Alle verpflichtenden Metriken liegen ueber den definierten Mindestwerten."
+  - "Fehlgeschlagene Safety-Checks fuehren zu blockierendem Gate-Entscheid."
+linked_gates:
+  - "GTECH-001"
+sources:
+  - "EU AI Act (VO 2024/1689) Art. 15"
+  - "05_referenzarchitektur_RQ2/05_03_quality_gates/"
+notes: "DRAFT v0.1 - konkrete Thresholds folgen in Kap. 5.3/6.3."

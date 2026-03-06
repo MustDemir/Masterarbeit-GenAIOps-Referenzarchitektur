@@ -1,13 +1,21 @@
 id: R004
-title: ""
-kontrollmechanismus: ""
-lifecycle_phase: "pre-deployment|deployment|operation"
-governance_dimension: "regulatorisch|technisch|strategisch"
-eu_ai_act_refs: []
-must_should: "MUST|SHOULD"
-description: ""
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Human Oversight muss vor produktiver Nutzung organisatorisch verankert sein"
+kontrollmechanismus: "Go/No-Go Gate mit dokumentierter Verantwortlichkeit und Eskalationsweg"
+lifecycle_phase: "pre-deployment"
+governance_dimension: "strategisch"
+eu_ai_act_refs:
+  - "Art. 14"
+must_should: "MUST"
+description: "Vor Produktionsfreigabe muessen Rollen, Eingriffsrechte und Eskalationsregeln fuer menschliche Aufsicht dokumentiert sein."
+evidence_expected:
+  - "oversight_roles_matrix"
+  - "escalation_procedure"
+acceptance_criteria:
+  - "Owner fuer Oversight ist benannt und freigegeben."
+  - "Eskalationsprozess ist versioniert und fuer den Betriebsfall abrufbar."
+linked_gates:
+  - "GSTR-001"
+sources:
+  - "EU AI Act (VO 2024/1689) Art. 14"
+  - "04_anforderungsanalyse_RQ1/chapter_state.yaml"
+notes: "DRAFT v0.1 - Feingranularitaet je Stakeholder in Kap. 4.5/4.6."

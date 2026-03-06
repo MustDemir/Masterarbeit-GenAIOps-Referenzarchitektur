@@ -591,7 +591,7 @@ def build_thesis_state(index: dict | None = None) -> str:
     lines.append("## Expose-Gliederung")
     lines.append("")
     if GLIEDERUNG_PATH.exists():
-        lines.append(f"→ **SSOT:** [`00_admin/gliederung_v3.md`]({GLIEDERUNG_PATH.name})")
+        lines.append("→ **SSOT:** [`00_admin/gliederung_v3.md`](../00_admin/gliederung_v3.md)")
         lines.append(f"→ **PDF:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf`")
     else:
         lines.append("⚠ `00_admin/gliederung_v3.md` nicht gefunden.")

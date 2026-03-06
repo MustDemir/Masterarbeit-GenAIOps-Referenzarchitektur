@@ -1,30 +1,30 @@
 # TODO: Weekly Audit Agent einrichten
 
-> Erstellt: 2026-03-03 | Status: Offen
+> Erstellt: 2026-03-03 | Aktualisiert: 2026-03-06 | Status: Implementiert (v1)
 
-## Was gemacht werden muss
+## Implementierungsstatus (v1)
 
-### 1. Neue Dateien erstellen
+### 1. Dateien sind vorhanden
 
 | Datei | Zweck |
 |-------|-------|
 | `.github/workflows/weekly-audit.yml` | GitHub Actions Workflow (Sonntag 07:00 UTC + manuell) |
-| `scripts/weekly_audit.py` | Python-Skript mit allen Checks (~400 Zeilen) |
+| `scripts/weekly_audit.py` | Python-Skript mit allen Checks |
 
-### 2. GitHub Labels anlegen (einmalig)
+### 2. GitHub Labels (einmalig)
 
 ```bash
 gh label create audit --repo MustDemir/Masterarbeit-GenAIOps-Referenzarchitektur --color 0075ca
 gh label create "audit:errors" --repo MustDemir/Masterarbeit-GenAIOps-Referenzarchitektur --color d73a4a
 ```
 
-### 3. Was der Audit pruefen soll
+### 3. Was der Audit prueft
 
 **Struktur & Konventionen:**
 - session_summaries/ nur YAML-Dateien
 - Expose-Datei (*_encrypted.pdf) vorhanden
 - Bilder in images/final/ mit _vNN.png Suffix
-- _status.yml Schema (kapitel, progress, status)
+- chapter_state.yaml Schema (Fallback: _status.yml)
 - .gitignore Sicherheitsregeln intakt
 
 **Security:**
@@ -37,7 +37,7 @@ gh label create "audit:errors" --repo MustDemir/Masterarbeit-GenAIOps-Referenzar
 - Traceability: R<->G Links pruefen
 
 **Freshness:**
-- Stale _status.yml Erkennung (14 Tage Schwelle)
+- Stale chapter_state.yaml Erkennung (14 Tage Schwelle)
 - .memory/blob_sync_state.json Alter
 - ai-context-vault Scripts Syntax (nur lokal)
 
@@ -52,11 +52,11 @@ gh label create "audit:errors" --repo MustDemir/Masterarbeit-GenAIOps-Referenzar
 - Keine bestehenden Workflows werden geaendert
 - Dependencies: Nur pyyaml + stdlib (nichts Neues)
 - Permissions: contents:read + issues:write
-- Zweiphasig: Checks → JSON → Issue posten
+- Zweiphasig: Checks -> JSON -> Issue posten
 
-## Detaillierter Plan
+## Detaillierter Plan (historisch)
 
-Vollstaendiger Implementierungsplan liegt unter:
+Der urspruengliche Implementierungsplan lag unter:
 `~/.claude/plans/swift-gathering-cake.md`
 
 ---

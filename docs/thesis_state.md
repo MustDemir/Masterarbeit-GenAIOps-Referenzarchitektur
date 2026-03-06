@@ -1,12 +1,12 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-05 22:03  
+> **Automatisch generiert:** 2026-03-06 16:08  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
 ## Expose-Gliederung
 
-→ **SSOT:** [`00_admin/gliederung_v3.md`](gliederung_v3.md)
+→ **SSOT:** [`00_admin/gliederung_v3.md`](../00_admin/gliederung_v3.md)
 → **PDF:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf`
 
 ## Kapitelstatus
@@ -19,8 +19,8 @@
 - **Kap. 6 — Evaluation (RQ3)**: Geplant (0%)
 - **Kap. 7 — Diskussion**: Geplant (0%)
 - **Kap. 8 — Fazit & Ausblick**: Geplant (0%)
-- **Expose v4 / Forschungsdesign**: Abgeschlossen (100%)
-- **PoC-Implementierung**: Geplant (0%)
+- **Expose v4 / Forschungsdesign**: Abgeschlossen (100%) — Abgeschlossen — Expose v4 FINAL eingereicht
+- **PoC-Implementierung**: Geplant (0%) — Noch nicht gestartet — beginnt in Iteration 2
 
 ## Decisions (alle Kapitel)
 

@@ -144,7 +144,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 ## Architektur-Preview
 
 ![Methoden-Framework](03_forschungsdesign_methodik/images/work/Methoden-Framework:%20Forschungsmethode%20%C3%97%20Technische%20Konstruktionsmethoden%20%20.png)
-![KI-Fabrik-Analogie](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/work/Die%20KI-Fabrik:%20Referenzarchitektur%20als%20Analogie%20(PoC)%20%20.png)
+![KI-Fabrik-Analogie](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/work/Die%20KI-Fabrik:%20Referenzarchitektur%20als%20Analogie%20%28PoC%29%20%20.png)
 
 
 ## Repo-Struktur
@@ -194,7 +194,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 
 ## Fortschritt
 
-> Fortschritt wird automatisch jeden Montag aktualisiert. Aendere `_status.yml` (oder starte Workflow mit save.py) im jeweiligen Kapitelordner, um den Fortschritt zu pflegen.
+> Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
 > Gesamtfortschritt: `██████░░░░░░░░░░░░░░` **32%**

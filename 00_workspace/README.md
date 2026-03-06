@@ -8,7 +8,8 @@ Er enthaelt nur Pointer/Regeln, keine redundanten Kopien von Primaerdokumenten.
 1. Gliederung/Struktur lesen:
    - `/Users/mustafademir/Projects/genaiops-thesis/00_admin/gliederung_v3.md`
 2. Aktuelles Expose (primaere Quelle):
-   - `/Users/mustafademir/Projects/genaiops-thesis/98_onedrive_migration/1_masterarbeit/1. Expose v3.docx`
+   - `/Users/mustafademir/Projects/genaiops-thesis/docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf`
+   - Arbeitsversion (OneDrive): `OneDrive-SRHFernhochschule/1. Onedrive_Masterarbeit/Expose_v4_final_2026-02-28.docx`
 3. Source-of-Truth-Regeln:
    - `/Users/mustafademir/Projects/genaiops-thesis/00_admin/SOURCE_OF_TRUTH.md`
 

@@ -1,13 +1,24 @@
 id: R002
-title: ""
-kontrollmechanismus: ""
-lifecycle_phase: "pre-deployment|deployment|operation"
-governance_dimension: "regulatorisch|technisch|strategisch"
-eu_ai_act_refs: []
-must_should: "MUST|SHOULD"
-description: ""
-evidence_expected: []
-acceptance_criteria: []
-linked_gates: []
-sources: []
-notes: ""
+title: "Technische Dokumentation und Protokollierung muessen auditierbar verfuegbar sein"
+kontrollmechanismus: "Gate-pruefung auf vollstaendige technische Doku und run-bezogene Log-Referenzen"
+lifecycle_phase: "deployment"
+governance_dimension: "regulatorisch"
+eu_ai_act_refs:
+  - "Art. 11"
+  - "Art. 12"
+  - "Art. 13"
+must_should: "MUST"
+description: "Jeder produktive Release muss mit technischer Dokumentation, Log-Referenzen und Transparenzhinweisen verknuepft sein."
+evidence_expected:
+  - "technical_documentation"
+  - "run_log_reference"
+  - "transparency_note"
+acceptance_criteria:
+  - "Dokumentation verweist eindeutig auf Modellversion und Release."
+  - "Log-Referenzen sind im Evidence Store auffindbar."
+linked_gates:
+  - "GCOMP-001"
+sources:
+  - "EU AI Act (VO 2024/1689) Art. 11-13"
+  - "05_referenzarchitektur_RQ2/05_03_quality_gates/"
+notes: "DRAFT v0.1 - auf PoC-Artefakttypen anpassen."

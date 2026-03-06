@@ -60,6 +60,8 @@ def check_expose_locations() -> list[Finding]:
         findings.append(Finding(ERROR, "structure",
             f"Primary expose missing: {PRIMARY_EXPOSE.relative_to(ROOT)}"))
     for p in ROOT.rglob("*.docx"):
+        if not _is_tracked_by_git(p):
+            continue
         name = p.name.lower()
         if "expose" not in name and "expos" not in name:
             continue
