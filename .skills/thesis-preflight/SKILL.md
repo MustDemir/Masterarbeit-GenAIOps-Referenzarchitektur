@@ -43,24 +43,29 @@ Beantworte:
 - Gibt es im Exposé Formulierungen/Inhalte, die übernommen werden können?
 - Hat sich der Scope seit dem Exposé verändert? Wo ist die Änderung dokumentiert?
 
-### P2 — Kapiteltexte (SOT-Hierarchie)
+### P2 — Kapiteltexte + Volltexte (SOT-Hierarchie)
 
 Die SOT-Hierarchie bestimmt, welche Quellen bei Widersprüchen gewinnen:
 `gliederung_v3.md > Kap. 3 DOCX > Kap. 4 DOCX > Entscheidungsregister > Exposé`
 
 Lese diese Dateien:
-- **DRAFT des aktuellen Kapitels** — `{kapitel_ordner}/Kap{N}_*_DRAFT.md` (Kontinuität!)
+- **Volltext des aktuellen Kapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N} *.docx` (primaer!)
+- **Volltext des Vorgaengerkapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N-1} *.docx` (Roter Faden!)
+- Fallback: `{kapitel_ordner}/Kap{N}_*_DRAFT.md` (falls DOCX nicht lesbar)
+- `docs/roter_faden_tracker.md` — Bruecken-Definitionen und Kernthesen
 - `00_admin/gliederung_v3.md` — Kapitelstruktur, Seitenbudgets
 - `03_forschungsdesign_methodik/` — DSR-Rahmen, Artefaktdefinition
 - `04_anforderungsanalyse_RQ1/` — Problemdimensionen, Requirements
 - `05_referenzarchitektur_RQ2/` — S1–S4, Quality Gates, PoC
-- Alle anderen `Kap*_DRAFT.md` mit Status ≥ "Entwurf"
+- Alle anderen Volltexte mit Status ≥ "draft"
 
 Beantworte:
 - Welche Begriffe/Definitionen aus bereits geschriebenen Kapiteln müssen verwendet werden?
 - Gibt es Forward-References? Existiert das Ziel oder ist es in der Gliederung geplant?
 - Stimmt die Argumentationslinie mit der Gliederung überein?
-- **Kontinuität:** Wie endet der vorherige Abschnitt? Welche Erwartung wird geweckt?
+- **Roter Faden rueckwaerts:** Lese den VOLLTEXT des Vorgaengerkapitels — wie endet es inhaltlich? Welche Erwartung wird geweckt? Knuepft der neue Abschnitt nahtlos an?
+- **Roter Faden vorwaerts:** Was erwartet das Nachfolgerkapitel (aus chapter_state/roter_faden_tracker)? Bereitet der geplante Abschnitt darauf vor?
+- **Konsistenz:** Widersprechen geplante Inhalte bestehenden Volltexten?
 
 ### P3 — Session Summaries + chapter_state + relevante Dateien
 
@@ -95,12 +100,13 @@ Beantworte:
 ### P5 — Quellen-Papers
 
 Nutze diese Tools in dieser Reihenfolge (Fallback-Kette):
-1. `zotero_search_items` → `zotero_item_fulltext` (Zotero-Bibliothek)
-2. Uploads: `/sessions/.../mnt/uploads/` (hochgeladene PDFs)
-3. `elicit-research` Skill (Elicit-Suche)
-4. `semanticSearch` MCP Tool (Semantic Scholar)
-5. `mcp__2fd9a2cd-...` Consensus API
-6. Wenn nirgends auffindbar: ❌ markieren, Alternative suchen
+1. `zitations-finder` Skill — Belegstellen im PDF finden und verifizieren
+2. `zotero_search_items` → `zotero_item_fulltext` (Zotero-Bibliothek)
+3. Uploads: `/sessions/.../mnt/uploads/` (hochgeladene PDFs)
+4. `elicit-research` Skill (Elicit-Suche)
+5. `semanticSearch` MCP Tool (Semantic Scholar)
+6. `mcp__claude_ai_Consensus__search` (Consensus API)
+7. Wenn nirgends auffindbar: ❌ markieren, Alternative suchen
 
 Beantworte:
 - Welche Quellen MÜSSEN in diesem Abschnitt zitiert werden (laut Gliederung/Exposé)?

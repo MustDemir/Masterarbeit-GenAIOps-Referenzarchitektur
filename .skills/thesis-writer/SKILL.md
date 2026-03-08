@@ -77,10 +77,12 @@ Direkt nach dem Absatz eine Prüfprotokoll-Tabelle einfügen:
 6. **Prüfprotokoll bleibt sichtbar** — wird nicht gelöscht aus der DRAFT-Datei
 
 **Quellen-Lookup-Reihenfolge:**
-1. `zitations-finder` Skill (Belegstellen im PDF finden)
+1. `zitations-finder` Skill — Belegstellen im PDF finden und verifizieren (IMMER zuerst!)
 2. `zotero_search_items` → `zotero_item_fulltext` (Zotero MCP)
 3. Uploads-Ordner: `/sessions/.../mnt/uploads/`
-4. `elicit-research` Skill / `semanticSearch` MCP (neue Quellen)
+4. `elicit-research` Skill (Elicit-Suche fuer neue/fehlende Quellen)
+5. `semanticSearch` MCP Tool (Semantic Scholar)
+6. `mcp__claude_ai_Consensus__search` (Consensus API)
 
 ### Schritt 3: MATCH-Bewertung prüfen
 

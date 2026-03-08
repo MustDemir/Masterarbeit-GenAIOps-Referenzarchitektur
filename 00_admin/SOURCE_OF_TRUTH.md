@@ -37,7 +37,23 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
   - **Post-Session**: Stil-Compliance als Pruefpunkt
 - Entscheidung: `D_UNI_HINWEISE_SSOT` (registriert in Entscheidungsregister)
 
-Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Primaerdokumenten.
+- Kapitel-Volltexte (primaer, Abgabe-Texte):
+  - `00_workspace/Fulltext_Kapitel/*.docx` — Die tatsaechlichen Fliesstext-Dateien aller Kapitel
+  - Bei Abweichungen zwischen DRAFT.md und DOCX gilt die DOCX
+  - Verfuegbar: Kap. 1, 2, 3, 4, 5, Expose
+- Roter Faden Tracker (primaer):
+  - `docs/roter_faden_tracker.md` — Bruecken-Definitionen, Kernthesen, Cross-Chapter-Abhaengigkeiten
+- Pruefkatalog Uni-Vorgaben (primaer):
+  - `docs/uni_vorgaben/pruefkatalog.md` — Maschinenlesbare Checkliste aller Uni-Regeln (PK-Codes)
+
+## Status-Enum (verbindlich fuer alle Artefakte)
+
+Einheitliche Status-Werte fuer chapter_state.yaml, README, thesis_state.md:
+```
+planned → in_progress → draft → review → final
+```
+
+Wichtig: `00_workspace` enthaelt Pointer/Regeln und die Kapitel-Volltexte als primaere Abgabe-Texte.
 
 ## Kommunikationsartefakte
 

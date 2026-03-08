@@ -1,9 +1,14 @@
 chapter: "04_anforderungsanalyse_RQ1"
 kapitel: "Kap. 4 — Anforderungsanalyse (RQ1)"
 status: "in_progress"
-progress: 83
-progress_pct: 83
-current_focus: "4.1-4.5 fertig (Entwuerfe geschrieben). Naechster Schritt: 4.6 Requirements-Katalog planen — Quellen lesen (Lucaj, Eisenberg, Goncalves, Elia), dann schreiben."
+progress: 85
+progress_pct: 85
+current_focus: "4.1-4.5 fertig + Review abgeschlossen (3.9/5.0). Seitenangaben alle 12 Quellen nachgetragen. Naechster Schritt: 4.6 Requirements-Katalog schreiben."
+last_review:
+  date: "2026-03-08"
+  score: 3.9
+  note: "Gut — 4.1-4.5 solide. Kritisch: 4.6 fehlt. Seitenangaben nachgetragen."
+  report: "docs/bewertung/BEWERTUNG_KAP4_2026-03-08.md"
 done:
   - "Entscheidungspapier Kap4 finalisiert (5/5 Entscheidungen FINAL)"
   - "Art. 10 Abs. 6 Scope: Out-of-Scope fuer Deployer, 3-stufige Evidenz"
@@ -41,6 +46,14 @@ done:
   - "Nellutla (2026) Peer-Review geprueft: SvedbergOpen, kein Scopus/WoS → nur ergaenzende Referenz"
   - "Goncalves & Correia (2025) XAI-CbD: DOI 10.3390/jcp6020043, Textbausteine fuer 4.3+4.6 formuliert"
   - "3 neue Paper identifiziert: Kholkar/Policy-as-Prompt (NeurIPS 2025), Baqar/AI-CI/CD, Goncalves/XAI-CbD"
+  - "thesis-reviewer Skill erstellt (R1-R6) und als v2.0.0 in Plugin gepackt"
+  - "Review Kap. 4 durchgefuehrt: 3.9/5.0 (Gut). Bericht: docs/bewertung/BEWERTUNG_KAP4_2026-03-08.md"
+  - "Review Kap. 4.5 Detail: 4.3/5.0. Sterz-Laux-Synthese als Staerke, Seitenangaben als Schwaeche"
+  - "Seitenangaben 12 Quellen nachgetragen via pdftotext: Sterz S.4-5, Laux S.2/7-8/11, Enqvist S.2/4/12-14, Ooms S.5-6, Ray S.1-2/6/28, Leon S.2/7/8, Butt S.1-2/3, Sardana S.1-2/5, Romeo S.1-3, Kovac S.1-3, Feng S.1-2, Goncalves S.1/3/8-9"
+  - "DRAFT-Dateien aktualisiert mit S.-Angaben: 4_2, 4_3, 4_4, 4_5"
+  - "SSOTs erstellt: docs/roter_faden_tracker.md, docs/uni_vorgaben/pruefkatalog.md"
+  - "Skills aktualisiert: preflight (P2 Volltext), writer (Quellen-Kette), consistency (K7 Stil)"
+  - "SOURCE_OF_TRUTH.md erweitert: Volltexte DOCX als primaer, Status-Enum definiert"
 decisions:
   - id: "D_4.5_STRUCTURE"
     decision: "4.5 Human Oversight bleibt eigener Abschnitt"

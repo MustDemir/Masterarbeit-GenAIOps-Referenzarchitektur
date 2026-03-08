@@ -29,7 +29,8 @@ geschrieben sind, desto wichtiger wird dieser Check.
 
 ### K1 — Terminologie-Konsistenz
 
-Lade die Critical Definitions aus `docs/thesis_state.md` und prüfe alle DRAFT-Dateien:
+Lade die Critical Definitions aus `docs/thesis_state.md` und prüfe alle Volltexte
+(`00_workspace/Fulltext_Kapitel/*.docx`) sowie DRAFT-Dateien (Fallback):
 
 **Pflicht-Prüfungen:**
 - "Quality Gate" = automatisierter, evidenzbasierter Kontrollpunkt (nicht nur Dokumentation)
@@ -174,9 +175,31 @@ Prüfe ob der Design-Science-Research-Rahmen konsistent durchgehalten wird:
 
 ---
 
-## Zusätzliche Regeln
+### K7 — Stil- und Formalia-Compliance (Uni-Vorgaben)
 
-- Dieser Skill produziert KEINEN Fließtext — nur den Konsistenz-Report
-- SOT-Hierarchie beachten: `gliederung_v3.md > Kap. 3 > Kap. 4 > Entscheidungsregister > Exposé`
-- Bei Widersprüchen: höherrangige Quelle gewinnt, Abweichung dokumentieren
+Lade den Pruefkatalog aus `docs/uni_vorgaben/pruefkatalog.md` und pruefe alle Volltexte:
+
+1. Alle Volltexte in `00_workspace/Fulltext_Kapitel/*.docx` scannen nach:
+   - Verbotene Formulierungen (PK-V1 bis PK-V6)
+   - Gliederungstiefe max. 4 Ebenen (PK-F2)
+   - Zitationsdichte pro Absatz (PK-Z3)
+2. Gesamt-Seitenbudget aggregieren: 60–80 Textseiten (PK-F3)
+3. SRH 50/30/20 Bewertungskriterien-Alignment pruefen
+
+**Ausgabe:**
+```
+| Kapitel | Verbotene Formulierungen | Gliederungstiefe | Zitationsdichte | Seitenbudget | Status |
+|---------|-------------------------|-----------------|----------------|-------------|--------|
+```
+
+---
+
+## Zusaetzliche Regeln
+
+- Dieser Skill produziert KEINEN Fliesstext — nur den Konsistenz-Report
+- **Primaeres Pruefobjekt:** Volltexte in `00_workspace/Fulltext_Kapitel/*.docx`
+- Fallback: `Kap*_DRAFT.md` Dateien
+- SOT-Hierarchie beachten: `gliederung_v3.md > Kap. 3 > Kap. 4 > Entscheidungsregister > Expose`
+- Bei Widerspruechen: hoeherrangige Quelle gewinnt, Abweichung dokumentieren
+- Roter Faden pruefen via `docs/roter_faden_tracker.md`
 - Report speichern als `docs/consistency/CONSISTENCY_REPORT_[DATUM].md`

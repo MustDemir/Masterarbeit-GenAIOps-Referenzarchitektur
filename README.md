@@ -151,7 +151,9 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 
 ```
 .
-|-- 00_workspace/              # Operativer Einstiegspunkt (Pointer auf Single-Truth-Quellen)
+|-- .skills/                   # 6 Thesis-Workflow-Skills (Preflight, Writer, Reviewer, Consistency, Post-Session, Session-Manager)
+|-- 00_workspace/              # Operativer Einstiegspunkt + Kapitel-Volltexte (DOCX)
+|   |-- Fulltext_Kapitel/      # Primaere Abgabe-Texte aller Kapitel (SSOT fuer Fliesstext)
 |-- 00_admin/
 |   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
 |   |-- asset_naming.md       # PNG-Naming/Versionierungsstandard (v01, v02, ...)

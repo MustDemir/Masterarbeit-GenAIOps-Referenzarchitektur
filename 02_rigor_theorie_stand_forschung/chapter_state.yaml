@@ -1,42 +1,66 @@
 chapter: 02_rigor_theorie_stand_forschung
 kapitel: Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
 status: In Arbeit
-progress: 5
-progress_pct: 5
-current_focus: "2.1 Begriffsabgrenzung und Systemkontext — Planung + Quellen-Selektion"
+progress: 50
+progress_pct: 50
+current_focus: "Kap. 2.4.1 fertig. Naechster Schritt: 2.4.2 EU AI Act Preflight + GO"
 done:
 - Verzeichnisstruktur angelegt (02_01 bis 02_07)
 - Vergleichsanalyse Demir vs. Mahr erstellt
 - Analyse Pourmajidi + Gesamtvergleich erstellt
 - "D_UNI_HINWEISE_SSOT registriert (Stil/Formalia bindend)"
+- "2.1 Begriffsabgrenzung und Systemkontext — 5 Absaetze, ~443W, 9 Quellen + 1 Gesetzestext"
+- "2.2.1 Generative Modellierung und Abstraktionsebenen — Absatz fertig"
+- "2.2.2 Foundation Models: Emergence und Homogenisierung — Absatz fertig"
+- "2.2.3 Enterprise-Herausforderungen generativer Systeme — Absatz fertig"
+- "Kap. 2.2 komplett: ~491W, 6 Quellen (Feuerriegel, Sengar, Wei, Bommasani, Huang, Shankar)"
+- "Gliederung v3 aktualisiert: 2.2 Sub-Punkte 2.2.1-2.2.3 eingefuegt"
+- "Alle Zitationen auf PDF-Seitenzahlen umgestellt (Regel: PDF-Viewer-Seitennummern statt Journal-Seitennummern)"
+- "Kap. 2.3 komplett: ~546W, 4 Quellen (Kratzke 2023, Kratzke & Quint 2017, Burns et al. 2016, Pourmajidi et al. 2025)"
+- "Quellenauswahl 2.4.1 finalisiert: Pflicht (Kreuzberger, Tantithamthavorn, Diaz-De-Arcaya, Joshi), Empfohlen (Shan & Shan, Billeter, Stone)"
+- "11 CoreCandidate-Abstracts analysiert fuer 2.4.1"
+- "Kap. 2.4.1 komplett: ~588W, 7 Quellen (Kreuzberger 2023, Tantithamthavorn 2025, Stone 2025, Billeter 2024, Diaz-de-Arcaya 2024, Shan & Shan 2024, Joshi 2025)"
+- "GenAIOps als Arbeitsdefinition markiert (kein kanonischer Begriff)"
+- "Stone-Zitation S.1→S.2 korrigiert (verifiziert gegen PDF-Fulltext)"
 next_steps:
-- "2.1 Preflight durchfuehren"
-- "2.1 Begriffsabgrenzung schreiben (LLM, GenAI-System, RAG, LLMOps, Quality Gate, Policy-as-Code)"
-- "2.2 Generative KI und LLMs"
-- "2.3 Cloud-native Plattformfaehigkeiten"
-- "2.4.1 Von MLOps zu LLMOps"
 - "2.4.2 EU AI Act regulatorischer Rahmen"
 - "2.5 Quality Gates Definition und Einordnung"
 - "2.6 Compliance-as-Code und Policy-as-Code"
 - "2.7 Synthese: Forschungsluecke und Handlungsbedarf"
 open_questions:
-- "OQ-2.1: Seitenbudget-Verteilung ueber 7+2 Abschnitte — Vorschlag ~14 Seiten gesamt, Verteilung noch nicht fixiert"
+- "OQ-2.1: Seitenbudget-Verteilung ueber 7+2 Abschnitte — ~934W von ~4200W Budget verbraucht (22%)"
 - "OQ-2.2: Tiefe von 2.7 Synthese — kurzer Brueckenschlag oder ausfuehrliche Gap-Analyse mit USP-Positionierung?"
-- "OQ-2.3: Schreibreihenfolge — sequenziell 2.1→2.7 oder thematisch (z.B. 2.4.2 und 2.6 zusammen wegen Compliance-Klammer)?"
-- "OQ-2.4: Quellen-Selektion aus 100+ Quellen — Kriterien fuer Priorisierung noch zu definieren"
+- "OQ-2.3: Schreibreihenfolge — sequenziell 2.3→2.7 fortsetzen"
 key_sources:
-- "Bommasani et al. (2021) — Foundation Models"
-- "Shankar et al. (2024) — LLM Evaluation"
-- "Kreuzberger et al. (2023) — MLOps"
-- "Raj et al. (2024) — LLMOps Cloud-native"
-- "Cardoso et al. (2024) — GenAIOps (LLMOps + RAGOps)"
+- "Bommasani et al. (2021) — Foundation Models [DGRT9VNW]"
+- "Shankar et al. (2024) — LLM Evaluation [F6AAPHUZ]"
+- "Kratzke (2023) — Cloud-native Computing, 2. Aufl. [NICHT IN ZOTERO — aufnehmen!]"
+- "Kratzke & Quint (2017) — CNA Systematic Mapping [MM3ZHX5C]"
+- "Burns et al. (2016) — Borg/Omega/Kubernetes [68QD7ZV4]"
+- "Pourmajidi et al. (2025) — CNA Governance Ref. Architecture [2ZNT2H8W]"
+- "CNCF (2018) — Cloud Native Definition v1.1 [Webquelle]"
+- "Kreuzberger et al. (2023) — MLOps [QY49ZYXB]"
 - "EU AI Act (2024) — Verordnung 2024/1689"
-- "Laux et al. (2024) — Trustworthy AI, Human Oversight"
 - "Hevner et al. (2004) — DSR Framework"
-- "Mahr (2024) — LLMOps Quality Assurance"
-- "Pourmajidi et al. (2023) — Cloud-native AI"
+- "Vaswani et al. (2017) — Transformer [PYTFTL7K]"
+- "Feuerriegel et al. (2024) — Generative AI [MG9RVJ7N]"
+- "Wei et al. (2022) — Emergent Abilities [74K4MFA9]"
+- "Sengar et al. (2024) — GenAI Systematic Review [BRNAUYVH]"
+- "Huang et al. (2024) — Hallucination Survey [RFHFUTCY]"
+- "Diaz-de-Arcaya et al. (2024) — LLMOps Systematic Mapping [T86QTBHU]"
+- "Shan & Shan (2024) — Enterprise LLMOps 4D [KLAXU3BG]"
+- "Stone et al. (2025) — MLOps Lifecycle Consolidated [G5766CHD]"
+- "Billeter et al. (2024) — MLOps x TAI [HEA5ZAKT]"
+- "Joshi (2025) — GenAIOps/AgentOps Review [6RRBZAUF]"
+- "Lewis et al. (2020) — RAG [J9GLG9IS]"
+- "Xu et al. (2025) — RAGOps [P998PMS3]"
+- "Fernandez-Llorca et al. (2025) — AI System Concepts [K5MIAY34]"
+- "Tantithamthavorn et al. (2025) — MLOps/LLMOps [C755FHJK]"
+- "Cooper (2008) — Stage-Gate [XU3I543D]"
+- "Rebbana (2025) — Policy-as-Code [FLWV46VA]"
 cross_chapter_dependencies:
 - "2.1 → alle Kapitel: Begriffe muessen konsistent durchgehalten werden"
+- "2.2.3 → 2.3: Herausforderungen motivieren cloud-native Plattformfaehigkeiten"
 - "2.3 → 5.2/5.4: Cloud-native Plattformfaehigkeiten als Architektur-Grundlage"
 - "2.4.2 → 4.3: EU AI Act Grundlagen fuer Transformationsmethodik"
 - "2.5 → 5.3: Quality-Gate-Definition als Basis fuer Gate-Taxonomie"
@@ -47,3 +71,81 @@ decisions:
     decision: "Verweis auf kapiteluebergreifende Decision in Kap. 3 chapter_state"
     rationale: "docs/uni_vorgaben/ als bindende SSOT — Details siehe 03_forschungsdesign_methodik/chapter_state.yaml"
     date: "2026-03-07"
+  - id: "D_PDF_SEITENZAHLEN"
+    decision: "Alle Zitationen verwenden PDF-Viewer-Seitenzahlen, nicht Journal-Seitenzahlen"
+    rationale: "Konsistenz und Nachpruefbarkeit — User kann direkt im PDF-Reader verifizieren. Offset-Tabelle pro Quelle dokumentiert."
+    date: "2026-03-08"
+  - id: "D_KAP2_2_SUBSTRUKTUR"
+    decision: "Kap. 2.2 erhaelt Sub-Punkte 2.2.1-2.2.3 in Gliederung v3"
+    rationale: "Foundation Models/Emergence als eigenstaendiger Absatz benoetigt Sichtbarkeit in Gliederung. Konsistent mit 2.4 (hat auch Sub-Punkte)."
+    date: "2026-03-08"
+pagination_offsets:
+  - source: "Feuerriegel et al. (2024)"
+    offset: 110
+    note: "PDF S.1 = Journal S.111"
+  - source: "Sengar et al. (2024)"
+    offset: 23660
+    note: "PDF S.1 = Journal S.23661"
+  - source: "Wei et al. (2022)"
+    offset: 0
+    note: "Preprint"
+  - source: "Bommasani et al. (2021)"
+    offset: 0
+    note: "Preprint"
+  - source: "Fernandez-Llorca et al. (2025)"
+    offset: 874
+    note: "PDF S.1 = Journal S.875"
+  - source: "Kreuzberger et al. (2023)"
+    offset: 31865
+    note: "PDF S.1 = Journal S.31866"
+  - source: "Tantithamthavorn et al. (2025)"
+    offset: 25
+    note: "PDF S.1 = Journal S.26"
+  - source: "Cooper (2008)"
+    offset: 211
+    note: "PDF S.1 = Cover, S.2 = Journal S.213"
+  - source: "Rebbana (2025)"
+    offset: 560
+    note: "PDF S.1 = Journal S.561"
+  - source: "Vaswani et al. (2017)"
+    offset: 0
+    note: "Preprint"
+  - source: "Lewis et al. (2020)"
+    offset: 0
+    note: "Preprint"
+  - source: "Xu et al. (2025)"
+    offset: 0
+    note: "Preprint"
+  - source: "Huang et al. (2024)"
+    offset: 0
+    note: "Preprint"
+  - source: "Shankar et al. (2024)"
+    offset: 0
+    note: "Preprint"
+  - source: "Kratzke (2023)"
+    offset: 16
+    note: "PDF S.1 = Buchcover, Kap. 4 bei Druck S.37 = PDF S.53"
+  - source: "Kratzke & Quint (2017)"
+    offset: 0
+    note: "PDF S.1 = Journal S.1 (JSS 126, pp. 1-16)"
+  - source: "Burns et al. (2016)"
+    offset: 69
+    note: "PDF S.1 = ACM Queue S.70 (jan-feb 2016)"
+  - source: "Pourmajidi et al. (2025)"
+    offset: 934
+    note: "PDF S.1 = Journal S.935 (IEEE TCC 13(3))"
+  - source: "Diaz-de-Arcaya et al. (2024)"
+    offset: 0
+    note: "PDF S.1 = Proceedings S.1 (JCIS 2024)"
+  - source: "Shan & Shan (2024)"
+    offset: 141
+    note: "PDF S.1 = Proceedings S.142 (IEEE BigData 2024)"
+  - source: "Stone et al. (2025)"
+    offset: 642
+    note: "PDF S.1 = Proceedings S.643 (CEUR-WS Vol. 3916)"
+  - source: "Billeter et al. (2024)"
+    offset: 35
+    note: "PDF S.1 = Proceedings S.36 (SANER 2024)"
+  - source: "Joshi (2025)"
+    offset: 0
+    note: "PDF S.1 = Journal S.1 (IJCATR Vol.14 Issue 07)"
