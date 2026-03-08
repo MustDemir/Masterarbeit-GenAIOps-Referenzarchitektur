@@ -1,9 +1,49 @@
 chapter: 02_rigor_theorie_stand_forschung
-kapitel: Kap. 2 — Theorie & Grundlagen
+kapitel: Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
 status: In Arbeit
-progress: 15
-current_focus: ''
-done: []
-next_steps: []
-open_questions: []
-key_sources: []
+progress: 5
+progress_pct: 5
+current_focus: "2.1 Begriffsabgrenzung und Systemkontext — Planung + Quellen-Selektion"
+done:
+- Verzeichnisstruktur angelegt (02_01 bis 02_07)
+- Vergleichsanalyse Demir vs. Mahr erstellt
+- Analyse Pourmajidi + Gesamtvergleich erstellt
+- "D_UNI_HINWEISE_SSOT registriert (Stil/Formalia bindend)"
+next_steps:
+- "2.1 Preflight durchfuehren"
+- "2.1 Begriffsabgrenzung schreiben (LLM, GenAI-System, RAG, LLMOps, Quality Gate, Policy-as-Code)"
+- "2.2 Generative KI und LLMs"
+- "2.3 Cloud-native Plattformfaehigkeiten"
+- "2.4.1 Von MLOps zu LLMOps"
+- "2.4.2 EU AI Act regulatorischer Rahmen"
+- "2.5 Quality Gates Definition und Einordnung"
+- "2.6 Compliance-as-Code und Policy-as-Code"
+- "2.7 Synthese: Forschungsluecke und Handlungsbedarf"
+open_questions:
+- "OQ-2.1: Seitenbudget-Verteilung ueber 7+2 Abschnitte — Vorschlag ~14 Seiten gesamt, Verteilung noch nicht fixiert"
+- "OQ-2.2: Tiefe von 2.7 Synthese — kurzer Brueckenschlag oder ausfuehrliche Gap-Analyse mit USP-Positionierung?"
+- "OQ-2.3: Schreibreihenfolge — sequenziell 2.1→2.7 oder thematisch (z.B. 2.4.2 und 2.6 zusammen wegen Compliance-Klammer)?"
+- "OQ-2.4: Quellen-Selektion aus 100+ Quellen — Kriterien fuer Priorisierung noch zu definieren"
+key_sources:
+- "Bommasani et al. (2021) — Foundation Models"
+- "Shankar et al. (2024) — LLM Evaluation"
+- "Kreuzberger et al. (2023) — MLOps"
+- "Raj et al. (2024) — LLMOps Cloud-native"
+- "Cardoso et al. (2024) — GenAIOps (LLMOps + RAGOps)"
+- "EU AI Act (2024) — Verordnung 2024/1689"
+- "Laux et al. (2024) — Trustworthy AI, Human Oversight"
+- "Hevner et al. (2004) — DSR Framework"
+- "Mahr (2024) — LLMOps Quality Assurance"
+- "Pourmajidi et al. (2023) — Cloud-native AI"
+cross_chapter_dependencies:
+- "2.1 → alle Kapitel: Begriffe muessen konsistent durchgehalten werden"
+- "2.3 → 5.2/5.4: Cloud-native Plattformfaehigkeiten als Architektur-Grundlage"
+- "2.4.2 → 4.3: EU AI Act Grundlagen fuer Transformationsmethodik"
+- "2.5 → 5.3: Quality-Gate-Definition als Basis fuer Gate-Taxonomie"
+- "2.6 → 5.4.2: Policy-as-Code Konzepte fuer Pipeline-Integration"
+- "2.7 → USP-Analyse: Forschungsluecke muss USP-Positionierung stuetzen"
+decisions:
+  - id: "D_UNI_HINWEISE_SSOT"
+    decision: "Verweis auf kapiteluebergreifende Decision in Kap. 3 chapter_state"
+    rationale: "docs/uni_vorgaben/ als bindende SSOT — Details siehe 03_forschungsdesign_methodik/chapter_state.yaml"
+    date: "2026-03-07"

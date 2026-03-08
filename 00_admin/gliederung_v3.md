@@ -12,6 +12,9 @@
 ### 2 Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
 * 2.1 Begriffsabgrenzung und Systemkontext (LLM, GenAI-System, RAG, LLMOps, Quality Gate, Policy-as-Code)
 * 2.2 Generative KI und LLMs
+  * 2.2.1 Generative Modellierung und Abstraktionsebenen
+  * 2.2.2 Foundation Models: Emergence und Homogenisierung
+  * 2.2.3 Enterprise-Herausforderungen generativer Systeme
 * 2.3 Cloud-native: Fokus auf Plattformfaehigkeiten (Identity, Network, Observability, Policy)
 * 2.4 Operationalisierung
   * 2.4.1 Von MLOps zu LLMOps: Operationalisierung von KI-Systemen

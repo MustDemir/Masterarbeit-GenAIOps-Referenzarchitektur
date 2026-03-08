@@ -92,5 +92,19 @@ docs/expose/*.pdf
 docs/expose/legacy/
 
 # Lokale Arbeitsdokumente (nicht versionieren)
-00_admin/Expose_v4_final_2026-02-28.docx
-03_forschungsdesign_methodik/Kapitel_3_Forschungsdesign_und_Methodik.docx
+00_admin/Literatur/
+00_workspace/Fulltext_Kapitel/
+
+# Thesis-Fliesstext (Drafts, Finals, Clean-Versionen) — nie in git
+# Konvention: alle Kapitel-Textdateien enden auf _DRAFT, _FINAL oder _CLEAN
+**/*_DRAFT.md
+**/*_DRAFT.pdf
+**/*_FINAL.md
+**/*_FINAL.pdf
+**/*_CLEAN.md
+
+# DOCX-Arbeitsversionen (Kapiteltext)
+**/Expose_v4_final_2026-02-28.docx
+**/Kap*_*.docx
+**/Kapitel_*.docx
+**/Kapitel *.docx

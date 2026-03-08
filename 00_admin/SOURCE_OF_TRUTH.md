@@ -20,6 +20,23 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Aktive Thesis-Inhalte (primaer):
   - Kapitelordner `01_*` bis `08_*` in diesem Repo.
 
+## Universitaere Vorgaben und Stilrichtlinien (bindend)
+
+- Ordner: `docs/uni_vorgaben/`
+- Enthaltene Dokumente:
+  - `DRAFT_Hinweise für wissenschaftliche Veröffentlichungen und Abschlussarbeiten.docx` — **Prof. Prinz Stilrichtlinien (bindend fuer alle Kapitel)**
+    - Kernanforderungen: Hohe Referenzierdichte, auf Wesentliches reduzieren, keine formalen Ueberleitungen ("im Folgenden wird..."), Ergebnisse durch Vergleich/Abgrenzung kontextualisieren, keine Redundanz, Blablameter-Check
+    - Gilt fuer: Sprachstil, Absatzstruktur, Zitierpraxis, Argumentationstiefe in allen Kapiteln
+  - `Masterarbeit_Vorbereitung.pdf` — **SRH Fernhochschule Thesis-Vorbereitung (bindend fuer Struktur und Formalia)**
+    - Kernanforderungen: Gliederungstiefe max. 4 Ebenen, Einleitung (~10% Umfang), Problemstellung → Zielsetzung → Forschungsfrage → Methodik → Aufbau, Bewertungskriterien (Inhalt 50%, Methodik/Systematik 30%, Formalia 20%), APA 7, 60-80 Textseiten
+    - Gilt fuer: Kapitelstruktur, Bewertungsoptimierung, formale Anforderungen, Seitenbudgets
+- Verwendung:
+  - **Preflight-Checks**: Beide Dokumente als Pruefinstanz (P6: Uni-Anforderungen)
+  - **Writer-Skill**: Prof. Prinz Stilregeln als Negativ-Checklist bei jedem Absatz
+  - **Consistency-Check**: Formalia-Abgleich gegen SRH-Bewertungskriterien
+  - **Post-Session**: Stil-Compliance als Pruefpunkt
+- Entscheidung: `D_UNI_HINWEISE_SSOT` (registriert in Entscheidungsregister)
+
 Wichtig: `00_workspace` enthaelt Pointer/Regeln, keine redundanten Kopien von Primaerdokumenten.
 
 ## Kommunikationsartefakte

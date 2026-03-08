@@ -47,6 +47,10 @@ decisions:
     decision: "Kap. 4 Anforderungsanalyse folgt funktional-logischer Struktur (Lifecycle → Transformation → Kontrolle → Oversight → Katalog)"
     rationale: "DSR-Designentscheidung: Prozessorientierung bildet Deployer-seitigen Compliance-Pfad von Norm bis audtierbarem Nachweis durchgaengig ab"
     date: "2026-03-05"
+  - id: "D_UNI_HINWEISE_SSOT"
+    decision: "docs/uni_vorgaben/ als bindende SSOT fuer alle Kapitel registriert: (1) Prof. Prinz Stilrichtlinien (Referenzierdichte, keine formalen Ueberleitungen, Blablameter-Check, Ergebnisse kontextualisieren), (2) SRH Masterarbeit_Vorbereitung (Bewertungskriterien 50/30/20, max. 4 Gliederungsebenen, 60-80 Textseiten)"
+    rationale: "Qualitaetssicherung: Universitaere Vorgaben muessen in allen Workflow-Skills (Preflight, Writer, Consistency, Post-Session) als Pruefinstanz verankert sein, um systematische Stil- und Formalia-Compliance sicherzustellen"
+    date: "2026-03-07"
 open_questions:
 - 'OP-3: R-Katalog noch nicht erstellt (Block A1/A2 = Kap. 4)'
 - 'Diagnose #9 (Azure CLOUD Act / STACKIT) und #10 (DP3 Contribution) → Kap. 7 verschoben'

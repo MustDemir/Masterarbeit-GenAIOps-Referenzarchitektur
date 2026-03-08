@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-06 20:44  
+> **Automatisch generiert:** 2026-03-08 04:46  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -11,8 +11,8 @@
 
 ## Kapitelstatus
 
-- **Kap. 1 — Einleitung**: Entwurf (10%)
-- **Kap. 2 — Theorie & Grundlagen**: In Arbeit (15%)
+- **Kap. 1 — Einleitung**: Fertig (100%)
+- **Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)**: In Arbeit (5%) — 2.1 Begriffsabgrenzung und Systemkontext — Planung + Quellen-Selektion
 - **Kap. 3 — Methodik (DSR)**: review (95%) — Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
 - **Kap. 4 — Anforderungsanalyse (RQ1)**: in_progress (83%) — 4.1-4.5 fertig (Entwuerfe geschrieben). Naechster Schritt: 4.6 Requirements-Katalog planen — Quellen lesen (Lucaj, Eisenberg, Goncalves, Elia), dann schreiben.
 - **Kap. 5 — Referenzarchitektur (RQ2)**: In Arbeit (Evidence Store, Related Work) (20%)
@@ -26,8 +26,10 @@
 
 | ID | Kapitel | Entscheidung | Rationale-Keyword |
 |---|---|---|---|
+| D_UNI_HINWEISE_SSOT | 02_rigor_theorie_stand_forschung | Verweis auf kapiteluebergreifende Decision in Kap. 3 chapter_state | docs/uni_vorgaben/ als bindende SSOT — Details siehe 03_fors |
 | D_SCOPE_ART25_RETIREMENT | 03_forschungsdesign_methodik | Art. 25 Provider-Aufstieg als Scope-Grenze dokumentiert, Retirement explizit ausgeschlossen (Provider-Verantwortung Art. 16) | Methodische Scope-Klarstellung: Deployer-Perspektive endet b |
 | D_KAP4_STRUKTUR_FUNKTIONAL | 03_forschungsdesign_methodik | Kap. 4 Anforderungsanalyse folgt funktional-logischer Struktur (Lifecycle → Transformation → Kontrolle → Oversight → Katalog) | DSR-Designentscheidung: Prozessorientierung bildet Deployer- |
+| D_UNI_HINWEISE_SSOT | 03_forschungsdesign_methodik | docs/uni_vorgaben/ als bindende SSOT fuer alle Kapitel registriert: (1) Prof. Prinz Stilrichtlinien (Referenzierdichte, keine formalen Ueberleitungen, Blablameter-Check, Ergebnisse kontextualisieren), (2) SRH Masterarbeit_Vorbereitung (Bewertungskriterien 50/30/20, max. 4 Gliederungsebenen, 60-80 Textseiten) | Qualitaetssicherung: Universitaere Vorgaben muessen in allen |
 | D_4.5_STRUCTURE | 04_anforderungsanalyse_RQ1 | 4.5 Human Oversight bleibt eigener Abschnitt | 162 kumulative Zitationen (Laux 63 + Sterz 51 + Enqvist 48) |
 | D_KAP4_PAGES | 04_anforderungsanalyse_RQ1 | Kap. 4 Zielbudget ~13 Seiten | 60-80 Seiten Gesamtthesis |
 | D_MQG4AI_PLACEMENT | 04_anforderungsanalyse_RQ1 | Elia et al. (2025)/MQG4AI zitieren in Kap. 2 Related Work + Kurzreferenz Kap. 4.6 | Wissenschaftliche Redlichkeit |
@@ -83,10 +85,13 @@ Noch keine cross_chapter_impacts in chapter_states definiert.
 - Artifact Construction Diagramm + Tool-Verifikation + 3-Quellen-Abgleich: Session: Artifact Construction Diagramm v2 erstellt, Deep Research Tool-Verifikation, 3-Quellen-Abgleich, Prof-Gespraech-Vorbereitung.
 - Blob Sync Test: Architekturupdate: Wir haben den Blob-Sync in den Workflow integriert.
 
+### [einleitung]
+- Kap1 Einleitung fertiggestellt: Kapitel 1 Einleitung komplett abgeschlossen. 6 Abschnitte (1.1-1.6), ~2.075 Wörter (~6,9 Seiten). Alle Prüfprotokolle verifiziert. Kap. 1.1: Urgency-Argumente eingefügt (Art. 113 Fristen, Art. 99 Sanktionen, Blancato...
+
 ### [general]
 - Session Summary: (ohne Stichpunkte)
 - Session Summary: (ohne Stichpunkte)
-- Session Summary: (ohne Stichpunkte)
+- Session Summary: Session: SSOT-Workflow Stabilisierung + Keyword-Audit
 
 ### [methodik]
 - Expose-Deltas in Kapitel 3 ueberfuehrt: Session: Exposé-Deltas in Kapitel 3 überführen (2026-02-28)
