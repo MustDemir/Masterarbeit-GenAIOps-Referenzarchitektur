@@ -33,7 +33,7 @@ Bei Bedarf:  → thesis-consistency (K1–K7)
 ## Primaere Pruefobjekte
 
 - **Volltexte:** `00_workspace/Fulltext_Kapitel/*.docx` (Abgabe-Texte, SSOT fuer Fliesstext)
-- **Fallback:** `{kapitel_ordner}/Kap{N}_*_DRAFT.md` (Zwischenstaende)
+- **Fallback:** `{kapitel_ordner}/{N}_{M}_{thema}_DRAFT.md` (Zwischenstaende, z.B. `4_2_lifecycle_DRAFT.md`)
 - **Roter Faden:** `docs/roter_faden_tracker.md`
 - **Uni-Vorgaben:** `docs/uni_vorgaben/pruefkatalog.md`
 - **Decisions/Definitionen:** `docs/thesis_state.md`
@@ -54,9 +54,22 @@ Bei Bedarf:  → thesis-consistency (K1–K7)
 planned → in_progress → draft → review → final
 ```
 
-## Standort
+## Standort & Sync-Richtung
 
-Alle Skills liegen in: `genaiops-thesis/.skills/`
+- **Source (Entwicklung):** `genaiops-thesis/.skills/` — hier werden Skills bearbeitet
+- **Distribution (Plugin):** `genaiops-thesis/plugins/thesis-workflow.plugin` (ZIP)
+- **Kopie fuer Claude.ai:** `ai-context-vault/plugins/thesis-workflow.plugin`
+- **Sync-Richtung:** `.skills/` → `.plugin` (bei Aenderungen Plugin neu packen)
+
+## Externe Abhaengigkeiten
+
+| Dependency | Typ | Herkunft | Benötigt von |
+|------------|-----|----------|-------------|
+| `zitations-finder` | Skill | `ai-context-vault` Repo | thesis-writer (P5), thesis-preflight (P5) |
+| `elicit-research` | Skill | `ai-context-vault` Repo | thesis-writer (P5), thesis-preflight (P5) |
+| Zotero MCP | MCP Server | Claude.ai Projekteinstellungen | Quellen-Lookup-Kette |
+| Semantic Scholar MCP | MCP Server | Claude.ai Projekteinstellungen | Quellen-Lookup-Kette |
+| Consensus MCP | MCP Server | Claude.ai Projekteinstellungen | Quellen-Lookup-Kette |
 
 ## Aenderungslog
 

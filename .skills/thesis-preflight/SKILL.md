@@ -51,7 +51,7 @@ Die SOT-Hierarchie bestimmt, welche Quellen bei Widersprüchen gewinnen:
 Lese diese Dateien:
 - **Volltext des aktuellen Kapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N} *.docx` (primaer!)
 - **Volltext des Vorgaengerkapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N-1} *.docx` (Roter Faden!)
-- Fallback: `{kapitel_ordner}/Kap{N}_*_DRAFT.md` (falls DOCX nicht lesbar)
+- Fallback: `{kapitel_ordner}/{N}_{M}_{thema}_DRAFT.md` (falls DOCX nicht lesbar)
 - `docs/roter_faden_tracker.md` — Bruecken-Definitionen und Kernthesen
 - `00_admin/gliederung_v3.md` — Kapitelstruktur, Seitenbudgets
 - `03_forschungsdesign_methodik/` — DSR-Rahmen, Artefaktdefinition

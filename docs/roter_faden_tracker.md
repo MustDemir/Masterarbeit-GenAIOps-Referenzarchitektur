@@ -53,7 +53,7 @@ Die drei Problemdimensionen erfordern theoretische Fundierung → Kap. 2 liefert
 ## Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
 
 **Status:** `in_progress` (50%)
-**Volltextquelle:** `00_workspace/Fulltext_Kapitel/Kapitel 2 Problemstellung.docx`
+**Volltextquelle:** `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx`
 
 ### Bruecke von Kap. 1:
 Die drei Problemdimensionen (PD1–PD3) begruenden den Bedarf an theoretischer Fundierung. Kap. 2 liefert die Wissensbasis des DSR Rigor Cycle.
