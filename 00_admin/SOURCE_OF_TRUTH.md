@@ -46,6 +46,20 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Pruefkatalog Uni-Vorgaben (primaer):
   - `docs/uni_vorgaben/pruefkatalog.md` — Maschinenlesbare Checkliste aller Uni-Regeln (PK-Codes)
 
+## Fortschritts- und Tracking-Artefakte
+
+| Kategorie | Pfad-Muster | Zweck | Git-Status |
+|-----------|-------------|-------|-----------|
+| **chapter_state.yaml** | `{KK}_*/chapter_state.yaml` (10 Dateien) | Detaillierter Kapitel-Status: progress, done, next_steps, decisions, key_sources, cross_chapter_dependencies | TRACKED |
+| **Preflight-Protokolle** | `docs/preflight/PREFLIGHT_KAP{N}_*.md` | Argumentationsstruktur, Quellen-Zuordnung, Negativ-Checklisten pro Abschnitt | TRACKED |
+| **Bewertungsberichte** | `docs/bewertung/BEWERTUNG_KAP{N}_*.md` | Fachliche Reviews mit R1-R6 Scoring (Struktur, Roter Faden, Stil, Zitationen, Scope, Gutachter) | TRACKED |
+| **Session-Zusammenfassungen** | `docs/bewertung/SESSION_*_ZUSAMMENFASSUNG.md` | Tagesuebersicht: was gemacht, was offen, Konventionen | TRACKED |
+| **Session Summaries** | `{KK}_*/session_summaries/*.yaml` (33 Dateien) | Per-Session YAML mit topic, bullets, decisions, tags — erzeugt durch save.py | .gitignore |
+| **Requirements** | `04_*/requirements/R*.yaml` (5 Dateien) | Strukturierte Requirement-Specs (lifecycle_phase, evidence, gates) | TRACKED |
+| **Quality Gates** | `05_*/05_03_quality_gates/*/*.yaml` (3 Dateien) | Gate-Specs (trigger, policy_checks, decision, waiver) | TRACKED |
+| **.memory/** | `.memory/` (index.json, entscheidungsregister.md, resume_context.txt, sync_states) | Lokaler Session-Cache, Datei-Manifest, Blob-Sync | .gitignore |
+| **~~_status.yml~~** | `{KK}_*/_status.yml` (10 Dateien) | **VERALTET — NICHT VERWENDEN.** Redundant mit chapter_state.yaml, Werte nicht aktuell | TRACKED (legacy) |
+
 ## Status-Enum (verbindlich fuer alle Artefakte)
 
 Einheitliche Status-Werte fuer chapter_state.yaml, README, thesis_state.md:

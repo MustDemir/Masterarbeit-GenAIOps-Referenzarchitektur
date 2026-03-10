@@ -1,9 +1,9 @@
 chapter: 02_rigor_theorie_stand_forschung
 kapitel: Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
-status: In Arbeit
-progress: 50
-progress_pct: 50
-current_focus: "Kap. 2.4.1 fertig. Naechster Schritt: 2.4.2 EU AI Act Preflight + GO"
+status: draft
+progress: 100
+progress_pct: 100
+current_focus: "Alle Abschnitte 2.1-2.7 geschrieben (~4062W). Review 4.1/5.0. Naechster Schritt: DOCX-Integration + Seitenverifizierung + Zotero-Eintraege"
 done:
 - Verzeichnisstruktur angelegt (02_01 bis 02_07)
 - Vergleichsanalyse Demir vs. Mahr erstellt
@@ -22,15 +22,20 @@ done:
 - "Kap. 2.4.1 komplett: ~588W, 7 Quellen (Kreuzberger 2023, Tantithamthavorn 2025, Stone 2025, Billeter 2024, Diaz-de-Arcaya 2024, Shan & Shan 2024, Joshi 2025)"
 - "GenAIOps als Arbeitsdefinition markiert (kein kanonischer Begriff)"
 - "Stone-Zitation S.1→S.2 korrigiert (verifiziert gegen PDF-Fulltext)"
+- "Kap. 2.4.2 EU AI Act regulatorischer Rahmen — Preflight + DRAFT (in separater Session)"
+- "Kap. 2.5 Quality Gates DRAFT COMPLETE: ~948W, 5 Absaetze, 11 Quellen, 30+ Belege, alle Pruefprotokolle MATCH"
+- "Kap. 2.6 Compliance-as-Code DRAFT COMPLETE: ~308W, 2 Absaetze, 3 Quellen (Rebbana + 2 Rueckverweise), 9 Belege"
+- "Kap. 2.7 Synthese DRAFT COMPLETE: ~335W, 2 Absaetze, reine Synthese (0 neue Quellen), 10 Belege"
+- "Kap. 2 Review: Bewertungsbericht 4.1/5.0 (docs/bewertung/BEWERTUNG_KAP2_2026-03-09.md)"
+- "2 PK-V1 Fixes: 2.4.1 Abs.3 + 2.5 Abs.1 formale Ueberleitungen entfernt"
 next_steps:
-- "2.4.2 EU AI Act regulatorischer Rahmen"
-- "2.5 Quality Gates Definition und Einordnung"
-- "2.6 Compliance-as-Code und Policy-as-Code"
-- "2.7 Synthese: Forschungsluecke und Handlungsbedarf"
+- "Zotero-Eintraege anlegen: Humble & Farley (2010) + Kratzke (2023) [KRITISCH]"
+- "Seitenzahlen verifizieren: Correa & Moenig (S.4/5), Guldimann (S.3/12) [WICHTIG]"
+- "Kap. 2 DOCX-Integration: alle 7 Abschnitte in Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx zusammenfuehren"
+- "Optional: 2.5 Abs.5 / 2.7 Abs.1 Overlap pruefen (~2-3 Saetze Redundanz)"
 open_questions:
-- "OQ-2.1: Seitenbudget-Verteilung ueber 7+2 Abschnitte — ~934W von ~4200W Budget verbraucht (22%)"
-- "OQ-2.2: Tiefe von 2.7 Synthese — kurzer Brueckenschlag oder ausfuehrliche Gap-Analyse mit USP-Positionierung?"
-- "OQ-2.3: Schreibreihenfolge — sequenziell 2.3→2.7 fortsetzen"
+- "OQ-2.4: Seitenzahlen verifizieren: Correa & Moenig (S.4/5), Guldimann (S.3/12)"
+- "OQ-2.5: 2.5 Abs.5 / 2.7 Abs.1 pruefen (~2-3 Saetze Redundanz moeglich)"
 key_sources:
 - "Bommasani et al. (2021) — Foundation Models [DGRT9VNW]"
 - "Shankar et al. (2024) — LLM Evaluation [F6AAPHUZ]"
@@ -58,6 +63,12 @@ key_sources:
 - "Tantithamthavorn et al. (2025) — MLOps/LLMOps [C755FHJK]"
 - "Cooper (2008) — Stage-Gate [XU3I543D]"
 - "Rebbana (2025) — Policy-as-Code [FLWV46VA]"
+- "Elia & Bauer (2023) — Quality Gates fuer ML [JD2INIRY]"
+- "Elia et al. (2025) — MQG4AI [QRW95D4X]"
+- "Correa & Moenig (2024) — Ethical AI Certification [XVM65FRQ]"
+- "Guldimann et al. (2025) — COMPL-AI Framework [QTQJ92VY]"
+- "Nellutla (2026) — MLOps 2.0 CDV [EUTPN4JL]"
+- "Humble & Farley (2010) — Continuous Delivery [NICHT IN ZOTERO]"
 cross_chapter_dependencies:
 - "2.1 → alle Kapitel: Begriffe muessen konsistent durchgehalten werden"
 - "2.2.3 → 2.3: Herausforderungen motivieren cloud-native Plattformfaehigkeiten"
@@ -149,3 +160,18 @@ pagination_offsets:
   - source: "Joshi (2025)"
     offset: 0
     note: "PDF S.1 = Journal S.1 (IJCATR Vol.14 Issue 07)"
+  - source: "Nellutla (2026)"
+    offset: 117
+    note: "PDF S.1 = Journal S.118 (IJSEC Vol.16 No.2)"
+  - source: "Elia & Bauer (2023)"
+    offset: 0
+    note: "Preprint"
+  - source: "Elia et al. (2025)"
+    offset: 0
+    note: "Preprint"
+  - source: "Correa & Moenig (2024)"
+    offset: 0
+    note: "Whitepaper — Seitenzahlen aus Fulltext-Markern rekonstruiert, Verifizierung empfohlen"
+  - source: "Guldimann et al. (2025)"
+    offset: 0
+    note: "Preprint — Seitenzahlen geschaetzt, Verifizierung empfohlen"

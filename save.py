@@ -26,14 +26,12 @@ from workflow_lib import (
 
 
 def _topic_to_status_path(topic: str) -> Path | None:
-    """Resolve topic to its chapter_state.yaml path (fallback: _status.yml)."""
+    """Resolve topic to its chapter_state.yaml path."""
     session_dir = TOPIC_TO_DIR.get(topic)
     if not session_dir:
         return None
     chapter_dir = REPO_ROOT / Path(session_dir).parent
-    primary = chapter_dir / "chapter_state.yaml"
-    fallback = chapter_dir / "_status.yml"
-    return primary if primary.exists() else fallback
+    return chapter_dir / "chapter_state.yaml"
 
 
 def _offer_progress_update(topic: str) -> None:

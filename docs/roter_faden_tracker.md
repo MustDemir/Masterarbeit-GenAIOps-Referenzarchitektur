@@ -52,7 +52,7 @@ Die drei Problemdimensionen erfordern theoretische Fundierung → Kap. 2 liefert
 
 ## Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)
 
-**Status:** `in_progress` (50%)
+**Status:** `draft` (100% — DRAFT komplett, DOCX-Integration ausstehend)
 **Volltextquelle:** `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx`
 
 ### Bruecke von Kap. 1:

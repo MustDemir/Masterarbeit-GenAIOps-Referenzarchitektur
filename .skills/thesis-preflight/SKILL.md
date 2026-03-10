@@ -43,29 +43,45 @@ Beantworte:
 - Gibt es im Exposé Formulierungen/Inhalte, die übernommen werden können?
 - Hat sich der Scope seit dem Exposé verändert? Wo ist die Änderung dokumentiert?
 
-### P2 — Kapiteltexte + Volltexte (SOT-Hierarchie)
+### P2 — ALLE Volltexte + ALLE SSOTs (PFLICHT — nichts ueberspringen!)
+
+**WICHTIG:** P2 ist die umfangreichste Pruefinstanz. Du MUSST alle unten gelisteten Dateien
+tatsaechlich lesen — nicht nur das Vorgaengerkapitel. Ohne vollstaendige Lektuere fehlen
+Begriffe, Definitionen und Abhaengigkeiten, die zu Inkonsistenzen fuehren.
 
 Die SOT-Hierarchie bestimmt, welche Quellen bei Widersprüchen gewinnen:
 `gliederung_v3.md > Kap. 3 DOCX > Kap. 4 DOCX > Entscheidungsregister > Exposé`
 
-Lese diese Dateien:
-- **Volltext des aktuellen Kapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N} *.docx` (primaer!)
-- **Volltext des Vorgaengerkapitels** — `00_workspace/Fulltext_Kapitel/Kapitel {N-1} *.docx` (Roter Faden!)
-- Fallback: `{kapitel_ordner}/{N}_{M}_{thema}_DRAFT.md` (falls DOCX nicht lesbar)
-- `docs/roter_faden_tracker.md` — Bruecken-Definitionen und Kernthesen
-- `00_admin/gliederung_v3.md` — Kapitelstruktur, Seitenbudgets
-- `03_forschungsdesign_methodik/` — DSR-Rahmen, Artefaktdefinition
-- `04_anforderungsanalyse_RQ1/` — Problemdimensionen, Requirements
-- `05_referenzarchitektur_RQ2/` — S1–S4, Quality Gates, PoC
-- Alle anderen Volltexte mit Status ≥ "draft"
+#### Schritt 1: ALLE geschriebenen Volltexte lesen (PFLICHT)
 
-Beantworte:
-- Welche Begriffe/Definitionen aus bereits geschriebenen Kapiteln müssen verwendet werden?
+Lese JEDEN Volltext der bereits existiert — nicht nur den Vorgaenger:
+- `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx` (PFLICHT)
+- `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx` (PFLICHT)
+- `00_workspace/Fulltext_Kapitel/Kapitel_3_Forschungsdesign_und_Methodik.docx` (PFLICHT)
+- `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx` (PFLICHT)
+- `00_workspace/Fulltext_Kapitel/Kapitel 5 Architectur Entwicklung.docx` (PFLICHT, falls vorhanden)
+- Fallback wenn DOCX nicht lesbar: `{kapitel_ordner}/{N}_{M}_{thema}_DRAFT.md`
+
+#### Schritt 2: ALLE SSOTs + Preflight-Protokolle lesen (PFLICHT)
+
+- `docs/roter_faden_tracker.md` — Bruecken-Definitionen und Kernthesen ALLER Kapitel
+- `00_admin/gliederung_v3.md` — Kapitelstruktur, Seitenbudgets
+- `00_admin/SOURCE_OF_TRUTH.md` — Master-SSOT-Verzeichnis, Datei-Hierarchie
+- `docs/uni_vorgaben/pruefkatalog.md` — PK-Codes fuer Uni-Anforderungen
+- `{kapitel_ordner}/KONSISTENZ_UEBERBLICK_KAP{N}.md` (falls vorhanden)
+- `{kapitel_ordner}/INHALTSPLAN_KAP{N}.md` (falls vorhanden)
+- `{kapitel_ordner}/chapter_state.yaml` — Detaillierter Kapitel-Status (done, next_steps, decisions)
+- **`docs/preflight/PREFLIGHT_KAP{N}_*.md`** — ALLE bisherigen Preflight-Protokolle des Zielkapitels UND verwandter Kapitel lesen! Diese enthalten Argumentationsstrukturen, Quellen-Zuordnungen und Negativ-Checklisten aus frueheren Preflights.
+
+#### Schritt 3: Prueffragen beantworten
+
+- Welche Begriffe/Definitionen aus ALLEN bereits geschriebenen Kapiteln muessen verwendet werden?
 - Gibt es Forward-References? Existiert das Ziel oder ist es in der Gliederung geplant?
-- Stimmt die Argumentationslinie mit der Gliederung überein?
+- Stimmt die Argumentationslinie mit der Gliederung ueberein?
 - **Roter Faden rueckwaerts:** Lese den VOLLTEXT des Vorgaengerkapitels — wie endet es inhaltlich? Welche Erwartung wird geweckt? Knuepft der neue Abschnitt nahtlos an?
 - **Roter Faden vorwaerts:** Was erwartet das Nachfolgerkapitel (aus chapter_state/roter_faden_tracker)? Bereitet der geplante Abschnitt darauf vor?
-- **Konsistenz:** Widersprechen geplante Inhalte bestehenden Volltexten?
+- **Konsistenz:** Widersprechen geplante Inhalte IRGENDEINEM bestehenden Volltext (nicht nur Vorgaenger)?
+- **Redundanz:** Wurde ein Begriff/Konzept bereits in einem frueheren Kapitel definiert? Wenn ja: NICHT wiederholen, sondern verweisen.
 
 ### P3 — Session Summaries + chapter_state + relevante Dateien
 
