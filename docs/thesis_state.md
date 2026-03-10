@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-10 04:06  
+> **Automatisch generiert:** 2026-03-10 21:07  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -12,6 +12,7 @@
 ## Kapitelstatus
 
 - **Kap. 1 — Einleitung**: Fertig (100%)
+- **Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)**: draft (100%) — Alle Abschnitte 2.1-2.7 geschrieben (~4062W). Review 4.1/5.0. Naechster Schritt: DOCX-Integration + Seitenverifizierung + Zotero-Eintraege
 - **Kap. 3 — Methodik (DSR)**: review (95%) — Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
 - **Kap. 4 — Anforderungsanalyse (RQ1)**: in_progress (85%) — 4.1-4.5 fertig + Review abgeschlossen (3.9/5.0). Seitenangaben alle 12 Quellen nachgetragen. Naechster Schritt: 4.6 Requirements-Katalog schreiben.
 - **Kap. 5 — Referenzarchitektur (RQ2)**: In Arbeit (Evidence Store, Related Work) (20%)
@@ -25,6 +26,9 @@
 
 | ID | Kapitel | Entscheidung | Rationale-Keyword |
 |---|---|---|---|
+| D_UNI_HINWEISE_SSOT | 02_rigor_theorie_stand_forschung | Verweis auf kapiteluebergreifende Decision in Kap. 3 chapter_state | docs/uni_vorgaben/ als bindende SSOT — Details siehe 03_fors |
+| D_PDF_SEITENZAHLEN | 02_rigor_theorie_stand_forschung | Alle Zitationen verwenden PDF-Viewer-Seitenzahlen, nicht Journal-Seitenzahlen | Konsistenz und Nachpruefbarkeit — User kann direkt im PDF-Re |
+| D_KAP2_2_SUBSTRUKTUR | 02_rigor_theorie_stand_forschung | Kap. 2.2 erhaelt Sub-Punkte 2.2.1-2.2.3 in Gliederung v3 | Foundation Models/Emergence als eigenstaendiger Absatz benoe |
 | D_SCOPE_ART25_RETIREMENT | 03_forschungsdesign_methodik | Art. 25 Provider-Aufstieg als Scope-Grenze dokumentiert, Retirement explizit ausgeschlossen (Provider-Verantwortung Art. 16) | Methodische Scope-Klarstellung: Deployer-Perspektive endet b |
 | D_KAP4_STRUKTUR_FUNKTIONAL | 03_forschungsdesign_methodik | Kap. 4 Anforderungsanalyse folgt funktional-logischer Struktur (Lifecycle → Transformation → Kontrolle → Oversight → Katalog) | DSR-Designentscheidung: Prozessorientierung bildet Deployer- |
 | D_UNI_HINWEISE_SSOT | 03_forschungsdesign_methodik | docs/uni_vorgaben/ als bindende SSOT fuer alle Kapitel registriert: (1) Prof. Prinz Stilrichtlinien (Referenzierdichte, keine formalen Ueberleitungen, Blablameter-Check, Ergebnisse kontextualisieren), (2) SRH Masterarbeit_Vorbereitung (Bewertungskriterien 50/30/20, max. 4 Gliederungsebenen, 60-80 Textseiten) | Qualitaetssicherung: Universitaere Vorgaben muessen in allen |
@@ -102,6 +106,7 @@ Noch keine cross_chapter_impacts in chapter_states definiert.
 - DSR Kapitel 3 – Forschungsdesign & Methodik: Der Benutzer hat nach dem Thema DSR für Kapitel 3 seiner Masterarbeit gefragt und damit die methodische Fokussierung der Arbeit markiert.
 
 ### [theorie]
+- Kap2 Zitationspruefung + Workflow-Cleanup: Session 2026-03-10: Systematische Zitationspruefung Kap. 2 gegen PDF-Quellen (67 Zitationen, 4 Agents parallel). 7 Seitenzahl-Korrekturen im DRAFT angewendet: Feuerriegel S.4→S.3-4, Billeter S.2→S.3, Novelli S.2→S.3,...
 - Kap2 Review + PK-V1 Fixes: Session: Kap. 2 Volltext-Review mit thesis-reviewer Skill (6 Instanzen R1-R6). Ergebnis: 4.1/5.0 Gut. Bewertungsbericht gespeichert in docs/bewertung/BEWERTUNG_KAP2_2026-03-09.md. 2 PK-V1-Formulierungen bereinigt: 2.4...
 - Kap 2.2 abgeschlossen - Generative KI und LLMs: Session 2026-03-08: Kap. 2.2 Generative KI und LLMs abgeschlossen. 3 Absaetze geschrieben: 2.2.1 Generative Modellierung und Abstraktionsebenen, 2.2.2 Foundation Models Emergence und Homogenisierung, 2.2.3 Enterprise-...
 
