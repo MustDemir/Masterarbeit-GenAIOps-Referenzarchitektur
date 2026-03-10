@@ -96,6 +96,7 @@ docs/expose/legacy/
 00_workspace/Fulltext_Kapitel/
 docs/preflight/
 **/session_summaries/
+**/chapter_state.yaml
 
 # Thesis-Fliesstext (Drafts, Finals, Clean-Versionen) — nie in git
 # Konvention: alle Kapitel-Textdateien enden auf _DRAFT, _FINAL oder _CLEAN
