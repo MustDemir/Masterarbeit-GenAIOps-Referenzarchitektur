@@ -199,7 +199,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 > Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `██████████░░░░░░░░░░` **50%**
+> Gesamtfortschritt: `██████████░░░░░░░░░░` **52%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
@@ -207,7 +207,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | Kap. 1 — Einleitung | `████████████████████` | 100% | Fertig |
 | Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | draft |
 | Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | review |
-| Kap. 4 — Anforderungsanalyse (RQ1) | `█████████████████░░░` | 85% | in_progress |
+| Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | done |
 | Kap. 5 — Referenzarchitektur (RQ2) | `████░░░░░░░░░░░░░░░░` | 20% | In Arbeit (Evidence Store, Related Work) |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
