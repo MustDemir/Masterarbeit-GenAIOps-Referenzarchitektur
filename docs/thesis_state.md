@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-10 21:07  
+> **Automatisch generiert:** 2026-03-11 01:56  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -14,7 +14,7 @@
 - **Kap. 1 — Einleitung**: Fertig (100%)
 - **Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)**: draft (100%) — Alle Abschnitte 2.1-2.7 geschrieben (~4062W). Review 4.1/5.0. Naechster Schritt: DOCX-Integration + Seitenverifizierung + Zotero-Eintraege
 - **Kap. 3 — Methodik (DSR)**: review (95%) — Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
-- **Kap. 4 — Anforderungsanalyse (RQ1)**: in_progress (85%) — 4.1-4.5 fertig + Review abgeschlossen (3.9/5.0). Seitenangaben alle 12 Quellen nachgetragen. Naechster Schritt: 4.6 Requirements-Katalog schreiben.
+- **Kap. 4 — Anforderungsanalyse (RQ1)**: done (100%) — Kap. 4 KOMPLETT. 4.6 Requirements-Katalog Fliesstext fertig (6/6 Absaetze, ~1.069W, 28 MATCH). Anhang A erstellt. Lucaj TechOps Templates geklont + R-xx Mapping erstellt. Naechster Schritt: Kap. 5 Preflight.
 - **Kap. 5 — Referenzarchitektur (RQ2)**: In Arbeit (Evidence Store, Related Work) (20%)
 - **Kap. 6 — Evaluation (RQ3)**: Geplant (0%)
 - **Kap. 7 — Diskussion**: Geplant (0%)
@@ -45,6 +45,15 @@
 | D_NIST_CONVERGENCE | 04_anforderungsanalyse_RQ1 | NIST-Harmonisierung als Konvergenz-Argumentation in 5.1 (~1 Seite + Tabelle), nicht nur Mapping | Konvergenz NIST AI RMF + ISO 42001 + EU AI Act = Rigor-Nachw |
 | D_KONSOLIDIERUNG_AUFGELOEST | 04_anforderungsanalyse_RQ1 | Alter Abschnitt 4.5 Konsolidierung wird aufgeloest: Governance-Dimensionen → 4.6, NIST-Harmonisierung → 5.1, Clustering → 5.3 | Konsolidierung war kein eigenstaendiger DSR-Beitrag |
 | D_KAP4_BUDGET_FLEX | 04_anforderungsanalyse_RQ1 | Kap. 4 Seitenbudget flexibel auf ~14-15 Seiten erhoehen wenn noetig | 4 |
+| D_4.6_BUDGET_OVERRIDE | 04_anforderungsanalyse_RQ1 | Kap. 4 Budget auf ~16-17 Seiten erhoeht, Requirements-Tabelle als Anhang (Tabelle 1) zaehlt nicht zum Seitenbudget | 14 Requirements (R001-R014) benoetigen substanzielle Tabelle |
+| D_4.6_GRANULARITY_FULL | 04_anforderungsanalyse_RQ1 | Keine R-xx Limitierung. 14 Requirements (R001-R014), vollstaendige Art. 9-15 + Art. 26/27/50/72/73 Abdeckung | Systematische Anforderungsableitung erfordert lueckenlose Ar |
+| D_4.6_TABLE_APPENDIX | 04_anforderungsanalyse_RQ1 | Requirements-Tabelle als Anhang (Tabelle 1) im APA7-Referenzstil, nicht im Fliesstext | Kompakte Darstellung aller 14 R-xx mit ID |
+| D_R002_SPLIT | 04_anforderungsanalyse_RQ1 | R002 aufgeteilt: Art. 11 (Doku) bleibt R002, Art. 13 (Transparenz) → R007, Art. 12 (Logging) → R014 | Ein Mega-Requirement (3 Artikel) verletzt die 1:1-Traceabili |
+| D_OPA_THREE_PILLAR | 04_anforderungsanalyse_RQ1 | Drei-Saeulen-Architektur: Conftest (Pre-Deployment/Deployment CI), Gatekeeper (Operations K8s Admission), OPA Decision Logs (Querschnitt Audit) | Lifecycle-Mapping: Conftest = statische Checks vor Deploymen |
+| D_GATEKEEPER_SCOPE | 04_anforderungsanalyse_RQ1 | Gatekeeper-PoC: 2 Label-Constraints (eu-ai-act/risk-class, eu-ai-act/deployer-assessment) + 1 technischer Constraint (Monitoring-Sidecar required) | Minimaler PoC-Scope zeigt sowohl symbolische (Label) als auc |
+| D_LOG_BACKEND | 04_anforderungsanalyse_RQ1 | OPA Decision Logs → bestehender Evidence Store (PostgreSQL compliance.quality_gate_results), kein separates Log-System | Wiederverwendung des Evidence Store mit Hash-Chain (DP-7) ve |
+| D_LUCAJ_STARTING_BASIS | 04_anforderungsanalyse_RQ1 | Lucaj TechOps Templates (Application/Model/Data Documentation) als Ausgangsbasis fuer Rego-Policy-Ableitung | Templates bieten EU AI Act-annotierte Checklisten (Art |
+| D_POC_REGO_K8S | 04_anforderungsanalyse_RQ1 | PoC implementiert echten Rego-Code auf K8s/AKS (Azure), nicht nur konzeptionell | Kolloquium-Demo zeigt: git push → Conftest CI → Gatekeeper A |
 
 ## Critical Definitions (bindend fuer Cross-Chapter-Konsistenz)
 
@@ -68,6 +77,15 @@ Noch keine cross_chapter_impacts in chapter_states definiert.
 - R003: Robustheit, Genauigkeit und Sicherheitschecks muessen vor Promotion bestanden sein [deployment]
 - R004: Human Oversight muss vor produktiver Nutzung organisatorisch verankert sein [pre-deployment]
 - R005: Evidence-Persistierung muss manipulationssicher und rueckverfolgbar erfolgen [operation]
+- R006: Eingabedaten-Qualitaet muss vor Verarbeitung durch das High-Risk-System geprueft sein [deployment]
+- R007: Nutzertransparenz und Informationspflichten muessen vor Einsatz erfuellt sein [deployment]
+- R008: Operative Oversight-Wirksamkeit muss kontinuierlich nachgewiesen werden [operation]
+- R009: Schwerwiegende Vorfaelle muessen erkannt, dokumentiert und gemeldet werden [operation]
+- R010: Post-Market Surveillance und Drift-Monitoring muessen operativ implementiert sein [operation]
+- R011: Konformitaetserklaerung und CE-Kennzeichnung muessen vor Einsatz geprueft sein [pre-deployment]
+- R012: Grundrechte-Folgenabschaetzung muss vor Einsatz durchgefuehrt und dokumentiert sein [pre-deployment]
+- R013: Bias- und Fairness-Monitoring muss im laufenden Betrieb implementiert sein [operation]
+- R014: Automatische Protokollierung muss aktiviert und auswertbar konfiguriert sein [deployment]
 
 ## Quality Gates (RQ2)
 

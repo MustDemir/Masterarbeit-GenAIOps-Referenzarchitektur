@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evidenz-Matrix Kap. 4.6 — Requirements-Katalog (R001–R014)</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e1e4ed;
+    --text-muted: #8b8fa3;
+    --accent: #6366f1;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --orange: #f97316;
+    --red: #ef4444;
+    --gray: #374151;
+    --blue: #3b82f6;
+    --pink: #ec4899;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+  h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+  h2 { font-size: 1.1rem; font-weight: 600; margin: 28px 0 12px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  h3 { font-size: 0.95rem; font-weight: 600; margin: 16px 0 8px; }
+  .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+  .badge-core { background: #6366f120; color: var(--accent); border: 1px solid #6366f140; }
+  .badge-rec { background: #22c55e15; color: var(--green); border: 1px solid #22c55e30; }
+  .badge-new { background: #f9731615; color: var(--orange); border: 1px solid #f9731630; }
+  .badge-reg { background: #3b82f615; color: var(--blue); border: 1px solid #3b82f630; }
+  .badge-tech { background: #ec489915; color: var(--pink); border: 1px solid #ec489930; }
+  .badge-strat { background: #eab30815; color: var(--yellow); border: 1px solid #eab30830; }
+
+  /* Stats bar */
+  .stats { display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; min-width: 120px; }
+  .stat-num { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .stat-label { font-size: 0.75rem; color: var(--text-muted); }
+
+  /* R-xx cards */
+  .q-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-bottom: 24px; }
+  .q-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .q-id { font-weight: 700; color: var(--accent); font-size: 0.8rem; }
+  .q-text { font-size: 0.85rem; margin-top: 4px; }
+  .q-target { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+  /* Matrix table */
+  .matrix-wrap { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.78rem; }
+  th { background: var(--surface); position: sticky; top: 0; z-index: 2; }
+  th, td { border: 1px solid var(--border); padding: 5px 6px; text-align: center; }
+  td:first-child, td:nth-child(2) { text-align: left; white-space: nowrap; }
+  th:first-child, th:nth-child(2) { text-align: left; }
+  .cell-deep { background: #22c55e18; color: var(--green); font-weight: 700; }
+  .cell-mod { background: #f9731612; color: var(--orange); }
+  .cell-mention { background: #eab30810; color: var(--yellow); }
+  .cell-none { color: var(--gray); }
+  .source-name { font-weight: 600; font-size: 0.78rem; }
+  .source-year { color: var(--text-muted); }
+  .role-cell { font-size: 0.72rem; color: var(--text-muted); text-align: left !important; max-width: 180px; white-space: normal; }
+  .zotero-key { font-size: 0.65rem; color: var(--text-muted); font-family: monospace; }
+
+  /* Evidence strength */
+  .ev-bar { display: flex; gap: 4px; align-items: center; margin: 4px 0; }
+  .ev-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .ev-strong { background: var(--green); }
+  .ev-moderate { background: var(--orange); }
+  .ev-weak { background: var(--yellow); }
+  .ev-label { font-size: 0.75rem; color: var(--text-muted); margin-left: 4px; }
+
+  /* Synthesis table */
+  .synth-table td { text-align: left; font-size: 0.8rem; }
+  .synth-table td:first-child { font-weight: 500; min-width: 100px; }
+  .phase-tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 0.65rem; font-weight: 600; }
+  .phase-pre { background: #3b82f615; color: var(--blue); }
+  .phase-dep { background: #6366f115; color: var(--accent); }
+  .phase-op { background: #22c55e15; color: var(--green); }
+
+  /* Rotate column headers */
+  th.rotated { height: 120px; white-space: nowrap; }
+  th.rotated > div { transform: rotate(-65deg); transform-origin: left bottom; width: 30px; }
+</style>
+</head>
+<body>
+
+<h1>📊 Evidenz-Matrix — Kap. 4.6</h1>
+<div class="subtitle">Requirements-Katalog (R001–R014): Deployer-Anforderungen aus EU AI Act · Quellen-Evidenz-Mapping · DRAFT v0.3 · 2026-03-10</div>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-num">14</div><div class="stat-label">Requirements (R-xx)</div></div>
+  <div class="stat-card"><div class="stat-num">18</div><div class="stat-label">Akadem. Quellen</div></div>
+  <div class="stat-card"><div class="stat-num">252</div><div class="stat-label">Zellen bewertet</div></div>
+  <div class="stat-card"><div class="stat-num">13 / 1</div><div class="stat-label">MUST / SHOULD</div></div>
+  <div class="stat-card"><div class="stat-num">4 / 5 / 5</div><div class="stat-label">Pre / Deploy / Op</div></div>
+</div>
+
+<h2>Spalten: Requirements R001–R014 (= Extraktionsfragen)</h2>
+<div class="q-grid">
+  <div class="q-card">
+    <div class="q-id">R001 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>Risikomanagement-System</strong> muss vor Deployment verifiziert sein</div>
+    <div class="q-target">Art. 9 · <span class="phase-tag phase-pre">pre-deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R002 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>Technische Dokumentation</strong> muss vollständig und aktuell sein</div>
+    <div class="q-target">Art. 11 · <span class="phase-tag phase-dep">deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R003 <span class="badge badge-tech">technisch</span></div>
+    <div class="q-text"><strong>Technische Robustheit</strong> muss nachgewiesen sein</div>
+    <div class="q-target">Art. 15 · <span class="phase-tag phase-dep">deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R004 <span class="badge badge-strat">strategisch</span></div>
+    <div class="q-text"><strong>Human-Oversight-Konzept</strong> muss definiert sein</div>
+    <div class="q-target">Art. 14 · <span class="phase-tag phase-pre">pre-deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R005 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>Audit-Trail und Evidence-Persistierung</strong> müssen konfiguriert sein</div>
+    <div class="q-target">Art. 12+15 · <span class="phase-tag phase-op">operation</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R006 <span class="badge badge-tech">technisch</span></div>
+    <div class="q-text"><strong>Eingabedaten-Qualität</strong> muss vor Verarbeitung geprüft sein</div>
+    <div class="q-target">Art. 10+26.4 · <span class="phase-tag phase-dep">deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R007 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>Nutzertransparenz und Informationspflichten</strong> erfüllt</div>
+    <div class="q-target">Art. 13+26.7+50 · <span class="phase-tag phase-dep">deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R008 <span class="badge badge-strat">strategisch</span></div>
+    <div class="q-text"><strong>Operative Oversight-Wirksamkeit</strong> kontinuierlich nachgewiesen</div>
+    <div class="q-target">Art. 14+26.2 · <span class="phase-tag phase-op">operation</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R009 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>Incident Detection + Meldepflicht</strong> implementiert</div>
+    <div class="q-target">Art. 26.5+73 · <span class="phase-tag phase-op">operation</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R010 <span class="badge badge-tech">technisch</span></div>
+    <div class="q-text"><strong>PMS und Drift-Monitoring</strong> operativ aktiv</div>
+    <div class="q-target">Art. 72+9.2 · <span class="phase-tag phase-op">operation</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R011 <span class="badge badge-reg">regulatorisch</span></div>
+    <div class="q-text"><strong>CE-Konformitätsprüfung</strong> vor Einsatz durchgeführt</div>
+    <div class="q-target">Art. 26.1+47+48 · <span class="phase-tag phase-pre">pre-deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R012 <span class="badge badge-strat">strategisch</span></div>
+    <div class="q-text"><strong>Grundrechte-Folgenabschätzung</strong> (FRIA) dokumentiert</div>
+    <div class="q-target">Art. 27 · <span class="phase-tag phase-pre">pre-deployment</span> · MUST</div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R013 <span class="badge badge-tech">technisch</span></div>
+    <div class="q-text"><strong>Bias- und Fairness-Monitoring</strong> im Betrieb</div>
+    <div class="q-target">Art. 9+10+15 · <span class="phase-tag phase-op">operation</span> · <strong style="color:var(--yellow)">SHOULD</strong></div>
+  </div>
+  <div class="q-card">
+    <div class="q-id">R014 <span class="badge badge-tech">technisch</span></div>
+    <div class="q-text"><strong>Automatische Protokollierung</strong> aktiviert und konfiguriert</div>
+    <div class="q-target">Art. 12+26.3 · <span class="phase-tag phase-dep">deployment</span> · MUST</div>
+  </div>
+</div>
+
+<h2>Evidenz-Matrix: Quellen × Requirements</h2>
+<p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">🟢 = tiefe Behandlung (Benchmark/Framework/Methodik) · 🟠 = moderate Behandlung (Abschnitt/Diskussion) · 🟡 = Erwähnung · ⬛ = nicht behandelt</p>
+<div class="matrix-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Quelle [Zotero]</th>
+      <th>R001</th><th>R002</th><th>R003</th><th>R004</th><th>R005</th>
+      <th>R006</th><th>R007</th><th>R008</th><th>R009</th><th>R010</th>
+      <th>R011</th><th>R012</th><th>R013</th><th>R014</th>
+      <th>Rolle in 4.6</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- 1. Guldimann COMPL-AI -->
+    <tr>
+      <td>1</td>
+      <td><span class="source-name">Guldimann et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">QTQJ92VY</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 risk mgmt discussed -->
+      <td class="cell-deep">🟢</td><!-- R002 Art.11 benchmarks -->
+      <td class="cell-deep">🟢</td><!-- R003 robustness benchmarks -->
+      <td class="cell-mod">🟠</td><!-- R004 human oversight -->
+      <td class="cell-mention">🟡</td><!-- R005 audit -->
+      <td class="cell-deep">🟢</td><!-- R006 data governance dimension -->
+      <td class="cell-deep">🟢</td><!-- R007 Art.13 transparency benchmarks -->
+      <td class="cell-mention">🟡</td><!-- R008 operative oversight -->
+      <td class="cell-none">⬛</td><!-- R009 incident -->
+      <td class="cell-mention">🟡</td><!-- R010 monitoring mentioned -->
+      <td class="cell-none">⬛</td><!-- R011 CE -->
+      <td class="cell-none">⬛</td><!-- R012 FRIA -->
+      <td class="cell-deep">🟢</td><!-- R013 bias/fairness 72 matches -->
+      <td class="cell-mod">🟠</td><!-- R014 logging -->
+      <td class="role-cell">Kernquelle: 6 Compliance-Dimensionen, Benchmarks für Art. 10/11/13/15, Bias-Defizite aller LLMs</td>
+    </tr>
+    <!-- 2. Elia MQG4AI -->
+    <tr>
+      <td>2</td>
+      <td><span class="source-name">Elia</span> <span class="source-year">(2025)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">QRW95D4X</span></td>
+      <td class="cell-deep">🟢</td><!-- R001 Quality Gate for risk -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-deep">🟢</td><!-- R003 robustness gate -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-mention">🟡</td><!-- R008 -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mention">🟡</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-mention">🟡</td><!-- R014 -->
+      <td class="role-cell">Quality-Gate-Konzept: Risk Mgmt + Robustheit als Gate-Prüfpunkte</td>
+    </tr>
+    <!-- 3. Huwyler -->
+    <tr>
+      <td>3</td>
+      <td><span class="source-name">Huwyler</span> <span class="source-year">(2025)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">UE5LVI97</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 Phase 1 -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-mod">🟠</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 -->
+      <td class="cell-mod">🟠</td><!-- R006 data governance in design -->
+      <td class="cell-mod">🟠</td><!-- R007 transparency -->
+      <td class="cell-mod">🟠</td><!-- R008 -->
+      <td class="cell-mod">🟠</td><!-- R009 Phase 6 incident -->
+      <td class="cell-deep">🟢</td><!-- R010 Phase 6 PMS -->
+      <td class="cell-mod">🟠</td><!-- R011 conformity in Phase 5 -->
+      <td class="cell-deep">🟢</td><!-- R012 Phase 4 Action 4.3 FRIA -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-mod">🟠</td><!-- R014 logging -->
+      <td class="role-cell">6-Phasen-Compliance-Framework, FRIA (Phase 4), PMS (Phase 6), breite Abdeckung</td>
+    </tr>
+    <!-- 4. Finch & Butt -->
+    <tr>
+      <td>4</td>
+      <td><span class="source-name">Finch & Butt</span> <span class="source-year">(2025)</span><br><span class="badge badge-rec">Empfohlen</span><br><span class="zotero-key">HU5B664Q</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mention">🟡</td><!-- R005 -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-mention">🟡</td><!-- R008 -->
+      <td class="cell-mod">🟠</td><!-- R009 -->
+      <td class="cell-deep">🟢</td><!-- R010 monitoring gap -->
+      <td class="cell-mention">🟡</td><!-- R011 -->
+      <td class="cell-deep">🟢</td><!-- R012 FRIA references -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-mention">🟡</td><!-- R014 -->
+      <td class="role-cell">Systematic Review: Governance Gaps, Monitoring-Defizit, FRIA-Ontologie</td>
+    </tr>
+    <!-- 5. Eisenberg UCF -->
+    <tr>
+      <td>5</td>
+      <td><span class="source-name">Eisenberg</span> <span class="source-year">(2025)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">JUK36XAW</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-mod">🟠</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-deep">🟢</td><!-- R005 evidence store -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-deep">🟢</td><!-- R008 control framework -->
+      <td class="cell-mod">🟠</td><!-- R009 -->
+      <td class="cell-mod">🟠</td><!-- R010 -->
+      <td class="cell-mention">🟡</td><!-- R011 -->
+      <td class="cell-mention">🟡</td><!-- R012 -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-mod">🟠</td><!-- R014 -->
+      <td class="role-cell">UCF: 42 Controls, Evidence-Store, Cross-Regulatory Mapping</td>
+    </tr>
+    <!-- 6. Kiejnich-Kruk -->
+    <tr>
+      <td>6</td>
+      <td><span class="source-name">Kiejnich-Kruk</span> <span class="source-year">(2025)</span><br><span class="badge badge-new">Neu (Elicit)</span><br><span class="zotero-key">D6526468</span></td>
+      <td class="cell-mention">🟡</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-none">⬛</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mention">🟡</td><!-- R005 -->
+      <td class="cell-mod">🟠</td><!-- R006 Art.26.4 -->
+      <td class="cell-mod">🟠</td><!-- R007 Art.26.7 -->
+      <td class="cell-mod">🟠</td><!-- R008 Art.26.2 -->
+      <td class="cell-deep">🟢</td><!-- R009 Art.26.5 deployer incident -->
+      <td class="cell-mod">🟠</td><!-- R010 -->
+      <td class="cell-deep">🟢</td><!-- R011 Art.26.1 CE check -->
+      <td class="cell-mod">🟠</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-mod">🟠</td><!-- R014 Art.26.3 -->
+      <td class="role-cell">Deployer-Pflichten Art. 26: CE-Prüfung, Incident Reporting, Logging</td>
+    </tr>
+    <!-- 7. Burns Dynamo -->
+    <tr>
+      <td>7</td>
+      <td><span class="source-name">Burns et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-rec">Empfohlen</span><br><span class="zotero-key">2GGF93BE</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-mod">🟠</td><!-- R008 -->
+      <td class="cell-mention">🟡</td><!-- R009 -->
+      <td class="cell-mod">🟠</td><!-- R010 -->
+      <td class="cell-mention">🟡</td><!-- R011 -->
+      <td class="cell-deep">🟢</td><!-- R012 governance incl FRIA -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-mention">🟡</td><!-- R014 -->
+      <td class="role-cell">Dynamo: Praxisbeispiel Gov-Prozess, Grundrechte-Bewertung</td>
+    </tr>
+    <!-- 8. Díaz-Rodríguez -->
+    <tr>
+      <td>8</td>
+      <td><span class="source-name">Díaz-Rodríguez et al.</span> <span class="source-year">(2023)</span><br><span class="badge badge-rec">Empfohlen</span><br><span class="zotero-key">NWJFNALE</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-mod">🟠</td><!-- R003 robustness -->
+      <td class="cell-mod">🟠</td><!-- R004 human agency -->
+      <td class="cell-mention">🟡</td><!-- R005 -->
+      <td class="cell-mod">🟠</td><!-- R006 data governance -->
+      <td class="cell-deep">🟢</td><!-- R007 transparency pillar -->
+      <td class="cell-mod">🟠</td><!-- R008 -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mod">🟠</td><!-- R010 continuous assessment -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-mod">🟠</td><!-- R012 -->
+      <td class="cell-deep">🟢</td><!-- R013 bias/fairness taxonomy -->
+      <td class="cell-mention">🟡</td><!-- R014 -->
+      <td class="role-cell">Trustworthy AI: Fairness-Taxonomie, Transparency, Lifecycle-Ansatz</td>
+    </tr>
+    <!-- 9. Ho-Dac & Martinez -->
+    <tr>
+      <td>9</td>
+      <td><span class="source-name">Ho-Dac & Martinez</span> <span class="source-year">(2024)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">Zotero</span></td>
+      <td class="cell-mention">🟡</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-deep">🟢</td><!-- R004 Art.14 human oversight -->
+      <td class="cell-none">⬛</td><!-- R005 -->
+      <td class="cell-none">⬛</td><!-- R006 -->
+      <td class="cell-mod">🟠</td><!-- R007 -->
+      <td class="cell-deep">🟢</td><!-- R008 oversight effectiveness -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-none">⬛</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-none">⬛</td><!-- R014 -->
+      <td class="role-cell">Art. 14 Spezialist: Human Oversight + CEN/CENELEC Standards</td>
+    </tr>
+    <!-- 10. Corrêa & Mönig -->
+    <tr>
+      <td>10</td>
+      <td><span class="source-name">Corrêa & Mönig</span> <span class="source-year">(2024)</span><br><span class="badge badge-rec">Empfohlen</span><br><span class="zotero-key">XVM65FRQ</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-mod">🟠</td><!-- R003 -->
+      <td class="cell-mod">🟠</td><!-- R004 -->
+      <td class="cell-mention">🟡</td><!-- R005 -->
+      <td class="cell-mod">🟠</td><!-- R006 -->
+      <td class="cell-deep">🟢</td><!-- R007 ethical transparency -->
+      <td class="cell-mention">🟡</td><!-- R008 -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mention">🟡</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-mod">🟠</td><!-- R012 -->
+      <td class="cell-mod">🟠</td><!-- R013 fairness -->
+      <td class="cell-none">⬛</td><!-- R014 -->
+      <td class="role-cell">Ethical Requirements: Transparenz + Fairness-Dimension</td>
+    </tr>
+    <!-- 11. Golpayegani AICat -->
+    <tr>
+      <td>11</td>
+      <td><span class="source-name">Golpayegani et al.</span> <span class="source-year">(2024)</span><br><span class="badge badge-rec">Empfohlen</span><br><span class="zotero-key">7BF458GD</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-mention">🟡</td><!-- R004 -->
+      <td class="cell-mention">🟡</td><!-- R005 -->
+      <td class="cell-deep">🟢</td><!-- R006 ontology data governance -->
+      <td class="cell-mod">🟠</td><!-- R007 -->
+      <td class="cell-none">⬛</td><!-- R008 -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mention">🟡</td><!-- R010 -->
+      <td class="cell-mod">🟠</td><!-- R011 conformity -->
+      <td class="cell-mod">🟠</td><!-- R012 -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-mention">🟡</td><!-- R014 -->
+      <td class="role-cell">AICat Ontologie: Requirement-Mapping, Data Governance, Conformity</td>
+    </tr>
+    <!-- 12. Sterz -->
+    <tr>
+      <td>12</td>
+      <td><span class="source-name">Sterz et al.</span> <span class="source-year">(2024)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">Kap4.5</span></td>
+      <td class="cell-none">⬛</td><!-- R001 -->
+      <td class="cell-none">⬛</td><!-- R002 -->
+      <td class="cell-none">⬛</td><!-- R003 -->
+      <td class="cell-deep">🟢</td><!-- R004 oversight concept -->
+      <td class="cell-none">⬛</td><!-- R005 -->
+      <td class="cell-none">⬛</td><!-- R006 -->
+      <td class="cell-none">⬛</td><!-- R007 -->
+      <td class="cell-deep">🟢</td><!-- R008 4 effectiveness conditions -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-none">⬛</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-none">⬛</td><!-- R014 -->
+      <td class="role-cell">Spezialist: 4 Effektivitätsbedingungen Human Oversight (R004+R008)</td>
+    </tr>
+    <!-- 13. Lucaj -->
+    <tr>
+      <td>13</td>
+      <td><span class="source-name">Lucaj et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-core">Core</span><br><span class="zotero-key">5Y79UTJ9</span></td>
+      <td class="cell-mention">🟡</td><!-- R001 -->
+      <td class="cell-mod">🟠</td><!-- R002 -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-none">⬛</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-none">⬛</td><!-- R008 -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mod">🟠</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-deep">🟢</td><!-- R014 PaC logging templates -->
+      <td class="role-cell">TechOps Templates: Logging-Konfig als PaC, CI/CD-Integration</td>
+    </tr>
+    <!-- 14. Muhammad Audit-as-Code (Q3 NEU) -->
+    <tr>
+      <td>14</td>
+      <td><span class="source-name">Muhammad et al.</span> <span class="source-year">(2026)</span><br><span class="badge badge-new">Neu (Q3)</span><br><span class="zotero-key">IZVYTSTV</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 risk audit -->
+      <td class="cell-mod">🟠</td><!-- R002 documentation audit -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-mention">🟡</td><!-- R004 -->
+      <td class="cell-deep">🟢</td><!-- R005 audit trail = core -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-mod">🟠</td><!-- R008 oversight audit -->
+      <td class="cell-mod">🟠</td><!-- R009 incident audit -->
+      <td class="cell-deep">🟢</td><!-- R010 PMS = Assured Readiness Score -->
+      <td class="cell-mention">🟡</td><!-- R011 -->
+      <td class="cell-deep">🟢</td><!-- R012 FRIA audit trail -->
+      <td class="cell-mention">🟡</td><!-- R013 -->
+      <td class="cell-deep">🟢</td><!-- R014 logging = core of audit-as-code -->
+      <td class="role-cell">Audit-as-Code: Governance→CI/CD-Regeln, Assured Readiness Score, Brücke 4.6→5.3</td>
+    </tr>
+    <!-- 15. Keyes Stanford RAIL (Q3 NEU) -->
+    <tr>
+      <td>15</td>
+      <td><span class="source-name">Keyes et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-new">Neu (Q3)</span><br><span class="zotero-key">N3CKUY4T</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 risk in monitoring context -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-mod">🟠</td><!-- R003 performance integrity -->
+      <td class="cell-mention">🟡</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 evidence from monitoring -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-mod">🟠</td><!-- R008 impact monitoring = oversight input -->
+      <td class="cell-mod">🟠</td><!-- R009 anomaly → incident trigger -->
+      <td class="cell-deep">🟢</td><!-- R010 3 principles = PMS core -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-mod">🟠</td><!-- R013 impact principle incl. fairness -->
+      <td class="cell-mod">🟠</td><!-- R014 monitoring logs -->
+      <td class="role-cell">Stanford RAIL: 3-Prinzipien Monitoring (Integrity/Performance/Impact), Acceptance Bands</td>
+    </tr>
+    <!-- 16. Wei Incident Reporting (Q3 NEU) -->
+    <tr>
+      <td>16</td>
+      <td><span class="source-name">Wei et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-new">Neu (Q3)</span><br><span class="zotero-key">892WHGXH</span></td>
+      <td class="cell-mention">🟡</td><!-- R001 -->
+      <td class="cell-mention">🟡</td><!-- R002 -->
+      <td class="cell-none">⬛</td><!-- R003 -->
+      <td class="cell-none">⬛</td><!-- R004 -->
+      <td class="cell-mod">🟠</td><!-- R005 audit of incidents -->
+      <td class="cell-none">⬛</td><!-- R006 -->
+      <td class="cell-mod">🟠</td><!-- R007 transparency in reporting -->
+      <td class="cell-none">⬛</td><!-- R008 -->
+      <td class="cell-deep">🟢</td><!-- R009 = CORE: 7-dimension framework -->
+      <td class="cell-mod">🟠</td><!-- R010 monitoring triggers incidents -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-mod">🟠</td><!-- R014 incident logs -->
+      <td class="role-cell">Incident Reporting: 7-Dimensionen-Framework, Art. 73 Operationalisierung</td>
+    </tr>
+    <!-- 17. Laux Automation Bias (Q3 NEU) -->
+    <tr>
+      <td>17</td>
+      <td><span class="source-name">Laux et al.</span> <span class="source-year">(2025)</span><br><span class="badge badge-new">Neu (Q3)</span><br><span class="zotero-key">ADX5BQS6</span></td>
+      <td class="cell-mention">🟡</td><!-- R001 -->
+      <td class="cell-none">⬛</td><!-- R002 -->
+      <td class="cell-none">⬛</td><!-- R003 -->
+      <td class="cell-deep">🟢</td><!-- R004 human oversight concept -->
+      <td class="cell-none">⬛</td><!-- R005 -->
+      <td class="cell-none">⬛</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-deep">🟢</td><!-- R008 = CORE: automation bias undermines oversight -->
+      <td class="cell-none">⬛</td><!-- R009 -->
+      <td class="cell-mention">🟡</td><!-- R010 -->
+      <td class="cell-none">⬛</td><!-- R011 -->
+      <td class="cell-none">⬛</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-none">⬛</td><!-- R014 -->
+      <td class="role-cell">Automation Bias: Empirische Oversight-Erosion, Gegenmaßnahmen Art. 14</td>
+    </tr>
+    <!-- 18. Nweke CaC OSCAL (Q3 NEU) -->
+    <tr>
+      <td>18</td>
+      <td><span class="source-name">Nweke et al.</span> <span class="source-year">(2026)</span><br><span class="badge badge-new">Neu (Q3)</span><br><span class="zotero-key">XCM4Q2WP</span></td>
+      <td class="cell-mod">🟠</td><!-- R001 risk assessment automation -->
+      <td class="cell-mod">🟠</td><!-- R002 documentation in OSCAL -->
+      <td class="cell-mention">🟡</td><!-- R003 -->
+      <td class="cell-none">⬛</td><!-- R004 -->
+      <td class="cell-deep">🟢</td><!-- R005 OSCAL audit evidence -->
+      <td class="cell-mention">🟡</td><!-- R006 -->
+      <td class="cell-mention">🟡</td><!-- R007 -->
+      <td class="cell-none">⬛</td><!-- R008 -->
+      <td class="cell-mod">🟠</td><!-- R009 CaC incident rules -->
+      <td class="cell-mod">🟠</td><!-- R010 CaC monitoring rules -->
+      <td class="cell-mod">🟠</td><!-- R011 conformity via CaC -->
+      <td class="cell-mention">🟡</td><!-- R012 -->
+      <td class="cell-none">⬛</td><!-- R013 -->
+      <td class="cell-deep">🟢</td><!-- R014 OSCAL logging = core -->
+      <td class="role-cell">CaC/OSCAL: Assessment Plans, Audit-Evidence-Persistierung, Brücke zu 5.3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Evidenzstärke pro Requirement</h2>
+<table>
+  <thead><tr><th>R-xx</th><th>Stärke</th><th>🟢</th><th>🟠</th><th>🟡</th><th>Phase / Dimension</th></tr></thead>
+  <tbody>
+    <tr><td style="text-align:left"><strong>R001</strong> Risikomanagement</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>1</td><td>7</td><td>2</td><td style="text-align:left"><span class="phase-tag phase-pre">pre</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R002</strong> Technische Doku</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>1</td><td>6</td><td>4</td><td style="text-align:left"><span class="phase-tag phase-dep">deploy</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R003</strong> Robustheit</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>2</td><td>4</td><td>4</td><td style="text-align:left"><span class="phase-tag phase-dep">deploy</span> technisch</td></tr>
+    <tr><td style="text-align:left"><strong>R004</strong> Human Oversight</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>2</td><td>7</td><td>2</td><td style="text-align:left"><span class="phase-tag phase-pre">pre</span> strategisch</td></tr>
+    <tr><td style="text-align:left"><strong>R005</strong> Audit-Trail</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>3</td><td>4</td><td>5</td><td style="text-align:left"><span class="phase-tag phase-op">op</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R006</strong> Datenqualität</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>2</td><td>4</td><td>6</td><td style="text-align:left"><span class="phase-tag phase-dep">deploy</span> technisch</td></tr>
+    <tr><td style="text-align:left"><strong>R007</strong> Transparenz</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>3</td><td>5</td><td>5</td><td style="text-align:left"><span class="phase-tag phase-dep">deploy</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R008</strong> Oversight operativ</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>5</td><td>5</td><td>3</td><td style="text-align:left"><span class="phase-tag phase-op">op</span> strategisch</td></tr>
+    <tr><td style="text-align:left"><strong>R009</strong> Incident Reporting</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>2</td><td>5</td><td>3</td><td style="text-align:left"><span class="phase-tag phase-op">op</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R010</strong> PMS/Drift</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>4</td><td>7</td><td>4</td><td style="text-align:left"><span class="phase-tag phase-op">op</span> technisch</td></tr>
+    <tr><td style="text-align:left"><strong>R011</strong> CE-Prüfung</td><td><div class="ev-bar"><div class="ev-dot ev-moderate"></div><span class="ev-label">MODERAT</span></div></td><td>1</td><td>3</td><td>5</td><td style="text-align:left"><span class="phase-tag phase-pre">pre</span> regulatorisch</td></tr>
+    <tr><td style="text-align:left"><strong>R012</strong> FRIA</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>4</td><td>5</td><td>3</td><td style="text-align:left"><span class="phase-tag phase-pre">pre</span> strategisch</td></tr>
+    <tr><td style="text-align:left"><strong>R013</strong> Bias/Fairness</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>2</td><td>3</td><td>5</td><td style="text-align:left"><span class="phase-tag phase-op">op</span> technisch <strong style="color:var(--yellow)">(SHOULD)</strong></td></tr>
+    <tr><td style="text-align:left"><strong>R014</strong> Logging</td><td><div class="ev-bar"><div class="ev-dot ev-strong"></div><span class="ev-label">STARK</span></div></td><td>3</td><td>5</td><td>5</td><td style="text-align:left"><span class="phase-tag phase-dep">deploy</span> technisch</td></tr>
+  </tbody>
+</table>
+
+<h2>Synthese: Quellen → Lifecycle-Phasen</h2>
+<div class="matrix-wrap">
+<table class="synth-table">
+  <thead><tr><th>Phase</th><th>R-xx</th><th>Primärquelle</th><th>Sekundärquelle(n)</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="4" style="vertical-align:top; font-weight:700; background:var(--surface)"><span class="phase-tag phase-pre">Pre-Deployment</span><br><span style="font-weight:400;font-size:0.72rem;color:var(--text-muted)">R001, R004, R011, R012</span></td>
+      <td>R001 Risikomanagement</td><td>Elia (2025)</td><td>Guldimann, Huwyler</td></tr>
+    <tr><td>R004 Human Oversight</td><td>Ho-Dac & Martinez (2024), Sterz (2024)</td><td>Eisenberg, Huwyler</td></tr>
+    <tr><td>R011 CE-Prüfung</td><td>Kiejnich-Kruk (2025)</td><td>Golpayegani, Huwyler</td></tr>
+    <tr><td>R012 FRIA</td><td>Huwyler (2025), Finch & Butt (2025)</td><td>Burns, Corrêa</td></tr>
+
+    <tr><td rowspan="5" style="vertical-align:top; font-weight:700; background:var(--surface)"><span class="phase-tag phase-dep">Deployment</span><br><span style="font-weight:400;font-size:0.72rem;color:var(--text-muted)">R002, R003, R006, R007, R014</span></td>
+      <td>R002 Technische Doku</td><td>Guldimann (2025)</td><td>Elia, Huwyler</td></tr>
+    <tr><td>R003 Robustheit</td><td>Elia (2025), Guldimann (2025)</td><td>Díaz-Rodríguez</td></tr>
+    <tr><td>R006 Datenqualität</td><td>Guldimann (2025), Golpayegani (2024)</td><td>Kiejnich-Kruk, Huwyler</td></tr>
+    <tr><td>R007 Transparenz</td><td>Guldimann (2025), Corrêa (2024)</td><td>Díaz-Rodríguez, Kiejnich-Kruk</td></tr>
+    <tr><td>R014 Logging</td><td>Lucaj (2025), <strong>Nweke (2026)</strong></td><td>Guldimann, <strong>Muhammad</strong>, Kiejnich-Kruk</td></tr>
+
+    <tr><td rowspan="5" style="vertical-align:top; font-weight:700; background:var(--surface)"><span class="phase-tag phase-op">Operation</span><br><span style="font-weight:400;font-size:0.72rem;color:var(--text-muted)">R005, R008, R009, R010, R013</span></td>
+      <td>R005 Audit-Trail</td><td>Eisenberg (2025), <strong>Muhammad (2026)</strong></td><td><strong>Nweke</strong>, Lucaj, Huwyler</td></tr>
+    <tr><td>R008 Oversight operativ</td><td>Sterz (2024), Eisenberg (2025), <strong>Laux (2025)</strong></td><td>Ho-Dac, Kiejnich-Kruk, <strong>Keyes</strong></td></tr>
+    <tr><td>R009 Incident Reporting</td><td>Kiejnich-Kruk (2025), <strong>Wei (2025)</strong></td><td>Finch & Butt, Huwyler, <strong>Muhammad</strong></td></tr>
+    <tr><td>R010 PMS/Drift</td><td><strong>Keyes (2025)</strong>, <strong>Muhammad (2026)</strong>, Finch & Butt (2025)</td><td>Huwyler, Eisenberg, Lucaj</td></tr>
+    <tr><td>R013 Bias/Fairness</td><td>Díaz-Rodríguez (2023), Guldimann (2025)</td><td>Corrêa, <strong>Keyes</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>⚠ Scope-Drift-Kontrolle</h2>
+<div class="matrix-wrap">
+<table>
+  <thead><tr><th>#</th><th>Quelle</th><th>Status</th><th>Ziel-Kapitel</th></tr></thead>
+  <tbody>
+    <tr><td>—</td><td>Krisshnan & Vijayaraghavan (2025) — PaC Paradigm Shift [UPDJU868]</td><td><span class="badge badge-new">Reserviert</span></td><td>Kap. 5.x (Policy-as-Code Architektur)</td></tr>
+    <tr><td>—</td><td>Kholkar & Ahuja (2025) — Policy-as-Prompt [VLMNBUST]</td><td><span class="badge badge-new">Reserviert</span></td><td>Kap. 2.6 / 5.x (GenAI-spezifisch)</td></tr>
+    <tr><td>—</td><td>Siddiqui (2026) — Engineering CaC Frameworks</td><td><span class="badge badge-new">Reserviert</span></td><td>Kap. 5.x (CaC-Architektur)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div style="margin-top:32px; padding:16px; background:var(--surface); border:1px solid var(--border); border-radius:8px; font-size:0.8rem;">
+  <strong>Legende:</strong> 🟢 tiefe Behandlung (Benchmark, Framework, dedizierter Abschnitt) · 🟠 moderate Behandlung (Diskussion, Abschnitt) · 🟡 Erwähnung (1–2 Sätze, Referenz) · ⬛ nicht behandelt<br>
+  <strong>Bewertungsgrundlage:</strong> Zotero-Volltextanalyse via Keyword-Extraktion (Art.-Nr., Themen-Pattern) auf Guldimann COMPL-AI, Finch & Butt, Díaz-Rodríguez, Huwyler + 5 neue Q3-Quellen (Muhammad, Keyes, Wei, Laux, Nweke) via Elicit-Report 5a2cf67e.<br>
+  <strong>Generiert:</strong> 2026-03-10 · DRAFT v0.4 · DSR Masterarbeit Mustafa Demir · Q3-Update: 13→18 Quellen, Operations-Phase MODERAT→STARK
+</div>
+
+</body>
+</html>

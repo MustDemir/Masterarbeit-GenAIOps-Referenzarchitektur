@@ -147,7 +147,7 @@
 | # | Quelle | Zotero-Key | Rolle in Kap. 4 | Status |
 |---|---|---|---|---|
 | 1 | **Huwyler (2024)** — Deployment-Governance | ❌ Fehlt in Zotero | #1 Quelle: Lifecycle-Governance, Gate-Systematik, Deployment-Fokus | **NACHIMPORTIEREN** |
-| 2 | **Buscemi et al. (2025)** — Verification Space | `JQNQWSV3` | #2 Quelle: Verification Methods, R1–R8 Requirements-Mapping | ✅ Gelesen |
+| 2 | **Buscemi et al. (2025)** — Verification Space | `WXJEQWIH` | #2 Quelle: Verification Methods, R1–R8 Requirements-Mapping | ✅ Gelesen |
 | 3 | **EU AI Act (VO 2024/1689)** — Art. 9–15 | (Primärquelle) | Regulatorische Basis für alle Requirements | ✅ Gelesen |
 | 4 | **NIST AI RMF 1.0** | (Primärquelle) | GOVERN/MAP/MEASURE/MANAGE Funktionsbereiche | ✅ Gelesen |
 
