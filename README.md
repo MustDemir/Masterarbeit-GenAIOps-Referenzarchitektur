@@ -208,7 +208,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | draft |
 | Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | review |
 | Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | done |
-| Kap. 5 — Referenzarchitektur (RQ2) | `████░░░░░░░░░░░░░░░░` | 20% | In Arbeit |
+| Kap. 5 — Referenzarchitektur (RQ2) | `██████░░░░░░░░░░░░░░` | 30% | in_progress |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 8 — Fazit & Ausblick | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
