@@ -4,22 +4,62 @@
 from __future__ import annotations
 
 import re
-import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PRIMARY_EXPOSE = ROOT / "docs" / "expose" / "Expose_v4_final_2026-02-28_encrypted.pdf"
-LEGACY_EXPOSE_DIR = ROOT / "docs" / "expose" / "legacy"
+
+CHAPTER_DIRS = [
+    "01_einleitung",
+    "02_rigor_theorie_stand_forschung",
+    "03_forschungsdesign_methodik",
+    "04_anforderungsanalyse_RQ1",
+    "05_referenzarchitektur_RQ2",
+    "06_evaluation_RQ3",
+    "07_diskussion",
+    "08_fazit_ausblick",
+]
+
+REQUIRED_DOCS = [
+    "docs/thesis_state.md",
+    "docs/roter_faden_tracker.md",
+    "docs/SSOT_ROTER_FADEN_ANALYSE.md",
+]
+
+REQUIRED_ADMIN = [
+    "00_admin/SOURCE_OF_TRUTH.md",
+    "00_admin/gliederung_v3.md",
+]
+
+REQUIRED_DECISION_PAPERS = [
+    "docs/ENTSCHEIDUNGSPAPIER_KAP4.md",
+    "docs/ENTSCHEIDUNGSPAPIER_KAP5.md",
+]
 
 
-def _is_tracked_by_git(path: Path) -> bool:
-    result = subprocess.run(
-        ["git", "ls-files", "--error-unmatch", str(path)],
-        capture_output=True,
-        cwd=ROOT,
-    )
-    return result.returncode == 0
+def check_chapter_dirs() -> list[str]:
+    issues: list[str] = []
+    for name in CHAPTER_DIRS:
+        d = ROOT / name
+        if not d.is_dir():
+            issues.append(f"Chapter directory missing: {name}/")
+    return issues
+
+
+def check_required_files(paths: list[str], label: str) -> list[str]:
+    issues: list[str] = []
+    for rel in paths:
+        if not (ROOT / rel).exists():
+            issues.append(f"{label} missing: {rel}")
+    return issues
+
+
+def check_expose_dir() -> list[str]:
+    warnings: list[str] = []
+    expose_dir = ROOT / "docs" / "expose"
+    if not expose_dir.is_dir():
+        warnings.append("docs/expose/ directory not found (informational)")
+    return warnings
 
 
 def check_session_summaries() -> list[str]:
@@ -38,28 +78,6 @@ def check_session_summaries() -> list[str]:
     return issues
 
 
-def check_expose_locations() -> tuple[list[str], list[str]]:
-    issues: list[str] = []
-    warnings: list[str] = []
-    if not PRIMARY_EXPOSE.exists():
-        issues.append(f"Primary expose missing: {PRIMARY_EXPOSE.relative_to(ROOT)}")
-
-    for p in ROOT.rglob("*.docx"):
-        if not _is_tracked_by_git(p):
-            continue
-        name = p.name.lower()
-        if "expose" not in name and "expos" not in name:
-            continue
-        if LEGACY_EXPOSE_DIR in p.parents:
-            continue
-        if p.name.startswith("~$"):
-            warnings.append(f"Temporary lock file present (close Word to remove): {p.relative_to(ROOT)}")
-            continue
-        issues.append(f"Expose outside primary/legacy: {p.relative_to(ROOT)}")
-
-    return issues, warnings
-
-
 def check_final_images() -> list[str]:
     issues: list[str] = []
     pattern = re.compile(r"_v\d{2}\.png$", re.IGNORECASE)
@@ -72,11 +90,14 @@ def check_final_images() -> list[str]:
 def main() -> int:
     issues: list[str] = []
     warnings: list[str] = []
+
+    issues.extend(check_chapter_dirs())
+    issues.extend(check_required_files(REQUIRED_DOCS, "Docs file"))
+    issues.extend(check_required_files(REQUIRED_ADMIN, "Admin file"))
+    issues.extend(check_required_files(REQUIRED_DECISION_PAPERS, "Entscheidungspapier"))
     issues.extend(check_session_summaries())
-    expose_issues, expose_warnings = check_expose_locations()
-    issues.extend(expose_issues)
-    warnings.extend(expose_warnings)
     issues.extend(check_final_images())
+    warnings.extend(check_expose_dir())
 
     if issues:
         print("Structure validation FAILED:\n")
