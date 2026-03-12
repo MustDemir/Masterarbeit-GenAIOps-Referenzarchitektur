@@ -52,6 +52,7 @@ override.tf.json
 
 # Local workflow cache
 .memory/
+**/scan_results_temp.txt
 
 # Session raw notes helper
 99_inbox_unsorted/session_notes.txt
@@ -111,3 +112,6 @@ docs/preflight/
 **/Kap*_*.docx
 **/Kapitel_*.docx
 **/Kapitel *.docx
+
+# Embedded repos / external templates
+05_referenzarchitektur_RQ2/techops_templates/

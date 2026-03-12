@@ -184,6 +184,8 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |-- scripts/                       # Automatisierung: Diagramme, Fortschritt, Audit
 ```
 
+Optional kann jeder Kapitelordner ein `arbeitsmaterial/` enthalten. Dort liegen kapitel-lokale Drafts, Analysen, Rechercheartefakte und Forward-Refs; die nummerierten Abschnittsordner bleiben die fachliche Hauptstruktur.
+
 ## Architektur-Dokumente (Source of Truth)
 
 - [Aktuelle Gliederung v3](00_admin/gliederung_v3.md)

@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-11 01:56  
+> **Automatisch generiert:** 2026-03-12 07:17  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -15,7 +15,7 @@
 - **Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)**: draft (100%) — Alle Abschnitte 2.1-2.7 geschrieben (~4062W). Review 4.1/5.0. Naechster Schritt: DOCX-Integration + Seitenverifizierung + Zotero-Eintraege
 - **Kap. 3 — Methodik (DSR)**: review (95%) — Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
 - **Kap. 4 — Anforderungsanalyse (RQ1)**: done (100%) — Kap. 4 KOMPLETT. 4.6 Requirements-Katalog Fliesstext fertig (6/6 Absaetze, ~1.069W, 28 MATCH). Anhang A erstellt. Lucaj TechOps Templates geklont + R-xx Mapping erstellt. Naechster Schritt: Kap. 5 Preflight.
-- **Kap. 5 — Referenzarchitektur (RQ2)**: In Arbeit (Evidence Store, Related Work) (20%)
+- **Kap. 5 — Referenzarchitektur (RQ2)**: in_progress (45%) — Kap. 5.1 FERTIG (~980W). Kap. 5.2 FERTIG (~2200W). D_GATE_INCLUSION_RULE v3.0 erstellt + Validierungslauf R001-R014 (9:5 stabil). Naechster Schritt: Preflight Kap. 5.2.2 (Automatisierbarkeits-Klassifikation) → dann 5.3 Policy Engine.
 - **Kap. 6 — Evaluation (RQ3)**: Geplant (0%)
 - **Kap. 7 — Diskussion**: Geplant (0%)
 - **Kap. 8 — Fazit & Ausblick**: Geplant (0%)
@@ -54,6 +54,16 @@
 | D_LOG_BACKEND | 04_anforderungsanalyse_RQ1 | OPA Decision Logs → bestehender Evidence Store (PostgreSQL compliance.quality_gate_results), kein separates Log-System | Wiederverwendung des Evidence Store mit Hash-Chain (DP-7) ve |
 | D_LUCAJ_STARTING_BASIS | 04_anforderungsanalyse_RQ1 | Lucaj TechOps Templates (Application/Model/Data Documentation) als Ausgangsbasis fuer Rego-Policy-Ableitung | Templates bieten EU AI Act-annotierte Checklisten (Art |
 | D_POC_REGO_K8S | 04_anforderungsanalyse_RQ1 | PoC implementiert echten Rego-Code auf K8s/AKS (Azure), nicht nur konzeptionell | Kolloquium-Demo zeigt: git push → Conftest CI → Gatekeeper A |
+| D_KAP5_SECTION_ORDER | 05_referenzarchitektur_RQ2 | Sequentiell: 5.1→5.2→5.3→5.4→5.5→5.6 | Jede Section baut auf vorheriger auf; Reader-Flow + Traceabi |
+| D_DP_NUMBERING | 05_referenzarchitektur_RQ2 | DP1-DP5 beibehalten (Expose = SSOT). Hash-Chain + Immutability als DP5.2/DP5.3 Sub-Extensions in 5.5 | Expose-SSOT nicht brechen; Sub-Extensions statt neuer DPs |
+| D_GATE_ID_SCHEMA | 05_referenzarchitektur_RQ2 | Option A: G-PRE-xx, G-DEP-xx, G-OPS-xx (Lifecycle-Phase-Prefix) | Literaturanalyse: Cooper Stage-Gate |
+| D_GATEKEEPER_STANDALONE | 05_referenzarchitektur_RQ2 | Standalone OPA Gatekeeper auf AKS (kein Azure Policy Add-on) | Cloud-agnostisch per R7 |
+| D_ART11_DIFFERENZIERUNG | 05_referenzarchitektur_RQ2 | DP2=Art.11 Abs.1 allgemein (Lifecycle-Traceability), DP3=Art.11+Annex IV (Gate-Attribute Input-Katalog) | Annex IV = technischer Input |
+| D_GATE_COUNT | 05_referenzarchitektur_RQ2 | 14 Gates: 4 PRE + 5 DEP + 5 OPS. R004 = vollwertiges HYBRID GATE (korrigiert durch D_GATE_COUNT_14) | Cooper D1-Pruefung zeigt Gate-Eignung fuer R004 |
+| D_R005_GATE | 05_referenzarchitektur_RQ2 | R005 → dediziertes G-OPS-05 (Evidence-Completeness & Audit-Trail-Integritaet) | Muhammad (2026) Assured Readiness Score |
+| D_R002_SINGLE_GATE | 05_referenzarchitektur_RQ2 | R002 = 1 Gate mit mehreren Policies. Trennung Gate/Policy erst in 5.3 | Cooper: Gates = Entscheidungspunkte |
+| D_ANNEX_IV_INPUT | 05_referenzarchitektur_RQ2 | DP3 nutzt Annex IV als Input-Katalog fuer Gate-Attribute (nicht juristisch) | PK-SC5 Scope-Caveat; Lucaj Templates annotieren Annex IV |
+| D_BUTT_KERN_PAPER | 05_referenzarchitektur_RQ2 | Butt et al. (2026) V6HKHA5B als 5. Kern-Paper fuer 5.2 | 5 Gates |
 
 ## Critical Definitions (bindend fuer Cross-Chapter-Konsistenz)
 
@@ -65,6 +75,13 @@
 - **[04_anforderungsanalyse_RQ1]** 4.6 = WAS (Requirements R-xx), 5.3 = WIE (Gate-Specs G-xx) — DSR-logische Trennung Design Cycle Phase 1 vs. Phase 2
 - **[04_anforderungsanalyse_RQ1]** Deployer-Scope: nur Art. 26 Pflichten, Provider-Pflichten (Art. 16) explizit ausgeschlossen, Art. 25 = Scope-Trigger (4.2)
 - **[04_anforderungsanalyse_RQ1]** Retirement-Phase: explizit Out-of-Scope (Provider-Verantwortung Art. 16 Abs. 1 lit. j)
+- **[05_referenzarchitektur_RQ2]** 4.6 = WAS (Requirements R-xx), 5.3 = WIE (Gate-Specs G-xx) — DSR-logische Trennung (D_4.6_VS_5.3_SEPARATION)
+- **[05_referenzarchitektur_RQ2]** Gate-ID-Schema: G-{PHASE}-{NN} mit PHASE ∈ {PRE, DEP, OPS} (D_GATE_ID_SCHEMA)
+- **[05_referenzarchitektur_RQ2]** Drei-Saeulen-Architektur: Conftest (Pre-Dep/Dep CI) + Gatekeeper (Ops Admission) + Decision Logs (Audit) (D_OPA_THREE_PILLAR)
+- **[05_referenzarchitektur_RQ2]** DP1-DP5 = Expose-SSOT, DP5.2 Hash-Chain + DP5.3 Immutability als Sub-Extensions (D_DP_NUMBERING)
+- **[05_referenzarchitektur_RQ2]** Cloud-agnostisch portabel, Azure = PoC-Referenz (R7)
+- **[05_referenzarchitektur_RQ2]** CDV-Framework: Contract → Validation → Severity → Pipeline-Decision (R8)
+- **[05_referenzarchitektur_RQ2]** Governance-Dimensionen: regulatorisch/technisch/strategisch. Automatisierte Gates = regulatorisch + technisch; strategisch via R004 manuelle Governance ausserhalb CI/CD/CT (D_GOV_DIMENSIONS_HYBRID)
 
 ## Cross-Chapter Impacts
 

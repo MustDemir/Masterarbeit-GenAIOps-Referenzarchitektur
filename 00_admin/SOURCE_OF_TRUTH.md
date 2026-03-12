@@ -20,6 +20,12 @@ Dieses Dokument definiert verbindlich, welche Artefakte als primaere Wahrheit ge
 - Aktive Thesis-Inhalte (primaer):
   - Kapitelordner `01_*` bis `08_*` in diesem Repo.
 
+## Kapitelordner: Ordnungsregel
+
+- Die Kapitelwurzel bleibt schlank. Dort liegen nur strukturtragende Elemente wie Abschnittsordner, `images/`, `session_summaries/`, `chapter_state.yaml` sowie kapitel-spezifische Stammordner wie `requirements/` oder `quellen_kap5/`.
+- Lose Arbeitsdateien werden kapitel-lokal unter `arbeitsmaterial/` abgelegt. Dazu gehoeren insbesondere Drafts, Analysen, Rechercheartefakte, Forward-Refs, Session-Notizen und ad-hoc Hilfsskripte.
+- Bereits korrekt einsortierte Dateien bleiben in ihren bestehenden Unterordnern. Die Ordnung wird durch zusaetzliche Unterordner innerhalb des betroffenen Kapitels erweitert, nicht durch das Herausziehen vorhandener Kapitelinhalte.
+
 ## Universitaere Vorgaben und Stilrichtlinien (bindend)
 
 - Ordner: `docs/uni_vorgaben/`
