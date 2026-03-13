@@ -18,6 +18,11 @@ bleiben: unterschiedliche Begriffe für dasselbe Konzept, widersprüchliche Desi
 zwischen Kapiteln, Seitenbudget-Überschreitungen, und Verweise ins Leere. Je mehr Kapitel
 geschrieben sind, desto wichtiger wird dieser Check.
 
+## Referenz-Dateien laden (PFLICHT bei jedem Aufruf)
+
+Vor dem Konsistenz-Check diese Referenz-Datei lesen:
+- `.skills/thesis-consistency/references/terminology_register.md` — Verbindliche Terminologie und Scope-Guards
+
 ## Wann diesen Skill nutzen
 
 - Nach Abschluss eines Kapitels (bevor das nächste beginnt)
@@ -25,7 +30,19 @@ geschrieben sind, desto wichtiger wird dieser Check.
 - Wenn Unsicherheit besteht ob eine Entscheidung andere Kapitel betrifft
 - Auf explizite Anfrage ("ist alles stimmig?")
 
-## Die 6 Konsistenz-Dimensionen
+## Kontext-Setup via lade_manifest
+
+Beim Consistency-Check werden ALLE Kapitel gescannt — das lade_manifest hilft dabei,
+die **Abhaengigkeitsrichtung** zu verstehen:
+
+- Lies ALLE `chapter_state.yaml` und extrahiere deren `lade_manifest`
+- `pflicht`-Verknuepfungen zeigen harte Abhaengigkeiten (Volltext-Konsistenz pruefen)
+- `kontext`-Verknuepfungen zeigen weiche Abhaengigkeiten (chapter_state-Konsistenz reicht)
+- Asymmetrische Abhaengigkeiten aufdecken: Wenn Kap. A Kap. B in pflicht hat, aber Kap. B Kap. A nicht kennt → moegliche Luecke
+
+Das lade_manifest ergaenzt die bestehenden Konsistenz-Dimensionen — es ersetzt sie nicht.
+
+## Die 7 Konsistenz-Dimensionen
 
 ### K1 — Terminologie-Konsistenz
 
@@ -41,7 +58,8 @@ Lade die Critical Definitions aus `docs/thesis_state.md` und prüfe alle Volltex
 
 **Vorgehen:**
 1. `docs/thesis_state.md` lesen → Critical Definitions extrahieren
-2. Alle `Kap*_DRAFT.md` Dateien scannen
+2. Alle DRAFT-Dateien scannen (3-Stufen-Schema pro Kapitel):
+   `{kap}/arbeitsmaterial/drafts/Kap*_DRAFT.md` → `{kap}/KAPITEL_*_DRAFT.md` → `{kap}/legacy/*_DRAFT.md`
 3. Für jeden Critical-Definition-Begriff: Wird er überall gleich verwendet?
 4. Abweichungen als Tabelle ausgeben
 
@@ -57,7 +75,7 @@ Lade die Critical Definitions aus `docs/thesis_state.md` und prüfe alle Volltex
 Prüfe ob Entscheidungen (D_xxx) über Kapitel hinweg konsistent sind:
 
 1. `docs/thesis_state.md` → Alle D_xxx Entscheidungen laden
-2. `docs/ENTSCHEIDUNGSPAPIER_KAP4.md` → Kap. 4-spezifische Decisions
+2. `docs/ENTSCHEIDUNGSPAPIER_KAP{N}.md` → Kapitelspezifische Decisions (N = alle vorhandenen, z.B. KAP4, KAP5)
 3. `docs/SSOT_ROTER_FADEN_ANALYSE.md` → Cross-chapter Impacts
 4. Alle `chapter_state.yaml` → `decisions` Feld prüfen
 
@@ -109,29 +127,39 @@ Finde alle Querverweise in allen DRAFT-Dateien und prüfe ob die Ziele existiere
 | Kap. 4.1, Abs. 3 | Kap. 5.4 | ❌ Nicht in Gliederung | Fehler |
 ```
 
-### K5 — Exposé-Drift-Monitor
+### K5 — Entscheidungspapiere-Drift + chapter_state-Drift
 
-Vergleiche den aktuellen Stand der Arbeit mit dem Exposé:
+Vergleiche Entscheidungspapiere und chapter_states mit den tatsaechlichen Kapiteltexten:
 
-1. `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` → Geplanter Umfang/Struktur
-2. optional lokal: `00_admin/Expose_v4_final_2026-02-28.docx` (Arbeitskopie)
+**Quellen laden:**
+1. `docs/ENTSCHEIDUNGSPAPIER_KAP{N}.md` → Alle vorhandenen Entscheidungspapiere
+2. Alle `{kapitel_ordner}/chapter_state.yaml` → Kapitel-Status und Decisions
 3. `00_admin/gliederung_v3.md` → Aktuelle Struktur
-4. Alle bisherigen Kapitel → Tatsächlicher Inhalt
+4. Alle bisherigen Volltexte in `00_workspace/Fulltext_Kapitel/*.docx`
 
-**Prüfungen:**
-- Kapitelstruktur: Stimmt die Gliederung noch mit dem Exposé überein?
-- Forschungsfragen: Werden RQ1 und RQ2 wie im Exposé adressiert?
-- Methodischer Rahmen: DSR wie im Exposé beschrieben?
-- Scope: Wurde der Scope erweitert oder eingeschränkt?
+**Entscheidungspapiere-Drift pruefen:**
+- Werden alle D_xxx aus ENTSCHEIDUNGSPAPIER_KAP{N} im zugehoerigen Kapiteltext umgesetzt?
+- Gibt es Entscheidungen im Text, die NICHT im Entscheidungspapier dokumentiert sind?
+- Widersprechen sich Entscheidungen zwischen verschiedenen Entscheidungspapieren?
+
+**chapter_state-Drift pruefen:**
+- Stimmt `status` und `progress` mit dem tatsaechlichen Textumfang ueberein?
+- Stimmt `word_count` mit dem Volltext ueberein?
+- Sind alle im Text behandelten Themen in `done` aufgefuehrt?
+- Gibt es `next_steps` die bereits im Text bearbeitet wurden?
+- Sind `decisions` in chapter_state synchron mit ENTSCHEIDUNGSPAPIER_KAP{N}?
 
 **Kumulative Drift-Tabelle:**
 ```
-| Aspekt | Exposé | Aktuell | Drift | Dokumentiert? |
-|--------|--------|---------|-------|---------------|
-| Scope | Deployer + Provider | Nur Deployer | Einschränkung | ✅ D_xxx |
+| Kapitel | Quelle | Aspekt | Dokumentiert | Tatsaechlich | Drift | Aktion |
+|---------|--------|--------|-------------|-------------|-------|--------|
+| Kap. 4 | ENTSCH_KAP4 | D_4.6 Scope | Deployer-only | Deployer-only | ✅ Kein Drift | — |
+| Kap. 5 | chapter_state | progress | 60% | 80% | ⚠ Drift | chapter_state updaten |
 ```
 
-Jede undokumentierte Abweichung erzeugt eine Warnung mit Empfehlung, eine Decision (D_xxx) anzulegen.
+Jede undokumentierte Abweichung erzeugt eine Warnung mit Empfehlung:
+- Fehlende Entscheidung → D_xxx im Entscheidungspapier anlegen
+- Veralteter chapter_state → chapter_state.yaml aktualisieren
 
 ### K6 — DSR-Kohärenz
 
@@ -161,7 +189,7 @@ Prüfe ob der Design-Science-Research-Rahmen konsistent durchgehalten wird:
 ### K4 Forward-References: [✅ alle valide / ❌ X tote Verweise]
 [Referenz-Tabelle]
 
-### K5 Exposé-Drift: [✅ kein neuer Drift / ⚠ X Abweichungen]
+### K5 Entscheidungspapiere-/chapter_state-Drift: [✅ kein Drift / ⚠ X Abweichungen]
 [Drift-Tabelle]
 
 ### K6 DSR-Kohärenz: [✅ konsistent / ⚠ Issues]
@@ -198,7 +226,10 @@ Lade den Pruefkatalog aus `docs/uni_vorgaben/pruefkatalog.md` und pruefe alle Vo
 
 - Dieser Skill produziert KEINEN Fliesstext — nur den Konsistenz-Report
 - **Primaeres Pruefobjekt:** Volltexte in `00_workspace/Fulltext_Kapitel/*.docx`
-- Fallback: `Kap*_DRAFT.md` Dateien
+- Fallback DRAFT-Pfad-Aufloesung (3-Stufen pro Kapitel):
+  1. `{kapitel_ordner}/arbeitsmaterial/drafts/Kap{N}_*_DRAFT.md`
+  2. `{kapitel_ordner}/KAPITEL_{N}_*_DRAFT.md`
+  3. `{kapitel_ordner}/legacy/*_DRAFT.md` (nur lesen)
 - SOT-Hierarchie beachten: `gliederung_v3.md > Kap. 3 > Kap. 4 > Entscheidungsregister > Expose`
 - Bei Widerspruechen: hoeherrangige Quelle gewinnt, Abweichung dokumentieren
 - Roter Faden pruefen via `docs/roter_faden_tracker.md`

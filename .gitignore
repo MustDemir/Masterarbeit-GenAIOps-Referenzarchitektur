@@ -93,6 +93,7 @@ docs/expose/*.pdf
 docs/expose/legacy/
 
 # Lokale Arbeitsdokumente (nicht versionieren)
+00_Literatur/
 00_admin/Literatur/
 00_workspace/Fulltext_Kapitel/
 docs/preflight/

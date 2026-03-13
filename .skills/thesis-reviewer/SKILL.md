@@ -29,11 +29,10 @@ Diese DOCX-Dateien sind die tatsaechlichen Abgabe-Texte. NICHT die `Kap*_DRAFT.m
 
 Verfuegbare Volltexte:
 - `Kapitel 1 Einleitung.docx`
-- `Kapitel 2 Problemstellung.docx`
-- `Kapitel_3_Forschungsdesign_und_Methodik.docx`
+- `Kapitel 2 Theoretische Grundlagen.docx`
+- `Kapitel 3 Forschungsdesign_und_Methodik.docx`
 - `Kapitel 4 Anforderungen.docx`
 - `Kapitel 5 Architectur Entwicklung.docx`
-- `Expose_v4_final_2026-02-28.docx`
 
 ## Workflow: 6 Review-Instanzen (R1–R6)
 
@@ -41,13 +40,25 @@ Identifiziere zuerst das **Zielkapitel** aus dem User-Input. Dann durchlaufe all
 Review-Instanzen in Reihenfolge. Fuer jede Instanz: die angegebenen Dateien lesen,
 die Prueffragen beantworten, Score vergeben.
 
+### Kontext-Setup via lade_manifest (VOR R1)
+
+Lies das `lade_manifest` aus dem Zielkapitel-`chapter_state.yaml`:
+
+- **`pflicht`-Dateien** → als VOLLTEXT laden (DOCXs, Entscheidungspapiere, Uni-Vorgaben). So sind alle Abhaengigkeiten fuer die R2-Pruefung (Roter Faden) bereits geladen.
+- **`kontext`-Kapitel** → nur deren `chapter_state.yaml` lesen (fuer R2 Vorwaerts/Rueckwaerts-Bruecken und R5 Cross-chapter Decisions).
+
+Das lade_manifest ergaenzt die Dateilisten in R1–R6 — es ersetzt sie nicht.
+
 ---
 
 ### R1 — Volltext lesen und Strukturanalyse
 
 **Lese:**
 - `00_workspace/Fulltext_Kapitel/Kapitel {N} *.docx` (primaer)
-- Fallback: `{kapitel_ordner}/Kap{N}_*_DRAFT.md` (falls DOCX nicht lesbar)
+- Fallback DRAFT-Pfad-Aufloesung (3-Stufen):
+  1. `{kapitel_ordner}/arbeitsmaterial/drafts/Kap{N}_*_DRAFT.md` (primaer)
+  2. `{kapitel_ordner}/KAPITEL_{N}_*_DRAFT.md` (Fallback, Root)
+  3. `{kapitel_ordner}/legacy/*_DRAFT.md` (Legacy, nur lesen)
 
 **Pruefe:**
 - Absatzstruktur: Hat jeder Absatz Topic Sentence → Argument → Beleg → Schlussfolgerung?
@@ -72,7 +83,7 @@ sondern den **inhaltlichen Zusammenhang** auf Textebene bewerten.
 - `00_workspace/Fulltext_Kapitel/Kapitel {N+1} *.docx` — Nachfolgerkapitel VOLLTEXT (falls vorhanden)
 - Wenn Nachfolger noch nicht geschrieben: `{kap_n+1}/chapter_state.yaml` → erwartete Inhalte
 - `00_admin/gliederung_v3.md` — Kapitelstruktur
-- `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` — Expose als Referenzrahmen
+- `00_admin/DMT_Demir_Exposé_2009670_final.pdf` — Exposé als Referenzrahmen (Leitplanke, nicht primäre SOT)
 
 **Pruefe inhaltlich (wie ein Professor):**
 
@@ -166,10 +177,9 @@ sondern den **inhaltlichen Zusammenhang** auf Textebene bewerten.
 
 **Lese:**
 - `docs/thesis_state.md` — Decisions (D_xxx) und Critical Definitions
-- `docs/ENTSCHEIDUNGSPAPIER_KAP4.md` — Kap. 4 Designentscheidungen
+- `docs/ENTSCHEIDUNGSPAPIER_KAP{N}.md` — Kapitelspezifische Designentscheidungen (N = Zielkapitel + Abhaengigkeiten, z.B. KAP4 + KAP5)
 - `docs/SSOT_ROTER_FADEN_ANALYSE.md` — Cross-chapter Impact und Luecken
-- `{kapitel_ordner}/chapter_state.yaml` — Kapitel-spezifische Decisions
-- `docs/expose/expose_deltas.yaml` — Expose-Abweichungen (falls vorhanden)
+- `{kapitel_ordner}/chapter_state.yaml` — Kapitel-spezifische Decisions und Status
 - `00_admin/SOURCE_OF_TRUTH.md` — SOT-Hierarchie
 
 **Pruefe:**
@@ -182,6 +192,16 @@ sondern den **inhaltlichen Zusammenhang** auf Textebene bewerten.
 - Art. 25 nur als Scope-Grenze? (PK-SC3)
 - Alle relevanten Decisions (D_xxx) beruecksichtigt?
 - Neue Entscheidungen noetig? (→ Dokumentieren BEVOR weitergeschrieben wird)
+
+**Entscheidungspapiere-Drift-Check:**
+- Vergleiche `docs/ENTSCHEIDUNGSPAPIER_KAP{N}.md` mit dem tatsaechlichen Kapiteltext:
+  Werden alle dokumentierten Designentscheidungen im Text korrekt umgesetzt?
+- Gibt es Entscheidungen im Text, die NICHT im Entscheidungspapier stehen? → Dokumentieren!
+
+**chapter_state-Drift-Check:**
+- Vergleiche `{kapitel_ordner}/chapter_state.yaml` mit dem tatsaechlichen Kapitelstatus:
+  Stimmt `progress`, `status`, `word_count`, `decisions` noch?
+- Gibt es im Text behandelte Themen, die nicht in `done` oder `current_focus` stehen?
 
 **Score:**
 - Definitions-/Scope-Score: [0–5] Punkte

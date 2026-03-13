@@ -19,10 +19,9 @@
 - Preflight bereits vorhanden: [ja/nein]
 ```
 
-## save.py Aufruf (aus ai-context-vault Verzeichnis)
+## save.py Aufruf (aus genaiops-thesis Root)
 
 ```bash
-cd ../ai-context-vault
 python3 scripts/save.py --topic [kapitelthema] --text "[Summary-Text]" --title "[Titel]" --tags "[tags]" --no-llm
 ```
 

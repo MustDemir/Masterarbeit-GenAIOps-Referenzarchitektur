@@ -17,11 +17,26 @@ Nie mehr als einen Absatz auf einmal schreiben, und jeden Absatz sofort mit eine
 Prüfprotokoll absichern. So entstehen keine unbelegten Behauptungen und die
 Zitationsqualität bleibt durchgehend hoch.
 
+## Referenz-Dateien laden (PFLICHT bei jedem Aufruf)
+
+Vor dem ersten Absatz diese Referenz-Dateien lesen:
+- `.skills/thesis-writer/references/apa7_rules.md` — APA7-Zitationsregeln und Pflichtformat
+- `.skills/thesis-writer/references/pruefprotokoll_format.md` — Pruefprotokoll-Tabellenformat und MATCH-Regeln
+
 ## Voraussetzung
 
 Ein Preflight-Protokoll für den Zielabschnitt sollte existieren (thesis-preflight Skill).
 Falls nicht vorhanden: kurz prüfen ob die Kerninfos (Argumentationsstruktur, Pflicht-Zitate,
 Seitenbudget) bekannt sind, sonst zuerst Preflight durchführen.
+
+### Kontext via lade_manifest
+
+Lies VOR dem ersten Absatz das `lade_manifest` aus dem Zielkapitel-`chapter_state.yaml`:
+
+- **`pflicht`-Dateien** → als VOLLTEXT laden. Enthaelt die DOCXs, DRAFTs, Entscheidungspapiere und Uni-Vorgaben die fuer dieses Kapitel inhaltlich relevant sind.
+- **`kontext`-Kapitel** → nur deren `chapter_state.yaml` lesen (Ueberblick ohne Volltext).
+
+So sind alle Abhaengigkeiten, Definitionen und Entscheidungen geladen BEVOR der erste Absatz geschrieben wird. Das lade_manifest ergaenzt die bestehenden Schreib-Regeln — es ersetzt sie nicht.
 
 ## Schreib-Workflow pro Absatz
 
@@ -100,9 +115,26 @@ Nach jedem Absatz:
 
 ### Schritt 5: In DRAFT-Datei speichern
 
-- Absatz + Prüfprotokoll in `{kapitel_ordner}/Kap{N}_*_DRAFT.md` einfügen
+**DRAFT-Pfad-Aufloesung (3-Stufen-Schema):**
+
+Die DRAFT-Datei wird in dieser Reihenfolge gesucht/erstellt:
+1. **Primaer:** `{kapitel_ordner}/arbeitsmaterial/drafts/Kap{N}_{Thema}_DRAFT.md`
+2. **Fallback:** `{kapitel_ordner}/KAPITEL_{N}_GESAMT_DRAFT.md` (Root des Kapitelordners)
+3. **Legacy (nur lesen):** `{kapitel_ordner}/legacy/*_DRAFT.md`
+
+**Beim Schreiben:**
+- Neue DRAFTs IMMER in Stufe 1 anlegen: `{kapitel_ordner}/arbeitsmaterial/drafts/`
+- Falls der Ordner `arbeitsmaterial/drafts/` nicht existiert: anlegen
+- Bestehende DRAFTs an ihrem aktuellen Ort weiterschreiben (nicht verschieben)
+
+**Beispiele:**
+- Kap. 1: `01_einleitung/arbeitsmaterial/drafts/Kap1_Einleitung_DRAFT.md` (existiert)
+- Kap. 4: `04_anforderungsanalyse_RQ1/KAPITEL_4_GESAMT_DRAFT.md` (Fallback, existiert)
+- Kap. 6 neu: `06_evaluation_RQ3/arbeitsmaterial/drafts/Kap6_Evaluation_DRAFT.md` (neu anlegen)
+
+- Absatz + Pruefprotokoll in die aufgeloeste DRAFT-Datei einfuegen
 - BILANZ-Block aktualisieren: `~XW (≈Y Seiten), Z Quellen`
-- Nächsten Absatz nur auf User-Anfrage ("weiter", "nächster absatz", "GO")
+- Naechsten Absatz nur auf User-Anfrage ("weiter", "naechster absatz", "GO")
 
 ---
 

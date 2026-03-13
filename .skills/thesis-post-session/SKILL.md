@@ -18,6 +18,11 @@ konsistent und vollständig sind. Ohne diesen Check entstehen Lücken: chapter_s
 Entscheidungen fehlen, Session Summaries nicht gespeichert — und die nächste Session
 startet mit unvollständigem Kontext.
 
+## Referenz-Dateien laden (PFLICHT bei jedem Aufruf)
+
+Vor dem Durchlauf der 6 Pruefpunkte diese Referenz-Datei lesen:
+- `.skills/thesis-post-session/references/post_session_template.md` — Post-Session-Protokoll Template
+
 ## Die 6 Prüfpunkte (A–F)
 
 Durchlaufe alle 6 Punkte und erstelle am Ende ein Post-Session-Protokoll.
@@ -25,7 +30,9 @@ Durchlaufe alle 6 Punkte und erstelle am Ende ein Post-Session-Protokoll.
 ### A — Geschriebene Artefakte
 
 Prüfe:
-- ☐ DRAFT-Datei aktualisiert und gespeichert (`{kapitel_ordner}/Kap{N}_*_DRAFT.md`)
+- ☐ DRAFT-Datei aktualisiert und gespeichert (3-Stufen-Schema):
+  1. `{kapitel_ordner}/arbeitsmaterial/drafts/Kap{N}_*_DRAFT.md` (primaer)
+  2. `{kapitel_ordner}/KAPITEL_{N}_*_DRAFT.md` (Fallback)
 - ☐ Prüfprotokolle zu ALLEN neuen Absätzen vorhanden und sichtbar
 - ☐ Keine ❌ oder ⚠ MATCH-Bewertungen offen (alle korrigiert?)
 - ☐ Wortanzahl / Seitenbudget im Header und BILANZ aktualisiert
@@ -41,16 +48,17 @@ Prüfe und aktualisiere:
 - ☐ `key_sources` (neue Quellen hinzugefügt?)
 - ☐ `open_questions` (offene Fragen aktualisiert?)
 
-Prüfe auch abhängige Kapitel:
-- ☐ Cross-chapter-Impacts aus dieser Session? → In betroffenen chapter_states dokumentieren
+Prüfe auch abhängige Kapitel (nutze `lade_manifest` fuer Fokussierung):
+- ☐ `lade_manifest.pflicht` des Zielkapitels: Sind alle referenzierten Dateien noch aktuell nach dieser Session?
+- ☐ `lade_manifest.kontext`-Kapitel: Cross-chapter-Impacts aus dieser Session? → In betroffenen chapter_states dokumentieren
 - ☐ Keine Widersprüche zu anderen chapter_states?
+- ☐ Wenn neue Abhaengigkeit entstanden: `lade_manifest` des betroffenen Kapitels ergaenzen?
 
 ### C — Session Summary
 
-Erstelle eine Session Summary via `save.py` aus dem **ai-context-vault** Repo:
+Erstelle eine Session Summary via `save.py`:
 
 ```bash
-cd ../ai-context-vault
 python3 scripts/save.py --topic [kapitelthema] --text "[Summary-Text]" --title "[Titel]" --tags "[tags]" --no-llm
 ```
 

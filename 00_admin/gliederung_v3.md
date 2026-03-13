@@ -1,5 +1,5 @@
 **Titel (FINAL C4, Stand 2026-03-05):** Cloud-native Referenzarchitektur fuer GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen — auf Basis des EU AI Act
-**Single Source of Truth:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` | **Stand:** 2026-03-13
+**Single Source of Truth:** `00_admin/DMT_Demir_Exposé_2009670_final.pdf` | **Stand:** 2026-03-13
 
 ### 1 Einleitung
 * 1.1 Einleitung (PD1-PD3)

@@ -11,10 +11,12 @@ Kapitel 4 trennt zwischen fachlicher Abschnittsstruktur, strukturierten Requirem
 - `04_05_human_oversight/`
 - `04_06_requirements_katalog/`
 
-Diese nummerierten Ordner bilden die inhaltliche Kapitelstruktur ab. Abschnittsbezogene Drafts und unmittelbare Arbeitsartefakte duerfen dort liegen bleiben.
+Diese nummerierten Ordner bilden die inhaltliche Kapitelstruktur ab. Aktive Abschnittsarbeit verbleibt dort; historische Einzel-Drafts liegen nach der Konsolidierung unter `legacy/`.
 
 ## Querschnittsordner
 
+- `KAPITEL_4_GESAMT_DRAFT.md`: mechanische Zusammenfuehrung aller Kapitel-4-Drafts in fester Reihenfolge
+- `legacy/`: fruehere Einzel-Drafts und Draft-PDFs, nach Ursprungsordnern abgelegt
 - `requirements/`: strukturierte R-xx-Definitionen als kapitelweites Referenzinventar
 - `pdfs_elicit/`: kapitelbezogene Elicit-Auswertungen und Exportartefakte
 - `arbeitsmaterial/`: Rechercheberichte, RIS-Exporte und freie Vergleichsnotizen
@@ -23,7 +25,8 @@ Diese nummerierten Ordner bilden die inhaltliche Kapitelstruktur ab. Abschnittsb
 
 ## Ordnungsregeln
 
-- Abschnittsnahe Textentwuerfe und kleine Begleitartefakte bleiben im passenden `04_xx_*`-Ordner.
+- Das zusammengefuehrte Arbeitsdokument liegt auf Kapitel-Ebene in `KAPITEL_4_GESAMT_DRAFT.md`.
+- Historische Einzel-Drafts und Draft-PDFs werden nach dem Merge unter `legacy/` aufbewahrt.
 - Kapitelweite Recherche, Vorarbeiten und lose Notizen gehoeren nach `arbeitsmaterial/`.
 - R-xx-Dateien bleiben gesammelt in `requirements/`, damit die Traceability stabil bleibt.
 - Bestehende Fachordner werden nicht umgebaut; neue Ordnung entsteht additiv.

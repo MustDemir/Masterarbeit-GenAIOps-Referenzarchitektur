@@ -25,20 +25,21 @@ Wenn der User eine neue Arbeitssession beginnt (oder nach einer Pause zurückkom
 
 ### S1 — Kontext laden
 
-Führe `resume.py` aus dem `ai-context-vault` Repo aus um den aktuellen Stand zu laden:
+Führe `resume.py` aus dem `genaiops-thesis` Repo aus um den aktuellen Stand zu laden:
 
 ```bash
-cd ../ai-context-vault
 python3 scripts/resume.py
 ```
 
-Das erzeugt `.memory/resume_context.txt` mit dem aktuellen Stand (recency-first:
-`RESUME_WINDOW_HOURS`, Fallback `RESUME_MIN_ITEMS`, Cap `RESUME_MAX_ITEMS`).
-Lies diese Datei.
+Das erzeugt u.a. `.memory/resume_context.txt` (Legacy-Cache, gitignored).
 
-Zusätzlich lesen:
-- `docs/thesis_state.md` — Entscheidungsregister, Critical Definitions, Gesamtstatus
-- `README.md` — Projektübersicht
+**Primär lesen (SSOT):**
+- `docs/thesis_state.md` — Entscheidungsregister, Critical Definitions, Gesamtstatus (git-tracked SSOT)
+- Alle `*/chapter_state.yaml` — Kapitelspezifischer Status, Decisions, Fortschritt
+- `00_admin/README.md` — Projektübersicht und Repo-Struktur
+
+**Fallback** (nur wenn thesis_state.md veraltet oder unvollständig):
+- `.memory/resume_context.txt` — kompakter Resume-Cache (recency-first, konfigurierbar via `RESUME_WINDOW_HOURS` / `RESUME_MIN_ITEMS` / `RESUME_MAX_ITEMS`)
 
 Optional: Für semantische Suche nach vorherigen Sessions:
 ```bash
@@ -69,24 +70,20 @@ Erstelle eine kompakte Übersicht des aktuellen Stands:
 - Nächster Schritt: [aus chapter_state next_steps]
 ```
 
-Daten kommen aus:
-- Alle `chapter_state.yaml` Dateien im genaiops-thesis Repo (progress, status, word_count)
-- `docs/thesis_state.md` im genaiops-thesis Repo (offene Decisions)
-- Letzte Session Summaries: `ai-context-vault/.memory/resume_context.txt`
-  (konfigurierbar via `RESUME_WINDOW_HOURS` / `RESUME_MIN_ITEMS` / `RESUME_MAX_ITEMS`)
-- Oder via RAG: `python3 scripts/search.py "Frage"` im ai-context-vault
-
-**Wichtig:** Die Workflow-Scripts (save.py, resume.py, reindex.py, search.py) liegen
-im **ai-context-vault** Repo unter `scripts/`, NICHT im genaiops-thesis Repo.
-Die Thesis-Inhalte (chapter_states, DRAFTs, Entscheidungspapiere) liegen im **genaiops-thesis** Repo.
+Daten kommen aus (Priorität):
+1. **Primär:** `docs/thesis_state.md` — Gesamtstatus, offene Decisions, Critical Definitions (git-tracked SSOT)
+2. **Primär:** Alle `*/chapter_state.yaml` — progress, status, word_count, kapitelspezifische Decisions
+3. **Fallback:** `.memory/resume_context.txt` — Legacy-Cache, nur wenn thesis_state.md unvollständig
+4. **Optional:** RAG via `python3 scripts/search.py "Frage"` (braucht Azure + Anthropic Keys)
 
 ### S3 — Nächsten Abschnitt vorschlagen
 
 Basierend auf den chapter_states und der Gliederung:
 
 1. Finde das Kapitel mit Status "In Arbeit" oder das nächste mit Status "Nicht begonnen"
-2. Lies dessen `chapter_state.yaml` → `next_steps`
-3. Prüfe ob ein Preflight-Protokoll existiert (`docs/preflight/PREFLIGHT_KAP*`)
+2. Lies dessen `chapter_state.yaml` → `next_steps` UND `lade_manifest`
+3. Zeige die `lade_manifest.pflicht`-Dateien im Dashboard (so weiss der User welche Dateien geladen werden)
+4. Prüfe ob ein Preflight-Protokoll existiert (`docs/preflight/PREFLIGHT_KAP*`)
 
 **Ausgabe:**
 ```
@@ -130,10 +127,9 @@ Verweise auf den `thesis-post-session` Skill für den vollständigen 6-Punkte-Ch
 
 ### E2 — Save-Workflow ausführen
 
-Nach dem Post-Session-Check, aus dem `ai-context-vault` Verzeichnis:
+Nach dem Post-Session-Check:
 
 ```bash
-cd ../ai-context-vault
 python3 scripts/save.py --topic [kapitelthema] --text "[Summary]" --title "[Titel]" --tags "[tags]" --no-llm
 ```
 
@@ -202,25 +198,26 @@ dass der richtige Skill zum richtigen Zeitpunkt aktiviert wird.
 ## Zusätzliche Regeln
 
 - Kein Fließtext produzieren — nur Dashboard, Empfehlungen und Briefings
-- Bei Session-Start: Immer zuerst resume.py ausführen (im ai-context-vault)
-- Bei Session-Ende: Immer save.py anbieten (im ai-context-vault)
+- Bei Session-Start: Immer zuerst `python3 scripts/resume.py` ausführen
+- Bei Session-Ende: Immer `python3 scripts/save.py` anbieten
 - Deployer-Scope beachten (Art. 26, nicht Art. 16)
 - SOT-Hierarchie: `gliederung_v3.md > Kap. 3 > Kap. 4 > Entscheidungsregister > Exposé`
 
-## Zwei-Repo-Architektur
+## Repo-Architektur
 
 ```
-genaiops-thesis/          ← Thesis-Inhalte (DRAFTs, chapter_states, docs)
-  .skills/                ← Diese 5 Skills
+genaiops-thesis/          ← Alles in einem Repo
+  .skills/                ← Diese 6 Skills
   01_einleitung/          ← Kapitel-Ordner mit chapter_state.yaml
   docs/                   ← thesis_state.md, Entscheidungspapiere, Preflight-Protokolle
-
-../ai-context-vault/      ← Workflow-Tooling
-  scripts/save.py         ← Session Summary speichern (3-Tier LLM Fallback)
-  scripts/resume.py       ← Kontext laden (sliding-window)
-  scripts/reindex.py      ← Index neu bauen + optional Azure/Blob sync
-  scripts/search.py       ← RAG: Azure AI Search + Claude
-  scripts/create_index.py ← Azure Search Schema erstellen
-  .memory/                ← index.json, resume_context.txt, blob_sync_state.json
-  .github/workflows/      ← CI Smoke Tests (py_compile, workflow_smoke, reindex)
+  scripts/                ← Workflow-Tooling
+    resume.py             ← Kontext laden → .memory/ + docs/thesis_state.md
+    save.py               ← Session Summary speichern (3-Tier LLM Fallback)
+    reindex.py            ← Index neu bauen + optional Azure/Blob sync
+    workflow_lib.py       ← Shared Helpers (build_index, push_azure, push_blob)
+    update_progress.py    ← README-Fortschrittsbalken aktualisieren
+    validate_structure.py ← CI Strukturvalidierung
+    weekly_audit.py       ← Wöchentlicher GitHub Issue Audit
+  .memory/                ← index.json, resume_context.txt (gitignored, Cache)
+  .github/workflows/      ← CI (validate-structure, weekly-audit, update-progress)
 ```

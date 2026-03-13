@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-12 20:37  
+> **Automatisch generiert:** 2026-03-13 22:43  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -15,12 +15,46 @@
 - **Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle)**: draft (100%) — Alle Abschnitte 2.1-2.7 geschrieben (~4062W). Review 4.1/5.0. Naechster Schritt: DOCX-Integration + Seitenverifizierung + Zotero-Eintraege
 - **Kap. 3 — Methodik (DSR)**: review (95%) — Finale Review — 7 [MD]-Kommentare im Dokument aufloesen
 - **Kap. 4 — Anforderungsanalyse (RQ1)**: done (100%) — Kap. 4 KOMPLETT. 4.6 Requirements-Katalog Fliesstext fertig (6/6 Absaetze, ~1.069W, 28 MATCH). Anhang A erstellt. Lucaj TechOps Templates geklont + R-xx Mapping erstellt. Naechster Schritt: Kap. 5 Preflight.
-- **Kap. 5 — Referenzarchitektur (RQ2)**: in_progress (45%) — Kap. 5.1 FERTIG (~980W). Kap. 5.2 FERTIG (~2200W). D_GATE_INCLUSION_RULE v3.0 erstellt + Validierungslauf R001-R014 (9:5 stabil). Naechster Schritt: Preflight Kap. 5.2.2 (Automatisierbarkeits-Klassifikation) → dann 5.3 Policy Engine.
-- **Kap. 6 — Evaluation (RQ3)**: Geplant (0%)
-- **Kap. 7 — Diskussion**: Geplant (0%)
-- **Kap. 8 — Fazit & Ausblick**: Geplant (0%)
+- **Kap. 5 — Referenzarchitektur (RQ2)**: in_progress (70%) — Kap. 5.1+5.2+5.2.2+5.2.3+5.3 FERTIG. Kap. 5.4 Preflight-Vorbereitung DONE. Naechster Schritt: Preflight Kap. 5.4 durchlaufen + GO.
+- **Kap. 6 — Evaluation (RQ3)**: planned (0%)
+- **Kap. 7 — Diskussion**: planned (0%)
+- **Kap. 8 — Fazit & Ausblick**: planned (0%)
 - **Expose v4 / Forschungsdesign**: Abgeschlossen (100%) — Abgeschlossen — Expose v4 FINAL eingereicht
 - **PoC-Implementierung**: Geplant (0%) — Noch nicht gestartet — beginnt in Iteration 2
+
+## lade_manifest (Kapitel-Abhängigkeiten)
+
+### 01_einleitung
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx`, `01_einleitung/arbeitsmaterial/drafts/Kap1_Einleitung_DRAFT.md`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `03_forschungsdesign_methodik`, `04_anforderungsanalyse_RQ1`
+
+### 02_rigor_theorie_stand_forschung
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx`, `02_rigor_theorie_stand_forschung/arbeitsmaterial/drafts/Kap2_Theoretische_Grundlagen_DRAFT.md`, `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `03_forschungsdesign_methodik`, `04_anforderungsanalyse_RQ1`
+
+### 03_forschungsdesign_methodik
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`, `03_forschungsdesign_methodik/arbeitsmaterial/drafts/Kap3_Forschungsdesign_DRAFT.md`, `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx`
+- **kontext** (chapter_state only): `04_anforderungsanalyse_RQ1`, `05_referenzarchitektur_RQ2`
+
+### 04_anforderungsanalyse_RQ1
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx`, `04_anforderungsanalyse_RQ1/KAPITEL_4_GESAMT_DRAFT.md`, `docs/ENTSCHEIDUNGSPAPIER_KAP4.md`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx`
+- **kontext** (chapter_state only): `05_referenzarchitektur_RQ2`
+
+### 05_referenzarchitektur_RQ2
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 5 Architectur Entwicklung.docx`, `docs/ENTSCHEIDUNGSPAPIER_KAP5.md`, `docs/ENTSCHEIDUNGSPAPIER_KAP4.md`, `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `02_rigor_theorie_stand_forschung`, `01_einleitung`
+
+### 06_evaluation_RQ3
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 5 Architectur Entwicklung.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx`, `docs/ENTSCHEIDUNGSPAPIER_KAP5.md`, `docs/ENTSCHEIDUNGSPAPIER_KAP4.md`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `01_einleitung`, `02_rigor_theorie_stand_forschung`
+
+### 07_diskussion
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 5 Architectur Entwicklung.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx`, `docs/ENTSCHEIDUNGSPAPIER_KAP5.md`, `docs/ENTSCHEIDUNGSPAPIER_KAP4.md`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `01_einleitung`, `03_forschungsdesign_methodik`, `06_evaluation_RQ3`
+
+### 08_fazit_ausblick
+- **pflicht** (Volltext): `docs/uni_vorgaben/pruefkatalog.md`, `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx`, `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx`
+- **kontext** (chapter_state only): `05_referenzarchitektur_RQ2`, `06_evaluation_RQ3`, `07_diskussion`
 
 ## Decisions (alle Kapitel)
 
@@ -32,6 +66,7 @@
 | D_SCOPE_ART25_RETIREMENT | 03_forschungsdesign_methodik | Art. 25 Provider-Aufstieg als Scope-Grenze dokumentiert, Retirement explizit ausgeschlossen (Provider-Verantwortung Art. 16) | Methodische Scope-Klarstellung: Deployer-Perspektive endet b |
 | D_KAP4_STRUKTUR_FUNKTIONAL | 03_forschungsdesign_methodik | Kap. 4 Anforderungsanalyse folgt funktional-logischer Struktur (Lifecycle → Transformation → Kontrolle → Oversight → Katalog) | DSR-Designentscheidung: Prozessorientierung bildet Deployer- |
 | D_UNI_HINWEISE_SSOT | 03_forschungsdesign_methodik | docs/uni_vorgaben/ als bindende SSOT fuer alle Kapitel registriert: (1) Prof. Prinz Stilrichtlinien (Referenzierdichte, keine formalen Ueberleitungen, Blablameter-Check, Ergebnisse kontextualisieren), (2) SRH Masterarbeit_Vorbereitung (Bewertungskriterien 50/30/20, max. 4 Gliederungsebenen, 60-80 Textseiten) | Qualitaetssicherung: Universitaere Vorgaben muessen in allen |
+| D_LADE_MANIFEST | 03_forschungsdesign_methodik | Per-chapter lade_manifest mit 2-Tier-System in chapter_state.yaml eingefuehrt: (1) pflicht = Volltext laden (DOCXs, DRAFTs, Entscheidungspapiere, Uni-Vorgaben), (2) kontext = nur chapter_state.yaml lesen. Universelle pflicht-Dateien fuer alle 8 Kapitel: Kap. 3 DOCX (DSR/Forschungsdesign) + docs/uni_vorgaben/pruefkatalog.md. Integration als Ergaenzung (nicht Ersatz) in alle 6 Workflow-Skills: Preflight (P0), Writer (Kontext-Sektion), Reviewer (Kontext-Setup), Consistency (Kontext-Setup), Post-Session (erweiterter B-Check), Session-Manager (erweiterter S3). | Kontextfokussierung fuer KI-gestuetzte Workflow-Skills: Gezi |
 | D_4.5_STRUCTURE | 04_anforderungsanalyse_RQ1 | 4.5 Human Oversight bleibt eigener Abschnitt | 162 kumulative Zitationen (Laux 63 + Sterz 51 + Enqvist 48) |
 | D_KAP4_PAGES | 04_anforderungsanalyse_RQ1 | Kap. 4 Zielbudget ~13 Seiten | 60-80 Seiten Gesamtthesis |
 | D_MQG4AI_PLACEMENT | 04_anforderungsanalyse_RQ1 | Elia et al. (2025)/MQG4AI zitieren in Kap. 2 Related Work + Kurzreferenz Kap. 4.6 | Wissenschaftliche Redlichkeit |
@@ -41,7 +76,7 @@
 | D_GATE_IDS_LOCATION | 04_anforderungsanalyse_RQ1 | Gate-IDs (G-PRE-01 etc.) erst in 4.6, in 4.2 nur konzeptionell | Saubere Traceability-Kette: 4 |
 | D_4.6_SCOPE | 04_anforderungsanalyse_RQ1 | 4.6 Requirements-Katalog substanziell (~3-4 Seiten), zeigt systematische Anforderungsableitung | Kernbeitrag von Kap |
 | D_4.6_VS_5.3_SEPARATION | 04_anforderungsanalyse_RQ1 | 4.6 = WAS geprüft werden muss (Requirements-Tabelle R-xx), 5.3 = WIE Gates technisch spezifiziert werden (Template, Trigger, Decision-Logik G-xx) | DSR-logisch: 4 |
-| D_GOV_DIMENSIONS_HYBRID | 04_anforderungsanalyse_RQ1 | Governance-Dimensionen hybrid: 4.6 Norm-Analyse, 5.1 NIST/ISO-Konvergenz. R004 = vollwertiges HYBRID Gate G-PRE-05 (D3×D2-Override: First-Degree Oversight → max HYBRID). Korrigiert durch D_GATE_COUNT_14: alle 14 R-xx als Gate-Instanzen, keine manuelle Governance außerhalb CI/CD | 4+5 |
+| D_GOV_DIMENSIONS_HYBRID | 04_anforderungsanalyse_RQ1 | Governance-Dimensionen hybrid: 4.6 einfuehren als Ergebnis der Norm-Analyse, 5.1 Konvergenz-Nachweis mit NIST/ISO | 4 |
 | D_NIST_CONVERGENCE | 04_anforderungsanalyse_RQ1 | NIST-Harmonisierung als Konvergenz-Argumentation in 5.1 (~1 Seite + Tabelle), nicht nur Mapping | Konvergenz NIST AI RMF + ISO 42001 + EU AI Act = Rigor-Nachw |
 | D_KONSOLIDIERUNG_AUFGELOEST | 04_anforderungsanalyse_RQ1 | Alter Abschnitt 4.5 Konsolidierung wird aufgeloest: Governance-Dimensionen → 4.6, NIST-Harmonisierung → 5.1, Clustering → 5.3 | Konsolidierung war kein eigenstaendiger DSR-Beitrag |
 | D_KAP4_BUDGET_FLEX | 04_anforderungsanalyse_RQ1 | Kap. 4 Seitenbudget flexibel auf ~14-15 Seiten erhoehen wenn noetig | 4 |
@@ -59,11 +94,13 @@
 | D_GATE_ID_SCHEMA | 05_referenzarchitektur_RQ2 | Option A: G-PRE-xx, G-DEP-xx, G-OPS-xx (Lifecycle-Phase-Prefix) | Literaturanalyse: Cooper Stage-Gate |
 | D_GATEKEEPER_STANDALONE | 05_referenzarchitektur_RQ2 | Standalone OPA Gatekeeper auf AKS (kein Azure Policy Add-on) | Cloud-agnostisch per R7 |
 | D_ART11_DIFFERENZIERUNG | 05_referenzarchitektur_RQ2 | DP2=Art.11 Abs.1 allgemein (Lifecycle-Traceability), DP3=Art.11+Annex IV (Gate-Attribute Input-Katalog) | Annex IV = technischer Input |
-| D_GATE_COUNT | 05_referenzarchitektur_RQ2 | 14 Gates: 4 PRE + 5 DEP + 5 OPS. R004 = vollwertiges HYBRID GATE (korrigiert durch D_GATE_COUNT_14) | Cooper D1-Pruefung zeigt Gate-Eignung fuer R004 |
+| D_GATE_COUNT | 05_referenzarchitektur_RQ2 | 16 Gate-Instanzen: 5 PRE + 6 DEP + 5 OPS operationalisieren 14 Anforderungen. R001→2 Gates (G-PRE-01+G-PRE-03), R006→2 Gates (G-PRE-04+G-OPS-04). R004=HYBRID G-PRE-05, R014=G-DEP-06. | Cooper D1-Pruefung zeigt Gate-Eignung |
 | D_R005_GATE | 05_referenzarchitektur_RQ2 | R005 → dediziertes G-OPS-05 (Evidence-Completeness & Audit-Trail-Integritaet) | Muhammad (2026) Assured Readiness Score |
 | D_R002_SINGLE_GATE | 05_referenzarchitektur_RQ2 | R002 = 1 Gate mit mehreren Policies. Trennung Gate/Policy erst in 5.3 | Cooper: Gates = Entscheidungspunkte |
 | D_ANNEX_IV_INPUT | 05_referenzarchitektur_RQ2 | DP3 nutzt Annex IV als Input-Katalog fuer Gate-Attribute (nicht juristisch) | PK-SC5 Scope-Caveat; Lucaj Templates annotieren Annex IV |
 | D_BUTT_KERN_PAPER | 05_referenzarchitektur_RQ2 | Butt et al. (2026) V6HKHA5B als 5. Kern-Paper fuer 5.2 | 5 Gates |
+| D_DSR_EVIDENCE_STORE | 05_referenzarchitektur_RQ2 | PostgreSQL Evidence Store Schema als DSR-Artefakt in Kap. 5.4 spezifiziert (5 Komponenten: Immutability-Trigger, Privacy Views, RBAC, Composite Indexes, quality_gate_results Table) | DDL ist formale testbare Spezifikation |
+| D_QUALITY_OVER_PAGES | 05_referenzarchitektur_RQ2 | Qualitaet > Seitenzahl. Ueberschreitung des 15-18 Seiten Budgets fuer Kap. 5 erlaubt wenn inhaltlich begruendet. | User-Entscheidung: Lieber gruendlich als komprimiert |
 
 ## Critical Definitions (bindend fuer Cross-Chapter-Konsistenz)
 
@@ -81,7 +118,8 @@
 - **[05_referenzarchitektur_RQ2]** DP1-DP5 = Expose-SSOT, DP5.2 Hash-Chain + DP5.3 Immutability als Sub-Extensions (D_DP_NUMBERING)
 - **[05_referenzarchitektur_RQ2]** Cloud-agnostisch portabel, Azure = PoC-Referenz (R7)
 - **[05_referenzarchitektur_RQ2]** CDV-Framework: Contract → Validation → Severity → Pipeline-Decision (R8)
-- **[05_referenzarchitektur_RQ2]** Governance-Dimensionen: regulatorisch/technisch/strategisch als Gate-Template-Attribute (nicht hierarchisch). R004 = vollwertiges HYBRID Gate G-PRE-05 (D3×D2-Override: First-Degree Oversight → max HYBRID). Alle 14 R-xx als Gate-Instanzen operationalisiert (D_GOV_DIMENSIONS_HYBRID, korrigiert durch D_GATE_COUNT_14)
+- **[05_referenzarchitektur_RQ2]** Governance-Dimensionen: regulatorisch/technisch/strategisch als Gate-Template-Attribute (nicht hierarchisch). R004 = HYBRID Gate G-PRE-05, R014 = G-DEP-06. 16 Gate-Instanzen (5+6+5) operationalisieren 14 R-xx. R001→2 Gates, R006→2 Gates (Doppelzuordnung begruendet). (D_GOV_DIMENSIONS_HYBRID, D_GATE_COUNT)
+- **[05_referenzarchitektur_RQ2]** 29 Policy-Kandidaten aus MAPPING_LUCAJ_TO_RXX = initiale erweiterbare Ausgangsbasis (nicht Architektur-Konstante). Lucaj = Input-Katalog, Architektur = Enforcement-Framework
 
 ## Cross-Chapter Impacts
 

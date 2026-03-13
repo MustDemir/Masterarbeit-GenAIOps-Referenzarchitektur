@@ -23,6 +23,12 @@ Kap. 5, das Exposé definiert den Rahmen, die Gliederung gibt Seitenbudgets vor,
 Critical Definitions müssen konsistent durchgehalten werden. Ein einziger vergessener Check
 kann zu Widersprüchen führen, die später aufwändig korrigiert werden müssen.
 
+## Referenz-Dateien laden (PFLICHT bei jedem Aufruf)
+
+Vor dem Durchlauf der 6 Pruefinstanzen diese Referenz-Dateien lesen:
+- `.skills/thesis-preflight/references/critical_definitions.md` — Critical Definitions Schnellreferenz
+- `.skills/thesis-preflight/references/checklist_template.md` — Preflight-Protokoll Template
+
 ## Workflow: 6 Prüfinstanzen in Reihenfolge
 
 Identifiziere zuerst den **Zielabschnitt** (z.B. "Kap. 2.1") aus dem User-Input oder dem
@@ -31,12 +37,25 @@ Identifiziere zuerst den **Zielabschnitt** (z.B. "Kap. 2.1") aus dem User-Input 
 Dann durchlaufe die 6 Prüfinstanzen in dieser Reihenfolge. Für jede Instanz: die angegebenen
 Dateien lesen, die Prüffragen beantworten, und Ergebnisse sammeln.
 
+### P0 — Kontext-Fokussierung via lade_manifest (VOR allen Pruefinstanzen)
+
+Lies zuerst das `lade_manifest` aus dem Zielkapitel-`chapter_state.yaml`:
+
+- **`pflicht`-Dateien** → als VOLLTEXT laden (DOCXs, DRAFTs, Entscheidungspapiere, Uni-Vorgaben). Diese haben hoechste Prioritaet und liefern den inhaltlichen Kontext.
+- **`kontext`-Kapitel** → nur deren `chapter_state.yaml` lesen (Ueberblick, keine Volltexte). Reicht fuer Abhaengigkeitsbewusstsein.
+
+**Universelle pflicht-Dateien** (in jedem Kapitel vorhanden):
+- Kap. 3 DOCX (DSR/Forschungsdesign)
+- `docs/uni_vorgaben/pruefkatalog.md` (Uni-Vorgaben)
+
+Das lade_manifest **ergaenzt** die Dateilisten in P1–P6 — es ersetzt sie NICHT.
+Wenn eine Pruefinstanz explizit eine Datei fordert, wird diese gelesen unabhaengig vom lade_manifest.
+
 ### P1 — Exposé + README
 
 Lese diese Dateien:
-- `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` (primäre Exposé-Quelle im Repo)
-- optional lokal: `00_admin/Expose_v4_final_2026-02-28.docx` (Arbeitskopie, falls vorhanden)
-- `README.md` (Projektübersicht)
+- `00_admin/DMT_Demir_Exposé_2009670_final.pdf` (primäre Exposé-Quelle im Repo)
+- `00_admin/README.md` (Projektübersicht und Repo-Struktur)
 
 Beantworte:
 - Steht der geplante Abschnitt im Einklang mit dem Exposé?
@@ -57,10 +76,13 @@ Die SOT-Hierarchie bestimmt, welche Quellen bei Widersprüchen gewinnen:
 Lese JEDEN Volltext der bereits existiert — nicht nur den Vorgaenger:
 - `00_workspace/Fulltext_Kapitel/Kapitel 1 Einleitung.docx` (PFLICHT)
 - `00_workspace/Fulltext_Kapitel/Kapitel 2 Theoretische Grundlagen.docx` (PFLICHT)
-- `00_workspace/Fulltext_Kapitel/Kapitel_3_Forschungsdesign_und_Methodik.docx` (PFLICHT)
+- `00_workspace/Fulltext_Kapitel/Kapitel 3 Forschungsdesign_und_Methodik.docx` (PFLICHT)
 - `00_workspace/Fulltext_Kapitel/Kapitel 4 Anforderungen.docx` (PFLICHT)
 - `00_workspace/Fulltext_Kapitel/Kapitel 5 Architectur Entwicklung.docx` (PFLICHT, falls vorhanden)
-- Fallback wenn DOCX nicht lesbar: `{kapitel_ordner}/{N}_{M}_{thema}_DRAFT.md`
+- Fallback wenn DOCX nicht lesbar — DRAFT-Pfad-Aufloesung (3-Stufen):
+  1. `{kapitel_ordner}/arbeitsmaterial/drafts/Kap{N}_*_DRAFT.md` (primaer)
+  2. `{kapitel_ordner}/KAPITEL_{N}_*_DRAFT.md` (Fallback, Root)
+  3. `{kapitel_ordner}/legacy/*_DRAFT.md` (Legacy, nur lesen)
 
 #### Schritt 2: ALLE SSOTs + Preflight-Protokolle lesen (PFLICHT)
 
@@ -104,7 +126,7 @@ Beantworte:
 Lese diese Dateien:
 - `docs/thesis_state.md` — Alle D_xxx Entscheidungen, Critical Definitions
 - `docs/SSOT_ROTER_FADEN_ANALYSE.md` — Cross-chapter Impact
-- `docs/ENTSCHEIDUNGSPAPIER_KAP4.md` — Kap. 4-spezifische Designentscheidungen
+- `docs/ENTSCHEIDUNGSPAPIER_KAP{N}.md` — Kapitelspezifische Designentscheidungen (N = Zielkapitel + Abhaengigkeiten, z.B. KAP4, KAP5)
 - `00_admin/SOURCE_OF_TRUTH.md` — SOT-Hierarchie
 
 Beantworte:
