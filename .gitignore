@@ -113,5 +113,14 @@ docs/preflight/
 **/Kapitel_*.docx
 **/Kapitel *.docx
 
+# Korrektur-/Bewertungsdokumente (Arbeitsmaterial, nicht versionieren)
+**/*KORREKTUR*.md
+**/*BEWERTUNG*.md
+**/*BEWERTUNG*.pdf
+**/*ZITATIONSCHECK*.md
+
+# Arbeitsgrafiken (work-Versionen, nur final/veröffentlicht tracken)
+**/images/work/
+
 # Embedded repos / external templates
 05_referenzarchitektur_RQ2/techops_templates/

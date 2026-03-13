@@ -15,7 +15,7 @@
 | 3 | D_GATE_ID_SCHEMA | Gate-ID-Format | ✅ FINAL | G-PRE-xx / G-DEP-xx / G-OPS-xx (Lifecycle-Phase-Präfix) |
 | 4 | D_GATEKEEPER_STANDALONE | Gatekeeper-Deployment | ✅ FINAL | Standalone OPA Gatekeeper auf AKS, kein Azure Policy Add-on |
 | 5 | D_ART11_DIFFERENZIERUNG | Art. 11 DP2/DP3 Abgrenzung | ✅ FINAL | DP2=Art.11 Abs.1 allgemein, DP3=Art.11+Annex IV spezifisch |
-| 6 | D_GATE_COUNT | Gate-Anzahl aus R-xx | ✅ FINAL | ~13 Gates (4 PRE + 5 DEP + 4 OPS), R004=Fußnote |
+| 6 | D_GATE_COUNT | Gate-Anzahl aus R-xx | ✅ KORRIGIERT | 16 Instanzen (5 PRE + 6 DEP + 5 OPS), R004=HYBRID, R014=AUTO (D_GATE_COUNT_14) |
 | 7 | D_R005_GATE | R005 dediziertes Gate | ✅ FINAL | G-OPS-05 Evidence-Completeness & Audit-Trail-Integrität |
 | 8 | D_R002_SINGLE_GATE | R002 Gate-Granularität | ✅ FINAL | 1 Gate, mehrere Policies; Trennung Gate/Policy in 5.3 |
 | 9 | D_ANNEX_IV_INPUT | Annex IV Nutzung | ✅ FINAL | DP3 nutzt Annex IV als Input-Katalog, nicht juristisch |
@@ -129,20 +129,27 @@
 
 **Frage:** Wie viele Gates ergeben sich aus der R-xx → G-xx Gruppierung?
 
-**Entscheidung:** ~13 Gates: 4 Pre-Deployment + 5 Deployment + 4 Operations. R004 (Strategische Verankerung) ist organisatorische Governance → Fußnote in Tab. 5.2, kein technisches Gate.
+**Entscheidung:** ~~13 Gates~~ → **KORRIGIERT (D_GATE_COUNT_14, 2026-03-12):** 16 Gate-Instanzen (5 PRE + 6 DEP + 5 OPS), die alle 14 Requirements operationalisieren. R004 = HYBRID Gate G-PRE-05, R014 = AUTO Gate G-DEP-06.
 
-**Begründung:**
-- R001–R014 ergibt nach Clustering (thematische Zusammengehörigkeit + Lifecycle-Phase): 12 technisch prüfbare Gates + G-OPS-05 (R005 dediziert) = 13 Gates
-- R004 hat kein Template-Feld in Lucaj TechOps (Coverage-Matrix: 0 Policies) → manueller/strategischer Check
+**Ursprüngliche Begründung (1. Designzyklus):**
+- R001–R014 ergibt nach Clustering: 12 technisch prüfbare Gates + G-OPS-05 (R005 dediziert) = 13 Gates
+- R004 hat kein Template-Feld in Lucaj TechOps (Coverage-Matrix: 0 Policies) → damals als manueller/strategischer Check interpretiert
 - R002 wird als 1 Gate mit mehreren Policies modelliert (s. D_R002_SINGLE_GATE)
-- Gate-Verteilung orientiert sich an Cooper (2008) Stage-Gate-Dichte und Elia (2025) Lifecycle-Stages
+
+**Korrektur-Begründung (2. Designzyklus):**
+- D_GATE_INCLUSION_RULE v3.0 zeigt: Lucaj Coverage-Matrix misst Policy-Abdeckung, nicht Gate-Eignung
+- Cooper-D1-Prüfung: R004 hat prüfbare Deliverables + Go/Kill-Punkt → gate-geeignet
+- Laux (2024) D3-Klassifikation: R004 = First-Degree Oversight → D3×D2-Override deckelt auf HYBRID
+- R014: eigene Deployment-Prüfung (Konfiguration), abzugrenzen von G-OPS-05 (Integrität im Betrieb)
+- Details: `05_referenzarchitektur_RQ2/arbeitsmaterial/methodenartefakte/D_GATE_COUNT_14_KORREKTUR_2026-03-12.md`
 
 **Evidence:**
-- MAPPING_LUCAJ_TO_RXX.md: Coverage-Matrix zeigt R004 = 0 Policies
-- Cooper (2008): Stage-Gate-Modell, 4-6 Gates typisch
-- Elia et al. (2025): Pre-/During-/Post-Deployment Stages
+- MAPPING_LUCAJ_TO_RXX.md: Coverage-Matrix (R004=0, R014=2 → Lucaj-Lücke, nicht Gate-Ausschluss)
+- D_GATE_INCLUSION_RULE v3.0: 3+1 Dimensionen (Cooper D1, Automatisierbarkeit D2, Laux D3, Querschnitt Q)
+- Cooper (2008): Stage-Gate Go/Kill-Kriterium
+- Laux (2024): First-Degree vs. Second-Degree Oversight
 
-**Datum:** 2026-03-11
+**Datum:** 2026-03-11 (original) → 2026-03-12 (korrigiert)
 
 ---
 
@@ -278,6 +285,6 @@ Diese Decisions aus Kap. 4 sind für Kap. 5 direkt bindend und werden NICHT hier
 3. ✅ R1–R8 in chapter_state Kap. 5 übernommen
 4. ✅ Entscheidungsregister mit D_1–D_4 synchronisiert (2026-03-11)
 5. ✅ D_5–D_10 aus Preflight 5.2 eingetragen (2026-03-11)
-6. ☐ Abschnitt 5.2 schreiben (Gate-Spezifikation, ~13 Gates, Tab. 5.2)
+6. ✅ Abschnitt 5.2 geschrieben (Gate-Spezifikation, 16 Gate-Instanzen aus 14 R-xx, Tab. 5.2)
 7. ☐ Kap. 5.3 Policy Engine + Rego
 8. ☐ Kap. 5.4–5.6

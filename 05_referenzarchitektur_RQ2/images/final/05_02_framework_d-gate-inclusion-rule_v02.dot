@@ -1,0 +1,137 @@
+// D_GATE_INCLUSION_RULE v3.0 — Entscheidungsbaum
+// Grayscale, akademisch, Quellen-annotiert
+// Walkthrough-Pfade: R003 (AUTO) = durchgezogen dick, R004 (HYBRID) = gestrichelt dick
+// v02: Walkthrough-Annotationen direkt an Pfadkanten, Legende repositioniert
+
+digraph D_GATE_INCLUSION_RULE {
+    // Global settings
+    rankdir=TB;
+    fontname="Times New Roman";
+    fontsize=11;
+    bgcolor=white;
+    margin=0.4;
+    nodesep=0.5;
+    ranksep=0.7;
+
+    // Node defaults
+    node [fontname="Times New Roman", fontsize=10, margin="0.15,0.08"];
+    edge [fontname="Times New Roman", fontsize=9];
+
+    // ── TITLE ──
+    title [shape=none, fontsize=13, fontname="Times New Roman Bold",
+           label="D_GATE_INCLUSION_RULE v3.0\nEvaluationssequenz: D1 → D3 → D2"];
+
+    // ── INPUT ──
+    input [shape=box, style="rounded",
+           label="Requirement R-xx\n(aus EU AI Act\nDeployer-Pflichten)",
+           fillcolor=white, color=black];
+
+    // ── D1: Gate-Eignung ──
+    d1 [shape=diamond, style=filled, fillcolor="gray95",
+        label="D1: Gate-Eignung\n\nDeliverables +\nAkzeptanzkriterien +\nGo/Kill/Hold/Recycle?",
+        width=2.6, height=1.6];
+    d1_source [shape=none, fontsize=8, fontcolor="gray40",
+               label="Cooper (2008, PDF S. 4)"];
+
+    // ── D1=NEIN → Querschnitt ──
+    querschnitt [shape=box, style="rounded,filled", fillcolor="gray85",
+                 label="Querschnitt (Q)\nKontinuierliche\nCompliance-Überwachung",
+                 fontsize=9];
+
+    // ── D3: Oversight-Typ ──
+    d3 [shape=diamond, style=filled, fillcolor="gray95",
+        label="D3: Oversight-Typ\n\nKonstitutiver\nmenschlicher Einfluss\n(Counterfactual)?",
+        width=2.6, height=1.6];
+    d3_source [shape=none, fontsize=8, fontcolor="gray40",
+               label="Laux (2024, PDF S. 5)"];
+
+    // ── OVERRIDE BOX ──
+    override [shape=box, style="dashed,filled", fillcolor="gray90",
+              label="D3×D2-Override\n─────────────────\nD3 = FIRST-DEGREE\n→ D2 ≤ HYBRID\n(Automation Ceiling)",
+              fontsize=9];
+    override_source [shape=none, fontsize=8, fontcolor="gray40",
+                     label="Laux & Ruschemeier (2025, AOP):\nAutomation Bias als Systemrisiko\n→ designbasierte Intervention"];
+
+    // ── D2: Automatisierbarkeit ──
+    d2 [shape=diamond, style=filled, fillcolor="gray95",
+        label="D2: Automatisierbarkeit\n\nDeterministisch\nauswertbar?",
+        width=2.6, height=1.4];
+    d2_source [shape=none, fontsize=8, fontcolor="gray40",
+               label="Muhammad et al. (2026, PDF S. 3–5): PASS/WARN/BLOCK\nNweke & Yeng (2026, PDF S. 4, 10): OPA/Rego"];
+
+    // ── ERGEBNIS-KNOTEN ──
+    auto [shape=box, style="rounded,filled,bold", fillcolor="gray95",
+          label="AUTOMATISIERT\n(D2 = VOLL)\n\nPolicy-as-Code\nPASS / BLOCK",
+          penwidth=2];
+    hybrid [shape=box, style="rounded,filled,bold", fillcolor="gray80",
+            label="HYBRID\n(D2 = HYBRID)\n\nAuto-Check +\nHuman-Review",
+            penwidth=2];
+    manuell [shape=box, style="rounded,filled", fillcolor="gray70",
+             label="MANUELL\n(D2 = MANUELL)\n\nVollständig\nmenschliche Prüfung",
+             fontsize=9];
+
+    // ── WALKTHROUGH LEGENDE (repositioniert) ──
+    legende [shape=none, fontsize=8,
+             label=<
+<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="white">
+<TR><TD COLSPAN="2" ALIGN="CENTER"><B>Walkthrough-Pfade</B></TD></TR>
+<TR><TD>━━━ (dick, durchgezogen)</TD><TD>R003 Robustheit → AUTO</TD></TR>
+<TR><TD>╍╍╍ (dick, gestrichelt)</TD><TD>R004 Human Oversight → HYBRID</TD></TR>
+</TABLE>
+>];
+
+    // ══════════════════════════════
+    // KANTEN (Edges)
+    // ══════════════════════════════
+
+    // Title → Input (invisible)
+    title -> input [style=invis];
+
+    // Input → D1
+    input -> d1;
+
+    // D1 source annotation
+    d1 -> d1_source [style=invis, minlen=0];
+    {rank=same; d1; d1_source}
+
+    // D1 = NEIN → Querschnitt
+    d1 -> querschnitt [label="  NEIN  ", fontsize=9, style=dashed, color=gray50];
+
+    // D1 = JA → D3 (beide Walkthroughs laufen hier durch)
+    d1 -> d3 [label="  JA  \n  ━━/╍╍  ", fontsize=9, penwidth=2.0];
+
+    // D3 source annotation
+    d3 -> d3_source [style=invis, minlen=0];
+    {rank=same; d3; d3_source}
+
+    // D3 = FIRST → Override → D2 (mit Ceiling) — R004-Pfad
+    d3 -> override [label="  FIRST-DEGREE  \n  ╍╍ R004  ", fontsize=9,
+                    style=dashed, penwidth=2.5, color="gray30"];
+    override -> d2 [label="  D2 ≤ HYBRID  \n  ╍╍ R004  ", fontsize=8,
+                    style=dashed, penwidth=2.5, color="gray30"];
+
+    // Override source annotation
+    override -> override_source [style=invis, minlen=0];
+    {rank=same; override; override_source}
+
+    // D3 = SECOND → D2 (direkt, kein Ceiling) — R003-Pfad
+    d3 -> d2 [label="  SECOND-DEGREE  \n  ━━ R003  ", fontsize=9, penwidth=2.5];
+
+    // D2 source annotation
+    d2 -> d2_source [style=invis, minlen=0];
+    {rank=same; d2; d2_source}
+
+    // D2 → Ergebnisse
+    // R003 endet bei AUTO (durchgezogen dick)
+    d2 -> auto [label="  VOLL  \n  ━━ R003  ", fontsize=9, penwidth=2.5];
+    // R004 endet bei HYBRID (gestrichelt dick)
+    d2 -> hybrid [label="  TEILWEISE  \n  ╍╍ R004  ", fontsize=9,
+                  style=dashed, penwidth=2.5, color="gray30"];
+    d2 -> manuell [label="  NEIN  ", fontsize=9, style=dashed, color=gray50];
+
+    // Ergebnis-Knoten auf gleicher Höhe
+    {rank=same; auto; hybrid; manuell}
+
+    // Legende unter Ergebnissen, links platziert
+    auto -> legende [style=invis];
+}

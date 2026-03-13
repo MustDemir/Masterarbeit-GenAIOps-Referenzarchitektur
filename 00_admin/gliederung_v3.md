@@ -1,5 +1,5 @@
 **Titel (FINAL C4, Stand 2026-03-05):** Cloud-native Referenzarchitektur fuer GenAIOps mit Quality-Gate-Kontrollsystem zur lifecycle-integrierten Operationalisierung normativer Anforderungen — auf Basis des EU AI Act
-**Single Source of Truth:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` | **Stand:** 2026-03-05
+**Single Source of Truth:** `docs/expose/Expose_v4_final_2026-02-28_encrypted.pdf` | **Stand:** 2026-03-13
 
 ### 1 Einleitung
 * 1.1 Einleitung (PD1-PD3)
@@ -41,20 +41,19 @@
 * 4.5 Human Oversight (Art. 14, Institutionalised Distrust nach Laux, 4 Effektivitaetsbedingungen nach Sterz)
 * 4.6 Requirements-Katalog (R-xx Systematik, Governance-Dimensionen aus Norm-Analyse, Traceability Art. 9-15 → R-xx, WAS-Ebene — Gate-Spezifikation WIE → 5.3)
 
-### 5 Entwicklung der Referenzarchitektur (Design Cycle, beantwortet RQ2, ~20%)
-* 5.1 Ueberblick und Designprinzipien (DP1-DP5, Architekturuebersicht, NIST/ISO-Konvergenznachweis der Governance-Dimensionen aus 4.6)
-* 5.2 Architekturelle Struktur (Schichten- und Komponentenmodell, IaC-Integration) [S1]
-* 5.3 Quality-Gate-Kontrollsystem [S2 USP]
-  * 5.3.1 Gate-Taxonomie und Lifecycle-Zuordnung
-  * 5.3.2 Gate-Spezifikation und Template (Trigger, Kriterien, Evidence, Decision, Owner, Audit Trail, Waiver)
-  * 5.3.3 Compliance-Mapping (Art. 9-15 -> Policies -> Gates -> Evidence)
-* 5.4 Pipeline-Integration [S3]
-  * 5.4.1 CI/CD-Pipeline-Architektur (GitHub Actions, Stage-Gates)
-  * 5.4.2 Policy-as-Code Integration (OPA/Rego, Policy-Bundles)
-* 5.5 Evidence- und Audit-Logik [S4 USP]
-  * 5.5.1 Evidence-Persistierung (Immutable Storage, Versionierung, Retention)
-  * 5.5.2 Audit-Trail und Nachweiskette (R -> DP -> Gate -> Evidence)
-* 5.6 Prototypische Instanziierung PoC (Azure-Stack, Healthcare-Szenario, 2. Iteration)
+### 5 Entwicklung der Referenzarchitektur (Design Cycle, beantwortet RQ2, ~45%)
+* 5.1 Ueberblick und Designprinzipien (DP1-DP5, Architekturuebersicht, NIST/ISO-Konvergenznachweis der Governance-Dimensionen aus 4.6) ✅
+* 5.2 Quality-Gate-Kontrollsystem [S1+S2 USP]
+  * 5.2.1 Gate-Taxonomie, Spezifikation und Lifecycle-Zuordnung (16 Gate-Instanzen aus 14 R-xx, Gate-Template, Tab. 5.2) ✅
+  * 5.2.2 Automatisierbarkeits-Klassifikation und Pre-Gate-Analyse (D_GATE_INCLUSION_RULE 3+1 Dimensionen, 9:5:0-Verteilung, D3×D2-Override, Benchmark-Triangulation) ✅
+  * 5.2.3 Compliance-Mapping (Art. 9-15 -> Policies -> Gates -> Evidence)
+* 5.3 Pipeline-Integration und Policy Engine [S3]
+  * 5.3.1 CI/CD-Pipeline-Architektur (GitHub Actions, Stage-Gates)
+  * 5.3.2 Policy-as-Code Integration (OPA/Rego, Policy-Bundles, Conftest/Gatekeeper/Decision Logs)
+* 5.4 Evidence- und Audit-Logik [S4 USP]
+  * 5.4.1 Evidence-Persistierung (Immutable Storage, Versionierung, Retention)
+  * 5.4.2 Audit-Trail und Nachweiskette (R -> DP -> Gate -> Evidence)
+* 5.5 Prototypische Instanziierung PoC (Azure-Stack, Healthcare-Szenario, 2. Iteration)
 
 ### 6 Evaluation (beantwortet RQ3)
 * 6.1 Evaluationsrahmen und Kriterien

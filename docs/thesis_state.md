@@ -1,6 +1,6 @@
 # Thesis State — Single Source of Truth (Schicht 1)
 
-> **Automatisch generiert:** 2026-03-12 07:17  
+> **Automatisch generiert:** 2026-03-12 20:37  
 > **Generator:** `resume.py` → `workflow_lib.build_thesis_state()`  
 > **Zweck:** KI-Kontext beim Session-Start. Nicht manuell editieren.
 
@@ -41,7 +41,7 @@
 | D_GATE_IDS_LOCATION | 04_anforderungsanalyse_RQ1 | Gate-IDs (G-PRE-01 etc.) erst in 4.6, in 4.2 nur konzeptionell | Saubere Traceability-Kette: 4 |
 | D_4.6_SCOPE | 04_anforderungsanalyse_RQ1 | 4.6 Requirements-Katalog substanziell (~3-4 Seiten), zeigt systematische Anforderungsableitung | Kernbeitrag von Kap |
 | D_4.6_VS_5.3_SEPARATION | 04_anforderungsanalyse_RQ1 | 4.6 = WAS geprüft werden muss (Requirements-Tabelle R-xx), 5.3 = WIE Gates technisch spezifiziert werden (Template, Trigger, Decision-Logik G-xx) | DSR-logisch: 4 |
-| D_GOV_DIMENSIONS_HYBRID | 04_anforderungsanalyse_RQ1 | Governance-Dimensionen hybrid: 4.6 einfuehren als Ergebnis der Norm-Analyse, 5.1 Konvergenz-Nachweis mit NIST/ISO | 4 |
+| D_GOV_DIMENSIONS_HYBRID | 04_anforderungsanalyse_RQ1 | Governance-Dimensionen hybrid: 4.6 Norm-Analyse, 5.1 NIST/ISO-Konvergenz. R004 = vollwertiges HYBRID Gate G-PRE-05 (D3×D2-Override: First-Degree Oversight → max HYBRID). Korrigiert durch D_GATE_COUNT_14: alle 14 R-xx als Gate-Instanzen, keine manuelle Governance außerhalb CI/CD | 4+5 |
 | D_NIST_CONVERGENCE | 04_anforderungsanalyse_RQ1 | NIST-Harmonisierung als Konvergenz-Argumentation in 5.1 (~1 Seite + Tabelle), nicht nur Mapping | Konvergenz NIST AI RMF + ISO 42001 + EU AI Act = Rigor-Nachw |
 | D_KONSOLIDIERUNG_AUFGELOEST | 04_anforderungsanalyse_RQ1 | Alter Abschnitt 4.5 Konsolidierung wird aufgeloest: Governance-Dimensionen → 4.6, NIST-Harmonisierung → 5.1, Clustering → 5.3 | Konsolidierung war kein eigenstaendiger DSR-Beitrag |
 | D_KAP4_BUDGET_FLEX | 04_anforderungsanalyse_RQ1 | Kap. 4 Seitenbudget flexibel auf ~14-15 Seiten erhoehen wenn noetig | 4 |
@@ -81,7 +81,7 @@
 - **[05_referenzarchitektur_RQ2]** DP1-DP5 = Expose-SSOT, DP5.2 Hash-Chain + DP5.3 Immutability als Sub-Extensions (D_DP_NUMBERING)
 - **[05_referenzarchitektur_RQ2]** Cloud-agnostisch portabel, Azure = PoC-Referenz (R7)
 - **[05_referenzarchitektur_RQ2]** CDV-Framework: Contract → Validation → Severity → Pipeline-Decision (R8)
-- **[05_referenzarchitektur_RQ2]** Governance-Dimensionen: regulatorisch/technisch/strategisch. Automatisierte Gates = regulatorisch + technisch; strategisch via R004 manuelle Governance ausserhalb CI/CD/CT (D_GOV_DIMENSIONS_HYBRID)
+- **[05_referenzarchitektur_RQ2]** Governance-Dimensionen: regulatorisch/technisch/strategisch als Gate-Template-Attribute (nicht hierarchisch). R004 = vollwertiges HYBRID Gate G-PRE-05 (D3×D2-Override: First-Degree Oversight → max HYBRID). Alle 14 R-xx als Gate-Instanzen operationalisiert (D_GOV_DIMENSIONS_HYBRID, korrigiert durch D_GATE_COUNT_14)
 
 ## Cross-Chapter Impacts
 

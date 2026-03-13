@@ -51,6 +51,7 @@ Die Architektur verfolgt den Ansatz **Accountability-by-Design**: Verantwortungs
 
 - **RQ1 (Relevance):** Welche regulatorischen, technischen und strategischen Anforderungen sind fuer eine verantwortungsnachweisbare Gestaltung von GenAI-Systemen im Enterprise-Kontext relevant und operationalisierbar?
 - **RQ2 (Design):** Wie kann eine Referenzarchitektur fuer GenAIOps gestaltet werden, die die erhobenen Anforderungen durch ein lifecycle-integriertes Quality-Gate-Kontrollsystem systematisch operationalisiert? *(Nur Deployment- und Inference-Zyklus)*
+  - **RQ2b (Pre-Gate):** Lassen sich die Quality Gates der Referenzarchitektur vollstaendig automatisieren?
 - **RQ3 (Rigor):** Inwiefern ist die entwickelte Referenzarchitektur geeignet, regulatorische Anforderungen technisch durchzusetzen und auditierbar nachweisbar zu machen?
 
 ## Methodik
@@ -181,6 +182,7 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |-- docs/
 |   |-- expose/                    # Expose v4 (PDF, Single Source of Truth)
 |   |-- ENTSCHEIDUNGSPAPIER_KAP4.md  # Designentscheidungen Kapitel 4
+|   |-- ENTSCHEIDUNGSPAPIER_KAP5.md  # Designentscheidungen Kapitel 5 (10 Decisions + 8 R1-R8)
 |-- scripts/                       # Automatisierung: Diagramme, Fortschritt, Audit
 ```
 
@@ -201,7 +203,7 @@ Optional kann jeder Kapitelordner ein `arbeitsmaterial/` enthalten. Dort liegen 
 > Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `██████████░░░░░░░░░░` **52%**
+> Gesamtfortschritt: `██████████░░░░░░░░░░` **54%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
@@ -210,7 +212,7 @@ Optional kann jeder Kapitelordner ein `arbeitsmaterial/` enthalten. Dort liegen 
 | Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | draft |
 | Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | review |
 | Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | done |
-| Kap. 5 — Referenzarchitektur (RQ2) | `██████░░░░░░░░░░░░░░` | 30% | in_progress |
+| Kap. 5 — Referenzarchitektur (RQ2+RQ2b) | `█████████░░░░░░░░░░░` | 45% | in_progress |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 8 — Fazit & Ausblick | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
