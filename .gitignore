@@ -96,6 +96,7 @@ docs/expose/legacy/
 00_Literatur/
 00_admin/Literatur/
 00_workspace/Fulltext_Kapitel/
+docs/
 docs/preflight/
 **/session_summaries/
 **/session_summaries/.gitkeep
