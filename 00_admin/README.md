@@ -56,6 +56,8 @@ Die Architektur verfolgt den Ansatz **Accountability-by-Design**: Verantwortungs
 
 ## Methodik
 
+![Methoden-Framework](03_forschungsdesign_methodik/images/final/03_methoden_framework_integration.svg)
+
 **Design Science Research** (DSR) mit drei kombinierten Rahmenwerken:
 
 1. **Hevner et al. (2004)** — IS Research Framework mit drei Zyklen: Relevance, Design, Rigor
@@ -142,25 +144,19 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 | **Governance** | Evidence Store (Azure PostgreSQL + Blob Storage immutable), Audit Trail DB, Compliance Dashboard |
 | **Programmierung** | Python, SQL, YAML, Rego, HCL |
 
-## Architektur-Preview
-
-![Methoden-Framework](03_forschungsdesign_methodik/images/work/Methoden-Framework:%20Forschungsmethode%20%C3%97%20Technische%20Konstruktionsmethoden%20%20.png)
-![KI-Fabrik-Analogie](05_referenzarchitektur_RQ2/05_02_architekturuebersicht/images/work/Die%20KI-Fabrik:%20Referenzarchitektur%20als%20Analogie%20%28PoC%29%20%20.png)
-
-
 ## Repo-Struktur
 
 ```
 .
 |-- .skills/                   # 6 Thesis-Workflow-Skills (Preflight, Writer, Reviewer, Consistency, Post-Session, Session-Manager)
-|-- 00_workspace/              # Operativer Einstiegspunkt + Kapitel-Volltexte (DOCX)
-|   |-- Fulltext_Kapitel/      # Primaere Abgabe-Texte aller Kapitel (SSOT fuer Fliesstext)
 |-- 00_admin/
 |   |-- gliederung_v3.md      # Verbindliche Kapitelstruktur (Single Source of Truth)
 |   |-- asset_naming.md       # PNG-Naming/Versionierungsstandard (v01, v02, ...)
 |   |-- SOURCE_OF_TRUTH.md    # SOT-Regeln
 |   |-- WORKFLOW_PLAYBOOK.md  # Workflow-Regeln & Automatisierung
 |   |-- MASTER_EXECUTION_PLAN_AMBIENT_AI_SCRIBE.md  # PoC-Masterplan
+|-- 00_workspace/              # Operativer Einstiegspunkt + Kapitel-Volltexte (DOCX)
+|   |-- Fulltext_Kapitel/      # Primaere Abgabe-Texte aller Kapitel (SSOT fuer Fliesstext)
 |-- 01_einleitung/
 |-- 02_rigor_theorie_stand_forschung/
 |-- 03_forschungsdesign_methodik/
@@ -171,18 +167,15 @@ Jede High-Risk-Anforderung (R) wird ueber Design-Prinzipien (DP) zu konkreten Qu
 |   |-- 05_03_quality_gates/
 |   |-- 05_04_pipelines_integration/
 |   |-- 05_05_evidence_audit_logik/
-|   |-- 05_06_prototypische_instanziierung_poc/
+|   |-- 05_06_monitoring_pms/                    # Monitoring & Post-Market Surveillance
+|   |-- 05_07_prototypische_instanziierung_poc/  # PoC (Azure AKS, Healthcare)
 |-- 06_evaluation_RQ3/
 |-- 07_diskussion/
 |-- 08_fazit_ausblick/
 |-- 09_technische_infrastruktur/   # Workflow/Automation/Azure-Setup
+|-- plugins/                       # Thesis-Workflow-Plugin
 |-- poc/                           # Proof-of-Concept (S1-S4 Instanziierung, ab Iter. 2)
-|-- 90_sources_zotero/
 |-- 99_inbox_unsorted/             # Unsortiertes Material
-|-- docs/
-|   |-- expose/                    # Expose v4 (PDF, Single Source of Truth)
-|   |-- ENTSCHEIDUNGSPAPIER_KAP4.md  # Designentscheidungen Kapitel 4
-|   |-- ENTSCHEIDUNGSPAPIER_KAP5.md  # Designentscheidungen Kapitel 5 (10 Decisions + 8 R1-R8)
 |-- scripts/                       # Automatisierung: Diagramme, Fortschritt, Audit
 ```
 
@@ -203,16 +196,16 @@ Optional kann jeder Kapitelordner ein `arbeitsmaterial/` enthalten. Dort liegen 
 > Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `██████████░░░░░░░░░░` **54%**
+> Gesamtfortschritt: `█████████████░░░░░░░` **65%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
 | Expose v4 / Forschungsdesign | `████████████████████` | 100% | Abgeschlossen |
-| Kap. 1 — Einleitung | `████████████████████` | 100% | Fertig |
-| Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | draft |
-| Kap. 3 — Methodik (DSR) | `███████████████████░` | 95% | review |
-| Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | done |
-| Kap. 5 — Referenzarchitektur (RQ2+RQ2b) | `█████████░░░░░░░░░░░` | 45% | in_progress |
+| Kap. 1 — Einleitung | `████████████████████` | 100% | Final |
+| Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | Review |
+| Kap. 3 — Methodik (DSR) | `███████████████████░` | 98% | Review |
+| Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | Done |
+| Kap. 5 — Referenzarchitektur (RQ2+RQ2b) | `██████████████████░░` | 90% | In Progress (5.1–5.5 fertig, 5.6 PoC ausstehend) |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 7 — Diskussion | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
 | Kap. 8 — Fazit & Ausblick | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
