@@ -196,14 +196,14 @@ Optional kann jeder Kapitelordner ein `arbeitsmaterial/` enthalten. Dort liegen 
 > Fortschritt wird automatisch jeden Montag aktualisiert. Pflege bevorzugt `chapter_state.yaml` (Fallback: `_status.yml`) im jeweiligen Kapitelordner oder starte den Workflow mit `save.py`.
 
 <!-- PROGRESS-START -->
-> Gesamtfortschritt: `█████████████░░░░░░░` **65%**
+> Gesamtfortschritt: `█████████████░░░░░░░` **66%**
 
 | Kapitel | Fortschritt | % | Status |
 |---------|------------|---|--------|
 | Expose v4 / Forschungsdesign | `████████████████████` | 100% | Abgeschlossen |
 | Kap. 1 — Einleitung | `████████████████████` | 100% | Final |
 | Kap. 2 — Theoretische Grundlagen und Stand der Forschung (Rigor Cycle) | `████████████████████` | 100% | Review |
-| Kap. 3 — Methodik (DSR) | `███████████████████░` | 98% | Review |
+| Kap. 3 — Methodik (DSR) | `████████████████████` | 100% | Done |
 | Kap. 4 — Anforderungsanalyse (RQ1) | `████████████████████` | 100% | Done |
 | Kap. 5 — Referenzarchitektur (RQ2+RQ2b) | `██████████████████░░` | 90% | In Progress (5.1–5.5 fertig, 5.6 PoC ausstehend) |
 | Kap. 6 — Evaluation (RQ3) | `░░░░░░░░░░░░░░░░░░░░` | 0% | Geplant |
