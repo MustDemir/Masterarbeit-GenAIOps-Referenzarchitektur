@@ -1,4 +1,4 @@
-# 5.6 Prototypische Instanziierung
+# 5.6 Prototypische Instanziierung PoC (Azure-Stack, Healthcare-Szenario)
 
 Dieser Ordner ist fuer die fachliche Struktur der PoC-Ueberleitung und prototypischen Instanziierung vorgesehen.
 

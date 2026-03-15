@@ -53,7 +53,8 @@
 * 5.4 Evidence- und Audit-Logik [S4 USP]
   * 5.4.1 Evidence-Persistierung (Immutable Storage, Versionierung, Retention)
   * 5.4.2 Audit-Trail und Nachweiskette (R -> DP -> Gate -> Evidence)
-* 5.5 Prototypische Instanziierung PoC (Azure-Stack, Healthcare-Szenario, 2. Iteration)
+* 5.5 Monitoring und Post-Market Surveillance (Art. 72 PMS, Drift-Detection, Incident Reporting Art. 26.5+73)
+* 5.6 Prototypische Instanziierung PoC (Azure-Stack, Healthcare-Szenario, 2. Iteration)
 
 ### 6 Evaluation (beantwortet RQ3)
 * 6.1 Evaluationsrahmen und Kriterien
